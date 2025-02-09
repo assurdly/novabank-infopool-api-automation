@@ -2566,7 +2566,7 @@
 												"auth": {
 													"type": "bearer",
 													"bearer": {
-														"token": "{{Bearer_token}}"
+														"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZW1haWwiOiJRQUB5b3BtYWlsLmNvbSIsInN1YiI6IjQiLCJzY29wZSI6WyJGVUxMX0FDQ0VTUyJdLCJpYXQiOjE3MzkxMjU5NzUsImV4cCI6MTczOTEyNjg3NSwiYXVkIjoiaW5mb3Bvb2wubmciLCJpc3MiOiJhdXRoLmluZm9wb29sLm5nIn0.YAggOCGRPsOZekHQc9Cxp5w1HofiNDGpRMPH6voJT94"
 													}
 												},
 												"method": "PATCH",
@@ -2582,7 +2582,7 @@
 												],
 												"body": {
 													"mode": "raw",
-													"raw": "{\n  \"action\": \"enable\",\n  \"password\": \"@passwordA1\",\n  \"code\": \"936990\",\n  \"secret\": \"GEVEQA2GOUWUCIBH\"\n}",
+													"raw": "{\n  \"action\": \"disable\",\n  \"password\": \"@passwordA1\",\n  \"code\": \"889565\",\n  \"secret\": \"GEVEQA2GOUWUCIBH\"\n}",
 													"options": {
 														"raw": {
 															"headerFamily": "json",
