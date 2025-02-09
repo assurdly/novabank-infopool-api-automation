@@ -2915,6 +2915,66 @@
 										}
 									],
 									"id": "82d97c26-e790-4616-b963-eb1f04951c5f"
+								},
+								{
+									"name": "Audit trail",
+									"item": [
+										{
+											"name": "New Request",
+											"id": "4c0da654-b985-42ff-81f2-4fc0578f4509",
+											"protocolProfileBehavior": {
+												"disableBodyPruning": true
+											},
+											"request": {
+												"auth": {
+													"type": "bearer",
+													"bearer": {
+														"token": "{{Bearer_token}}"
+													}
+												},
+												"method": "GET",
+												"header": [
+													{
+														"key": "accept",
+														"value": "application/json"
+													}
+												],
+												"url": {
+													"raw": "https://staging-api.infopool.ng/v1/audit-trails?page=1&limit=10&date_start=2025-01-26&date_end=2025-01-26",
+													"protocol": "https",
+													"host": [
+														"staging-api",
+														"infopool",
+														"ng"
+													],
+													"path": [
+														"v1",
+														"audit-trails"
+													],
+													"query": [
+														{
+															"key": "page",
+															"value": "1"
+														},
+														{
+															"key": "limit",
+															"value": "10"
+														},
+														{
+															"key": "date_start",
+															"value": "2025-01-26"
+														},
+														{
+															"key": "date_end",
+															"value": "2025-01-26"
+														}
+													]
+												}
+											},
+											"response": []
+										}
+									],
+									"id": "3334e97d-c1d7-4de1-ad8e-5a79e8327ddf"
 								}
 							],
 							"id": "e3458749-7f24-4a17-b6e5-c68c680d5c4f"
