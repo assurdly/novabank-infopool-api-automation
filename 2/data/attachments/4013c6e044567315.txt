@@ -1,0 +1,19 @@
+{
+  "action": "update",
+  "data": {
+    "name": "New device Template"
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  }
+}

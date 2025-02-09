@@ -1,0 +1,1 @@
+{"status":false,"statusCode":403,"timestamp":"2025-02-09T20:22:06.155Z","path":"/v1/organizations/1/sub-organizations?page=1&limit=10&organization_type=1","message":"Forbidden resource"}

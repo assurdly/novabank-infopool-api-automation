@@ -1,0 +1,4 @@
+{
+  "action": "refresh",
+  "refresh_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImVtYWlsIjoiUUFAeW9wbWFpbC5jb20iLCJzdWIiOiI0IiwiZGV2aWNlX2lkIjoiZmMzMjJkNDQtZDZiNi00NWFmLTk1YzAtN2UyMjczOTcyZDhlIiwiaWF0IjoxNzM5MTMyNTEzLCJleHAiOjE3Mzk3MzczMTMsImF1ZCI6ImluZm9wb29sLm5nIiwiaXNzIjoiYXV0aC5pbmZvcG9vbC5uZyJ9.AtcARg5bZrmEmsG5fexMY3sho1TvfO5moGVvzDkhJTA"
+}

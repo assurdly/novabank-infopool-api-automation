@@ -1,0 +1,11 @@
+var jsonData = pm.response.json();
+
+pm.test("Status code is 200", function () {
+    pm.response.to.have.status(200);
+});
+
+pm.test("Reponse body contains error fields", function () {
+    pm.expect(jsonData.status).to.eql(false);
+    pm.expect(jsonData.error.message).to.eql('Could not retrieve definition: Definition with id 10000000 not found');
+    pm.expect(jsonData.error.statusCode).to.eql(400);
+});

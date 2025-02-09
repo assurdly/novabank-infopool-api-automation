@@ -1,0 +1,6 @@
+{
+  "action": "enable",
+  "password": "@passwordA1",
+  "code": "936990",
+  "secret": "GEVEQA2GOUWUCIBH"
+}

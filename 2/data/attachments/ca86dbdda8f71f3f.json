@@ -1,0 +1,12 @@
+{
+    "accept": "application/json",
+    "Content-Type": "application/json",
+    "User-Agent": "PostmanRuntime/7.39.1",
+    "Cache-Control": "no-cache",
+    "Postman-Token": "db23e092-1b4d-4065-b281-affa806c21ff",
+    "Host": "staging-api.infopool.ng",
+    "Accept-Encoding": "gzip, deflate, br",
+    "Connection": "keep-alive",
+    "Content-Length": "39",
+    "Cookie": "connect.sid=s%3A4HDROiQZTlsbdUhWj6s6VMCMGVqWYe-t.2akPDFL%2B6Lz%2F4S3T1LecTSpuc1HSdswWA73g8tP0JDA"
+}

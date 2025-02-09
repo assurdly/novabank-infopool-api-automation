@@ -1,0 +1,9 @@
+{
+  "slug": "nga",
+  "name": "Nigeria",
+  "description": "A country",
+  "parent_id": "root",
+  "meta": {
+    "iso-2-code": "ng"
+  }
+}
