@@ -2940,7 +2940,7 @@
 													}
 												],
 												"url": {
-													"raw": "https://staging-api.infopool.ng/v1/audit-trails?page=1&limit=10&date_start=2025-01-26&date_end=2025-01-26",
+													"raw": "https://staging-api.infopool.ng/v1/audit-trails?page=1&limit=10&date_start=2025-01-26&date_end=2025-02-09",
 													"protocol": "https",
 													"host": [
 														"staging-api",
@@ -2966,7 +2966,7 @@
 														},
 														{
 															"key": "date_end",
-															"value": "2025-01-26"
+															"value": "2025-02-09"
 														}
 													]
 												}
