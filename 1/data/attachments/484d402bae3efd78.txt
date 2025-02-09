@@ -1,0 +1,16 @@
+{
+  "invitations": [
+    {
+      "email": "<email>",
+      "organization_id": "<uuid>",
+      "manager_id": "<uuid>",
+      "role_id": "<uuid>"
+    },
+    {
+      "email": "<email>",
+      "organization_id": "<uuid>",
+      "manager_id": "<uuid>",
+      "role_id": "<uuid>"
+    }
+  ]
+}

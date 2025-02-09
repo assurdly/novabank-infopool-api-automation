@@ -1,0 +1,17 @@
+{
+  "action": "update",
+  "data": {
+    "name": "Directorate Organization",
+    "description": "This is a test glober Organization",
+    
+    
+    
+    
+    
+    
+    
+    
+    "mis_code": "QA"
+    
+  }
+}

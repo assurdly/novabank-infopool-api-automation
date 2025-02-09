@@ -1,0 +1,1 @@
+{"status":false,"statusCode":403,"timestamp":"2025-02-09T16:00:07.861Z","path":"/v1/definitions","message":"Forbidden resource"}

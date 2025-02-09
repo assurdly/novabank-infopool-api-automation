@@ -1,0 +1,17 @@
+{
+  "slug": "<string>",
+  "name": "<string>",
+  "description": "<string>",
+  "send_push": "<boolean>",
+  "send_sms": "<boolean>",
+  "send_email": "<boolean>",
+  "email_template": "<string>",
+  "subject_template": "<string>",
+  "push_template": "<string>",
+  "sms_template": "<string>",
+  "tags": [
+    "<string>",
+    "<string>"
+  ],
+  "category": "1"
+}

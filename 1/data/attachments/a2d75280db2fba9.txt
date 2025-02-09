@@ -1,0 +1,1 @@
+{"status":false,"statusCode":401,"timestamp":"2025-02-09T16:00:00.475Z","path":"/v1/auth/token","message":"No valid session found"}
