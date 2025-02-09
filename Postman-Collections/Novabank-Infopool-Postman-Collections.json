@@ -2656,8 +2656,44 @@
 												"disableBodyPruning": true
 											},
 											"request": {
+												"auth": {
+													"type": "bearer",
+													"bearer": {
+														"token": "{{Bearer_token}}"
+													}
+												},
 												"method": "GET",
-												"header": []
+												"header": [],
+												"url": {
+													"raw": "{{baseUrl}}/v1/audit-trails?page=1&limit=10",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"v1",
+														"audit-trails"
+													],
+													"query": [
+														{
+															"key": "page",
+															"value": "1"
+														},
+														{
+															"key": "limit",
+															"value": "10"
+														},
+														{
+															"key": "date_start",
+															"value": "2025-01-26",
+															"disabled": true
+														},
+														{
+															"key": "date_end",
+															"value": "2025-02-07",
+															"disabled": true
+														}
+													]
+												}
 											},
 											"response": []
 										},
