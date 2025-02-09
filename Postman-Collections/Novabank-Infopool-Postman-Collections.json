@@ -1479,7 +1479,10 @@
 													},
 													"request": {
 														"auth": {
-															"type": "noauth"
+															"type": "bearer",
+															"bearer": {
+																"token": "{{Bearer_token}}"
+															}
 														},
 														"method": "POST",
 														"header": [
@@ -1494,7 +1497,7 @@
 														],
 														"body": {
 															"mode": "raw",
-															"raw": "{\n  \"verification_code\": \"352407\",\n  \"otp_type\": \"OTP\",\n  \"operation\": \"FORGOT_PASSWORD\",\n  \"delivery_channel\": \"EMAIL\",\n  \"recipient\": \"QA@yopmail.com\"\n}",
+															"raw": "{\n  \"verification_code\": \"930172\",\n  \"otp_type\": \"TOTP\",\n  \"operation\": \"LOGIN\"\n//   \"delivery_channel\": \"EMAIL\",\n//   \"recipient\": \"QA@yopmail.com\"\n}",
 															"options": {
 																"raw": {
 																	"headerFamily": "json",
