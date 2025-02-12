@@ -1,0 +1,1 @@
+{"status":false,"statusCode":403,"timestamp":"2025-02-12T18:42:47.563Z","path":"/v1/settings/master/1","message":"Forbidden resource"}

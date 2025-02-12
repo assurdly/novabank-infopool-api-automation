@@ -1,0 +1,1 @@
+{"status":false,"statusCode":401,"timestamp":"2025-02-12T18:42:41.475Z","path":"/v1/auth/reset-password","message":"Unauthorized"}

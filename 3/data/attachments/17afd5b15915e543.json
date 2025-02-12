@@ -1,0 +1,14 @@
+{
+    "Date": "Wed, 12 Feb 2025 18:43:00 GMT",
+    "Content-Type": "application/json; charset=utf-8",
+    "Transfer-Encoding": "chunked",
+    "Connection": "keep-alive",
+    "Server": "cloudflare",
+    "X-Powered-By": "Express",
+    "Access-Control-Allow-Origin": "*",
+    "Etag": "W/\"a2-FuVgefxJ19efO2kO9gtHilwDJWk\"",
+    "Cf-Cache-Status": "DYNAMIC",
+    "Content-Encoding": "br",
+    "CF-RAY": "910eb8c64d28eada-ORD",
+    "alt-svc": "h3=\":443\"; ma=86400"
+}

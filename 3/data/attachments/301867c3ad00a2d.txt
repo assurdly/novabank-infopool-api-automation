@@ -1,0 +1,1 @@
+{"status":false,"statusCode":403,"timestamp":"2025-02-12T18:42:59.593Z","path":"/v1/roles/1","message":"Forbidden resource"}
