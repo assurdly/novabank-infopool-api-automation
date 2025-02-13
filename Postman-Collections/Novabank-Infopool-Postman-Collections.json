@@ -1497,7 +1497,7 @@
 														],
 														"body": {
 															"mode": "raw",
-															"raw": "{\n  \"verification_code\": \"930172\",\n  \"otp_type\": \"TOTP\",\n  \"operation\": \"LOGIN\"\n//   \"delivery_channel\": \"EMAIL\",\n//   \"recipient\": \"QA@yopmail.com\"\n}",
+															"raw": "{\n  \"verification_code\": \"077786\",\n  \"otp_type\": \"TOTP\",\n  \"operation\": \"LOGIN\"\n//   \"delivery_channel\": \"EMAIL\",\n//   \"recipient\": \"QA@yopmail.com\"\n}",
 															"options": {
 																"raw": {
 																	"headerFamily": "json",
@@ -2566,7 +2566,7 @@
 												"auth": {
 													"type": "bearer",
 													"bearer": {
-														"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZW1haWwiOiJRQUB5b3BtYWlsLmNvbSIsInN1YiI6IjQiLCJzY29wZSI6WyJGVUxMX0FDQ0VTUyJdLCJpYXQiOjE3MzkxMzMzODcsImV4cCI6MTczOTEzNDI4NywiYXVkIjoiaW5mb3Bvb2wubmciLCJpc3MiOiJhdXRoLmluZm9wb29sLm5nIn0.SoLqGKVSnzPBJnulln64aRXE7SUE4qNMNOaghQv0fRA"
+														"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZW1haWwiOiJRQUB5b3BtYWlsLmNvbSIsInN1YiI6IjQiLCJzY29wZSI6WyJGVUxMX0FDQ0VTUyJdLCJpYXQiOjE3Mzk0NDY2MzcsImV4cCI6MTczOTQ0NzUzNywiYXVkIjoiaW5mb3Bvb2wubmciLCJpc3MiOiJhdXRoLmluZm9wb29sLm5nIn0.B8nPx31pzkt7QR6uexSL72984eQpCWrcM4mZ6KSiUhg"
 													}
 												},
 												"method": "PATCH",
@@ -2582,7 +2582,7 @@
 												],
 												"body": {
 													"mode": "raw",
-													"raw": "{\n  \"action\": \"disable\",\n  \"password\": \"@passwordA1\",\n  \"code\": \"133815\",\n  \"secret\": \"GEVEQA2GOUWUCIBH\"\n}",
+													"raw": "{\n  \"action\": \"disable\",\n  \"password\": \"@passwordA1\",\n  \"code\": \"017689\",\n  \"secret\": \"GEVEQA2GOUWUCIBH\"\n}",
 													"options": {
 														"raw": {
 															"headerFamily": "json",
