@@ -1,0 +1,14 @@
+var jsonData = pm.response.json();
+
+pm.test("Status code is 401", function () {
+    pm.response.to.have.status(401);
+});
+
+pm.test("Reponse body contains standard Error fields", function () {
+     pm.expect(jsonData.status).to.eql(false);
+});
+
+pm.test("Error message stating the required fields is returned", function () {
+    pm.expect(jsonData.error[0]).to.eql('Email is required');
+    pm.expect(jsonDatafalse.error[1]).to.eql('Password is required');
+});
