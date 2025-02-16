@@ -1,0 +1,10 @@
+{
+  "invitations": [
+    {
+      "email": "test@.com"
+    },
+    {
+      "email": "@test.com"
+    }
+  ]
+}
