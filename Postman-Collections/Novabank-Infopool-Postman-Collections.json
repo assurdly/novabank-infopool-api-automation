@@ -147,7 +147,7 @@
 														],
 														"body": {
 															"mode": "raw",
-															"raw": "{\n  \"email\": \"favour@yopmail.com\",\n  \"password\": \"blank\"\n}",
+															"raw": "{\n  \"email\": \"favour@yopmail.com\",\n  \"password\": \"blank@A1\"\n}",
 															"options": {
 																"raw": {
 																	"headerFamily": "json",
@@ -229,7 +229,7 @@
 														],
 														"body": {
 															"mode": "raw",
-															"raw": "{\n  \"email\": \"favour@yopmail.com\",\n  \"password\": \"blank\"\n}",
+															"raw": "{\n  \"email\": \"favouryopmail.com\",\n  \"password\": \"blank@A1\"\n}",
 															"options": {
 																"raw": {
 																	"headerFamily": "json",
@@ -290,12 +290,6 @@
 																	"pm.test(\"Error message is returned\", function () {",
 																	"    pm.expect(jsonData.message).to.eql('Unauthorized');",
 																	"",
-																	"});",
-																	"pm.test(\"Reponse body contains standard Error fields\", function () {",
-																	"    pm.expect(jsonData.statusCode).to.eql(401);",
-																	"    pm.expect(jsonData.error[0]).to.eql('Email is required');",
-																	"    pm.expect(jsonDatafalse.error[1]).to.eql('Password is required');",
-																	"     pm.expect(jsonData.status).to.eql(false);",
 																	"});"
 																],
 																"type": "text/javascript",
@@ -363,481 +357,9 @@
 												}
 											],
 											"id": "e5bd9784-73d1-4200-ada0-6802e87a7566"
-										},
-										{
-											"name": "Logout",
-											"item": [
-												{
-													"name": "Logout session successfully",
-													"event": [
-														{
-															"listen": "test",
-															"script": {
-																"id": "b87672bc-6cef-48e8-8563-eef5a3e783be",
-																"exec": [
-																	"var jsonData = pm.response.json();",
-																	"",
-																	"pm.test(\"Status code is 200\", function () {",
-																	"    pm.response.to.have.status(200);",
-																	"});",
-																	"pm.test(\"Reponse body contains standard success fields\", function () {",
-																	"    pm.expect(jsonData.statusCode).to.eql(200);",
-																	"    pm.expect(jsonData.status).to.eql(true);",
-																	"    pm.expect(jsonData.message).to.eql('Logout successful');",
-																	"});"
-																],
-																"type": "text/javascript",
-																"packages": {}
-															}
-														}
-													],
-													"id": "0bbabc8c-2f82-42a6-8603-aa49ffe82fa1",
-													"protocolProfileBehavior": {
-														"disableBodyPruning": true
-													},
-													"request": {
-														"method": "DELETE",
-														"header": [],
-														"url": "{{baseUrl}}/v1/auth/session"
-													},
-													"response": [
-														{
-															"id": "e6a660e5-a691-4cff-ab80-98dcab539dba",
-															"name": "Untitled Response",
-															"originalRequest": {
-																"method": "DELETE",
-																"header": [],
-																"url": "{{baseUrl}}/v1/auth/session"
-															},
-															"status": "OK",
-															"code": 200,
-															"_postman_previewlanguage": "text",
-															"header": [],
-															"cookie": [],
-															"responseTime": null,
-															"body": ""
-														}
-													]
-												},
-												{
-													"name": "Logout session - no session",
-													"event": [
-														{
-															"listen": "test",
-															"script": {
-																"id": "7e8fa568-33d7-4a51-8e25-9412e37b97a9",
-																"exec": [
-																	"var jsonData = pm.response.json();",
-																	"",
-																	"pm.test(\"Status code is 401\", function () {",
-																	"    pm.response.to.have.status(401);",
-																	"});",
-																	"pm.test(\"Reponse body contains standard Error fields\", function () {",
-																	"    pm.expect(jsonData.statusCode).to.eql(401);",
-																	"    pm.expect(jsonData.status).to.eql(false);",
-																	"    pm.expect(jsonData.message).to.eql('No valid session found');",
-																	"});"
-																],
-																"type": "text/javascript",
-																"packages": {}
-															}
-														}
-													],
-													"id": "53fe0e5b-17fc-479e-ac47-157d9925794c",
-													"protocolProfileBehavior": {
-														"disableBodyPruning": true
-													},
-													"request": {
-														"method": "DELETE",
-														"header": [],
-														"url": "{{baseUrl}}/v1/auth/session"
-													},
-													"response": [
-														{
-															"id": "0c061ce3-e504-443e-b8c9-1f037415d005",
-															"name": "Untitled Response",
-															"originalRequest": {
-																"method": "DELETE",
-																"header": [],
-																"url": "{{baseUrl}}/v1/auth/session"
-															},
-															"status": "OK",
-															"code": 200,
-															"_postman_previewlanguage": "text",
-															"header": [],
-															"cookie": [],
-															"responseTime": null,
-															"body": ""
-														}
-													]
-												}
-											],
-											"id": "8503017a-51b8-4e8c-bbf8-ac021502b212"
 										}
 									],
 									"id": "374987f3-b9fd-48f8-ad79-a1b3ce4742a6"
-								},
-								{
-									"name": "Refresh token",
-									"item": [
-										{
-											"name": "Refresh token - successful",
-											"event": [
-												{
-													"listen": "test",
-													"script": {
-														"id": "2cc7b9db-5414-404a-95c9-1e86a2dd37e1",
-														"exec": [
-															"var jsonData = pm.response.json();",
-															"",
-															"pm.test(\"Status code is 201\", function () {",
-															"    pm.response.to.have.status(201);",
-															"    pm.expect(jsonData.status).to.eql(true);",
-															"});",
-															"",
-															"pm.test(\"Access credentials are returned\", function () {",
-															"    pm.expect(jsonData.response.token_type).is.not.empty;",
-															"    pm.expect(jsonData.response.access_token).is.not.empty;",
-															"    pm.expect(jsonData.response.refresh_token).is.not.empty;",
-															"    pm.expect(jsonData.response.session_id).is.not.empty;",
-															"     pm.expect(jsonData.response.device_id).is.not.empty;",
-															"",
-															"});",
-															"pm.environment.set(\"Bearer_token\", jsonData.response.access_token);",
-															"pm.environment.set(\"refresh_token\", jsonData.response.refresh_token);"
-														],
-														"type": "text/javascript",
-														"packages": {}
-													}
-												}
-											],
-											"id": "5a67d2e9-2069-47c0-8303-23e682135048",
-											"protocolProfileBehavior": {
-												"disableBodyPruning": true
-											},
-											"request": {
-												"method": "POST",
-												"header": [
-													{
-														"key": "Content-Type",
-														"value": "application/json"
-													}
-												],
-												"body": {
-													"mode": "raw",
-													"raw": "{\n  \"action\": \"refresh\",\n  \"refresh_token\": \"{{refresh_token}}\"\n}",
-													"options": {
-														"raw": {
-															"headerFamily": "json",
-															"language": "json"
-														}
-													}
-												},
-												"url": "{{baseUrl}}/v1/auth/token"
-											},
-											"response": [
-												{
-													"id": "3b4c4778-2ac3-42b1-b15c-3dd4481bc680",
-													"name": "Untitled Response",
-													"originalRequest": {
-														"method": "POST",
-														"header": [
-															{
-																"key": "Content-Type",
-																"value": "application/json"
-															}
-														],
-														"body": {
-															"mode": "raw",
-															"raw": "{\n  \"action\": \"refesh\",\n  \"refresh_token\": \"\"\n}",
-															"options": {
-																"raw": {
-																	"headerFamily": "json",
-																	"language": "json"
-																}
-															}
-														},
-														"url": "{{baseUrl}}/v1/auth/token"
-													},
-													"status": "Created",
-													"code": 201,
-													"_postman_previewlanguage": "text",
-													"header": [],
-													"cookie": [],
-													"responseTime": null,
-													"body": ""
-												}
-											]
-										},
-										{
-											"name": "Refresh token - expired refresh token",
-											"event": [
-												{
-													"listen": "test",
-													"script": {
-														"id": "2cc7b9db-5414-404a-95c9-1e86a2dd37e1",
-														"exec": [
-															"var jsonData = pm.response.json();",
-															"",
-															"pm.test(\"Status code is 201\", function () {",
-															"    pm.response.to.have.status(201);",
-															"    pm.expect(jsonData.status).to.eql(true);",
-															"});",
-															"",
-															"pm.test(\"Access credentials are returned\", function () {",
-															"    pm.expect(jsonData.response.token_type).is.not.empty;",
-															"    pm.expect(jsonData.response.access_token).is.not.empty;",
-															"    pm.expect(jsonData.response.refresh_token).is.not.empty;",
-															"    pm.expect(jsonData.response.session_id).is.not.empty;",
-															"     pm.expect(jsonData.response.device_id).is.not.empty;",
-															"",
-															"});",
-															"pm.environment.set(\"Bearer_token\", jsonData.response.access_token);",
-															"pm.environment.set(\"refresh_token\", jsonData.response.refresh_token);"
-														],
-														"type": "text/javascript",
-														"packages": {}
-													}
-												}
-											],
-											"id": "5252cd44-a127-435e-b10f-b24de04e1f17",
-											"protocolProfileBehavior": {
-												"disableBodyPruning": true
-											},
-											"request": {
-												"method": "POST",
-												"header": [
-													{
-														"key": "Content-Type",
-														"value": "application/json"
-													}
-												],
-												"body": {
-													"mode": "raw",
-													"raw": "{\n  \"action\": \"refresh\",\n  \"refresh_token\": \"{{refresh_token}}\"\n}",
-													"options": {
-														"raw": {
-															"headerFamily": "json",
-															"language": "json"
-														}
-													}
-												},
-												"url": "{{baseUrl}}/v1/auth/token"
-											},
-											"response": [
-												{
-													"id": "9f55fa0e-88d0-47cf-a98e-beaaadd26c4b",
-													"name": "Untitled Response",
-													"originalRequest": {
-														"method": "POST",
-														"header": [
-															{
-																"key": "Content-Type",
-																"value": "application/json"
-															}
-														],
-														"body": {
-															"mode": "raw",
-															"raw": "{\n  \"action\": \"refesh\",\n  \"refresh_token\": \"\"\n}",
-															"options": {
-																"raw": {
-																	"headerFamily": "json",
-																	"language": "json"
-																}
-															}
-														},
-														"url": "{{baseUrl}}/v1/auth/token"
-													},
-													"status": "Created",
-													"code": 201,
-													"_postman_previewlanguage": "text",
-													"header": [],
-													"cookie": [],
-													"responseTime": null,
-													"body": ""
-												}
-											]
-										},
-										{
-											"name": "Refresh token - no token present",
-											"event": [
-												{
-													"listen": "test",
-													"script": {
-														"id": "2cc7b9db-5414-404a-95c9-1e86a2dd37e1",
-														"exec": [
-															"var jsonData = pm.response.json();",
-															"",
-															"pm.test(\"Status code is 201\", function () {",
-															"    pm.response.to.have.status(201);",
-															"    pm.expect(jsonData.status).to.eql(true);",
-															"});",
-															"",
-															"pm.test(\"Access credentials are returned\", function () {",
-															"    pm.expect(jsonData.response.token_type).is.not.empty;",
-															"    pm.expect(jsonData.response.access_token).is.not.empty;",
-															"    pm.expect(jsonData.response.refresh_token).is.not.empty;",
-															"    pm.expect(jsonData.response.session_id).is.not.empty;",
-															"     pm.expect(jsonData.response.device_id).is.not.empty;",
-															"",
-															"});",
-															"pm.environment.set(\"Bearer_token\", jsonData.response.access_token);",
-															"pm.environment.set(\"refresh_token\", jsonData.response.refresh_token);"
-														],
-														"type": "text/javascript",
-														"packages": {}
-													}
-												}
-											],
-											"id": "d9b795a9-c512-40a4-ac6f-3c02fcdd5d04",
-											"protocolProfileBehavior": {
-												"disableBodyPruning": true
-											},
-											"request": {
-												"method": "POST",
-												"header": [
-													{
-														"key": "Content-Type",
-														"value": "application/json"
-													}
-												],
-												"body": {
-													"mode": "raw",
-													"raw": "{\n  \"action\": \"refresh\",\n  \"refresh_token\": \"{{refresh_token}}\"\n}",
-													"options": {
-														"raw": {
-															"headerFamily": "json",
-															"language": "json"
-														}
-													}
-												},
-												"url": "{{baseUrl}}/v1/auth/token"
-											},
-											"response": [
-												{
-													"id": "dee26b14-7f6b-461c-b79e-a43fd175fe60",
-													"name": "Untitled Response",
-													"originalRequest": {
-														"method": "POST",
-														"header": [
-															{
-																"key": "Content-Type",
-																"value": "application/json"
-															}
-														],
-														"body": {
-															"mode": "raw",
-															"raw": "{\n  \"action\": \"refesh\",\n  \"refresh_token\": \"\"\n}",
-															"options": {
-																"raw": {
-																	"headerFamily": "json",
-																	"language": "json"
-																}
-															}
-														},
-														"url": "{{baseUrl}}/v1/auth/token"
-													},
-													"status": "Created",
-													"code": 201,
-													"_postman_previewlanguage": "text",
-													"header": [],
-													"cookie": [],
-													"responseTime": null,
-													"body": ""
-												}
-											]
-										},
-										{
-											"name": "Refresh token - invalid token",
-											"event": [
-												{
-													"listen": "test",
-													"script": {
-														"id": "2cc7b9db-5414-404a-95c9-1e86a2dd37e1",
-														"exec": [
-															"var jsonData = pm.response.json();",
-															"",
-															"pm.test(\"Status code is 201\", function () {",
-															"    pm.response.to.have.status(201);",
-															"    pm.expect(jsonData.status).to.eql(true);",
-															"});",
-															"",
-															"pm.test(\"Access credentials are returned\", function () {",
-															"    pm.expect(jsonData.response.token_type).is.not.empty;",
-															"    pm.expect(jsonData.response.access_token).is.not.empty;",
-															"    pm.expect(jsonData.response.refresh_token).is.not.empty;",
-															"    pm.expect(jsonData.response.session_id).is.not.empty;",
-															"     pm.expect(jsonData.response.device_id).is.not.empty;",
-															"",
-															"});",
-															"pm.environment.set(\"Bearer_token\", jsonData.response.access_token);",
-															"pm.environment.set(\"refresh_token\", jsonData.response.refresh_token);"
-														],
-														"type": "text/javascript",
-														"packages": {}
-													}
-												}
-											],
-											"id": "ec7e17f8-e0b9-44c5-921b-281904800ed5",
-											"protocolProfileBehavior": {
-												"disableBodyPruning": true
-											},
-											"request": {
-												"method": "POST",
-												"header": [
-													{
-														"key": "Content-Type",
-														"value": "application/json"
-													}
-												],
-												"body": {
-													"mode": "raw",
-													"raw": "{\n  \"action\": \"refresh\",\n  \"refresh_token\": \"{{refresh_token}}\"\n}",
-													"options": {
-														"raw": {
-															"headerFamily": "json",
-															"language": "json"
-														}
-													}
-												},
-												"url": "{{baseUrl}}/v1/auth/token"
-											},
-											"response": [
-												{
-													"id": "0616e436-7490-4586-b182-e19d1fdad8de",
-													"name": "Untitled Response",
-													"originalRequest": {
-														"method": "POST",
-														"header": [
-															{
-																"key": "Content-Type",
-																"value": "application/json"
-															}
-														],
-														"body": {
-															"mode": "raw",
-															"raw": "{\n  \"action\": \"refesh\",\n  \"refresh_token\": \"\"\n}",
-															"options": {
-																"raw": {
-																	"headerFamily": "json",
-																	"language": "json"
-																}
-															}
-														},
-														"url": "{{baseUrl}}/v1/auth/token"
-													},
-													"status": "Created",
-													"code": 201,
-													"_postman_previewlanguage": "text",
-													"header": [],
-													"cookie": [],
-													"responseTime": null,
-													"body": ""
-												}
-											]
-										}
-									],
-									"id": "bd9a10e1-5eec-416b-a883-4d454f325b0a"
 								},
 								{
 									"name": "Forgot password",
@@ -1032,7 +554,7 @@
 																	"});",
 																	"",
 																	"pm.test(\"The error message about the empty email is returned\", function () {",
-																	"    pm.expect(jsonData.message[0]).to.eql(\"Invalid email format\");",
+																	"    pm.expect(jsonData.message[0]).to.eql(\"Email must be a valid email address\");",
 																	"});"
 																],
 																"type": "text/javascript",
@@ -1071,260 +593,6 @@
 												}
 											],
 											"id": "0f486403-46f6-44ca-9209-24e6e30beaf2"
-										},
-										{
-											"name": "Reset password",
-											"item": [
-												{
-													"name": "Reset password - successful",
-													"id": "3b9270b3-7d39-4b6d-afee-4568a91f8f31",
-													"protocolProfileBehavior": {
-														"disableBodyPruning": true
-													},
-													"request": {
-														"method": "POST",
-														"header": [
-															{
-																"key": "accept",
-																"value": "application/json"
-															},
-															{
-																"key": "Content-Type",
-																"value": "application/json"
-															}
-														],
-														"body": {
-															"mode": "raw",
-															"raw": "{\n  \"token\": \"862193\",\n  \"email\": \"favour@yopmail.com\",\n  \"password\": \"QAtester@A11\",\n  \"confirm_password\": \"QAtester@A11\"\n}",
-															"options": {
-																"raw": {
-																	"language": "json"
-																}
-															}
-														},
-														"url": "{{baseUrl}}/v1/auth/reset-password"
-													},
-													"response": []
-												},
-												{
-													"name": "Reset password - invalid token",
-													"id": "0d2572f7-70be-4e06-9965-0af2cdc23945",
-													"protocolProfileBehavior": {
-														"disableBodyPruning": true
-													},
-													"request": {
-														"method": "POST",
-														"header": [
-															{
-																"key": "accept",
-																"value": "application/json"
-															},
-															{
-																"key": "Content-Type",
-																"value": "application/json"
-															}
-														],
-														"body": {
-															"mode": "raw",
-															"raw": "{\n  \"token\": \"862193\",\n  \"email\": \"favour@yopmail.com\",\n  \"password\": \"QAtester@A11\",\n  \"confirm_password\": \"QAtester@A11\"\n}",
-															"options": {
-																"raw": {
-																	"language": "json"
-																}
-															}
-														},
-														"url": "{{baseUrl}}/v1/auth/reset-password"
-													},
-													"response": []
-												},
-												{
-													"name": "Reset password - no token present",
-													"id": "a134ebc3-bad2-4281-bf83-1b690e5e7065",
-													"protocolProfileBehavior": {
-														"disableBodyPruning": true
-													},
-													"request": {
-														"method": "POST",
-														"header": [
-															{
-																"key": "accept",
-																"value": "application/json"
-															},
-															{
-																"key": "Content-Type",
-																"value": "application/json"
-															}
-														],
-														"body": {
-															"mode": "raw",
-															"raw": "{\n  \"token\": \"862193\",\n  \"email\": \"favour@yopmail.com\",\n  \"password\": \"QAtester@A11\",\n  \"confirm_password\": \"QAtester@A11\"\n}",
-															"options": {
-																"raw": {
-																	"language": "json"
-																}
-															}
-														},
-														"url": "{{baseUrl}}/v1/auth/reset-password"
-													},
-													"response": []
-												},
-												{
-													"name": "Reset password - no email present",
-													"id": "4bbfe737-c2a1-4bcc-b881-b55e021820f7",
-													"protocolProfileBehavior": {
-														"disableBodyPruning": true
-													},
-													"request": {
-														"method": "POST",
-														"header": [
-															{
-																"key": "accept",
-																"value": "application/json"
-															},
-															{
-																"key": "Content-Type",
-																"value": "application/json"
-															}
-														],
-														"body": {
-															"mode": "raw",
-															"raw": "{\n  \"token\": \"862193\",\n  \"email\": \"favour@yopmail.com\",\n  \"password\": \"QAtester@A11\",\n  \"confirm_password\": \"QAtester@A11\"\n}",
-															"options": {
-																"raw": {
-																	"language": "json"
-																}
-															}
-														},
-														"url": "{{baseUrl}}/v1/auth/reset-password"
-													},
-													"response": []
-												},
-												{
-													"name": "Reset password - password rules not met",
-													"id": "709ebf32-1b1f-4659-a5d0-ec26f223466a",
-													"protocolProfileBehavior": {
-														"disableBodyPruning": true
-													},
-													"request": {
-														"method": "POST",
-														"header": [
-															{
-																"key": "accept",
-																"value": "application/json"
-															},
-															{
-																"key": "Content-Type",
-																"value": "application/json"
-															}
-														],
-														"body": {
-															"mode": "raw",
-															"raw": "{\n  \"token\": \"862193\",\n  \"email\": \"favour@yopmail.com\",\n  \"password\": \"QAtester@A11\",\n  \"confirm_password\": \"QAtester@A11\"\n}",
-															"options": {
-																"raw": {
-																	"language": "json"
-																}
-															}
-														},
-														"url": "{{baseUrl}}/v1/auth/reset-password"
-													},
-													"response": []
-												},
-												{
-													"name": "Reset password - passwords do not match",
-													"id": "939d1cc6-9ef2-4d3f-ba48-6924eaa128bf",
-													"protocolProfileBehavior": {
-														"disableBodyPruning": true
-													},
-													"request": {
-														"method": "POST",
-														"header": [
-															{
-																"key": "accept",
-																"value": "application/json"
-															},
-															{
-																"key": "Content-Type",
-																"value": "application/json"
-															}
-														],
-														"body": {
-															"mode": "raw",
-															"raw": "{\n  \"token\": \"862193\",\n  \"email\": \"favour@yopmail.com\",\n  \"password\": \"QAtester@A11\",\n  \"confirm_password\": \"QAtester@A11\"\n}",
-															"options": {
-																"raw": {
-																	"language": "json"
-																}
-															}
-														},
-														"url": "{{baseUrl}}/v1/auth/reset-password"
-													},
-													"response": []
-												},
-												{
-													"name": "Reset password - no password",
-													"id": "509f66d6-cbdf-4dd9-99a4-11bb76658050",
-													"protocolProfileBehavior": {
-														"disableBodyPruning": true
-													},
-													"request": {
-														"method": "POST",
-														"header": [
-															{
-																"key": "accept",
-																"value": "application/json"
-															},
-															{
-																"key": "Content-Type",
-																"value": "application/json"
-															}
-														],
-														"body": {
-															"mode": "raw",
-															"raw": "{\n  \"token\": \"862193\",\n  \"email\": \"favour@yopmail.com\",\n  \"password\": \"QAtester@A11\",\n  \"confirm_password\": \"QAtester@A11\"\n}",
-															"options": {
-																"raw": {
-																	"language": "json"
-																}
-															}
-														},
-														"url": "{{baseUrl}}/v1/auth/reset-password"
-													},
-													"response": []
-												},
-												{
-													"name": "Reset password - no confirm password",
-													"id": "5ded5c28-c605-4622-959a-7e0e57c2c8b2",
-													"protocolProfileBehavior": {
-														"disableBodyPruning": true
-													},
-													"request": {
-														"method": "POST",
-														"header": [
-															{
-																"key": "accept",
-																"value": "application/json"
-															},
-															{
-																"key": "Content-Type",
-																"value": "application/json"
-															}
-														],
-														"body": {
-															"mode": "raw",
-															"raw": "{\n  \"token\": \"862193\",\n  \"email\": \"favour@yopmail.com\",\n  \"password\": \"QAtester@A11\",\n  \"confirm_password\": \"QAtester@A11\"\n}",
-															"options": {
-																"raw": {
-																	"language": "json"
-																}
-															}
-														},
-														"url": "{{baseUrl}}/v1/auth/reset-password"
-													},
-													"response": []
-												}
-											],
-											"id": "ba1ca2e9-b9a7-4c55-b88b-eaff18c01334"
 										}
 									],
 									"id": "be3d663f-7175-4c33-93dc-fcfb1a1dcfc0"
@@ -1479,7 +747,10 @@
 													},
 													"request": {
 														"auth": {
-															"type": "noauth"
+															"type": "bearer",
+															"bearer": {
+																"token": "{{Bearer_token}}"
+															}
 														},
 														"method": "POST",
 														"header": [
@@ -1494,7 +765,7 @@
 														],
 														"body": {
 															"mode": "raw",
-															"raw": "{\n  \"verification_code\": \"352407\",\n  \"otp_type\": \"OTP\",\n  \"operation\": \"FORGOT_PASSWORD\",\n  \"delivery_channel\": \"EMAIL\",\n  \"recipient\": \"QA@yopmail.com\"\n}",
+															"raw": "{\n  \"verification_code\": \"077786\",\n  \"otp_type\": \"TOTP\",\n  \"operation\": \"LOGIN\"\n//   \"delivery_channel\": \"EMAIL\",\n//   \"recipient\": \"QA@yopmail.com\"\n}",
 															"options": {
 																"raw": {
 																	"headerFamily": "json",
@@ -1615,6 +886,28 @@
 									"item": [
 										{
 											"name": "Get profile roles - successful",
+											"event": [
+												{
+													"listen": "test",
+													"script": {
+														"id": "c537a045-f381-4d1f-8a8f-f6f1ffd4409c",
+														"exec": [
+															"var jsonData = pm.response.json();",
+															"",
+															"pm.test(\"Status code is 200\", function () {",
+															"    pm.response.to.have.status(200);",
+															"});",
+															"",
+															"pm.test(\"Reponse body contains success fields\", function () {",
+															"    pm.expect(jsonData.status).to.eql(true);",
+															"    pm.expect(jsonData.response).to.not.equal(\"\");",
+															"});"
+														],
+														"type": "text/javascript",
+														"packages": {}
+													}
+												}
+											],
 											"id": "49b53039-855f-4f30-a0d9-e5d5587b3791",
 											"protocolProfileBehavior": {
 												"disableBodyPruning": true
@@ -1847,7 +1140,7 @@
 															"    pm.expect(jsonData.statusCode).to.eql(400);",
 															"    pm.expect(jsonData.path).is.not.null;",
 															"    pm.expect(jsonData.status).to.eql(false);",
-															"   pm.expect(jsonData.message[0]).to.eql('Password must be at least 8 characters long, include one uppercase letter, one lowercase letter, one number, and one special character'); ",
+															"   pm.expect(jsonData.message[0]).to.eql('Password should be at least 8 characters long'); ",
 															"});",
 															""
 														],
@@ -1876,7 +1169,7 @@
 												],
 												"body": {
 													"mode": "raw",
-													"raw": "{\n  \"current_password\": \"@passwordA133\",\n  \"new_password\": \"@passwordA\"\n}",
+													"raw": "{\n  \"current_password\": \"@passwordA1\",\n  \"new_password\": \"@passwordA\"\n}",
 													"options": {
 														"raw": {
 															"headerFamily": "json",
@@ -1937,7 +1230,7 @@
 															"    pm.expect(jsonData.statusCode).to.eql(400);",
 															"    pm.expect(jsonData.path).is.not.null;",
 															"    pm.expect(jsonData.status).to.eql(false);",
-															"   pm.expect(jsonData.message[1]).to.eql('current_password should not be empty'); ",
+															"   pm.expect(jsonData.message[0]).to.eql('current_password should not be empty'); ",
 															"});",
 															""
 														],
@@ -2027,7 +1320,7 @@
 															"    pm.expect(jsonData.statusCode).to.eql(400);",
 															"    pm.expect(jsonData.path).is.not.null;",
 															"    pm.expect(jsonData.status).to.eql(false);",
-															"   pm.expect(jsonData.message[1]).to.eql('new_password should not be empty'); ",
+															"   pm.expect(jsonData.message[0]).to.eql('new_password should not be empty'); ",
 															"});",
 															""
 														],
@@ -2234,6 +1527,24 @@
 									"item": [
 										{
 											"name": "Update profile - successful",
+											"event": [
+												{
+													"listen": "test",
+													"script": {
+														"id": "1b1a23e4-289f-4ec4-aee0-4b8919c54473",
+														"exec": [
+															"var jsonData = pm.response.json();",
+															"",
+															"pm.test(\"Status code is 200\", function () {",
+															"    pm.response.to.have.status(200);",
+															"    pm.expect(jsonData.status).to.eql(true);",
+															"});"
+														],
+														"type": "text/javascript",
+														"packages": {}
+													}
+												}
+											],
 											"id": "293c2fca-0f58-461e-af3c-26b3fdb61665",
 											"protocolProfileBehavior": {
 												"disableBodyPruning": true
@@ -2271,6 +1582,28 @@
 										},
 										{
 											"name": "Update profile - no phone number",
+											"event": [
+												{
+													"listen": "test",
+													"script": {
+														"id": "bdfa0326-da0c-47f9-a30e-e5343f006705",
+														"exec": [
+															"var jsonData = pm.response.json();",
+															"",
+															"pm.test(\"Status code is 400\", function () {",
+															"    pm.response.to.have.status(400);",
+															"});",
+															"pm.test(\"Reponse body contains standard Error fields\", function () {",
+															"    pm.expect(jsonData.statusCode).to.eql(400);",
+															"    pm.expect(jsonData.status).to.eql(false);",
+															"    pm.expect(jsonData.message[1]).to.eql('phone should not be empty');",
+															"});"
+														],
+														"type": "text/javascript",
+														"packages": {}
+													}
+												}
+											],
 											"id": "fe9b8704-a29a-4868-95eb-df5d60884a5d",
 											"protocolProfileBehavior": {
 												"disableBodyPruning": true
@@ -2295,7 +1628,7 @@
 												],
 												"body": {
 													"mode": "raw",
-													"raw": "{\n  \"phone\": \"09033362914\"\n}",
+													"raw": "{\n  \"phone\": \"\"\n}",
 													"options": {
 														"raw": {
 															"language": "json"
@@ -2308,6 +1641,28 @@
 										},
 										{
 											"name": "Update profile - invalid phone number",
+											"event": [
+												{
+													"listen": "test",
+													"script": {
+														"id": "7da33681-d450-4a98-8c31-87664fcb35be",
+														"exec": [
+															"var jsonData = pm.response.json();",
+															"",
+															"pm.test(\"Status code is 400\", function () {",
+															"    pm.response.to.have.status(400);",
+															"});",
+															"pm.test(\"Reponse body contains standard Error fields\", function () {",
+															"    pm.expect(jsonData.statusCode).to.eql(400);",
+															"    pm.expect(jsonData.status).to.eql(false);",
+															"    pm.expect(jsonData.message[0]).to.eql('phone number must be a valid Nigerian number');",
+															"});"
+														],
+														"type": "text/javascript",
+														"packages": {}
+													}
+												}
+											],
 											"id": "0bcb6151-72ae-4c8e-96d6-fcf814d0c031",
 											"protocolProfileBehavior": {
 												"disableBodyPruning": true
@@ -2332,7 +1687,7 @@
 												],
 												"body": {
 													"mode": "raw",
-													"raw": "{\n  \"phone\": \"09033362914\"\n}",
+													"raw": "{\n  \"phone\": \"0903336\"\n}",
 													"options": {
 														"raw": {
 															"language": "json"
@@ -2350,7 +1705,189 @@
 									"name": "update profile image",
 									"item": [
 										{
-											"name": "Update profile with picture and phone",
+											"name": "Update profile",
+											"event": [
+												{
+													"listen": "test",
+													"script": {
+														"id": "743a100b-a8cb-4f40-a36c-d335a0de1438",
+														"exec": [
+															"var jsonData = pm.response.json();",
+															"",
+															"pm.test(\"Status code is 200\", function () {",
+															"    pm.response.to.have.status(200);",
+															"});",
+															"",
+															"pm.test(\"Reponse body contains success fields\", function () {",
+															"    pm.expect(jsonData.status).to.eql(true);",
+															"    pm.expect(jsonData.response).to.not.equal(\"\");",
+															"    ",
+															"});"
+														],
+														"type": "text/javascript",
+														"packages": {}
+													}
+												}
+											],
+											"id": "eea62ae8-6f03-4fb5-b3c3-1c989cf3c534",
+											"protocolProfileBehavior": {
+												"disableBodyPruning": true
+											},
+											"request": {
+												"auth": {
+													"type": "bearer",
+													"bearer": {
+														"token": "{{Bearer_token}}"
+													}
+												},
+												"method": "PATCH",
+												"header": [
+													{
+														"key": "accept",
+														"value": "*/*"
+													}
+												],
+												"body": {
+													"mode": "formdata",
+													"formdata": [
+														{
+															"type": "file",
+															"contentType": "image/png",
+															"key": "photo",
+															"src": "GQGx7pWD4/Screen Shot 2025-02-17 at 6.33.54 AM.png"
+														}
+													]
+												},
+												"url": "{{baseUrl}}/v1/profile/photo"
+											},
+											"response": [
+												{
+													"id": "49d5375a-50da-4ba4-ba56-5b204625e431",
+													"name": "Untitled Response",
+													"originalRequest": {
+														"method": "PATCH",
+														"header": [
+															{
+																"key": "Content-Type",
+																"value": "multipart/form-data"
+															},
+															{
+																"key": "Accept",
+																"value": "application/json"
+															},
+															{
+																"description": "Added as a part of security scheme: bearer",
+																"key": "Authorization",
+																"value": "Bearer <token>"
+															}
+														],
+														"body": {
+															"mode": "formdata",
+															"formdata": [
+																{
+																	"key": "phone",
+																	"value": "<string>",
+																	"type": "text"
+																},
+																{
+																	"key": "picture",
+																	"value": "<binary>",
+																	"type": "text"
+																}
+															]
+														},
+														"url": "{{baseUrl}}/v1/profile"
+													},
+													"status": "Bad Request",
+													"code": 400,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "application/json"
+														}
+													],
+													"cookie": [],
+													"responseTime": null,
+													"body": "{\n  \"statusCode\": \"<number>\",\n  \"timestamp\": \"<date>\",\n  \"path\": \"<string>\",\n  \"method\": \"<string>\",\n  \"error\": \"<string>\",\n  \"message\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}"
+												},
+												{
+													"id": "186c407c-034e-4025-8bb9-69f534366090",
+													"name": "Untitled Response",
+													"originalRequest": {
+														"method": "PATCH",
+														"header": [
+															{
+																"key": "Content-Type",
+																"value": "multipart/form-data"
+															},
+															{
+																"key": "Accept",
+																"value": "application/json"
+															},
+															{
+																"description": "Added as a part of security scheme: bearer",
+																"key": "Authorization",
+																"value": "Bearer <token>"
+															}
+														],
+														"body": {
+															"mode": "formdata",
+															"formdata": [
+																{
+																	"key": "phone",
+																	"value": "<string>",
+																	"type": "text"
+																},
+																{
+																	"key": "picture",
+																	"value": "<binary>",
+																	"type": "text"
+																}
+															]
+														},
+														"url": "{{baseUrl}}/v1/profile"
+													},
+													"status": "Unauthorized",
+													"code": 401,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "application/json"
+														}
+													],
+													"cookie": [],
+													"responseTime": null,
+													"body": "{\n  \"status\": false,\n  \"statusCode\": 401,\n  \"timestamp\": \"<date>\",\n  \"path\": \"/v1/path/guarded\",\n  \"message\": \"Unauthorized\"\n}"
+												}
+											]
+										},
+										{
+											"name": "Update profile - Invalid file size",
+											"event": [
+												{
+													"listen": "test",
+													"script": {
+														"id": "68122301-7ba1-426d-86ff-b53f4181ce7a",
+														"exec": [
+															"var jsonData = pm.response.json();",
+															"",
+															"pm.test(\"Status code is 400\", function () {",
+															"    pm.response.to.have.status(400);",
+															"});",
+															"",
+															"pm.test(\"Reponse body contains error fields\", function () {",
+															"    pm.expect(jsonData.status).to.eql(false);",
+															"    pm.expect(jsonData.statusCode).to.eql(400);",
+															"    pm.expect(jsonData.message).to.eql('Uploaded file must be an image of 2MB or less');",
+															"});"
+														],
+														"type": "text/javascript",
+														"packages": {}
+													}
+												}
+											],
 											"id": "d2cd0702-d0d0-4c39-9c8d-c91feb4a0ebc",
 											"protocolProfileBehavior": {
 												"disableBodyPruning": true
@@ -2376,7 +1913,7 @@
 															"type": "file",
 															"contentType": "image/png",
 															"key": "photo",
-															"src": "wPRTWmjCF/Screen Shot 2025-02-05 at 4.47.39 PM.png"
+															"src": "HaF5kdfW-/3MP_test_image.jpg"
 														}
 													]
 												},
@@ -2563,7 +2100,7 @@
 												"auth": {
 													"type": "bearer",
 													"bearer": {
-														"token": "{{Bearer_token}}"
+														"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZW1haWwiOiJRQUB5b3BtYWlsLmNvbSIsInN1YiI6IjQiLCJzY29wZSI6WyJGVUxMX0FDQ0VTUyJdLCJpYXQiOjE3Mzk0NDY2MzcsImV4cCI6MTczOTQ0NzUzNywiYXVkIjoiaW5mb3Bvb2wubmciLCJpc3MiOiJhdXRoLmluZm9wb29sLm5nIn0.B8nPx31pzkt7QR6uexSL72984eQpCWrcM4mZ6KSiUhg"
 													}
 												},
 												"method": "PATCH",
@@ -2579,7 +2116,7 @@
 												],
 												"body": {
 													"mode": "raw",
-													"raw": "{\n  \"action\": \"enable\",\n  \"password\": \"@passwordA1\",\n  \"code\": \"936990\",\n  \"secret\": \"GEVEQA2GOUWUCIBH\"\n}",
+													"raw": "{\n  \"action\": \"disable\",\n  \"password\": \"@passwordA1\",\n  \"code\": \"017689\",\n  \"secret\": \"GEVEQA2GOUWUCIBH\"\n}",
 													"options": {
 														"raw": {
 															"headerFamily": "json",
@@ -2647,22 +2184,28 @@
 							"name": "Audit trail",
 							"item": [
 								{
-									"name": "Get audit trail",
+									"name": "Event",
 									"item": [
 										{
-											"name": "Get audit trail_no endpoint",
-											"id": "8d2d8462-f078-4331-8f2d-d0a65d7ff715",
-											"protocolProfileBehavior": {
-												"disableBodyPruning": true
-											},
-											"request": {
-												"method": "GET",
-												"header": []
-											},
-											"response": []
-										},
-										{
 											"name": "Get events - successful",
+											"event": [
+												{
+													"listen": "test",
+													"script": {
+														"id": "7a239a69-6b0b-4eb7-ae38-ce08b881bf84",
+														"exec": [
+															"var jsonData = pm.response.json();",
+															"",
+															"pm.test(\"Status code is 200\", function () {",
+															"    pm.response.to.have.status(200);",
+															"    pm.expect(jsonData.status).to.eql(true);",
+															"});"
+														],
+														"type": "text/javascript",
+														"packages": {}
+													}
+												}
+											],
 											"id": "ca98c3b3-494a-44ab-adcd-b82ac6ee53cc",
 											"protocolProfileBehavior": {
 												"disableBodyPruning": true
@@ -2714,6 +2257,24 @@
 										},
 										{
 											"name": "Get events - invalid start date",
+											"event": [
+												{
+													"listen": "test",
+													"script": {
+														"id": "a3d5daa0-26c7-4361-8169-94cfadaad849",
+														"exec": [
+															"var jsonData = pm.response.json();",
+															"",
+															"pm.test(\"Status code is 200\", function () {",
+															"    pm.response.to.have.status(200);",
+															"    pm.expect(jsonData.status).to.eql(true);",
+															"});"
+														],
+														"type": "text/javascript",
+														"packages": {}
+													}
+												}
+											],
 											"id": "31127c6e-f017-4510-b3cf-29eeb220b49f",
 											"protocolProfileBehavior": {
 												"disableBodyPruning": true
@@ -2768,6 +2329,24 @@
 										},
 										{
 											"name": "Get events - invalid end date",
+											"event": [
+												{
+													"listen": "test",
+													"script": {
+														"id": "72c891c1-484a-455d-9c1b-838cd59b1ce3",
+														"exec": [
+															"var jsonData = pm.response.json();",
+															"",
+															"pm.test(\"Status code is 200\", function () {",
+															"    pm.response.to.have.status(200);",
+															"    pm.expect(jsonData.status).to.eql(true);",
+															"});"
+														],
+														"type": "text/javascript",
+														"packages": {}
+													}
+												}
+											],
 											"id": "8b87933f-2388-4f5c-9a61-d186d638dc93",
 											"protocolProfileBehavior": {
 												"disableBodyPruning": true
@@ -2822,6 +2401,24 @@
 										},
 										{
 											"name": "Get events - end date earlier than start date",
+											"event": [
+												{
+													"listen": "test",
+													"script": {
+														"id": "3a53e280-f4a1-4acd-9be5-9a9f613af4b0",
+														"exec": [
+															"var jsonData = pm.response.json();",
+															"",
+															"pm.test(\"Status code is 200\", function () {",
+															"    pm.response.to.have.status(200);",
+															"    pm.expect(jsonData.status).to.eql(true);",
+															"});"
+														],
+														"type": "text/javascript",
+														"packages": {}
+													}
+												}
+											],
 											"id": "92aee796-b1fd-4747-af28-05f2ae79b7ea",
 											"protocolProfileBehavior": {
 												"disableBodyPruning": true
@@ -2876,6 +2473,94 @@
 										}
 									],
 									"id": "82d97c26-e790-4616-b963-eb1f04951c5f"
+								},
+								{
+									"name": "Audit trail",
+									"item": [
+										{
+											"name": "audit trail",
+											"event": [
+												{
+													"listen": "test",
+													"script": {
+														"id": "4cbbeb46-b8df-4a09-adb4-e97c6b12de6f",
+														"exec": [
+															"var jsonData = pm.response.json();",
+															"",
+															"pm.test(\"Status code is 200\", function () {",
+															"    pm.response.to.have.status(200);",
+															"    pm.expect(jsonData.status).to.eql(true);",
+															"});",
+															"",
+															"pm.test(\"Activities are returned\", function () {",
+															"    pm.expect(jsonData.response.data[0].created_on).to.not.equal(\"\");",
+															"    pm.expect(jsonData.response.data[0].created_by).to.not.equal(\"\");",
+															"    pm.expect(jsonData.response.data[0].modified_on).to.not.equal(\"\");",
+															"    pm.expect(jsonData.response.data[0].event_id).to.not.equal(\"\");",
+															"    pm.expect(jsonData.response.data[0].id).to.not.equal(\"\");",
+															"    pm.expect(jsonData.response.data[0].entity_type).to.not.equal(\"\");",
+															"    pm.expect(jsonData.response.data[0].description).to.not.equal(\"\");",
+															"    pm.expect(jsonData.response.data[0].ip_address).to.not.equal(\"\");",
+															"     pm.expect(jsonData.response.data[0].location).to.not.equal(\"\");",
+															"});",
+															""
+														],
+														"type": "text/javascript",
+														"packages": {}
+													}
+												}
+											],
+											"id": "4c0da654-b985-42ff-81f2-4fc0578f4509",
+											"protocolProfileBehavior": {
+												"disableBodyPruning": true
+											},
+											"request": {
+												"auth": {
+													"type": "bearer",
+													"bearer": {
+														"token": "{{Bearer_token}}"
+													}
+												},
+												"method": "GET",
+												"header": [
+													{
+														"key": "accept",
+														"value": "application/json"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/v1/audit-trails?page=1&limit=10&date_start=2025-01-26&date_end=2025-02-09",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"v1",
+														"audit-trails"
+													],
+													"query": [
+														{
+															"key": "page",
+															"value": "1"
+														},
+														{
+															"key": "limit",
+															"value": "10"
+														},
+														{
+															"key": "date_start",
+															"value": "2025-01-26"
+														},
+														{
+															"key": "date_end",
+															"value": "2025-02-09"
+														}
+													]
+												}
+											},
+											"response": []
+										}
+									],
+									"id": "3334e97d-c1d7-4de1-ad8e-5a79e8327ddf"
 								}
 							],
 							"id": "e3458749-7f24-4a17-b6e5-c68c680d5c4f"
@@ -3659,7 +3344,7 @@
 														],
 														"body": {
 															"mode": "raw",
-															"raw": "{\n  \"email\": \"QA@yopmail.com\",\n  \"password\": \"@passwordA1\",\n  //\"device_id\": \"10.32.2.66\",\n  \"device_type\": \"mobile\",\n  \"device_name\": \"iPhone 11\",\n  \"location\": \"Lagos\"\n  \n\n//   \"email\": \"favour@yopmail.com\",\n//   \"password\": \"@passwordA1\",\n//   //\"device_id\": \"10.32.2.66\",\n//   \"device_type\": \"mobile\",\n//   \"device_name\": \"iPhone 11\",\n//   \"location\": \"Lagos\"\n}",
+															"raw": "{\n  \"email\": \"QA@yopmail.com\",\n  \"password\": \"@passwordA1\",\n  \"device_id\": \"b9f1cd14-db59-4831-88e5-e8abf06eefb6\",\n  \"device_type\": \"mobile\",\n  \"device_name\": \"iPhone 11\",\n  \"location\": \"Lagos\"\n  \n\n//   \"email\": \"favour@yopmail.com\",\n//   \"password\": \"@passwordA1\",\n//   //\"device_id\": \"10.32.2.66\",\n//   \"device_type\": \"mobile\",\n//   \"device_name\": \"iPhone 11\",\n//   \"location\": \"Lagos\"\n}",
 															"options": {
 																"raw": {
 																	"headerFamily": "json",
@@ -3744,7 +3429,7 @@
 														],
 														"body": {
 															"mode": "raw",
-															"raw": "{\n  \"email\": \"favour@yopmail.com\",\n  \"password\": \"blank\"\n}",
+															"raw": "{\n  \"email\": \"favour@yopmail.com\",\n  \"password\": \"blank@A1\"\n}",
 															"options": {
 																"raw": {
 																	"headerFamily": "json",
@@ -3802,13 +3487,9 @@
 																	"    pm.response.to.have.status(401);",
 																	"});",
 																	"",
-																	"pm.test(\"Reponse body contains standard Error fields\", function () {",
-																	"     pm.expect(jsonData.status).to.eql(false);",
-																	"});",
+																	"pm.test(\"Error message is returned\", function () {",
+																	"    pm.expect(jsonData.message).to.eql('Unauthorized');",
 																	"",
-																	"pm.test(\"Error message stating the required fields is returned\", function () {",
-																	"    pm.expect(jsonData.error[0]).to.eql('Email is required');",
-																	"    pm.expect(jsonDatafalse.error[1]).to.eql('Password is required');",
 																	"});"
 																],
 																"type": "text/javascript",
@@ -3876,217 +3557,9 @@
 												}
 											],
 											"id": "2fc6b8dc-d237-4dbf-8421-fccd89db44b3"
-										},
-										{
-											"name": "Logout",
-											"item": [
-												{
-													"name": "Logout session successfully",
-													"event": [
-														{
-															"listen": "test",
-															"script": {
-																"id": "b87672bc-6cef-48e8-8563-eef5a3e783be",
-																"exec": [
-																	"var jsonData = pm.response.json();",
-																	"",
-																	"pm.test(\"Status code is 200\", function () {",
-																	"    pm.response.to.have.status(200);",
-																	"});",
-																	"pm.test(\"Reponse body contains standard success fields\", function () {",
-																	"    pm.expect(jsonData.status).to.eql(true);",
-																	"    pm.expect(jsonData.message).to.eql('Logout successful');",
-																	"});",
-																	"",
-																	"pm.test(\"Successful logged out message is returned\", function () {",
-																	"    pm.expect(jsonData.response.resonse.message).to.eql('Logged out successfully');",
-																	"});"
-																],
-																"type": "text/javascript",
-																"packages": {}
-															}
-														}
-													],
-													"id": "16210b1e-2e14-4653-94b3-67acf9fca644",
-													"protocolProfileBehavior": {
-														"disableBodyPruning": true
-													},
-													"request": {
-														"method": "DELETE",
-														"header": [],
-														"url": "{{baseUrl}}/v1/auth/session"
-													},
-													"response": [
-														{
-															"id": "ab3e0301-9685-40dc-81ba-1e0c93c61474",
-															"name": "Untitled Response",
-															"originalRequest": {
-																"method": "DELETE",
-																"header": [],
-																"url": "{{baseUrl}}/v1/auth/session"
-															},
-															"status": "OK",
-															"code": 200,
-															"_postman_previewlanguage": "text",
-															"header": [],
-															"cookie": [],
-															"responseTime": null,
-															"body": ""
-														}
-													]
-												},
-												{
-													"name": "Logout session - no existing session",
-													"event": [
-														{
-															"listen": "test",
-															"script": {
-																"id": "7e8fa568-33d7-4a51-8e25-9412e37b97a9",
-																"exec": [
-																	"var jsonData = pm.response.json();",
-																	"",
-																	"pm.test(\"Status code is 401\", function () {",
-																	"    pm.response.to.have.status(401);",
-																	"});",
-																	"pm.test(\"Reponse body contains standard Error fields\", function () {",
-																	"    pm.expect(jsonData.statusCode).to.eql(401);",
-																	"    pm.expect(jsonData.status).to.eql(false);",
-																	"    pm.expect(jsonData.message).to.eql('No valid session found');",
-																	"});"
-																],
-																"type": "text/javascript",
-																"packages": {}
-															}
-														}
-													],
-													"id": "290d4eed-4a1e-4b35-bc92-e83e71bbb11d",
-													"protocolProfileBehavior": {
-														"disableBodyPruning": true
-													},
-													"request": {
-														"method": "DELETE",
-														"header": [],
-														"url": "{{baseUrl}}/v1/auth/session"
-													},
-													"response": [
-														{
-															"id": "df049e11-be75-482e-a93b-069f307cb9c4",
-															"name": "Untitled Response",
-															"originalRequest": {
-																"method": "DELETE",
-																"header": [],
-																"url": "{{baseUrl}}/v1/auth/session"
-															},
-															"status": "OK",
-															"code": 200,
-															"_postman_previewlanguage": "text",
-															"header": [],
-															"cookie": [],
-															"responseTime": null,
-															"body": ""
-														}
-													]
-												}
-											],
-											"id": "ea0718de-6557-4cf5-8809-1e9b19969950"
 										}
 									],
 									"id": "d224446f-0d20-4a35-94f5-c3da0609e9af"
-								},
-								{
-									"name": "Refresh token",
-									"item": [
-										{
-											"name": "Refresh token",
-											"event": [
-												{
-													"listen": "test",
-													"script": {
-														"id": "2cc7b9db-5414-404a-95c9-1e86a2dd37e1",
-														"exec": [
-															"var jsonData = pm.response.json();",
-															"",
-															"pm.test(\"Status code is 201\", function () {",
-															"    pm.response.to.have.status(201);",
-															"    pm.expect(jsonData.status).to.eql(true);",
-															"});",
-															"",
-															"pm.test(\"Access credentials are returned\", function () {",
-															"    pm.expect(jsonData.response.token_type).is.not.empty;",
-															"    pm.expect(jsonData.response.access_token).is.not.empty;",
-															"    pm.expect(jsonData.response.refresh_token).is.not.empty;",
-															"    pm.expect(jsonData.response.session_id).is.not.empty;",
-															"     pm.expect(jsonData.response.device_id).is.not.empty;",
-															"",
-															"});",
-															"pm.environment.set(\"Bearer_token\", jsonData.response.access_token);",
-															"pm.environment.set(\"refresh_token\", jsonData.response.refresh_token);"
-														],
-														"type": "text/javascript",
-														"packages": {}
-													}
-												}
-											],
-											"id": "ed94f33a-e337-453e-ab4b-94e19488597d",
-											"protocolProfileBehavior": {
-												"disableBodyPruning": true
-											},
-											"request": {
-												"method": "POST",
-												"header": [
-													{
-														"key": "Content-Type",
-														"value": "application/json"
-													}
-												],
-												"body": {
-													"mode": "raw",
-													"raw": "{\n  \"action\": \"refresh\",\n  \"refresh_token\": \"{{refresh_token}}\"\n}",
-													"options": {
-														"raw": {
-															"headerFamily": "json",
-															"language": "json"
-														}
-													}
-												},
-												"url": "{{baseUrl}}/v1/auth/token"
-											},
-											"response": [
-												{
-													"id": "c502e067-ae3d-4f89-ac7f-f845f71a706b",
-													"name": "Untitled Response",
-													"originalRequest": {
-														"method": "POST",
-														"header": [
-															{
-																"key": "Content-Type",
-																"value": "application/json"
-															}
-														],
-														"body": {
-															"mode": "raw",
-															"raw": "{\n  \"action\": \"refesh\",\n  \"refresh_token\": \"\"\n}",
-															"options": {
-																"raw": {
-																	"headerFamily": "json",
-																	"language": "json"
-																}
-															}
-														},
-														"url": "{{baseUrl}}/v1/auth/token"
-													},
-													"status": "Created",
-													"code": 201,
-													"_postman_previewlanguage": "text",
-													"header": [],
-													"cookie": [],
-													"responseTime": null,
-													"body": ""
-												}
-											]
-										}
-									],
-									"id": "1854027f-3247-4f44-b112-591c1a731ddd"
 								},
 								{
 									"name": "Password Reset",
@@ -4479,9 +3952,8 @@
 															"});",
 															"",
 															"pm.test(\"Reponse body contains error fields\", function () {",
-															"    pm.expect(jsonData.status).to.eql(false);",
-															"    pm.expect(jsonData.error.message).to.eql('Could not retrieve definition: Definition with id 10000000 not found');",
-															"    pm.expect(jsonData.error.statusCode).to.eql(400);",
+															"    pm.expect(jsonData.status).to.eql(true);",
+															"    pm.expect(jsonData.response.data).to.be.empty;",
 															"});",
 															""
 														],
@@ -4495,6 +3967,12 @@
 												"disableBodyPruning": true
 											},
 											"request": {
+												"auth": {
+													"type": "bearer",
+													"bearer": {
+														"token": "{{Bearer_token}}"
+													}
+												},
 												"method": "GET",
 												"header": [],
 												"url": {
@@ -4509,9 +3987,8 @@
 													],
 													"variable": [
 														{
-															"id": "3690cc8d-65b6-4942-bd8e-47b2eb3c53b1",
 															"key": "id",
-															"value": "10000000",
+															"value": "abc",
 															"description": "(Required) "
 														}
 													]
@@ -4566,9 +4043,8 @@
 															"});",
 															"",
 															"pm.test(\"Reponse body contains error fields\", function () {",
-															"    pm.expect(jsonData.status).to.eql(false);",
-															"    pm.expect(jsonData.error.message).to.eql('Could not retrieve definition: Definition with id 10000000 not found');",
-															"    pm.expect(jsonData.error.statusCode).to.eql(400);",
+															"    pm.expect(jsonData.status).to.eql(true);",
+															"    pm.expect(jsonData.response.data).to.be.empty;",
 															"});",
 															""
 														],
@@ -4582,6 +4058,12 @@
 												"disableBodyPruning": true
 											},
 											"request": {
+												"auth": {
+													"type": "bearer",
+													"bearer": {
+														"token": "{{Bearer_token}}"
+													}
+												},
 												"method": "GET",
 												"header": [],
 												"url": {
@@ -4596,7 +4078,6 @@
 													],
 													"variable": [
 														{
-															"id": "3690cc8d-65b6-4942-bd8e-47b2eb3c53b1",
 															"key": "id",
 															"value": "10000000",
 															"description": "(Required) "
@@ -8261,6 +7742,12 @@
 												"disableBodyPruning": true
 											},
 											"request": {
+												"auth": {
+													"type": "bearer",
+													"bearer": {
+														"token": "{{Bearer_token}}"
+													}
+												},
 												"method": "GET",
 												"header": [],
 												"url": {
@@ -8275,7 +7762,6 @@
 													],
 													"variable": [
 														{
-															"id": "8ee6a8c0-b539-4f42-99bf-00125373b46f",
 															"key": "id",
 															"value": "1",
 															"description": "(Required) "
@@ -8327,16 +7813,16 @@
 														"exec": [
 															"var jsonData = pm.response.json();",
 															"",
-															"pm.test(\"Status code is 200\", function () {",
-															"    pm.response.to.have.status(200);",
+															"pm.test(\"Status code is 404\", function () {",
+															"    pm.response.to.have.status(404);",
 															"});",
 															"",
 															"pm.test(\"Response body contains standard success fields\", function () {",
 															"    pm.expect(jsonData.status).to.eql(false);",
-															"    pm.expect(jsonData.error.statusCode).to.eql(404)",
+															"    pm.expect(jsonData.statusCode).to.eql(404)",
 															"});",
 															"pm.test(\"The error message about the invalid user is returned\", function () {",
-															"    pm.expect(jsonData.error.message).to.eql('User not found');",
+															"    pm.expect(jsonData.message).to.eql('User with ID 100000 not found');",
 															"});",
 															""
 														],
@@ -8350,6 +7836,12 @@
 												"disableBodyPruning": true
 											},
 											"request": {
+												"auth": {
+													"type": "bearer",
+													"bearer": {
+														"token": "{{Bearer_token}}"
+													}
+												},
 												"method": "GET",
 												"header": [],
 												"url": {
@@ -8364,7 +7856,6 @@
 													],
 													"variable": [
 														{
-															"id": "ab2d2d11-c168-4c07-981d-7fa64b624c2a",
 															"key": "id",
 															"value": "100000",
 															"description": "(Required) "
@@ -8416,16 +7907,16 @@
 														"exec": [
 															"var jsonData = pm.response.json();",
 															"",
-															"pm.test(\"Status code is 400\", function () {",
-															"    pm.response.to.have.status(400);",
+															"pm.test(\"Status code is 404\", function () {",
+															"    pm.response.to.have.status(404);",
 															"});",
 															"",
-															"pm.test(\"Response body contains standard Error fields\", function () {",
-															"    pm.expect(jsonData.error).to.eql('Bad Request');",
-															"    pm.expect(jsonData.statusCode).to.eql(400)",
+															"pm.test(\"Response body contains standard success fields\", function () {",
+															"    pm.expect(jsonData.status).to.eql(false);",
+															"    pm.expect(jsonData.statusCode).to.eql(404)",
 															"});",
-															"pm.test(\"The error message about the invalid id  is returned\", function () {",
-															"    pm.expect(jsonData.message).to.eql('Validation failed (numeric string is expected)');",
+															"pm.test(\"The error message about the invalid user is returned\", function () {",
+															"    pm.expect(jsonData.message).to.eql('Cannot GET /v1/users/ABC');",
 															"});",
 															""
 														],
@@ -8439,6 +7930,12 @@
 												"disableBodyPruning": true
 											},
 											"request": {
+												"auth": {
+													"type": "bearer",
+													"bearer": {
+														"token": "{{Bearer_token}}"
+													}
+												},
 												"method": "GET",
 												"header": [],
 												"url": {
@@ -8453,7 +7950,6 @@
 													],
 													"variable": [
 														{
-															"id": "9a1e0e52-7f72-49de-a7d4-0b95c46af4dd",
 															"key": "id",
 															"value": "ABC",
 															"description": "(Required) "
@@ -8633,6 +8129,12 @@
 												"disableBodyPruning": true
 											},
 											"request": {
+												"auth": {
+													"type": "bearer",
+													"bearer": {
+														"token": "{{Bearer_token}}"
+													}
+												},
 												"method": "PATCH",
 												"header": [
 													{
@@ -8662,7 +8164,6 @@
 													],
 													"variable": [
 														{
-															"id": "0d363ff4-2fb8-4a4e-8179-7ee44795dd66",
 															"key": "id",
 															"value": "1",
 															"description": "(Required) "
@@ -8734,13 +8235,8 @@
 															"});",
 															"",
 															"pm.test(\"Response body contains standard success fields\", function () {",
-															"    pm.expect(jsonData.status).to.eql(false);",
-															"    pm.expect(jsonData.error.statusCode).to.eql(400)",
-															"});",
-															"pm.test(\"The error message about the invalid user is returned\", function () {",
-															"    pm.expect(jsonData.error.message).to.not.be.null;",
-															"});",
-															""
+															"    pm.expect(jsonData.status).to.eql(true);",
+															"});"
 														],
 														"type": "text/javascript",
 														"packages": {}
@@ -8752,6 +8248,12 @@
 												"disableBodyPruning": true
 											},
 											"request": {
+												"auth": {
+													"type": "bearer",
+													"bearer": {
+														"token": "{{Bearer_token}}"
+													}
+												},
 												"method": "PATCH",
 												"header": [
 													{
@@ -8781,7 +8283,6 @@
 													],
 													"variable": [
 														{
-															"id": "2cae75dc-cd0f-483b-8bc8-61e38405820f",
 															"key": "id",
 															"value": "11",
 															"description": "(Required) "
@@ -8848,16 +8349,16 @@
 														"exec": [
 															"var jsonData = pm.response.json();",
 															"",
-															"pm.test(\"Status code is 200\", function () {",
-															"    pm.response.to.have.status(200);",
+															"pm.test(\"Status code is 400\", function () {",
+															"    pm.response.to.have.status(400);",
 															"});",
 															"",
 															"pm.test(\"Response body contains standard success fields\", function () {",
 															"    pm.expect(jsonData.status).to.eql(false);",
-															"    pm.expect(jsonData.error.statusCode).to.eql(400)",
+															"    pm.expect(jsonData.statusCode).to.eql(400)",
 															"});",
-															"pm.test(\"The error message about the invalid user is returned\", function () {",
-															"    pm.expect(jsonData.error.message).to.not.be.null;",
+															"pm.test(\"The error message about the invalid action is returned\", function () {",
+															"    pm.expect(jsonData.message[0]).to.eql('action must be one of the followings: update,delete,deactivate,activate');",
 															"});",
 															""
 														],
@@ -8871,6 +8372,12 @@
 												"disableBodyPruning": true
 											},
 											"request": {
+												"auth": {
+													"type": "bearer",
+													"bearer": {
+														"token": "{{Bearer_token}}"
+													}
+												},
 												"method": "PATCH",
 												"header": [
 													{
@@ -8880,7 +8387,7 @@
 												],
 												"body": {
 													"mode": "raw",
-													"raw": "{\n  \"action\": \"activate\"\n}",
+													"raw": "{\n  \"action\": \"activateY\"\n}",
 													"options": {
 														"raw": {
 															"headerFamily": "json",
@@ -8900,7 +8407,6 @@
 													],
 													"variable": [
 														{
-															"id": "2148a5aa-5746-4604-820b-1e4ec621e389",
 															"key": "id",
 															"value": "11",
 															"description": "(Required) "
@@ -8967,16 +8473,16 @@
 														"exec": [
 															"var jsonData = pm.response.json();",
 															"",
-															"pm.test(\"Status code is 200\", function () {",
-															"    pm.response.to.have.status(200);",
+															"pm.test(\"Status code is 400\", function () {",
+															"    pm.response.to.have.status(400);",
 															"});",
 															"",
 															"pm.test(\"Response body contains standard success fields\", function () {",
 															"    pm.expect(jsonData.status).to.eql(false);",
-															"    pm.expect(jsonData.error.statusCode).to.eql(400)",
+															"    pm.expect(jsonData.statusCode).to.eql(400)",
 															"});",
-															"pm.test(\"The error message about the invalid user is returned\", function () {",
-															"    pm.expect(jsonData.error.message).to.not.be.null;",
+															"pm.test(\"The error message about the invalid action is returned\", function () {",
+															"    pm.expect(jsonData.message[1]).to.eql('action should not be empty');",
 															"});",
 															""
 														],
@@ -8990,6 +8496,12 @@
 												"disableBodyPruning": true
 											},
 											"request": {
+												"auth": {
+													"type": "bearer",
+													"bearer": {
+														"token": "{{Bearer_token}}"
+													}
+												},
 												"method": "PATCH",
 												"header": [
 													{
@@ -8999,7 +8511,7 @@
 												],
 												"body": {
 													"mode": "raw",
-													"raw": "{\n  \"action\": \"activate\"\n}",
+													"raw": "{\n  \"action\": \"\"\n}",
 													"options": {
 														"raw": {
 															"headerFamily": "json",
@@ -9019,7 +8531,6 @@
 													],
 													"variable": [
 														{
-															"id": "2148a5aa-5746-4604-820b-1e4ec621e389",
 															"key": "id",
 															"value": "11",
 															"description": "(Required) "
@@ -9078,1420 +8589,6 @@
 										}
 									],
 									"id": "96ef46cd-1298-419c-b6f1-63ef89297caf"
-								},
-								{
-									"name": "Invitations",
-									"item": [
-										{
-											"name": "Batch",
-											"item": [
-												{
-													"name": "Fetch invitations by batch ID",
-													"item": [
-														{
-															"name": "Fetch invitations by batch ID - successful",
-															"event": [
-																{
-																	"listen": "test",
-																	"script": {
-																		"id": "ebb49300-d4ca-49bb-b25a-76ee328890db",
-																		"exec": [
-																			"var jsonData = pm.response.json();",
-																			"",
-																			"pm.test(\"Status code is 200\", function () {",
-																			"    pm.response.to.have.status(200);",
-																			"});",
-																			"",
-																			"pm.test(\"Reponse body contains standard success fields\", function () {",
-																			"    pm.expect(jsonData.status).to.eql(true);",
-																			"    pm.expect(jsonData.response).is.not.null;",
-																			"});",
-																			""
-																		],
-																		"type": "text/javascript",
-																		"packages": {}
-																	}
-																}
-															],
-															"id": "fa8e64af-1260-4864-aaef-fbcb2ba92efd",
-															"protocolProfileBehavior": {
-																"disableBodyPruning": true
-															},
-															"request": {
-																"method": "GET",
-																"header": [],
-																"url": {
-																	"raw": "{{baseUrl}}/v1/invitations/batch/:id",
-																	"host": [
-																		"{{baseUrl}}"
-																	],
-																	"path": [
-																		"v1",
-																		"invitations",
-																		"batch",
-																		":id"
-																	],
-																	"variable": [
-																		{
-																			"id": "ea803fed-50c9-4191-8aa6-47a1a20e11a6",
-																			"key": "id",
-																			"value": "{{invitation_batch_id}}",
-																			"description": "(Required) "
-																		}
-																	]
-																}
-															},
-															"response": [
-																{
-																	"id": "01050432-b3b0-4b47-9166-b55f484a72c6",
-																	"name": "Untitled Response",
-																	"originalRequest": {
-																		"method": "GET",
-																		"header": [],
-																		"url": {
-																			"raw": "{{baseUrl}}/v1/invitations/batch/:id",
-																			"host": [
-																				"{{baseUrl}}"
-																			],
-																			"path": [
-																				"v1",
-																				"invitations",
-																				"batch",
-																				":id"
-																			],
-																			"variable": [
-																				{
-																					"key": "id"
-																				}
-																			]
-																		}
-																	},
-																	"status": "OK",
-																	"code": 200,
-																	"_postman_previewlanguage": "text",
-																	"header": [],
-																	"cookie": [],
-																	"responseTime": null,
-																	"body": ""
-																}
-															]
-														},
-														{
-															"name": "fetch invitations by batch ID - ID does not exist",
-															"event": [
-																{
-																	"listen": "test",
-																	"script": {
-																		"id": "ebb49300-d4ca-49bb-b25a-76ee328890db",
-																		"exec": [
-																			"var jsonData = pm.response.json();",
-																			"",
-																			"pm.test(\"Status code is 200\", function () {",
-																			"    pm.response.to.have.status(200);",
-																			"});",
-																			"",
-																			"pm.test(\"Reponse body contains standard success fields\", function () {",
-																			"    pm.expect(jsonData.status).to.be.true;",
-																			"    pm.expect(jsonData.response).to.be.null;",
-																			"    pm.expect(jsonData.message).to.eql('No record found');",
-																			"});"
-																		],
-																		"type": "text/javascript",
-																		"packages": {}
-																	}
-																}
-															],
-															"id": "ce7259d5-a2c7-4117-8b0f-7cc477148823",
-															"protocolProfileBehavior": {
-																"disableBodyPruning": true
-															},
-															"request": {
-																"method": "GET",
-																"header": [],
-																"url": {
-																	"raw": "{{baseUrl}}/v1/invitations/batch/:id",
-																	"host": [
-																		"{{baseUrl}}"
-																	],
-																	"path": [
-																		"v1",
-																		"invitations",
-																		"batch",
-																		":id"
-																	],
-																	"variable": [
-																		{
-																			"id": "10ff3d54-cf6b-43e4-bf90-5b17be2be3f2",
-																			"key": "id",
-																			"value": "{{invitation_batch_id}}",
-																			"description": "(Required) "
-																		}
-																	]
-																}
-															},
-															"response": [
-																{
-																	"id": "c2878d5c-b445-465e-9306-950e166b1710",
-																	"name": "Untitled Response",
-																	"originalRequest": {
-																		"method": "GET",
-																		"header": [],
-																		"url": {
-																			"raw": "{{baseUrl}}/v1/invitations/batch/:id",
-																			"host": [
-																				"{{baseUrl}}"
-																			],
-																			"path": [
-																				"v1",
-																				"invitations",
-																				"batch",
-																				":id"
-																			],
-																			"variable": [
-																				{
-																					"key": "id"
-																				}
-																			]
-																		}
-																	},
-																	"status": "OK",
-																	"code": 200,
-																	"_postman_previewlanguage": "text",
-																	"header": [],
-																	"cookie": [],
-																	"responseTime": null,
-																	"body": ""
-																}
-															]
-														}
-													],
-													"id": "8c65c756-207b-4c26-bbe7-b12df704f8ff"
-												},
-												{
-													"name": "Update invitations by batch ID",
-													"item": [
-														{
-															"name": "Update invitations by batch ID - successful",
-															"id": "9fd777de-822d-41af-800f-3a37f6c083be",
-															"protocolProfileBehavior": {
-																"disableBodyPruning": true
-															},
-															"request": {
-																"method": "PATCH",
-																"header": [
-																	{
-																		"key": "Content-Type",
-																		"value": "application/json"
-																	}
-																],
-																"body": {
-																	"mode": "raw",
-																	"raw": "{\n  \"action\": \"revoke\"\n}",
-																	"options": {
-																		"raw": {
-																			"headerFamily": "json",
-																			"language": "json"
-																		}
-																	}
-																},
-																"url": {
-																	"raw": "{{baseUrl}}/v1/invitations/batch/:id",
-																	"host": [
-																		"{{baseUrl}}"
-																	],
-																	"path": [
-																		"v1",
-																		"invitations",
-																		"batch",
-																		":id"
-																	],
-																	"variable": [
-																		{
-																			"id": "c4d353d9-4f2d-44df-9e40-876498bfcfe2",
-																			"key": "id",
-																			"value": "<string>",
-																			"description": "(Required) "
-																		}
-																	]
-																}
-															},
-															"response": [
-																{
-																	"id": "e722cde1-b6c6-448f-8d7a-5d0e371b6809",
-																	"name": "Untitled Response",
-																	"originalRequest": {
-																		"method": "PATCH",
-																		"header": [
-																			{
-																				"key": "Content-Type",
-																				"value": "application/json"
-																			}
-																		],
-																		"body": {
-																			"mode": "raw",
-																			"raw": "{\n  \"action\": \"revoke\"\n}",
-																			"options": {
-																				"raw": {
-																					"headerFamily": "json",
-																					"language": "json"
-																				}
-																			}
-																		},
-																		"url": {
-																			"raw": "{{baseUrl}}/v1/invitations/batch/:id",
-																			"host": [
-																				"{{baseUrl}}"
-																			],
-																			"path": [
-																				"v1",
-																				"invitations",
-																				"batch",
-																				":id"
-																			],
-																			"variable": [
-																				{
-																					"key": "id"
-																				}
-																			]
-																		}
-																	},
-																	"status": "OK",
-																	"code": 200,
-																	"_postman_previewlanguage": "text",
-																	"header": [],
-																	"cookie": [],
-																	"responseTime": null,
-																	"body": ""
-																}
-															]
-														},
-														{
-															"name": "Update invitations by batch ID - empty action",
-															"id": "915d1335-5bb9-40ed-8f0f-7940834fce1a",
-															"protocolProfileBehavior": {
-																"disableBodyPruning": true
-															},
-															"request": {
-																"method": "PATCH",
-																"header": [
-																	{
-																		"key": "Content-Type",
-																		"value": "application/json"
-																	}
-																],
-																"body": {
-																	"mode": "raw",
-																	"raw": "{\n  \"action\": \"revoke\"\n}",
-																	"options": {
-																		"raw": {
-																			"headerFamily": "json",
-																			"language": "json"
-																		}
-																	}
-																},
-																"url": {
-																	"raw": "{{baseUrl}}/v1/invitations/batch/:id",
-																	"host": [
-																		"{{baseUrl}}"
-																	],
-																	"path": [
-																		"v1",
-																		"invitations",
-																		"batch",
-																		":id"
-																	],
-																	"variable": [
-																		{
-																			"id": "c4d353d9-4f2d-44df-9e40-876498bfcfe2",
-																			"key": "id",
-																			"value": "<string>",
-																			"description": "(Required) "
-																		}
-																	]
-																}
-															},
-															"response": [
-																{
-																	"id": "9149e733-9cc8-4a11-aa2c-34f59706148a",
-																	"name": "Untitled Response",
-																	"originalRequest": {
-																		"method": "PATCH",
-																		"header": [
-																			{
-																				"key": "Content-Type",
-																				"value": "application/json"
-																			}
-																		],
-																		"body": {
-																			"mode": "raw",
-																			"raw": "{\n  \"action\": \"revoke\"\n}",
-																			"options": {
-																				"raw": {
-																					"headerFamily": "json",
-																					"language": "json"
-																				}
-																			}
-																		},
-																		"url": {
-																			"raw": "{{baseUrl}}/v1/invitations/batch/:id",
-																			"host": [
-																				"{{baseUrl}}"
-																			],
-																			"path": [
-																				"v1",
-																				"invitations",
-																				"batch",
-																				":id"
-																			],
-																			"variable": [
-																				{
-																					"key": "id"
-																				}
-																			]
-																		}
-																	},
-																	"status": "OK",
-																	"code": 200,
-																	"_postman_previewlanguage": "text",
-																	"header": [],
-																	"cookie": [],
-																	"responseTime": null,
-																	"body": ""
-																}
-															]
-														},
-														{
-															"name": "Update invitations by batch ID - invalid action",
-															"id": "c36f22d9-0898-44a3-8f6c-84c3cc26cdd1",
-															"protocolProfileBehavior": {
-																"disableBodyPruning": true
-															},
-															"request": {
-																"method": "PATCH",
-																"header": [
-																	{
-																		"key": "Content-Type",
-																		"value": "application/json"
-																	}
-																],
-																"body": {
-																	"mode": "raw",
-																	"raw": "{\n  \"action\": \"revoke\"\n}",
-																	"options": {
-																		"raw": {
-																			"headerFamily": "json",
-																			"language": "json"
-																		}
-																	}
-																},
-																"url": {
-																	"raw": "{{baseUrl}}/v1/invitations/batch/:id",
-																	"host": [
-																		"{{baseUrl}}"
-																	],
-																	"path": [
-																		"v1",
-																		"invitations",
-																		"batch",
-																		":id"
-																	],
-																	"variable": [
-																		{
-																			"id": "c4d353d9-4f2d-44df-9e40-876498bfcfe2",
-																			"key": "id",
-																			"value": "<string>",
-																			"description": "(Required) "
-																		}
-																	]
-																}
-															},
-															"response": [
-																{
-																	"id": "9e376835-1a5f-472b-8dfe-24bd0b7100ef",
-																	"name": "Untitled Response",
-																	"originalRequest": {
-																		"method": "PATCH",
-																		"header": [
-																			{
-																				"key": "Content-Type",
-																				"value": "application/json"
-																			}
-																		],
-																		"body": {
-																			"mode": "raw",
-																			"raw": "{\n  \"action\": \"revoke\"\n}",
-																			"options": {
-																				"raw": {
-																					"headerFamily": "json",
-																					"language": "json"
-																				}
-																			}
-																		},
-																		"url": {
-																			"raw": "{{baseUrl}}/v1/invitations/batch/:id",
-																			"host": [
-																				"{{baseUrl}}"
-																			],
-																			"path": [
-																				"v1",
-																				"invitations",
-																				"batch",
-																				":id"
-																			],
-																			"variable": [
-																				{
-																					"key": "id"
-																				}
-																			]
-																		}
-																	},
-																	"status": "OK",
-																	"code": 200,
-																	"_postman_previewlanguage": "text",
-																	"header": [],
-																	"cookie": [],
-																	"responseTime": null,
-																	"body": ""
-																}
-															]
-														}
-													],
-													"id": "ec1f91ee-c49e-4ce1-b775-09c986211002"
-												}
-											],
-											"id": "eb3eabad-4ba4-41f9-9b11-ea2917b24c42"
-										},
-										{
-											"name": "Fetch invitations by ID",
-											"item": [
-												{
-													"name": "Get invitation by ID - successful",
-													"event": [
-														{
-															"listen": "test",
-															"script": {
-																"id": "d7267a3d-a57b-44a0-bbb9-4fe4f710b081",
-																"exec": [
-																	"var jsonData = pm.response.json();",
-																	"",
-																	"pm.test(\"Status code is 200\", function () {",
-																	"    pm.response.to.have.status(200);",
-																	"});",
-																	"",
-																	"pm.test(\"Reponse body contains standard success fields\", function () {",
-																	"    pm.expect(jsonData.status).to.eql(true);",
-																	"    pm.expect(jsonData.response).is.not.null;",
-																	"});",
-																	""
-																],
-																"type": "text/javascript",
-																"packages": {}
-															}
-														}
-													],
-													"id": "4a98e802-9171-4968-80c0-c29baeeb4651",
-													"protocolProfileBehavior": {
-														"disableBodyPruning": true
-													},
-													"request": {
-														"method": "GET",
-														"header": [],
-														"url": {
-															"raw": "{{baseUrl}}/v1/invitations/:id",
-															"host": [
-																"{{baseUrl}}"
-															],
-															"path": [
-																"v1",
-																"invitations",
-																":id"
-															],
-															"variable": [
-																{
-																	"id": "8932cc2e-199c-479e-a524-c61b3358e747",
-																	"key": "id",
-																	"value": "{{invitation_id}}",
-																	"description": "(Required) "
-																}
-															]
-														}
-													},
-													"response": [
-														{
-															"id": "449496d4-21ab-4ee3-9369-027846249f8b",
-															"name": "Untitled Response",
-															"originalRequest": {
-																"method": "GET",
-																"header": [],
-																"url": {
-																	"raw": "{{baseUrl}}/v1/invitations/:id",
-																	"host": [
-																		"{{baseUrl}}"
-																	],
-																	"path": [
-																		"v1",
-																		"invitations",
-																		":id"
-																	],
-																	"variable": [
-																		{
-																			"key": "id"
-																		}
-																	]
-																}
-															},
-															"status": "OK",
-															"code": 200,
-															"_postman_previewlanguage": "text",
-															"header": [],
-															"cookie": [],
-															"responseTime": null,
-															"body": ""
-														}
-													]
-												},
-												{
-													"name": "Get invitation by ID - no record",
-													"event": [
-														{
-															"listen": "test",
-															"script": {
-																"id": "d7267a3d-a57b-44a0-bbb9-4fe4f710b081",
-																"exec": [
-																	"var jsonData = pm.response.json();",
-																	"",
-																	"pm.test(\"Status code is 200\", function () {",
-																	"    pm.response.to.have.status(200);",
-																	"});",
-																	"",
-																	"pm.test(\"Reponse body contains standard success fields\", function () {",
-																	"    pm.expect(jsonData.status).to.be.true;",
-																	"    pm.expect(jsonData.response).to.be.null;",
-																	"    pm.expect(jsonData.message).to.eql('No record found');",
-																	"});",
-																	""
-																],
-																"type": "text/javascript",
-																"packages": {}
-															}
-														}
-													],
-													"id": "f005ea46-6cf4-47e2-b044-519af000dd67",
-													"protocolProfileBehavior": {
-														"disableBodyPruning": true
-													},
-													"request": {
-														"method": "GET",
-														"header": [],
-														"url": {
-															"raw": "{{baseUrl}}/v1/invitations/:id",
-															"host": [
-																"{{baseUrl}}"
-															],
-															"path": [
-																"v1",
-																"invitations",
-																":id"
-															],
-															"variable": [
-																{
-																	"id": "0a7a3eea-9fff-4cf9-ae45-4561b124f8a1",
-																	"key": "id",
-																	"value": "100000",
-																	"description": "(Required) "
-																}
-															]
-														}
-													},
-													"response": [
-														{
-															"id": "e76c4e5b-2500-415f-b5b9-8da7b472e895",
-															"name": "Untitled Response",
-															"originalRequest": {
-																"method": "GET",
-																"header": [],
-																"url": {
-																	"raw": "{{baseUrl}}/v1/invitations/:id",
-																	"host": [
-																		"{{baseUrl}}"
-																	],
-																	"path": [
-																		"v1",
-																		"invitations",
-																		":id"
-																	],
-																	"variable": [
-																		{
-																			"key": "id"
-																		}
-																	]
-																}
-															},
-															"status": "OK",
-															"code": 200,
-															"_postman_previewlanguage": "text",
-															"header": [],
-															"cookie": [],
-															"responseTime": null,
-															"body": ""
-														}
-													]
-												}
-											],
-											"id": "eba55856-b427-4ba0-bd8e-cbeb249d0c16"
-										},
-										{
-											"name": "Send invitation - API needs review",
-											"item": [
-												{
-													"name": "Send invitation - successful for a single email",
-													"event": [
-														{
-															"listen": "test",
-															"script": {
-																"id": "da0990fd-dff8-4db7-bdf6-b291dbc4a8e1",
-																"exec": [
-																	"var jsonData = pm.response.json();",
-																	"",
-																	"pm.test(\"Status code is 201\", function () {",
-																	"    pm.response.to.have.status(201);",
-																	"});",
-																	"",
-																	"pm.test(\"Reponse body contains standard success fields\", function () {",
-																	"    pm.expect(jsonData.status).to.eql(true);",
-																	"    pm.expect(jsonData.response[0].batchId).is.not.null;",
-																	"    pm.expect(jsonData.response[0].email).is.not.null;",
-																	"    pm.expect(jsonData.response[0].status).is.not.null;",
-																	"});",
-																	"",
-																	"pm.test(\"The error message about the empty email is returned\", function () {",
-																	"    pm.expect(jsonData.response[0].message).to.eql('Invitation successfully sent.');",
-																	"});"
-																],
-																"type": "text/javascript",
-																"packages": {}
-															}
-														}
-													],
-													"id": "53896d73-bb77-471e-aab6-c043663f91a7",
-													"protocolProfileBehavior": {
-														"disableBodyPruning": true
-													},
-													"request": {
-														"auth": {
-															"type": "bearer",
-															"bearer": {
-																"token": "{{Bearer_token}}"
-															}
-														},
-														"method": "POST",
-														"header": [],
-														"body": {
-															"mode": "raw",
-															"raw": "{\n  \"invitations\": [\n    {\n      \"email\": \"favourr@yopmail.com\",\n      \"organization_id\": 17,\n      \"manager_id\": 4\n    //   \"role_id\": \"<uuid>\"\n    }\n  ]\n}",
-															"options": {
-																"raw": {
-																	"language": "json"
-																}
-															}
-														},
-														"url": "{{baseUrl}}/v1/invitations"
-													},
-													"response": []
-												},
-												{
-													"name": "Send invitation - successful for multiple emails",
-													"event": [
-														{
-															"listen": "test",
-															"script": {
-																"id": "da0990fd-dff8-4db7-bdf6-b291dbc4a8e1",
-																"exec": [
-																	"var jsonData = pm.response.json();",
-																	"",
-																	"pm.test(\"Status code is 201\", function () {",
-																	"    pm.response.to.have.status(201);",
-																	"});",
-																	"",
-																	"pm.test(\"Reponse body contains standard success fields\", function () {",
-																	"    pm.expect(jsonData.status).to.eql(true);",
-																	"    pm.expect(jsonData.response[0].batchId).is.not.null;",
-																	"    pm.expect(jsonData.response[0].email).is.not.null;",
-																	"    pm.expect(jsonData.response[0].status).is.not.null;",
-																	"});",
-																	"",
-																	"pm.test(\"The error message about the empty email is returned\", function () {",
-																	"    pm.expect(jsonData.response[0].message).to.eql('Invitation successfully sent.');",
-																	"});"
-																],
-																"type": "text/javascript",
-																"packages": {}
-															}
-														}
-													],
-													"id": "aa21950f-a36b-4a34-986b-886dfb08121b",
-													"protocolProfileBehavior": {
-														"disableBodyPruning": true
-													},
-													"request": {
-														"auth": {
-															"type": "bearer",
-															"bearer": {
-																"token": "{{Bearer_token}}"
-															}
-														},
-														"method": "POST",
-														"header": [],
-														"body": {
-															"mode": "raw",
-															"raw": "{\n  \"invitations\": [\n    {\n      \"email\": \"<email>\",\n      \"organization_id\": \"<uuid>\",\n      \"manager_id\": \"<uuid>\",\n      \"role_id\": \"<uuid>\"\n    },\n    {\n      \"email\": \"<email>\",\n      \"organization_id\": \"<uuid>\",\n      \"manager_id\": \"<uuid>\",\n      \"role_id\": \"<uuid>\"\n    }\n  ]\n}",
-															"options": {
-																"raw": {
-																	"language": "json"
-																}
-															}
-														},
-														"url": "{{baseUrl}}/v1/invitations"
-													},
-													"response": []
-												},
-												{
-													"name": "Send invitation - invalid multiple emails",
-													"event": [
-														{
-															"listen": "test",
-															"script": {
-																"id": "0511f7af-f71f-436e-b54e-65d13c4a651c",
-																"exec": [
-																	"var jsonData = pm.response.json();",
-																	"",
-																	"pm.test(\"Status code is 400\", function () {",
-																	"    pm.response.to.have.status(400);",
-																	"});",
-																	"",
-																	"pm.test(\"Reponse body contains standard error fields\", function () {",
-																	"    pm.expect(jsonData.error).to.eql('Bad Request');",
-																	"    pm.expect(jsonData.statusCode).is.not.null;",
-																	"    pm.expect(jsonData.path).is.not.null;",
-																	"});",
-																	"",
-																	"pm.test(\"The error message about the empty email is returned\", function () {",
-																	"    pm.expect(jsonData.message[0]).to.eql(\"Entry 1 - Email must be valid\");",
-																	"    pm.expect(jsonData.message[1]).to.eql(\"Entry 2 - Email must be valid\");",
-																	"});"
-																],
-																"type": "text/javascript",
-																"packages": {}
-															}
-														}
-													],
-													"id": "46a299f3-57ae-409f-abb3-30f9bd1ecebf",
-													"protocolProfileBehavior": {
-														"disableBodyPruning": true
-													},
-													"request": {
-														"method": "POST",
-														"header": [],
-														"body": {
-															"mode": "raw",
-															"raw": "{\n  \"invitations\": [\n    {\n      \"email\": \"test@.com\"\n    },\n    {\n      \"email\": \"@test.com\"\n    }\n  ]\n}",
-															"options": {
-																"raw": {
-																	"language": "json"
-																}
-															}
-														},
-														"url": "{{baseUrl}}/v1/invitations"
-													},
-													"response": []
-												},
-												{
-													"name": "Send invitation - empty email field",
-													"event": [
-														{
-															"listen": "test",
-															"script": {
-																"id": "af6e741f-e15e-4860-a628-a776ed1dfccd",
-																"exec": [
-																	"var jsonData = pm.response.json();",
-																	"",
-																	"pm.test(\"Status code is 400\", function () {",
-																	"    pm.response.to.have.status(400);",
-																	"});",
-																	"",
-																	"pm.test(\"Reponse body contains standard error fields\", function () {",
-																	"    pm.expect(jsonData.error).to.eql('Bad Request');",
-																	"    pm.expect(jsonData.statusCode).is.not.null;",
-																	"    pm.expect(jsonData.path).is.not.null;",
-																	"});",
-																	"",
-																	"pm.test(\"The error message about the empty email is returned\", function () {",
-																	"    pm.expect(jsonData.message[0]).to.eql(\"Email is required\");",
-																	"});"
-																],
-																"type": "text/javascript",
-																"packages": {}
-															}
-														}
-													],
-													"id": "d17c04a4-927e-45b3-9288-4a9343635763",
-													"protocolProfileBehavior": {
-														"disableBodyPruning": true
-													},
-													"request": {
-														"method": "POST",
-														"header": [],
-														"body": {
-															"mode": "raw",
-															"raw": "{\n  \"invitations\": [\n    {\n      \"email\": \"\"\n    }\n  ]\n}",
-															"options": {
-																"raw": {
-																	"language": "json"
-																}
-															}
-														},
-														"url": "{{baseUrl}}/v1/invitations"
-													},
-													"response": []
-												},
-												{
-													"name": "Send invitation - invalid email format",
-													"event": [
-														{
-															"listen": "test",
-															"script": {
-																"id": "2941957c-fa38-44ad-a7e9-49d9a24f2f75",
-																"exec": [
-																	"var jsonData = pm.response.json();",
-																	"",
-																	"pm.test(\"Status code is 400\", function () {",
-																	"    pm.response.to.have.status(400);",
-																	"});",
-																	"",
-																	"pm.test(\"Reponse body contains standard error fields\", function () {",
-																	"    pm.expect(jsonData.error).to.eql('Bad Request');",
-																	"    pm.expect(jsonData.statusCode).is.not.null;",
-																	"    pm.expect(jsonData.path).is.not.null;",
-																	"});",
-																	"",
-																	"pm.test(\"The error message about the empty email is returned\", function () {",
-																	"    pm.expect(jsonData.message[0]).to.eql(\"Entry 1 - Email must be valid\");",
-																	"});"
-																],
-																"type": "text/javascript",
-																"packages": {}
-															}
-														}
-													],
-													"id": "6c195eba-8308-4541-b185-618b6ccc648b",
-													"protocolProfileBehavior": {
-														"disableBodyPruning": true
-													},
-													"request": {
-														"method": "POST",
-														"header": [],
-														"body": {
-															"mode": "raw",
-															"raw": "{\n  \"invitations\": [\n    {\n      \"email\": \"test@test\"\n    }\n  ]\n}",
-															"options": {
-																"raw": {
-																	"language": "json"
-																}
-															}
-														},
-														"url": "{{baseUrl}}/v1/invitations"
-													},
-													"response": []
-												}
-											],
-											"id": "2d0d243e-7433-4151-bfdf-a64947596e6d",
-											"description": "This is an invitations endpoint, so the request body could just have an email array object, not an invitations object again."
-										},
-										{
-											"name": "Fetch invitations",
-											"item": [
-												{
-													"name": "Fetch invitations",
-													"event": [
-														{
-															"listen": "test",
-															"script": {
-																"id": "97a39b8e-c98e-4c9e-9592-076f8d32fed5",
-																"exec": [
-																	"var jsonData = pm.response.json();",
-																	"",
-																	"pm.test(\"Status code is 200\", function () {",
-																	"    pm.response.to.have.status(200);",
-																	"});",
-																	"",
-																	"pm.test(\"Reponse body contains standard success fields\", function () {",
-																	"    pm.expect(jsonData.status).to.eql(true);",
-																	"    pm.expect(jsonData.response.data).is.not.null;",
-																	"});",
-																	"pm.environment.set(\"invitation_id\", jsonData.response.data[0].id);",
-																	"pm.environment.set(\"invitation_batch_id\", jsonData.response.data[0].batch_id);",
-																	""
-																],
-																"type": "text/javascript",
-																"packages": {}
-															}
-														}
-													],
-													"id": "61c2d6c3-d175-4d02-bfb1-d7d915dd0a5e",
-													"protocolProfileBehavior": {
-														"disableBodyPruning": true
-													},
-													"request": {
-														"auth": {
-															"type": "bearer",
-															"bearer": {
-																"token": "{{Bearer_token}}"
-															}
-														},
-														"method": "GET",
-														"header": [],
-														"url": {
-															"raw": "{{baseUrl}}/v1/invitations?page=1&limit=10",
-															"host": [
-																"{{baseUrl}}"
-															],
-															"path": [
-																"v1",
-																"invitations"
-															],
-															"query": [
-																{
-																	"key": "page",
-																	"value": "1"
-																},
-																{
-																	"key": "limit",
-																	"value": "10"
-																}
-															]
-														}
-													},
-													"response": [
-														{
-															"id": "894347fd-5505-41b4-8e30-454e44537aae",
-															"name": "Untitled Response",
-															"originalRequest": {
-																"method": "GET",
-																"header": [],
-																"url": {
-																	"raw": "{{baseUrl}}/v1/invitations?page=1&limit=10",
-																	"host": [
-																		"{{baseUrl}}"
-																	],
-																	"path": [
-																		"v1",
-																		"invitations"
-																	],
-																	"query": [
-																		{
-																			"key": "page",
-																			"value": "1"
-																		},
-																		{
-																			"key": "limit",
-																			"value": "10"
-																		}
-																	]
-																}
-															},
-															"status": "OK",
-															"code": 200,
-															"_postman_previewlanguage": "text",
-															"header": [],
-															"cookie": [],
-															"responseTime": null,
-															"body": ""
-														}
-													]
-												}
-											],
-											"id": "eb1ce50d-7f76-4642-81c1-431feddf4188"
-										},
-										{
-											"name": "Update invitations by ID",
-											"item": [
-												{
-													"name": "Update invitations by ID - successful",
-													"id": "3ed8bf5f-d90d-4a08-a8aa-33c45525f4bc",
-													"protocolProfileBehavior": {
-														"disableBodyPruning": true
-													},
-													"request": {
-														"method": "PATCH",
-														"header": [
-															{
-																"key": "Content-Type",
-																"value": "application/json"
-															}
-														],
-														"body": {
-															"mode": "raw",
-															"raw": "{\n  \"action\": \"revoke\"\n}",
-															"options": {
-																"raw": {
-																	"headerFamily": "json",
-																	"language": "json"
-																}
-															}
-														},
-														"url": {
-															"raw": "{{baseUrl}}/v1/invitations/:id",
-															"host": [
-																"{{baseUrl}}"
-															],
-															"path": [
-																"v1",
-																"invitations",
-																":id"
-															],
-															"variable": [
-																{
-																	"id": "059aabfd-1e62-4393-bb87-ca60c2c23164",
-																	"key": "id",
-																	"value": "<number>",
-																	"description": "(Required) "
-																}
-															]
-														}
-													},
-													"response": [
-														{
-															"id": "3d07748a-c1fc-4163-afff-f7e018c26ac5",
-															"name": "Untitled Response",
-															"originalRequest": {
-																"method": "PATCH",
-																"header": [
-																	{
-																		"key": "Content-Type",
-																		"value": "application/json"
-																	}
-																],
-																"body": {
-																	"mode": "raw",
-																	"raw": "{\n  \"action\": \"revoke\"\n}",
-																	"options": {
-																		"raw": {
-																			"headerFamily": "json",
-																			"language": "json"
-																		}
-																	}
-																},
-																"url": {
-																	"raw": "{{baseUrl}}/v1/invitations/:id",
-																	"host": [
-																		"{{baseUrl}}"
-																	],
-																	"path": [
-																		"v1",
-																		"invitations",
-																		":id"
-																	],
-																	"variable": [
-																		{
-																			"key": "id"
-																		}
-																	]
-																}
-															},
-															"status": "OK",
-															"code": 200,
-															"_postman_previewlanguage": "text",
-															"header": [],
-															"cookie": [],
-															"responseTime": null,
-															"body": ""
-														}
-													]
-												},
-												{
-													"name": "Update invitations by ID - empty action",
-													"id": "0853f2fe-6bbf-4785-a48b-eeea5349cbdc",
-													"protocolProfileBehavior": {
-														"disableBodyPruning": true
-													},
-													"request": {
-														"method": "PATCH",
-														"header": [
-															{
-																"key": "Content-Type",
-																"value": "application/json"
-															}
-														],
-														"body": {
-															"mode": "raw",
-															"raw": "{\n  \"action\": \"revoke\"\n}",
-															"options": {
-																"raw": {
-																	"headerFamily": "json",
-																	"language": "json"
-																}
-															}
-														},
-														"url": {
-															"raw": "{{baseUrl}}/v1/invitations/:id",
-															"host": [
-																"{{baseUrl}}"
-															],
-															"path": [
-																"v1",
-																"invitations",
-																":id"
-															],
-															"variable": [
-																{
-																	"id": "059aabfd-1e62-4393-bb87-ca60c2c23164",
-																	"key": "id",
-																	"value": "<number>",
-																	"description": "(Required) "
-																}
-															]
-														}
-													},
-													"response": [
-														{
-															"id": "f62556e8-09f3-4852-b47b-d363851a6aa8",
-															"name": "Untitled Response",
-															"originalRequest": {
-																"method": "PATCH",
-																"header": [
-																	{
-																		"key": "Content-Type",
-																		"value": "application/json"
-																	}
-																],
-																"body": {
-																	"mode": "raw",
-																	"raw": "{\n  \"action\": \"revoke\"\n}",
-																	"options": {
-																		"raw": {
-																			"headerFamily": "json",
-																			"language": "json"
-																		}
-																	}
-																},
-																"url": {
-																	"raw": "{{baseUrl}}/v1/invitations/:id",
-																	"host": [
-																		"{{baseUrl}}"
-																	],
-																	"path": [
-																		"v1",
-																		"invitations",
-																		":id"
-																	],
-																	"variable": [
-																		{
-																			"key": "id"
-																		}
-																	]
-																}
-															},
-															"status": "OK",
-															"code": 200,
-															"_postman_previewlanguage": "text",
-															"header": [],
-															"cookie": [],
-															"responseTime": null,
-															"body": ""
-														}
-													]
-												},
-												{
-													"name": "Update invitations by ID - invalid action",
-													"id": "79e97247-102d-46a9-bb7c-d101af3728b6",
-													"protocolProfileBehavior": {
-														"disableBodyPruning": true
-													},
-													"request": {
-														"method": "PATCH",
-														"header": [
-															{
-																"key": "Content-Type",
-																"value": "application/json"
-															}
-														],
-														"body": {
-															"mode": "raw",
-															"raw": "{\n  \"action\": \"revoke\"\n}",
-															"options": {
-																"raw": {
-																	"headerFamily": "json",
-																	"language": "json"
-																}
-															}
-														},
-														"url": {
-															"raw": "{{baseUrl}}/v1/invitations/:id",
-															"host": [
-																"{{baseUrl}}"
-															],
-															"path": [
-																"v1",
-																"invitations",
-																":id"
-															],
-															"variable": [
-																{
-																	"id": "059aabfd-1e62-4393-bb87-ca60c2c23164",
-																	"key": "id",
-																	"value": "<number>",
-																	"description": "(Required) "
-																}
-															]
-														}
-													},
-													"response": [
-														{
-															"id": "b7091eaf-f451-483e-b4ee-9019459a50d7",
-															"name": "Untitled Response",
-															"originalRequest": {
-																"method": "PATCH",
-																"header": [
-																	{
-																		"key": "Content-Type",
-																		"value": "application/json"
-																	}
-																],
-																"body": {
-																	"mode": "raw",
-																	"raw": "{\n  \"action\": \"revoke\"\n}",
-																	"options": {
-																		"raw": {
-																			"headerFamily": "json",
-																			"language": "json"
-																		}
-																	}
-																},
-																"url": {
-																	"raw": "{{baseUrl}}/v1/invitations/:id",
-																	"host": [
-																		"{{baseUrl}}"
-																	],
-																	"path": [
-																		"v1",
-																		"invitations",
-																		":id"
-																	],
-																	"variable": [
-																		{
-																			"key": "id"
-																		}
-																	]
-																}
-															},
-															"status": "OK",
-															"code": 200,
-															"_postman_previewlanguage": "text",
-															"header": [],
-															"cookie": [],
-															"responseTime": null,
-															"body": ""
-														}
-													]
-												},
-												{
-													"name": "Update invitations by ID - non-existing ID",
-													"id": "4de74c21-bae3-43bf-a8c7-02b175ec7992",
-													"protocolProfileBehavior": {
-														"disableBodyPruning": true
-													},
-													"request": {
-														"method": "PATCH",
-														"header": [
-															{
-																"key": "Content-Type",
-																"value": "application/json"
-															}
-														],
-														"body": {
-															"mode": "raw",
-															"raw": "{\n  \"action\": \"revoke\"\n}",
-															"options": {
-																"raw": {
-																	"headerFamily": "json",
-																	"language": "json"
-																}
-															}
-														},
-														"url": {
-															"raw": "{{baseUrl}}/v1/invitations/:id",
-															"host": [
-																"{{baseUrl}}"
-															],
-															"path": [
-																"v1",
-																"invitations",
-																":id"
-															],
-															"variable": [
-																{
-																	"id": "059aabfd-1e62-4393-bb87-ca60c2c23164",
-																	"key": "id",
-																	"value": "<number>",
-																	"description": "(Required) "
-																}
-															]
-														}
-													},
-													"response": [
-														{
-															"id": "463259e7-8c3e-4535-81a9-16c70839b6bf",
-															"name": "Untitled Response",
-															"originalRequest": {
-																"method": "PATCH",
-																"header": [
-																	{
-																		"key": "Content-Type",
-																		"value": "application/json"
-																	}
-																],
-																"body": {
-																	"mode": "raw",
-																	"raw": "{\n  \"action\": \"revoke\"\n}",
-																	"options": {
-																		"raw": {
-																			"headerFamily": "json",
-																			"language": "json"
-																		}
-																	}
-																},
-																"url": {
-																	"raw": "{{baseUrl}}/v1/invitations/:id",
-																	"host": [
-																		"{{baseUrl}}"
-																	],
-																	"path": [
-																		"v1",
-																		"invitations",
-																		":id"
-																	],
-																	"variable": [
-																		{
-																			"key": "id"
-																		}
-																	]
-																}
-															},
-															"status": "OK",
-															"code": 200,
-															"_postman_previewlanguage": "text",
-															"header": [],
-															"cookie": [],
-															"responseTime": null,
-															"body": ""
-														}
-													]
-												}
-											],
-											"id": "6cfe2dfa-e762-4c27-9dc2-de5f0f27004e"
-										}
-									],
-									"id": "ccdeee11-3021-49a3-9b5a-9a13996975e7"
 								}
 							],
 							"id": "cc3c27aa-1460-49ba-af0f-cacf62cf59fa"
@@ -16297,9 +14394,8 @@
 															],
 															"variable": [
 																{
-																	"id": "5dac833c-a932-4735-9ad0-c928f5ad1f21",
 																	"key": "organizationId",
-																	"value": "1",
+																	"value": "17",
 																	"description": "(Required) "
 																}
 															]
@@ -19768,6 +17864,116 @@
 								}
 							],
 							"id": "5366b103-f830-428a-8b1a-4689d3f8ebc5"
+						},
+						{
+							"name": "Logout",
+							"item": [
+								{
+									"name": "Logout session successfully",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "b87672bc-6cef-48e8-8563-eef5a3e783be",
+												"exec": [
+													"var jsonData = pm.response.json();",
+													"",
+													"pm.test(\"Status code is 200\", function () {",
+													"    pm.response.to.have.status(200);",
+													"});",
+													"pm.test(\"Reponse body contains standard success fields\", function () {",
+													"    pm.expect(jsonData.statusCode).to.eql(200);",
+													"    pm.expect(jsonData.status).to.eql(true);",
+													"    pm.expect(jsonData.message).to.eql('Logout successful');",
+													"});"
+												],
+												"type": "text/javascript",
+												"packages": {}
+											}
+										}
+									],
+									"id": "0bbabc8c-2f82-42a6-8603-aa49ffe82fa1",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "DELETE",
+										"header": [],
+										"url": "{{baseUrl}}/v1/auth/session"
+									},
+									"response": [
+										{
+											"id": "e6a660e5-a691-4cff-ab80-98dcab539dba",
+											"name": "Untitled Response",
+											"originalRequest": {
+												"method": "DELETE",
+												"header": [],
+												"url": "{{baseUrl}}/v1/auth/session"
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "text",
+											"header": [],
+											"cookie": [],
+											"responseTime": null,
+											"body": ""
+										}
+									]
+								},
+								{
+									"name": "Logout session - no session",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "7e8fa568-33d7-4a51-8e25-9412e37b97a9",
+												"exec": [
+													"var jsonData = pm.response.json();",
+													"",
+													"pm.test(\"Status code is 401\", function () {",
+													"    pm.response.to.have.status(401);",
+													"});",
+													"pm.test(\"Reponse body contains standard Error fields\", function () {",
+													"    pm.expect(jsonData.statusCode).to.eql(401);",
+													"    pm.expect(jsonData.status).to.eql(false);",
+													"    pm.expect(jsonData.message).to.eql('No valid session found');",
+													"});"
+												],
+												"type": "text/javascript",
+												"packages": {}
+											}
+										}
+									],
+									"id": "53fe0e5b-17fc-479e-ac47-157d9925794c",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "DELETE",
+										"header": [],
+										"url": "{{baseUrl}}/v1/auth/session"
+									},
+									"response": [
+										{
+											"id": "0c061ce3-e504-443e-b8c9-1f037415d005",
+											"name": "Untitled Response",
+											"originalRequest": {
+												"method": "DELETE",
+												"header": [],
+												"url": "{{baseUrl}}/v1/auth/session"
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "text",
+											"header": [],
+											"cookie": [],
+											"responseTime": null,
+											"body": ""
+										}
+									]
+								}
+							],
+							"id": "8503017a-51b8-4e8c-bbf8-ac021502b212"
 						},
 						{
 							"name": "Health",
