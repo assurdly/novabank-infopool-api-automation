@@ -363,476 +363,9 @@
 												}
 											],
 											"id": "e5bd9784-73d1-4200-ada0-6802e87a7566"
-										},
-										{
-											"name": "Logout",
-											"item": [
-												{
-													"name": "Logout session successfully",
-													"event": [
-														{
-															"listen": "test",
-															"script": {
-																"id": "b87672bc-6cef-48e8-8563-eef5a3e783be",
-																"exec": [
-																	"var jsonData = pm.response.json();",
-																	"",
-																	"pm.test(\"Status code is 200\", function () {",
-																	"    pm.response.to.have.status(200);",
-																	"});",
-																	"pm.test(\"Reponse body contains standard success fields\", function () {",
-																	"    pm.expect(jsonData.statusCode).to.eql(200);",
-																	"    pm.expect(jsonData.status).to.eql(true);",
-																	"    pm.expect(jsonData.message).to.eql('Logout successful');",
-																	"});"
-																],
-																"type": "text/javascript",
-																"packages": {}
-															}
-														}
-													],
-													"id": "0bbabc8c-2f82-42a6-8603-aa49ffe82fa1",
-													"protocolProfileBehavior": {
-														"disableBodyPruning": true
-													},
-													"request": {
-														"method": "DELETE",
-														"header": [],
-														"url": "{{baseUrl}}/v1/auth/session"
-													},
-													"response": [
-														{
-															"id": "e6a660e5-a691-4cff-ab80-98dcab539dba",
-															"name": "Untitled Response",
-															"originalRequest": {
-																"method": "DELETE",
-																"header": [],
-																"url": "{{baseUrl}}/v1/auth/session"
-															},
-															"status": "OK",
-															"code": 200,
-															"_postman_previewlanguage": "text",
-															"header": [],
-															"cookie": [],
-															"responseTime": null,
-															"body": ""
-														}
-													]
-												},
-												{
-													"name": "Logout session - no session",
-													"event": [
-														{
-															"listen": "test",
-															"script": {
-																"id": "7e8fa568-33d7-4a51-8e25-9412e37b97a9",
-																"exec": [
-																	"var jsonData = pm.response.json();",
-																	"",
-																	"pm.test(\"Status code is 401\", function () {",
-																	"    pm.response.to.have.status(401);",
-																	"});",
-																	"pm.test(\"Reponse body contains standard Error fields\", function () {",
-																	"    pm.expect(jsonData.statusCode).to.eql(401);",
-																	"    pm.expect(jsonData.status).to.eql(false);",
-																	"    pm.expect(jsonData.message).to.eql('No valid session found');",
-																	"});"
-																],
-																"type": "text/javascript",
-																"packages": {}
-															}
-														}
-													],
-													"id": "53fe0e5b-17fc-479e-ac47-157d9925794c",
-													"protocolProfileBehavior": {
-														"disableBodyPruning": true
-													},
-													"request": {
-														"method": "DELETE",
-														"header": [],
-														"url": "{{baseUrl}}/v1/auth/session"
-													},
-													"response": [
-														{
-															"id": "0c061ce3-e504-443e-b8c9-1f037415d005",
-															"name": "Untitled Response",
-															"originalRequest": {
-																"method": "DELETE",
-																"header": [],
-																"url": "{{baseUrl}}/v1/auth/session"
-															},
-															"status": "OK",
-															"code": 200,
-															"_postman_previewlanguage": "text",
-															"header": [],
-															"cookie": [],
-															"responseTime": null,
-															"body": ""
-														}
-													]
-												}
-											],
-											"id": "8503017a-51b8-4e8c-bbf8-ac021502b212"
 										}
 									],
 									"id": "374987f3-b9fd-48f8-ad79-a1b3ce4742a6"
-								},
-								{
-									"name": "Refresh token",
-									"item": [
-										{
-											"name": "Refresh token - successful",
-											"event": [
-												{
-													"listen": "test",
-													"script": {
-														"id": "2cc7b9db-5414-404a-95c9-1e86a2dd37e1",
-														"exec": [
-															"var jsonData = pm.response.json();",
-															"",
-															"pm.test(\"Status code is 201\", function () {",
-															"    pm.response.to.have.status(201);",
-															"    pm.expect(jsonData.status).to.eql(true);",
-															"});",
-															"",
-															"pm.test(\"Access credentials are returned\", function () {",
-															"    pm.expect(jsonData.response.token_type).to.not.equal(\"\");",
-															"    pm.expect(jsonData.response.access_token).to.not.equal(\"\");",
-															"    pm.expect(jsonData.response.refresh_token).to.not.equal(\"\");",
-															"    pm.expect(jsonData.response.session_id).to.not.equal(\"\");",
-															"    pm.expect(jsonData.response.device_id).to.not.equal(\"\");",
-															"});",
-															"",
-															"pm.environment.set(\"Bearer_token\", jsonData.response.access_token);",
-															"pm.environment.set(\"refresh_token\", jsonData.response.refresh_token);",
-															""
-														],
-														"type": "text/javascript",
-														"packages": {}
-													}
-												}
-											],
-											"id": "5a67d2e9-2069-47c0-8303-23e682135048",
-											"protocolProfileBehavior": {
-												"disableBodyPruning": true
-											},
-											"request": {
-												"method": "POST",
-												"header": [
-													{
-														"key": "Content-Type",
-														"value": "application/json"
-													}
-												],
-												"body": {
-													"mode": "raw",
-													"raw": "{\n  \"action\": \"refresh\",\n  \"refresh_token\": \"{{refresh_token}}\"\n}",
-													"options": {
-														"raw": {
-															"headerFamily": "json",
-															"language": "json"
-														}
-													}
-												},
-												"url": "{{baseUrl}}/v1/auth/token"
-											},
-											"response": [
-												{
-													"id": "3b4c4778-2ac3-42b1-b15c-3dd4481bc680",
-													"name": "Untitled Response",
-													"originalRequest": {
-														"method": "POST",
-														"header": [
-															{
-																"key": "Content-Type",
-																"value": "application/json"
-															}
-														],
-														"body": {
-															"mode": "raw",
-															"raw": "{\n  \"action\": \"refesh\",\n  \"refresh_token\": \"\"\n}",
-															"options": {
-																"raw": {
-																	"headerFamily": "json",
-																	"language": "json"
-																}
-															}
-														},
-														"url": "{{baseUrl}}/v1/auth/token"
-													},
-													"status": "Created",
-													"code": 201,
-													"_postman_previewlanguage": "text",
-													"header": [],
-													"cookie": [],
-													"responseTime": null,
-													"body": ""
-												}
-											]
-										},
-										{
-											"name": "Refresh token - expired refresh token",
-											"event": [
-												{
-													"listen": "test",
-													"script": {
-														"id": "2cc7b9db-5414-404a-95c9-1e86a2dd37e1",
-														"exec": [
-															"var jsonData = pm.response.json();",
-															"",
-															"pm.test(\"Status code is 201\", function () {",
-															"    pm.response.to.have.status(201);",
-															"    pm.expect(jsonData.status).to.eql(true);",
-															"});",
-															"",
-															"pm.test(\"Response contain standard error message\", function () {",
-															"    pm.expect(jsonData.response.status).to.eql(false);",
-															"    pm.expect(jsonData.response.error.message).to.eql(\"Invalid refresh token: jwt malformed\");",
-															"    pm.expect(jsonData.response.error.statusCode).to.eql(400);",
-															"});",
-															""
-														],
-														"type": "text/javascript",
-														"packages": {}
-													}
-												}
-											],
-											"id": "5252cd44-a127-435e-b10f-b24de04e1f17",
-											"protocolProfileBehavior": {
-												"disableBodyPruning": true
-											},
-											"request": {
-												"auth": {
-													"type": "bearer",
-													"bearer": {
-														"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZW1haWwiOiJmYXZvdXJAeW9wbWFpbC5jb20iLCJzdWIiOiIxIiwic2NvcGUiOlsiRk9SR09UX1BBU1NXT1JEIl0sImlhdCI6MTczOTU1MjE1NSwiZXhwIjoxNzM5NTUzMDU1LCJhdWQiOiJpbmZvcG9vbC5uZyIsImlzcyI6ImF1dGguaW5mb3Bvb2wubmcifQ.NupWzP-04ouNZTVCerbTx78E1jKGIu8k9gv81PH-U_c"
-													}
-												},
-												"method": "POST",
-												"header": [
-													{
-														"key": "Content-Type",
-														"value": "application/json"
-													}
-												],
-												"body": {
-													"mode": "raw",
-													"raw": "{\n  \"action\": \"refresh\",\n  \"refresh_token\": \"{{refresh_token}}\"\n}",
-													"options": {
-														"raw": {
-															"headerFamily": "json",
-															"language": "json"
-														}
-													}
-												},
-												"url": "{{baseUrl}}/v1/auth/token"
-											},
-											"response": [
-												{
-													"id": "9f55fa0e-88d0-47cf-a98e-beaaadd26c4b",
-													"name": "Untitled Response",
-													"originalRequest": {
-														"method": "POST",
-														"header": [
-															{
-																"key": "Content-Type",
-																"value": "application/json"
-															}
-														],
-														"body": {
-															"mode": "raw",
-															"raw": "{\n  \"action\": \"refesh\",\n  \"refresh_token\": \"\"\n}",
-															"options": {
-																"raw": {
-																	"headerFamily": "json",
-																	"language": "json"
-																}
-															}
-														},
-														"url": "{{baseUrl}}/v1/auth/token"
-													},
-													"status": "Created",
-													"code": 201,
-													"_postman_previewlanguage": "text",
-													"header": [],
-													"cookie": [],
-													"responseTime": null,
-													"body": ""
-												}
-											]
-										},
-										{
-											"name": "Refresh token - no token present",
-											"event": [
-												{
-													"listen": "test",
-													"script": {
-														"id": "2cc7b9db-5414-404a-95c9-1e86a2dd37e1",
-														"exec": [
-															"var jsonData = pm.response.json();",
-															"",
-															"pm.test(\"Status code is 201\", function () {",
-															"    pm.response.to.have.status(201);",
-															"    pm.expect(jsonData.status).to.eql(true);",
-															"});",
-															"",
-															"pm.test(\"Response contain standard error message\", function () {",
-															"    pm.expect(jsonData.response.status).to.eql(false);",
-															"    pm.expect(jsonData.response.error.message).to.eql(\"Invalid refresh token: jwt malformed\");",
-															"    pm.expect(jsonData.response.error.statusCode).to.eql(400);",
-															"});",
-															""
-														],
-														"type": "text/javascript",
-														"packages": {}
-													}
-												}
-											],
-											"id": "d9b795a9-c512-40a4-ac6f-3c02fcdd5d04",
-											"protocolProfileBehavior": {
-												"disableBodyPruning": true
-											},
-											"request": {
-												"method": "POST",
-												"header": [
-													{
-														"key": "Content-Type",
-														"value": "application/json"
-													}
-												],
-												"body": {
-													"mode": "raw",
-													"raw": "{\n  \"action\": \"refresh\",\n  \"refresh_token\": \"{{refresh_token}}\"\n}",
-													"options": {
-														"raw": {
-															"headerFamily": "json",
-															"language": "json"
-														}
-													}
-												},
-												"url": "{{baseUrl}}/v1/auth/token"
-											},
-											"response": [
-												{
-													"id": "dee26b14-7f6b-461c-b79e-a43fd175fe60",
-													"name": "Untitled Response",
-													"originalRequest": {
-														"method": "POST",
-														"header": [
-															{
-																"key": "Content-Type",
-																"value": "application/json"
-															}
-														],
-														"body": {
-															"mode": "raw",
-															"raw": "{\n  \"action\": \"refesh\",\n  \"refresh_token\": \"\"\n}",
-															"options": {
-																"raw": {
-																	"headerFamily": "json",
-																	"language": "json"
-																}
-															}
-														},
-														"url": "{{baseUrl}}/v1/auth/token"
-													},
-													"status": "Created",
-													"code": 201,
-													"_postman_previewlanguage": "text",
-													"header": [],
-													"cookie": [],
-													"responseTime": null,
-													"body": ""
-												}
-											]
-										},
-										{
-											"name": "Refresh token - invalid token",
-											"event": [
-												{
-													"listen": "test",
-													"script": {
-														"id": "2cc7b9db-5414-404a-95c9-1e86a2dd37e1",
-														"exec": [
-															"var jsonData = pm.response.json();",
-															"",
-															"pm.test(\"Status code is 201\", function () {",
-															"    pm.response.to.have.status(201);",
-															"    pm.expect(jsonData.status).to.eql(true);",
-															"});",
-															"",
-															"pm.test(\"Response contain standard error message\", function () {",
-															"    pm.expect(jsonData.response.status).to.eql(false);",
-															"    pm.expect(jsonData.response.error.message).to.eql(\"Invalid refresh token: jwt malformed\");",
-															"    pm.expect(jsonData.response.error.statusCode).to.eql(400);",
-															"});",
-															""
-														],
-														"type": "text/javascript",
-														"packages": {}
-													}
-												}
-											],
-											"id": "ec7e17f8-e0b9-44c5-921b-281904800ed5",
-											"protocolProfileBehavior": {
-												"disableBodyPruning": true
-											},
-											"request": {
-												"method": "POST",
-												"header": [
-													{
-														"key": "Content-Type",
-														"value": "application/json"
-													}
-												],
-												"body": {
-													"mode": "raw",
-													"raw": "{\n  \"action\": \"refresh\",\n  \"refresh_token\": \"wesdrftgyhujimkolpojihgufydtrsedrfghjk\"\n}",
-													"options": {
-														"raw": {
-															"headerFamily": "json",
-															"language": "json"
-														}
-													}
-												},
-												"url": "{{baseUrl}}/v1/auth/token"
-											},
-											"response": [
-												{
-													"id": "0616e436-7490-4586-b182-e19d1fdad8de",
-													"name": "Untitled Response",
-													"originalRequest": {
-														"method": "POST",
-														"header": [
-															{
-																"key": "Content-Type",
-																"value": "application/json"
-															}
-														],
-														"body": {
-															"mode": "raw",
-															"raw": "{\n  \"action\": \"refesh\",\n  \"refresh_token\": \"\"\n}",
-															"options": {
-																"raw": {
-																	"headerFamily": "json",
-																	"language": "json"
-																}
-															}
-														},
-														"url": "{{baseUrl}}/v1/auth/token"
-													},
-													"status": "Created",
-													"code": 201,
-													"_postman_previewlanguage": "text",
-													"header": [],
-													"cookie": [],
-													"responseTime": null,
-													"body": ""
-												}
-											]
-										}
-									],
-									"id": "bd9a10e1-5eec-416b-a883-4d454f325b0a"
 								},
 								{
 									"name": "Forgot password",
@@ -1845,7 +1378,7 @@
 															"    pm.expect(jsonData.statusCode).to.eql(400);",
 															"    pm.expect(jsonData.path).is.not.null;",
 															"    pm.expect(jsonData.status).to.eql(false);",
-															"   pm.expect(jsonData.message[0]).to.eql('Password must be at least 8 characters long, include one uppercase letter, one lowercase letter, one number, and one special character'); ",
+															"   pm.expect(jsonData.message[0]).to.eql('Password should be at least 8 characters long'); ",
 															"});",
 															""
 														],
@@ -1874,7 +1407,7 @@
 												],
 												"body": {
 													"mode": "raw",
-													"raw": "{\n  \"current_password\": \"@passwordA133\",\n  \"new_password\": \"@passwordA\"\n}",
+													"raw": "{\n  \"current_password\": \"@passwordA1\",\n  \"new_password\": \"@passwordA\"\n}",
 													"options": {
 														"raw": {
 															"headerFamily": "json",
@@ -1935,7 +1468,7 @@
 															"    pm.expect(jsonData.statusCode).to.eql(400);",
 															"    pm.expect(jsonData.path).is.not.null;",
 															"    pm.expect(jsonData.status).to.eql(false);",
-															"   pm.expect(jsonData.message[1]).to.eql('current_password should not be empty'); ",
+															"   pm.expect(jsonData.message[0]).to.eql('current_password should not be empty'); ",
 															"});",
 															""
 														],
@@ -2025,7 +1558,7 @@
 															"    pm.expect(jsonData.statusCode).to.eql(400);",
 															"    pm.expect(jsonData.path).is.not.null;",
 															"    pm.expect(jsonData.status).to.eql(false);",
-															"   pm.expect(jsonData.message[1]).to.eql('new_password should not be empty'); ",
+															"   pm.expect(jsonData.message[0]).to.eql('new_password should not be empty'); ",
 															"});",
 															""
 														],
@@ -20157,6 +19690,116 @@
 								}
 							],
 							"id": "5366b103-f830-428a-8b1a-4689d3f8ebc5"
+						},
+						{
+							"name": "Logout",
+							"item": [
+								{
+									"name": "Logout session successfully",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "b87672bc-6cef-48e8-8563-eef5a3e783be",
+												"exec": [
+													"var jsonData = pm.response.json();",
+													"",
+													"pm.test(\"Status code is 200\", function () {",
+													"    pm.response.to.have.status(200);",
+													"});",
+													"pm.test(\"Reponse body contains standard success fields\", function () {",
+													"    pm.expect(jsonData.statusCode).to.eql(200);",
+													"    pm.expect(jsonData.status).to.eql(true);",
+													"    pm.expect(jsonData.message).to.eql('Logout successful');",
+													"});"
+												],
+												"type": "text/javascript",
+												"packages": {}
+											}
+										}
+									],
+									"id": "0bbabc8c-2f82-42a6-8603-aa49ffe82fa1",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "DELETE",
+										"header": [],
+										"url": "{{baseUrl}}/v1/auth/session"
+									},
+									"response": [
+										{
+											"id": "e6a660e5-a691-4cff-ab80-98dcab539dba",
+											"name": "Untitled Response",
+											"originalRequest": {
+												"method": "DELETE",
+												"header": [],
+												"url": "{{baseUrl}}/v1/auth/session"
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "text",
+											"header": [],
+											"cookie": [],
+											"responseTime": null,
+											"body": ""
+										}
+									]
+								},
+								{
+									"name": "Logout session - no session",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "7e8fa568-33d7-4a51-8e25-9412e37b97a9",
+												"exec": [
+													"var jsonData = pm.response.json();",
+													"",
+													"pm.test(\"Status code is 401\", function () {",
+													"    pm.response.to.have.status(401);",
+													"});",
+													"pm.test(\"Reponse body contains standard Error fields\", function () {",
+													"    pm.expect(jsonData.statusCode).to.eql(401);",
+													"    pm.expect(jsonData.status).to.eql(false);",
+													"    pm.expect(jsonData.message).to.eql('No valid session found');",
+													"});"
+												],
+												"type": "text/javascript",
+												"packages": {}
+											}
+										}
+									],
+									"id": "53fe0e5b-17fc-479e-ac47-157d9925794c",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "DELETE",
+										"header": [],
+										"url": "{{baseUrl}}/v1/auth/session"
+									},
+									"response": [
+										{
+											"id": "0c061ce3-e504-443e-b8c9-1f037415d005",
+											"name": "Untitled Response",
+											"originalRequest": {
+												"method": "DELETE",
+												"header": [],
+												"url": "{{baseUrl}}/v1/auth/session"
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "text",
+											"header": [],
+											"cookie": [],
+											"responseTime": null,
+											"body": ""
+										}
+									]
+								}
+							],
+							"id": "8503017a-51b8-4e8c-bbf8-ac021502b212"
 						},
 						{
 							"name": "Health",
