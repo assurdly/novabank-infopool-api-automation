@@ -1146,6 +1146,28 @@
 									"item": [
 										{
 											"name": "Get profile roles - successful",
+											"event": [
+												{
+													"listen": "test",
+													"script": {
+														"id": "c537a045-f381-4d1f-8a8f-f6f1ffd4409c",
+														"exec": [
+															"var jsonData = pm.response.json();",
+															"",
+															"pm.test(\"Status code is 200\", function () {",
+															"    pm.response.to.have.status(200);",
+															"});",
+															"",
+															"pm.test(\"Reponse body contains success fields\", function () {",
+															"    pm.expect(jsonData.status).to.eql(true);",
+															"    pm.expect(jsonData.response).to.not.equal(\"\");",
+															"});"
+														],
+														"type": "text/javascript",
+														"packages": {}
+													}
+												}
+											],
 											"id": "49b53039-855f-4f30-a0d9-e5d5587b3791",
 											"protocolProfileBehavior": {
 												"disableBodyPruning": true
