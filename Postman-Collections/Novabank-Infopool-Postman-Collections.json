@@ -290,13 +290,7 @@
 																	"pm.test(\"Error message is returned\", function () {",
 																	"    pm.expect(jsonData.message).to.eql('Unauthorized');",
 																	"",
-																	"});",
-																	"// pm.test(\"Reponse body contains standard Error fields\", function () {",
-																	"//     pm.expect(jsonData.statusCode).to.eql(401);",
-																	"//     pm.expect(jsonData.error[0]).to.eql('Email is required');",
-																	"//     pm.expect(jsonDatafalse.error[1]).to.eql('Password is required');",
-																	"//      pm.expect(jsonData.status).to.eql(false);",
-																	"// });"
+																	"});"
 																],
 																"type": "text/javascript",
 																"packages": {}
@@ -3493,13 +3487,9 @@
 																	"    pm.response.to.have.status(401);",
 																	"});",
 																	"",
-																	"pm.test(\"Reponse body contains standard Error fields\", function () {",
-																	"     pm.expect(jsonData.status).to.eql(false);",
-																	"});",
+																	"pm.test(\"Error message is returned\", function () {",
+																	"    pm.expect(jsonData.message).to.eql('Unauthorized');",
 																	"",
-																	"pm.test(\"Error message stating the required fields is returned\", function () {",
-																	"    pm.expect(jsonData.error[0]).to.eql('Email is required');",
-																	"    pm.expect(jsonDatafalse.error[1]).to.eql('Password is required');",
 																	"});"
 																],
 																"type": "text/javascript",
