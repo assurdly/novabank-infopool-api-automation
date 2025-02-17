@@ -1,0 +1,13 @@
+{
+    "accept": "*/*",
+    "Content-Type": "application/json",
+    "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZW1haWwiOiJRQUB5b3BtYWlsLmNvbSIsInN1YiI6IjQiLCJkZXZpY2VfaWQiOiI1MjNjMmNkYS0wZThiLTQ2NTgtOGMxMy02NGVkODBjNzFiMjYiLCJzY29wZSI6WyJGVUxMX0FDQ0VTUyJdLCJpYXQiOjE3Mzk3NzgwMzEsImV4cCI6MTczOTc3ODkzMSwiYXVkIjoiaW5mb3Bvb2wubmciLCJpc3MiOiJhdXRoLmluZm9wb29sLm5nIn0.MLi4dEePOIrHoc6rQmsy8nf4xEB1Uxo8DMTMcBpbPt4",
+    "User-Agent": "PostmanRuntime/7.39.1",
+    "Cache-Control": "no-cache",
+    "Postman-Token": "f0e75947-acff-4b43-ad33-c4c4ccb70f0e",
+    "Host": "staging-api.infopool.ng",
+    "Accept-Encoding": "gzip, deflate, br",
+    "Connection": "keep-alive",
+    "Content-Length": "28",
+    "Cookie": "connect.sid=s%3AqlyIjm1G4WwMH2JAwXQ7qEplR2OmePle.f2wxNoa2VVk2aNZwELwGT93P%2F%2F2APsuA7aMZY9rSvNE"
+}

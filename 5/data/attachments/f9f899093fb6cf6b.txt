@@ -1,0 +1,16 @@
+var jsonData = pm.response.json();
+
+pm.test("Status code is 400", function () {
+    pm.response.to.have.status(400);
+});
+
+pm.test("Reponse body contains standard error fields", function () {
+    pm.expect(jsonData.error).to.eql('Bad Request');
+    pm.expect(jsonData.statusCode).is.not.null;
+    pm.expect(jsonData.path).is.not.null;
+});
+
+pm.test("The error message about the empty email is returned", function () {
+    pm.expect(jsonData.message[0]).to.eql("Entry 1 - Email must be valid");
+    pm.expect(jsonData.message[1]).to.eql("Entry 2 - Email must be valid");
+});

@@ -1,0 +1,28 @@
+{
+  "action": "update",
+
+    "add": [
+    {
+      "permission_id": 1,
+      "abilities": {
+        "can_create": true,
+        "can_read": true,
+        "can_update": false,
+        "can_delete": false
+      }
+    },
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  ]
+
+
+
+
+}

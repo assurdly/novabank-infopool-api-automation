@@ -1,0 +1,10 @@
+{
+  "invitations": [
+    {
+      "email": "favourr@yopmail.com",
+      "organization_id": 17,
+      "manager_id": 4
+    
+    }
+  ]
+}
