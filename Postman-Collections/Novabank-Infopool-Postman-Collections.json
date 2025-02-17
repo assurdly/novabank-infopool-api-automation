@@ -585,16 +585,10 @@
 															"    pm.expect(jsonData.status).to.eql(true);",
 															"});",
 															"",
-															"pm.test(\"Access credentials are returned\", function () {",
-															"    pm.expect(jsonData.response.token_type).is.not.empty;",
-															"    pm.expect(jsonData.response.access_token).is.not.empty;",
-															"    pm.expect(jsonData.response.refresh_token).is.not.empty;",
-															"    pm.expect(jsonData.response.session_id).is.not.empty;",
-															"     pm.expect(jsonData.response.device_id).is.not.empty;",
+															"pm.test(\"Response contain standard error message\", function () {",
+															"    pm.expect(jsonData.response.status).to.eql(false)",
 															"",
-															"});",
-															"pm.environment.set(\"Bearer_token\", jsonData.response.access_token);",
-															"pm.environment.set(\"refresh_token\", jsonData.response.refresh_token);"
+															"});"
 														],
 														"type": "text/javascript",
 														"packages": {}
@@ -606,6 +600,12 @@
 												"disableBodyPruning": true
 											},
 											"request": {
+												"auth": {
+													"type": "bearer",
+													"bearer": {
+														"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZW1haWwiOiJmYXZvdXJAeW9wbWFpbC5jb20iLCJzdWIiOiIxIiwic2NvcGUiOlsiRk9SR09UX1BBU1NXT1JEIl0sImlhdCI6MTczOTU1MjE1NSwiZXhwIjoxNzM5NTUzMDU1LCJhdWQiOiJpbmZvcG9vbC5uZyIsImlzcyI6ImF1dGguaW5mb3Bvb2wubmcifQ.NupWzP-04ouNZTVCerbTx78E1jKGIu8k9gv81PH-U_c"
+													}
+												},
 												"method": "POST",
 												"header": [
 													{
