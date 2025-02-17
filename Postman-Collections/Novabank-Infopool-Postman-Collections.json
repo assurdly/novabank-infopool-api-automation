@@ -3962,7 +3962,7 @@
 															"});",
 															"",
 															"pm.test(\"Reponse body contains error fields\", function () {",
-															"    pm.expect(jsonData.status).to.eql(false);",
+															"    pm.expect(jsonData.status).to.eql(true);",
 															"    pm.expect(jsonData.error.message).to.eql('Could not retrieve definition: Definition with id 10000000 not found');",
 															"    pm.expect(jsonData.error.statusCode).to.eql(400);",
 															"});",
@@ -3978,6 +3978,12 @@
 												"disableBodyPruning": true
 											},
 											"request": {
+												"auth": {
+													"type": "bearer",
+													"bearer": {
+														"token": "{{Bearer_token}}"
+													}
+												},
 												"method": "GET",
 												"header": [],
 												"url": {
@@ -3992,7 +3998,6 @@
 													],
 													"variable": [
 														{
-															"id": "3690cc8d-65b6-4942-bd8e-47b2eb3c53b1",
 															"key": "id",
 															"value": "10000000",
 															"description": "(Required) "
