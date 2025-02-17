@@ -8349,16 +8349,16 @@
 														"exec": [
 															"var jsonData = pm.response.json();",
 															"",
-															"pm.test(\"Status code is 200\", function () {",
-															"    pm.response.to.have.status(200);",
+															"pm.test(\"Status code is 400\", function () {",
+															"    pm.response.to.have.status(400);",
 															"});",
 															"",
 															"pm.test(\"Response body contains standard success fields\", function () {",
 															"    pm.expect(jsonData.status).to.eql(false);",
-															"    pm.expect(jsonData.error.statusCode).to.eql(400)",
+															"    pm.expect(jsonData.statusCode).to.eql(400)",
 															"});",
-															"pm.test(\"The error message about the invalid user is returned\", function () {",
-															"    pm.expect(jsonData.error.message).to.not.be.null;",
+															"pm.test(\"The error message about the invalid action is returned\", function () {",
+															"    pm.expect(jsonData.message[0]).to.eql('action must be one of the followings: update,delete,deactivate,activate');",
 															"});",
 															""
 														],
@@ -8372,6 +8372,12 @@
 												"disableBodyPruning": true
 											},
 											"request": {
+												"auth": {
+													"type": "bearer",
+													"bearer": {
+														"token": "{{Bearer_token}}"
+													}
+												},
 												"method": "PATCH",
 												"header": [
 													{
@@ -8381,7 +8387,7 @@
 												],
 												"body": {
 													"mode": "raw",
-													"raw": "{\n  \"action\": \"activate\"\n}",
+													"raw": "{\n  \"action\": \"activateY\"\n}",
 													"options": {
 														"raw": {
 															"headerFamily": "json",
@@ -8401,7 +8407,6 @@
 													],
 													"variable": [
 														{
-															"id": "2148a5aa-5746-4604-820b-1e4ec621e389",
 															"key": "id",
 															"value": "11",
 															"description": "(Required) "
