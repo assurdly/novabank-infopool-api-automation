@@ -2868,6 +2868,29 @@
 									"item": [
 										{
 											"name": "audit trail",
+											"event": [
+												{
+													"listen": "test",
+													"script": {
+														"id": "4cbbeb46-b8df-4a09-adb4-e97c6b12de6f",
+														"exec": [
+															"var jsonData = pm.response.json();",
+															"",
+															"pm.test(\"Status code is 200\", function () {",
+															"    pm.response.to.have.status(200);",
+															"    pm.expect(jsonData.status).to.eql(true);",
+															"});",
+															"",
+															"pm.test(\"Activities are returned\", function () {",
+															"    pm.expect(jsonData.response.data[0].created_on).to.not.equal(\"\");",
+															"});",
+															""
+														],
+														"type": "text/javascript",
+														"packages": {}
+													}
+												}
+											],
 											"id": "4c0da654-b985-42ff-81f2-4fc0578f4509",
 											"protocolProfileBehavior": {
 												"disableBodyPruning": true
