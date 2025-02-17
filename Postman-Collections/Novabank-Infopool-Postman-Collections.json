@@ -7907,16 +7907,16 @@
 														"exec": [
 															"var jsonData = pm.response.json();",
 															"",
-															"pm.test(\"Status code is 400\", function () {",
-															"    pm.response.to.have.status(400);",
+															"pm.test(\"Status code is 404\", function () {",
+															"    pm.response.to.have.status(404);",
 															"});",
 															"",
-															"pm.test(\"Response body contains standard Error fields\", function () {",
-															"    pm.expect(jsonData.error).to.eql('Bad Request');",
-															"    pm.expect(jsonData.statusCode).to.eql(400)",
+															"pm.test(\"Response body contains standard success fields\", function () {",
+															"    pm.expect(jsonData.status).to.eql(false);",
+															"    pm.expect(jsonData.statusCode).to.eql(404)",
 															"});",
-															"pm.test(\"The error message about the invalid id  is returned\", function () {",
-															"    pm.expect(jsonData.message).to.eql('Validation failed (numeric string is expected)');",
+															"pm.test(\"The error message about the invalid user is returned\", function () {",
+															"    pm.expect(jsonData.message).to.eql('Cannot GET /v1/users/ABC');",
 															"});",
 															""
 														],
@@ -7930,6 +7930,12 @@
 												"disableBodyPruning": true
 											},
 											"request": {
+												"auth": {
+													"type": "bearer",
+													"bearer": {
+														"token": "{{Bearer_token}}"
+													}
+												},
 												"method": "GET",
 												"header": [],
 												"url": {
@@ -7944,7 +7950,6 @@
 													],
 													"variable": [
 														{
-															"id": "9a1e0e52-7f72-49de-a7d4-0b95c46af4dd",
 															"key": "id",
 															"value": "ABC",
 															"description": "(Required) "
@@ -8124,6 +8129,12 @@
 												"disableBodyPruning": true
 											},
 											"request": {
+												"auth": {
+													"type": "bearer",
+													"bearer": {
+														"token": "{{Bearer_token}}"
+													}
+												},
 												"method": "PATCH",
 												"header": [
 													{
@@ -8153,7 +8164,6 @@
 													],
 													"variable": [
 														{
-															"id": "0d363ff4-2fb8-4a4e-8179-7ee44795dd66",
 															"key": "id",
 															"value": "1",
 															"description": "(Required) "
@@ -8225,13 +8235,8 @@
 															"});",
 															"",
 															"pm.test(\"Response body contains standard success fields\", function () {",
-															"    pm.expect(jsonData.status).to.eql(false);",
-															"    pm.expect(jsonData.error.statusCode).to.eql(400)",
-															"});",
-															"pm.test(\"The error message about the invalid user is returned\", function () {",
-															"    pm.expect(jsonData.error.message).to.not.be.null;",
-															"});",
-															""
+															"    pm.expect(jsonData.status).to.eql(true);",
+															"});"
 														],
 														"type": "text/javascript",
 														"packages": {}
@@ -8243,6 +8248,12 @@
 												"disableBodyPruning": true
 											},
 											"request": {
+												"auth": {
+													"type": "bearer",
+													"bearer": {
+														"token": "{{Bearer_token}}"
+													}
+												},
 												"method": "PATCH",
 												"header": [
 													{
@@ -8272,7 +8283,6 @@
 													],
 													"variable": [
 														{
-															"id": "2cae75dc-cd0f-483b-8bc8-61e38405820f",
 															"key": "id",
 															"value": "11",
 															"description": "(Required) "
