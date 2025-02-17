@@ -2645,7 +2645,7 @@
 							"name": "Audit trail",
 							"item": [
 								{
-									"name": "Get audit trail",
+									"name": "Event",
 									"item": [
 										{
 											"name": "Get audit trail_no endpoint",
@@ -2915,7 +2915,7 @@
 									"name": "Audit trail",
 									"item": [
 										{
-											"name": "New Request",
+											"name": "audit trail",
 											"id": "4c0da654-b985-42ff-81f2-4fc0578f4509",
 											"protocolProfileBehavior": {
 												"disableBodyPruning": true
@@ -2935,12 +2935,9 @@
 													}
 												],
 												"url": {
-													"raw": "https://staging-api.infopool.ng/v1/audit-trails?page=1&limit=10&date_start=2025-01-26&date_end=2025-02-09",
-													"protocol": "https",
+													"raw": "{{baseUrl}}/v1/audit-trails?page=1&limit=10&date_start=2025-01-26&date_end=2025-02-09",
 													"host": [
-														"staging-api",
-														"infopool",
-														"ng"
+														"{{baseUrl}}"
 													],
 													"path": [
 														"v1",
