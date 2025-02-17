@@ -2570,6 +2570,29 @@
 										},
 										{
 											"name": "Update profile - Invalid file size",
+											"event": [
+												{
+													"listen": "test",
+													"script": {
+														"id": "68122301-7ba1-426d-86ff-b53f4181ce7a",
+														"exec": [
+															"var jsonData = pm.response.json();",
+															"",
+															"pm.test(\"Status code is 400\", function () {",
+															"    pm.response.to.have.status(400);",
+															"});",
+															"",
+															"pm.test(\"Reponse body contains error fields\", function () {",
+															"    pm.expect(jsonData.status).to.eql(false);",
+															"    pm.expect(jsonData.statusCode).to.eql(400);",
+															"    pm.expect(jsonData.message).to.eql('Uploaded file must be an image of 2MB or less');",
+															"});"
+														],
+														"type": "text/javascript",
+														"packages": {}
+													}
+												}
+											],
 											"id": "d2cd0702-d0d0-4c39-9c8d-c91feb4a0ebc",
 											"protocolProfileBehavior": {
 												"disableBodyPruning": true
