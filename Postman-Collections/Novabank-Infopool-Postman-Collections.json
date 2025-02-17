@@ -7742,6 +7742,12 @@
 												"disableBodyPruning": true
 											},
 											"request": {
+												"auth": {
+													"type": "bearer",
+													"bearer": {
+														"token": "{{Bearer_token}}"
+													}
+												},
 												"method": "GET",
 												"header": [],
 												"url": {
@@ -7756,7 +7762,6 @@
 													],
 													"variable": [
 														{
-															"id": "8ee6a8c0-b539-4f42-99bf-00125373b46f",
 															"key": "id",
 															"value": "1",
 															"description": "(Required) "
@@ -7808,16 +7813,16 @@
 														"exec": [
 															"var jsonData = pm.response.json();",
 															"",
-															"pm.test(\"Status code is 200\", function () {",
-															"    pm.response.to.have.status(200);",
+															"pm.test(\"Status code is 404\", function () {",
+															"    pm.response.to.have.status(404);",
 															"});",
 															"",
 															"pm.test(\"Response body contains standard success fields\", function () {",
 															"    pm.expect(jsonData.status).to.eql(false);",
-															"    pm.expect(jsonData.error.statusCode).to.eql(404)",
+															"    pm.expect(jsonData.statusCode).to.eql(404)",
 															"});",
 															"pm.test(\"The error message about the invalid user is returned\", function () {",
-															"    pm.expect(jsonData.error.message).to.eql('User not found');",
+															"    pm.expect(jsonData.message).to.eql('User with ID 100000 not found');",
 															"});",
 															""
 														],
@@ -7831,6 +7836,12 @@
 												"disableBodyPruning": true
 											},
 											"request": {
+												"auth": {
+													"type": "bearer",
+													"bearer": {
+														"token": "{{Bearer_token}}"
+													}
+												},
 												"method": "GET",
 												"header": [],
 												"url": {
@@ -7845,7 +7856,6 @@
 													],
 													"variable": [
 														{
-															"id": "ab2d2d11-c168-4c07-981d-7fa64b624c2a",
 															"key": "id",
 															"value": "100000",
 															"description": "(Required) "
