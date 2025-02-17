@@ -2232,6 +2232,24 @@
 									"item": [
 										{
 											"name": "Update profile - successful",
+											"event": [
+												{
+													"listen": "test",
+													"script": {
+														"id": "1b1a23e4-289f-4ec4-aee0-4b8919c54473",
+														"exec": [
+															"var jsonData = pm.response.json();",
+															"",
+															"pm.test(\"Status code is 200\", function () {",
+															"    pm.response.to.have.status(200);",
+															"    pm.expect(jsonData.status).to.eql(true);",
+															"});"
+														],
+														"type": "text/javascript",
+														"packages": {}
+													}
+												}
+											],
 											"id": "293c2fca-0f58-461e-af3c-26b3fdb61665",
 											"protocolProfileBehavior": {
 												"disableBodyPruning": true
@@ -2718,6 +2736,24 @@
 										},
 										{
 											"name": "Get events - invalid start date",
+											"event": [
+												{
+													"listen": "test",
+													"script": {
+														"id": "a3d5daa0-26c7-4361-8169-94cfadaad849",
+														"exec": [
+															"var jsonData = pm.response.json();",
+															"",
+															"pm.test(\"Status code is 200\", function () {",
+															"    pm.response.to.have.status(200);",
+															"    pm.expect(jsonData.status).to.eql(true);",
+															"});"
+														],
+														"type": "text/javascript",
+														"packages": {}
+													}
+												}
+											],
 											"id": "31127c6e-f017-4510-b3cf-29eeb220b49f",
 											"protocolProfileBehavior": {
 												"disableBodyPruning": true
@@ -2772,6 +2808,24 @@
 										},
 										{
 											"name": "Get events - invalid end date",
+											"event": [
+												{
+													"listen": "test",
+													"script": {
+														"id": "72c891c1-484a-455d-9c1b-838cd59b1ce3",
+														"exec": [
+															"var jsonData = pm.response.json();",
+															"",
+															"pm.test(\"Status code is 200\", function () {",
+															"    pm.response.to.have.status(200);",
+															"    pm.expect(jsonData.status).to.eql(true);",
+															"});"
+														],
+														"type": "text/javascript",
+														"packages": {}
+													}
+												}
+											],
 											"id": "8b87933f-2388-4f5c-9a61-d186d638dc93",
 											"protocolProfileBehavior": {
 												"disableBodyPruning": true
@@ -2826,6 +2880,24 @@
 										},
 										{
 											"name": "Get events - end date earlier than start date",
+											"event": [
+												{
+													"listen": "test",
+													"script": {
+														"id": "3a53e280-f4a1-4acd-9be5-9a9f613af4b0",
+														"exec": [
+															"var jsonData = pm.response.json();",
+															"",
+															"pm.test(\"Status code is 200\", function () {",
+															"    pm.response.to.have.status(200);",
+															"    pm.expect(jsonData.status).to.eql(true);",
+															"});"
+														],
+														"type": "text/javascript",
+														"packages": {}
+													}
+												}
+											],
 											"id": "92aee796-b1fd-4747-af28-05f2ae79b7ea",
 											"protocolProfileBehavior": {
 												"disableBodyPruning": true
