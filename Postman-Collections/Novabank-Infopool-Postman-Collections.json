@@ -17271,7 +17271,7 @@
 												],
 												"body": {
 													"mode": "raw",
-													"raw": "{\n  \"action\": \"update\",\n  \"data\": {\n    // \"name\": \"New device Template\"\n    // \"description\": \"<string>\",\n    // \"send_push\": \"<boolean>\",\n    // \"send_sms\": \"<boolean>\",\n    // \"send_email\": \"<boolean>\",\n    \"email_template\": \"invitation_link: https://staging.infopool.ng/sign-in/{{invitation_link}} <br> organisation_name {{organisation_name}} <br> role {{role}} <br> first_name {{first_name}}\"\n    // \"subject_template\": \"<string>\",\n    // \"push_template\": \"<string>\",\n    // \"sms_template\": \"<string>\",\n    // \"tags\": [\n    //   \"<string>\",\n    //   \"<string>\"\n    // ],\n    // \"category\": \"<number>\"\n  }\n}",
+													"raw": "{\n  \"action\": \"update\",\n  \"data\": {\n    // \"name\": \"New device Template\"\n    // \"description\": \"<string>\",\n    // \"send_push\": \"<boolean>\",\n    // \"send_sms\": \"<boolean>\",\n    // \"send_email\": \"<boolean>\",\n    \"email_template\": \"invitation_link: https://staging.infopool.ng/accept-invite/{{invitation_link}} <br> organisation_name {{organisation_name}} <br> role {{role}} <br> first_name {{first_name}}\"\n    // \"subject_template\": \"<string>\",\n    // \"push_template\": \"<string>\",\n    // \"sms_template\": \"<string>\",\n    // \"tags\": [\n    //   \"<string>\",\n    //   \"<string>\"\n    // ],\n    // \"category\": \"<number>\"\n  }\n}",
 													"options": {
 														"raw": {
 															"headerFamily": "json",
