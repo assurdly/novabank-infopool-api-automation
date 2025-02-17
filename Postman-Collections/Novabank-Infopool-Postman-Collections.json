@@ -761,16 +761,12 @@
 															"    pm.expect(jsonData.status).to.eql(true);",
 															"});",
 															"",
-															"pm.test(\"Access credentials are returned\", function () {",
-															"    pm.expect(jsonData.response.token_type).is.not.empty;",
-															"    pm.expect(jsonData.response.access_token).is.not.empty;",
-															"    pm.expect(jsonData.response.refresh_token).is.not.empty;",
-															"    pm.expect(jsonData.response.session_id).is.not.empty;",
-															"     pm.expect(jsonData.response.device_id).is.not.empty;",
-															"",
+															"pm.test(\"Response contain standard error message\", function () {",
+															"    pm.expect(jsonData.response.status).to.eql(false);",
+															"    pm.expect(jsonData.response.error.message).to.eql(\"Invalid refresh token: jwt malformed\");",
+															"    pm.expect(jsonData.response.error.statusCode).to.eql(400);",
 															"});",
-															"pm.environment.set(\"Bearer_token\", jsonData.response.access_token);",
-															"pm.environment.set(\"refresh_token\", jsonData.response.refresh_token);"
+															""
 														],
 														"type": "text/javascript",
 														"packages": {}
@@ -791,7 +787,7 @@
 												],
 												"body": {
 													"mode": "raw",
-													"raw": "{\n  \"action\": \"refresh\",\n  \"refresh_token\": \"{{refresh_token}}\"\n}",
+													"raw": "{\n  \"action\": \"refresh\",\n  \"refresh_token\": \"wesdrftgyhujimkolpojihgufydtrsedrfghjk\"\n}",
 													"options": {
 														"raw": {
 															"headerFamily": "json",
