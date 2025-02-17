@@ -2287,6 +2287,28 @@
 										},
 										{
 											"name": "Update profile - no phone number",
+											"event": [
+												{
+													"listen": "test",
+													"script": {
+														"id": "bdfa0326-da0c-47f9-a30e-e5343f006705",
+														"exec": [
+															"var jsonData = pm.response.json();",
+															"",
+															"pm.test(\"Status code is 400\", function () {",
+															"    pm.response.to.have.status(400);",
+															"});",
+															"pm.test(\"Reponse body contains standard Error fields\", function () {",
+															"    pm.expect(jsonData.statusCode).to.eql(400);",
+															"    pm.expect(jsonData.status).to.eql(false);",
+															"    pm.expect(jsonData.message[1]).to.eql('phone should not be empty');",
+															"});"
+														],
+														"type": "text/javascript",
+														"packages": {}
+													}
+												}
+											],
 											"id": "fe9b8704-a29a-4868-95eb-df5d60884a5d",
 											"protocolProfileBehavior": {
 												"disableBodyPruning": true
@@ -2311,7 +2333,7 @@
 												],
 												"body": {
 													"mode": "raw",
-													"raw": "{\n  \"phone\": \"09033362914\"\n}",
+													"raw": "{\n  \"phone\": \"\"\n}",
 													"options": {
 														"raw": {
 															"language": "json"
@@ -2324,6 +2346,28 @@
 										},
 										{
 											"name": "Update profile - invalid phone number",
+											"event": [
+												{
+													"listen": "test",
+													"script": {
+														"id": "7da33681-d450-4a98-8c31-87664fcb35be",
+														"exec": [
+															"var jsonData = pm.response.json();",
+															"",
+															"pm.test(\"Status code is 400\", function () {",
+															"    pm.response.to.have.status(400);",
+															"});",
+															"pm.test(\"Reponse body contains standard Error fields\", function () {",
+															"    pm.expect(jsonData.statusCode).to.eql(400);",
+															"    pm.expect(jsonData.status).to.eql(false);",
+															"    pm.expect(jsonData.message[0]).to.eql('phone number must be a valid Nigerian number');",
+															"});"
+														],
+														"type": "text/javascript",
+														"packages": {}
+													}
+												}
+											],
 											"id": "0bcb6151-72ae-4c8e-96d6-fcf814d0c031",
 											"protocolProfileBehavior": {
 												"disableBodyPruning": true
@@ -2348,7 +2392,7 @@
 												],
 												"body": {
 													"mode": "raw",
-													"raw": "{\n  \"phone\": \"09033362914\"\n}",
+													"raw": "{\n  \"phone\": \"0903336\"\n}",
 													"options": {
 														"raw": {
 															"language": "json"
@@ -2451,6 +2495,142 @@
 												},
 												{
 													"id": "ad523d9f-d8c3-40d3-bd1f-3f4999195b65",
+													"name": "Untitled Response",
+													"originalRequest": {
+														"method": "PATCH",
+														"header": [
+															{
+																"key": "Content-Type",
+																"value": "multipart/form-data"
+															},
+															{
+																"key": "Accept",
+																"value": "application/json"
+															},
+															{
+																"description": "Added as a part of security scheme: bearer",
+																"key": "Authorization",
+																"value": "Bearer <token>"
+															}
+														],
+														"body": {
+															"mode": "formdata",
+															"formdata": [
+																{
+																	"key": "phone",
+																	"value": "<string>",
+																	"type": "text"
+																},
+																{
+																	"key": "picture",
+																	"value": "<binary>",
+																	"type": "text"
+																}
+															]
+														},
+														"url": "{{baseUrl}}/v1/profile"
+													},
+													"status": "Unauthorized",
+													"code": 401,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "application/json"
+														}
+													],
+													"cookie": [],
+													"responseTime": null,
+													"body": "{\n  \"status\": false,\n  \"statusCode\": 401,\n  \"timestamp\": \"<date>\",\n  \"path\": \"/v1/path/guarded\",\n  \"message\": \"Unauthorized\"\n}"
+												}
+											]
+										},
+										{
+											"name": "Update profile with picture and phone Copy",
+											"id": "eea62ae8-6f03-4fb5-b3c3-1c989cf3c534",
+											"protocolProfileBehavior": {
+												"disableBodyPruning": true
+											},
+											"request": {
+												"auth": {
+													"type": "bearer",
+													"bearer": {
+														"token": "{{Bearer_token}}"
+													}
+												},
+												"method": "PATCH",
+												"header": [
+													{
+														"key": "accept",
+														"value": "*/*"
+													}
+												],
+												"body": {
+													"mode": "formdata",
+													"formdata": [
+														{
+															"type": "file",
+															"contentType": "image/png",
+															"key": "photo",
+															"src": "HaF5kdfW-/3MP_test_image.jpg"
+														}
+													]
+												},
+												"url": "{{baseUrl}}/v1/profile/photo"
+											},
+											"response": [
+												{
+													"id": "49d5375a-50da-4ba4-ba56-5b204625e431",
+													"name": "Untitled Response",
+													"originalRequest": {
+														"method": "PATCH",
+														"header": [
+															{
+																"key": "Content-Type",
+																"value": "multipart/form-data"
+															},
+															{
+																"key": "Accept",
+																"value": "application/json"
+															},
+															{
+																"description": "Added as a part of security scheme: bearer",
+																"key": "Authorization",
+																"value": "Bearer <token>"
+															}
+														],
+														"body": {
+															"mode": "formdata",
+															"formdata": [
+																{
+																	"key": "phone",
+																	"value": "<string>",
+																	"type": "text"
+																},
+																{
+																	"key": "picture",
+																	"value": "<binary>",
+																	"type": "text"
+																}
+															]
+														},
+														"url": "{{baseUrl}}/v1/profile"
+													},
+													"status": "Bad Request",
+													"code": 400,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "application/json"
+														}
+													],
+													"cookie": [],
+													"responseTime": null,
+													"body": "{\n  \"statusCode\": \"<number>\",\n  \"timestamp\": \"<date>\",\n  \"path\": \"<string>\",\n  \"method\": \"<string>\",\n  \"error\": \"<string>\",\n  \"message\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}"
+												},
+												{
+													"id": "186c407c-034e-4025-8bb9-69f534366090",
 													"name": "Untitled Response",
 													"originalRequest": {
 														"method": "PATCH",
