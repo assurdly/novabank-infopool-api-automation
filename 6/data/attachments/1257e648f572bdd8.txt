@@ -1,0 +1,13 @@
+var jsonData = pm.response.json();
+
+pm.test("Status code is 401", function () {
+    pm.response.to.have.status(401);
+});
+pm.test("Reponse body contains standard error fields", function () {
+    pm.expect(jsonData.statusCode).to.eql(401);
+    pm.expect(jsonData.status).to.eql(false);
+    pm.expect(jsonData.message).to.eql('Invalid credentials');
+});
+pm.test("Error message stating invalid credentials is returned", function () {
+    pm.expect(jsonData.message).to.eql('Invalid credentials');
+});

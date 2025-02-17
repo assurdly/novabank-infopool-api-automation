@@ -1,0 +1,1 @@
+{"status":false,"statusCode":400,"timestamp":"2025-02-17T07:24:33.442Z","path":"/v1/definitions","message":["property slug should not exist","property name should not exist","property description should not exist","property parent_id should not exist","property meta should not exist","definitions should not be empty","definitions must be an array"]}

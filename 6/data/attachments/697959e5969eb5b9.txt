@@ -1,0 +1,1 @@
+{"status":false,"statusCode":400,"timestamp":"2025-02-17T07:24:45.636Z","path":"/v1/organizations","message":["property hierarchy_id should not exist"]}

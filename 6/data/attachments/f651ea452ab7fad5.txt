@@ -1,0 +1,1 @@
+{"status":false,"statusCode":400,"timestamp":"2025-02-17T07:24:58.878Z","path":"/v1/roles","message":"Role with name Account Officer already exists"}
