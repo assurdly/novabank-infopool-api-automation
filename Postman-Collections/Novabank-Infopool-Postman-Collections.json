@@ -11690,7 +11690,7 @@
 												],
 												"body": {
 													"mode": "raw",
-													"raw": "{\n  \"action\": \"update\",\n  \"data\": {\n    // \"name\": \"<string>\",\n    // \"description\": \"<string>\",\n    // \"operation_manager_id\": \"<number>\",\n    \"business_manager_id\": 4\n    // \"hierarchy_id\": \"<number>\",\n    // \"street\": \"<string>\",\n    // \"city\": \"<string>\",\n    // \"state\": \"<number>\",\n    // \"country\": \"<number>\",\n    // \"organization_type\": \"<number>\",\n    // \"mis_code\": \"<string>\",\n    // \"parent_id\": \"<number>\"\n  }\n}",
+													"raw": "{\n  \"action\": \"update\",\n  \"data\": {\n    \"name\": \"Nova Bank\",\n    \"description\": \"This is a global organization\"\n    // \"operation_manager_id\": \"<number>\",\n    // \"business_manager_id\": 4\n    // \"hierarchy_id\": \"<number>\",\n    // \"street\": \"<string>\",\n    // \"city\": \"<string>\",\n    // \"state\": \"<number>\",\n    // \"country\": \"<number>\",\n    // \"organization_type\": \"<number>\",\n    // \"mis_code\": \"<string>\",\n    // \"parent_id\": \"<number>\"\n  }\n}",
 													"options": {
 														"raw": {
 															"headerFamily": "json",
@@ -11710,7 +11710,6 @@
 													],
 													"variable": [
 														{
-															"id": "6bf1ec86-7dab-4da3-90c8-df23adf106cc",
 															"key": "organizationId",
 															"value": "17",
 															"description": "(Required) "
