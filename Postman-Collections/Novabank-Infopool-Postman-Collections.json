@@ -7771,22 +7771,80 @@
 									"id": "a71f03a6-01f2-4481-8988-be6ca4791cef"
 								},
 								{
-									"name": "Fetch Settings value",
+									"name": "Setting value",
 									"item": [
 										{
-											"name": "value",
-											"id": "85f81f6d-a801-49df-8732-9ca87038cb3a",
-											"protocolProfileBehavior": {
-												"disableBodyPruning": true
-											},
-											"request": {
-												"method": "GET",
-												"header": []
-											},
-											"response": []
+											"name": "Fetch Settings value",
+											"item": [
+												{
+													"name": "value",
+													"id": "85f81f6d-a801-49df-8732-9ca87038cb3a",
+													"protocolProfileBehavior": {
+														"disableBodyPruning": true
+													},
+													"request": {
+														"method": "GET",
+														"header": [
+															{
+																"key": "accept",
+																"value": "*/*"
+															}
+														],
+														"url": {
+															"raw": "{{baseUrl}}/v1/settings/master/1/values?page=1&limit=10",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"v1",
+																"settings",
+																"master",
+																"1",
+																"values"
+															],
+															"query": [
+																{
+																	"key": "page",
+																	"value": "1"
+																},
+																{
+																	"key": "limit",
+																	"value": "10"
+																}
+															]
+														}
+													},
+													"response": []
+												}
+											],
+											"id": "517e40a3-8d33-44c0-bffa-acccfc329f45"
+										},
+										{
+											"name": "Fetch value by ID",
+											"item": [
+												{
+													"name": "value by id",
+													"id": "dfaefc91-49f1-43d1-9fb3-bb9aa797d709",
+													"protocolProfileBehavior": {
+														"disableBodyPruning": true
+													},
+													"request": {
+														"method": "GET",
+														"header": [
+															{
+																"key": "accept",
+																"value": "*/*"
+															}
+														],
+														"url": "https://staging-api.infopool.ng/v1/settings/master/1/values/1"
+													},
+													"response": []
+												}
+											],
+											"id": "be3c6b1f-701a-4e84-9384-d4fc908c78a0"
 										}
 									],
-									"id": "517e40a3-8d33-44c0-bffa-acccfc329f45"
+									"id": "951cdd80-a7ad-40d6-8c6e-18aa2c553af7"
 								}
 							],
 							"id": "9c6f25cf-0a47-403f-acca-182027ce1c5f"
