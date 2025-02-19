@@ -7835,6 +7835,12 @@
 														"disableBodyPruning": true
 													},
 													"request": {
+														"auth": {
+															"type": "bearer",
+															"bearer": {
+																"token": "{{Bearer_token}}"
+															}
+														},
 														"method": "GET",
 														"header": [
 															{
@@ -7842,7 +7848,7 @@
 																"value": "*/*"
 															}
 														],
-														"url": "https://staging-api.infopool.ng/v1/settings/master/1/values/1"
+														"url": "https://staging-api.infopool.ng/v1/settings/master/1/values/4"
 													},
 													"response": []
 												}
