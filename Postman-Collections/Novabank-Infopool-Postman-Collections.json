@@ -6761,14 +6761,14 @@
 												],
 												"body": {
 													"mode": "raw",
-													"raw": "{\n  \"value\": 15\n}",
+													"raw": "{\n  \"value\": \"090119987nova\"\n}",
 													"options": {
 														"raw": {
 															"language": "json"
 														}
 													}
 												},
-												"url": "{{baseUrl}}/v1/settings/master/29/values"
+												"url": "{{baseUrl}}/v1/settings/master/4/values"
 											},
 											"response": [
 												{
