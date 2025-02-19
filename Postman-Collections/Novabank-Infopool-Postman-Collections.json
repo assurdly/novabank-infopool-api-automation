@@ -6481,9 +6481,8 @@
 													],
 													"variable": [
 														{
-															"id": "b5f37226-68be-4cc3-8294-f5e8b6f7d48d",
 															"key": "id",
-															"value": "<number>",
+															"value": "29",
 															"description": "(Required) "
 														}
 													]
@@ -6763,14 +6762,14 @@
 												],
 												"body": {
 													"mode": "raw",
-													"raw": "{\n  \"value\": true,\n  \"meta\": {\n    \"displayName\": \"User Notifications\",\n    \"icon\": \"bell\"\n  }\n}",
+													"raw": "{\n  \"value\": 5\n}",
 													"options": {
 														"raw": {
 															"language": "json"
 														}
 													}
 												},
-												"url": "{{baseUrl}}/v1/settings/master/1/values"
+												"url": "{{baseUrl}}/v1/settings/master/29/values"
 											},
 											"response": [
 												{
