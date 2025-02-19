@@ -7719,14 +7719,48 @@
 											"name": "get category",
 											"item": [
 												{
-													"name": "New Request",
+													"name": "category",
 													"id": "224a6735-d89b-4c3c-8c14-8a1ef4ec06b9",
 													"protocolProfileBehavior": {
 														"disableBodyPruning": true
 													},
 													"request": {
+														"auth": {
+															"type": "bearer",
+															"bearer": {
+																"token": "{{Bearer_token}}"
+															}
+														},
 														"method": "GET",
-														"header": []
+														"header": [
+															{
+																"key": "accept",
+																"value": "*/*"
+															}
+														],
+														"url": {
+															"raw": "{{baseUrl}}/v1/settings/master/categories/1?page=1&limit=10",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"v1",
+																"settings",
+																"master",
+																"categories",
+																"1"
+															],
+															"query": [
+																{
+																	"key": "page",
+																	"value": "1"
+																},
+																{
+																	"key": "limit",
+																	"value": "10"
+																}
+															]
+														}
 													},
 													"response": []
 												}
