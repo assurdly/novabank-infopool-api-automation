@@ -7739,7 +7739,7 @@
 															}
 														],
 														"url": {
-															"raw": "{{baseUrl}}/v1/settings/master/categories/1?page=1&limit=10",
+															"raw": "{{baseUrl}}/v1/settings/master/categories/organization-settings?page=1&limit=10",
 															"host": [
 																"{{baseUrl}}"
 															],
@@ -7748,7 +7748,7 @@
 																"settings",
 																"master",
 																"categories",
-																"1"
+																"organization-settings"
 															],
 															"query": [
 																{
