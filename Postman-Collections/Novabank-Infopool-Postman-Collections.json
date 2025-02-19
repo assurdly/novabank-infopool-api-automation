@@ -7873,7 +7873,7 @@
 																}
 															}
 														},
-														"url": "https://staging-api.infopool.ng/v1/settings/master/1/values/1"
+														"url": "{{baseUrl}}/v1/settings/master/1/values/1"
 													},
 													"response": []
 												}
