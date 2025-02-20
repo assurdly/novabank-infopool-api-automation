@@ -17811,6 +17811,12 @@
 														"disableBodyPruning": true
 													},
 													"request": {
+														"auth": {
+															"type": "bearer",
+															"bearer": {
+																"token": "{{Bearer_token}}"
+															}
+														},
 														"method": "GET",
 														"header": [
 															{
@@ -17849,14 +17855,48 @@
 											"name": "Fetch category by d",
 											"item": [
 												{
-													"name": "New Request",
+													"name": "category by id",
 													"id": "675d8b71-0016-49cd-9417-92001d33cdc1",
 													"protocolProfileBehavior": {
 														"disableBodyPruning": true
 													},
 													"request": {
+														"auth": {
+															"type": "bearer",
+															"bearer": {
+																"token": "{{Bearer_token}}"
+															}
+														},
 														"method": "GET",
-														"header": []
+														"header": [
+															{
+																"key": "accept",
+																"value": "application/json"
+															}
+														],
+														"url": {
+															"raw": "{{baseUrl}}/v1/notifications/categories/3164/templates?page=1&limit=10",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"v1",
+																"notifications",
+																"categories",
+																"3164",
+																"templates"
+															],
+															"query": [
+																{
+																	"key": "page",
+																	"value": "1"
+																},
+																{
+																	"key": "limit",
+																	"value": "10"
+																}
+															]
+														}
 													},
 													"response": []
 												}
