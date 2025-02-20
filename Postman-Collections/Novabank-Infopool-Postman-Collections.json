@@ -14662,6 +14662,18 @@
 															"body": "{\n  \"status\": \"<boolean>\",\n  \"response\": {\n    \"total\": \"<number>\",\n    \"page\": \"<number>\",\n    \"limit\": \"<number>\",\n    \"totalPages\": \"<number>\",\n    \"data\": [\n      {\n        \"id\": \"<number>\",\n        \"parentOrganization\": {\n          \"value\": \"<Circular reference to #/components/schemas/Organization detected>\"\n        },\n        \"business_manager_id\": \"<number>\",\n        \"businessManager\": {},\n        \"operation_manager_id\": \"<number>\",\n        \"operationsManager\": {},\n        \"hierarchy_id\": \"<number>\",\n        \"mis_code\": \"<string>\",\n        \"name\": \"<string>\",\n        \"description\": \"<string>\",\n        \"street\": \"<string>\",\n        \"city\": \"<string>\",\n        \"state\": \"<number>\",\n        \"stateInfo\": {},\n        \"country\": \"<number>\",\n        \"countryInfo\": {},\n        \"organization_type\": \"<number>\",\n        \"organizationTypeInfo\": {},\n        \"meta\": {}\n      },\n      {\n        \"id\": \"<number>\",\n        \"parentOrganization\": {\n          \"value\": \"<Circular reference to #/components/schemas/Organization detected>\"\n        },\n        \"business_manager_id\": \"<number>\",\n        \"businessManager\": {},\n        \"operation_manager_id\": \"<number>\",\n        \"operationsManager\": {},\n        \"hierarchy_id\": \"<number>\",\n        \"mis_code\": \"<string>\",\n        \"name\": \"<string>\",\n        \"description\": \"<string>\",\n        \"street\": \"<string>\",\n        \"city\": \"<string>\",\n        \"state\": \"<number>\",\n        \"stateInfo\": {},\n        \"country\": \"<number>\",\n        \"countryInfo\": {},\n        \"organization_type\": \"<number>\",\n        \"organizationTypeInfo\": {},\n        \"meta\": {}\n      }\n    ]\n  }\n}"
 														}
 													]
+												},
+												{
+													"name": "New Request",
+													"id": "8763a632-8d5b-449e-a85e-032d0454c5ba",
+													"protocolProfileBehavior": {
+														"disableBodyPruning": true
+													},
+													"request": {
+														"method": "GET",
+														"header": []
+													},
+													"response": []
 												}
 											],
 											"id": "cafa8f94-2977-41e0-a771-37c85824bada"
