@@ -17799,6 +17799,22 @@
 									"id": "27de1958-5183-4aa6-a90e-6eafd70b0160"
 								},
 								{
+									"name": "Category",
+									"item": [
+										{
+											"name": "Fetch notification category",
+											"item": [],
+											"id": "3d245aca-e8e8-41b4-851f-fbc599d448a6"
+										},
+										{
+											"name": "Fetch category by d",
+											"item": [],
+											"id": "cc29044a-45ae-42c1-afde-f8c67d2d85ae"
+										}
+									],
+									"id": "249d6f48-f99f-460a-909a-b003565de31b"
+								},
+								{
 									"name": "Notifications Controller create Notification v1",
 									"id": "9912bc5a-91a1-4312-acb4-21825ed1cc05",
 									"protocolProfileBehavior": {
