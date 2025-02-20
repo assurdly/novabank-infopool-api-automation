@@ -1754,7 +1754,7 @@
 															"type": "file",
 															"contentType": "image/png",
 															"key": "photo",
-															"src": "GQGx7pWD4/Screen Shot 2025-02-17 at 6.33.54 AM.png"
+															"src": "L-TzQBlXl/Screen Shot 2025-02-20 at 3.16.03 PM.png"
 														}
 													]
 												},
@@ -5051,6 +5051,12 @@
 														"disableBodyPruning": true
 													},
 													"request": {
+														"auth": {
+															"type": "bearer",
+															"bearer": {
+																"token": "{{Bearer_token}}"
+															}
+														},
 														"method": "PATCH",
 														"header": [
 															{
@@ -5060,7 +5066,7 @@
 														],
 														"body": {
 															"mode": "raw",
-															"raw": "{\n  \"action\": \"update\",\n  \"data\": {\n    \"description\": \"New Description\"\n  }\n}",
+															"raw": "{\n  \"action\": \"update\",\n  \"data\": {\n    \"custom_validation\": \"{        \\\"$schema\\\": \\\"http://json-schema.org/draft-07/schema#\\\",        \\\"title\\\": \\\"Generated schema for Root\\\",        \\\"type\\\": \\\"object\\\",        \\\"properties\\\": {            \\\"minLength\\\": {                \\\"type\\\": \\\"number\\\"            },            \\\"minLowercase\\\": {                \\\"type\\\": \\\"number\\\"            },            \\\"minUppercase\\\": {                \\\"type\\\": \\\"number\\\"            },            \\\"minNumbers\\\": {                \\\"type\\\": \\\"number\\\"            },            \\\"minSymbols\\\": {                \\\"type\\\": \\\"number\\\"            }        },        \\\"required\\\": [            \\\"minLength\\\",            \\\"minLowercase\\\",            \\\"minUppercase\\\",            \\\"minNumbers\\\",            \\\"minSymbols\\\"        ]    }\"\n  }\n}",
 															"options": {
 																"raw": {
 																	"headerFamily": "json",
@@ -5081,9 +5087,8 @@
 															],
 															"variable": [
 																{
-																	"id": "ba786e69-70d3-4db9-9858-77838365c8bd",
 																	"key": "id",
-																	"value": "<number>",
+																	"value": "27",
 																	"description": "(Required) "
 																}
 															]
@@ -8244,6 +8249,12 @@
 														{
 															"key": "limit",
 															"value": "10"
+														},
+														{
+															"key": "search",
+															"value": "favour",
+															"type": "text",
+															"disabled": true
 														}
 													]
 												}
@@ -14701,7 +14712,7 @@
 														"method": "GET",
 														"header": [],
 														"url": {
-															"raw": "{{baseUrl}}/v1/organizations/:organizationId/users?page=1&limit=10",
+															"raw": "{{baseUrl}}/v1/organizations/:organizationId/users?page=2&limit=10&search=favour",
 															"host": [
 																"{{baseUrl}}"
 															],
@@ -14714,16 +14725,20 @@
 															"query": [
 																{
 																	"key": "page",
-																	"value": "1"
+																	"value": "2"
 																},
 																{
 																	"key": "limit",
 																	"value": "10"
+																},
+																{
+																	"key": "search",
+																	"value": "favour",
+																	"type": "text"
 																}
 															],
 															"variable": [
 																{
-																	"id": "6b81bbc6-de10-4240-a723-187488795154",
 																	"key": "organizationId",
 																	"value": "17",
 																	"description": "(Required) "
