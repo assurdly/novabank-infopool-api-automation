@@ -14569,36 +14569,32 @@
 															}
 														],
 														"url": {
-															"raw": "{{baseUrl}}/v1/organizations/:organizationId/sub-organizations?page=1&limit=10&organization_type=1",
+															"raw": "{{baseUrl}}/v1/organizations/17/sub-organizations",
 															"host": [
 																"{{baseUrl}}"
 															],
 															"path": [
 																"v1",
 																"organizations",
-																":organizationId",
+																"17",
 																"sub-organizations"
 															],
 															"query": [
 																{
 																	"key": "page",
-																	"value": "1"
+																	"value": "1",
+																	"disabled": true
 																},
 																{
 																	"key": "limit",
-																	"value": "10"
+																	"value": "10",
+																	"disabled": true
 																},
 																{
 																	"key": "organization_type",
-																	"value": "1",
-																	"description": "type of organization"
-																}
-															],
-															"variable": [
-																{
-																	"key": "organizationId",
-																	"value": "17",
-																	"description": "(Required) "
+																	"value": "1757",
+																	"description": "type of organization",
+																	"disabled": true
 																}
 															]
 														}
