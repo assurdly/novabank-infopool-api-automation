@@ -17802,13 +17802,65 @@
 									"name": "Category",
 									"item": [
 										{
-											"name": "Fetch notification category",
-											"item": [],
+											"name": "Fetch all category",
+											"item": [
+												{
+													"name": "get all category",
+													"id": "3dce576d-86ce-46f0-8538-07f5e8b1275e",
+													"protocolProfileBehavior": {
+														"disableBodyPruning": true
+													},
+													"request": {
+														"method": "GET",
+														"header": [
+															{
+																"key": "accept",
+																"value": "application/json"
+															}
+														],
+														"url": {
+															"raw": "{{baseUrl}}/v1/notifications/categories?page=1&limit=10",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"v1",
+																"notifications",
+																"categories"
+															],
+															"query": [
+																{
+																	"key": "page",
+																	"value": "1"
+																},
+																{
+																	"key": "limit",
+																	"value": "10"
+																}
+															]
+														}
+													},
+													"response": []
+												}
+											],
 											"id": "3d245aca-e8e8-41b4-851f-fbc599d448a6"
 										},
 										{
 											"name": "Fetch category by d",
-											"item": [],
+											"item": [
+												{
+													"name": "New Request",
+													"id": "675d8b71-0016-49cd-9417-92001d33cdc1",
+													"protocolProfileBehavior": {
+														"disableBodyPruning": true
+													},
+													"request": {
+														"method": "GET",
+														"header": []
+													},
+													"response": []
+												}
+											],
 											"id": "cc29044a-45ae-42c1-afde-f8c67d2d85ae"
 										}
 									],
