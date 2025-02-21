@@ -741,6 +741,20 @@
 											"item": [
 												{
 													"name": "Verify MFA code, MFA backup code, Email or SMS OTP",
+													"event": [
+														{
+															"listen": "test",
+															"script": {
+																"id": "e4c55b62-9b10-40ba-93be-0c2a98875311",
+																"exec": [
+																	"var jsonData = pm.response.json();",
+																	"pm.environment.set(\"Bearer_token\", jsonData.response.access_token);"
+																],
+																"type": "text/javascript",
+																"packages": {}
+															}
+														}
+													],
 													"id": "c964df88-97eb-4b66-8dbb-c8f898940499",
 													"protocolProfileBehavior": {
 														"disableBodyPruning": true
@@ -765,7 +779,7 @@
 														],
 														"body": {
 															"mode": "raw",
-															"raw": "{\n  \"verification_code\": \"077786\",\n  \"otp_type\": \"TOTP\",\n  \"operation\": \"LOGIN\"\n//   \"delivery_channel\": \"EMAIL\",\n//   \"recipient\": \"QA@yopmail.com\"\n}",
+															"raw": "{\n  \"verification_code\": \"099210\",\n  \"otp_type\": \"TOTP\",\n  \"operation\": \"LOGIN\"\n//   \"delivery_channel\": \"EMAIL\",\n//   \"recipient\": \"QA@yopmail.com\"\n}",
 															"options": {
 																"raw": {
 																	"headerFamily": "json",
