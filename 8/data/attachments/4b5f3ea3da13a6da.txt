@@ -1,0 +1,6 @@
+{
+  "action": "disable",
+  "password": "@passwordA1",
+  "code": "017689",
+  "secret": "GEVEQA2GOUWUCIBH"
+}

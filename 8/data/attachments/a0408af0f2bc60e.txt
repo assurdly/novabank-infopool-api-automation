@@ -1,0 +1,1 @@
+{"status":false,"statusCode":404,"timestamp":"2025-02-21T18:51:43.624Z","path":"/v1/settings?page=1&limit=10","message":"Cannot GET /v1/settings?page=1&limit=10"}
