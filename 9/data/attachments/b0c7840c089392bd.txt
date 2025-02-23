@@ -1,0 +1,41 @@
+{
+  "type": "SMS",
+  "variables": {},
+  "template_id": "<number>",
+  "recipients": [
+    {
+      "name": "<string>",
+      "phone": "<string>",
+      "email": "<string>"
+    },
+    {
+      "name": "<string>",
+      "phone": "<string>",
+      "email": "<string>"
+    }
+  ],
+  "cc": [
+    {
+      "name": "<string>",
+      "phone": "<string>",
+      "email": "<string>"
+    },
+    {
+      "name": "<string>",
+      "phone": "<string>",
+      "email": "<string>"
+    }
+  ],
+  "bcc": [
+    {
+      "name": "<string>",
+      "phone": "<string>",
+      "email": "<string>"
+    },
+    {
+      "name": "<string>",
+      "phone": "<string>",
+      "email": "<string>"
+    }
+  ]
+}

@@ -1,0 +1,4 @@
+{
+  "current_password": "QAtester@A11",
+  "new_password": "@passwordA1"
+}
