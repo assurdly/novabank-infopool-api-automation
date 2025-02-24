@@ -410,7 +410,7 @@
 														],
 														"body": {
 															"mode": "raw",
-															"raw": "{\n  \"email\": \"favour@yopmail.com\"\n}",
+															"raw": "{\n  \"email\": \"favourdesent@yopmail.com\"\n}",
 															"options": {
 																"raw": {
 																	"language": "json"
@@ -605,6 +605,28 @@
 											"item": [
 												{
 													"name": "Get Email or SMS OTP",
+													"event": [
+														{
+															"listen": "test",
+															"script": {
+																"id": "74a4af24-d8f8-46cd-8ebc-e3630ce0950e",
+																"exec": [
+																	"var jsonData = pm.response.json();",
+																	"",
+																	"pm.test(\"Status code is 201\", function () {",
+																	"    pm.response.to.have.status(201);",
+																	"    pm.expect(jsonData.status).to.eql(true);",
+																	"});",
+																	"pm.test(\"Reponse body contains success fields\", function () {",
+																	"    pm.expect(jsonData.status).to.eql(true);",
+																	"    pm.expect(jsonData.response.message).to.eql(\"OTP sent via email\");",
+																	"});"
+																],
+																"type": "text/javascript",
+																"packages": {}
+															}
+														}
+													],
 													"id": "cdb2805a-53ea-4acb-91ae-cc0a0c1f1f8d",
 													"protocolProfileBehavior": {
 														"disableBodyPruning": true
@@ -613,7 +635,7 @@
 														"auth": {
 															"type": "bearer",
 															"bearer": {
-																"token": "{{bearerToken}}"
+																"token": "{{Bearer_token}}"
 															}
 														},
 														"method": "POST",
@@ -629,7 +651,7 @@
 														],
 														"body": {
 															"mode": "raw",
-															"raw": "{\n  \"operation\": \"<string>\",\n  \"delivery_channel\": \"SMS\",\n  \"email\": \"<string>\",\n  \"phone\": \"<string>\"\n}",
+															"raw": "{\n  \"operation\": \"FORGOT_PASSWORD\",\n  \"delivery_channel\": \"EMAIL\",\n  \"email\": \"qa@yopmail.com\"\n//   \"phone\": \"\"\n}",
 															"options": {
 																"raw": {
 																	"headerFamily": "json",
@@ -748,7 +770,15 @@
 																"id": "e4c55b62-9b10-40ba-93be-0c2a98875311",
 																"exec": [
 																	"var jsonData = pm.response.json();",
-																	"pm.environment.set(\"Bearer_token\", jsonData.response.access_token);"
+																	"// pm.environment.set(\"Bearer_token\", jsonData.response.access_token);",
+																	"",
+																	"pm.test(\"Status code is 400\", function () {",
+																	"    pm.response.to.have.status(400);",
+																	"});",
+																	"pm.test(\"Reponse body contains standard Error fields\", function () {",
+																	"    pm.expect(jsonData.statusCode).to.eql(400);",
+																	"    pm.expect(jsonData.status).to.eql(false);",
+																	"});"
 																],
 																"type": "text/javascript",
 																"packages": {}
@@ -779,7 +809,7 @@
 														],
 														"body": {
 															"mode": "raw",
-															"raw": "{\n  \"verification_code\": \"099210\",\n  \"otp_type\": \"TOTP\",\n  \"operation\": \"LOGIN\"\n//   \"delivery_channel\": \"EMAIL\",\n//   \"recipient\": \"QA@yopmail.com\"\n}",
+															"raw": "{\n  \"verification_code\": \"421968\",\n  \"otp_type\": \"OTP\",\n  \"operation\": \"FORGOT_PASSWORD\",\n  \"delivery_channel\": \"EMAIL\",\n  \"recipient\": \"favourdesent@yopmail.com\"\n}",
 															"options": {
 																"raw": {
 																	"headerFamily": "json",
@@ -1003,7 +1033,7 @@
 												],
 												"body": {
 													"mode": "raw",
-													"raw": "{\n  \"current_password\": \"QAtester@A11\",\n  \"new_password\": \"@passwordA1\"\n}",
+													"raw": "{\n  \"current_password\": \"@passwordA1\",\n  \"new_password\": \"@passwordA1\"\n}",
 													"options": {
 														"raw": {
 															"headerFamily": "json",
@@ -8066,12 +8096,10 @@
 																"id": "b2d98e00-a088-42b1-9d5c-f8a9eb6eb1a1",
 																"exec": [
 																	"var jsonData = pm.response.json();",
-																	"",
 																	"pm.test(\"Status code is 201\", function () {",
 																	"    pm.response.to.have.status(201);",
 																	"    pm.expect(jsonData.status).to.eql(true);",
 																	"});",
-																	"",
 																	"pm.test(\"Access credentials are returned\", function () {",
 																	"    pm.expect(jsonData.response.token_type).is.not.empty;",
 																	"    pm.expect(jsonData.response.access_token).is.not.empty;",
@@ -8102,7 +8130,7 @@
 														],
 														"body": {
 															"mode": "raw",
-															"raw": "{\n  \"email\": \"favourdesent@yopmail.com\",\n  \"password\": \"@passwordA1\",\n//   \"device_id\": \"b9f1cd14-db59-4831-88e5-e8abf06eefb6\",\n  \"device_type\": \"mobile\",\n  \"device_name\": \"iPhone 11\",\n  \"location\": \"Lagos\"\n  \n\n//   \"email\": \"favour@yopmail.com\",\n//   \"password\": \"@passwordA1\",\n//   //\"device_id\": \"10.32.2.66\",\n//   \"device_type\": \"mobile\",\n//   \"device_name\": \"iPhone 11\",\n//   \"location\": \"Lagos\"\n}",
+															"raw": "{\n  \"email\": \"favourdesent@yopmail.com\",\n  \"password\": \"@passwordA1\",\n//   \"device_id\": \"b9f1cd14-db59-4831-88e5-e8abf06eefb6\",\n  \"device_type\": \"mobile\",\n  \"device_name\": \"iPhone 11\",\n  \"location\": \"Lagos\"\n}",
 															"options": {
 																"raw": {
 																	"headerFamily": "json",
@@ -8244,10 +8272,8 @@
 																	"pm.test(\"Status code is 401\", function () {",
 																	"    pm.response.to.have.status(401);",
 																	"});",
-																	"",
 																	"pm.test(\"Error message is returned\", function () {",
 																	"    pm.expect(jsonData.message).to.eql('Unauthorized');",
-																	"",
 																	"});"
 																],
 																"type": "text/javascript",
