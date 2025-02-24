@@ -13179,6 +13179,73 @@
 										}
 									],
 									"id": "96ef46cd-1298-419c-b6f1-63ef89297caf"
+								},
+								{
+									"name": "Role",
+									"item": [
+										{
+											"name": "Get role",
+											"item": [
+												{
+													"name": "get user role",
+													"id": "1590543b-ae8b-47fc-8812-80a8affc2147",
+													"protocolProfileBehavior": {
+														"disableBodyPruning": true
+													},
+													"request": {
+														"method": "GET",
+														"header": []
+													},
+													"response": []
+												}
+											],
+											"id": "d25c2a6f-dba9-411a-81e6-2af3d60ec691"
+										},
+										{
+											"name": "Update role",
+											"item": [
+												{
+													"name": "update role",
+													"id": "88b15574-80a0-4076-9c94-f4c0ed4a7452",
+													"protocolProfileBehavior": {
+														"disableBodyPruning": true
+													},
+													"request": {
+														"auth": {
+															"type": "bearer",
+															"bearer": {
+																"token": "{{Bearer_token}}"
+															}
+														},
+														"method": "PATCH",
+														"header": [
+															{
+																"key": "accept",
+																"value": "*/*"
+															},
+															{
+																"key": "Content-Type",
+																"value": "application/json"
+															}
+														],
+														"body": {
+															"mode": "raw",
+															"raw": "{\n  \"add\": [\n    {\n      \"role_id\": 1,\n      \"is_role_manager\": false,\n      \"meta\": {}\n    }\n  ],\n  \"remove\": [\n     {\n      \"role_id\": 2,\n      \"is_role_manager\": false,\n      \"meta\": {}\n    }\n  ]\n}",
+															"options": {
+																"raw": {
+																	"language": "json"
+																}
+															}
+														},
+														"url": "https://staging-api.infopool.ng/v1/users/11/roles"
+													},
+													"response": []
+												}
+											],
+											"id": "9402513d-7605-4dab-a6c3-ffd47f285049"
+										}
+									],
+									"id": "08ec2384-cbcb-4c9c-b4c6-f3af72228f3a"
 								}
 							],
 							"id": "cc3c27aa-1460-49ba-af0f-cacf62cf59fa"
