@@ -613,7 +613,7 @@
 														"auth": {
 															"type": "bearer",
 															"bearer": {
-																"token": "{{bearerToken}}"
+																"token": "{{Bearer_token}}"
 															}
 														},
 														"method": "POST",
@@ -629,7 +629,7 @@
 														],
 														"body": {
 															"mode": "raw",
-															"raw": "{\n  \"operation\": \"<string>\",\n  \"delivery_channel\": \"SMS\",\n  \"email\": \"<string>\",\n  \"phone\": \"<string>\"\n}",
+															"raw": "{\n  \"operation\": \"FORGOT_PASSWORD\",\n  \"delivery_channel\": \"EMAIL\",\n  \"email\": \"qa@yopmail.com\"\n//   \"phone\": \"\"\n}",
 															"options": {
 																"raw": {
 																	"headerFamily": "json",
