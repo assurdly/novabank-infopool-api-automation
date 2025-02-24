@@ -605,6 +605,28 @@
 											"item": [
 												{
 													"name": "Get Email or SMS OTP",
+													"event": [
+														{
+															"listen": "test",
+															"script": {
+																"id": "74a4af24-d8f8-46cd-8ebc-e3630ce0950e",
+																"exec": [
+																	"var jsonData = pm.response.json();",
+																	"",
+																	"pm.test(\"Status code is 201\", function () {",
+																	"    pm.response.to.have.status(201);",
+																	"    pm.expect(jsonData.status).to.eql(true);",
+																	"});",
+																	"pm.test(\"Reponse body contains success fields\", function () {",
+																	"    pm.expect(jsonData.status).to.eql(true);",
+																	"    pm.expect(jsonData.response.message).to.eql(\"OTP sent via email\");",
+																	"});"
+																],
+																"type": "text/javascript",
+																"packages": {}
+															}
+														}
+													],
 													"id": "cdb2805a-53ea-4acb-91ae-cc0a0c1f1f8d",
 													"protocolProfileBehavior": {
 														"disableBodyPruning": true
