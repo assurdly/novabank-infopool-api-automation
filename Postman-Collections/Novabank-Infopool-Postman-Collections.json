@@ -13206,7 +13206,7 @@
 																"value": "*/*"
 															}
 														],
-														"url": "https://staging-api.infopool.ng/v1/users/1/roles"
+														"url": "https://staging-api.infopool.ng/v1/users/196/roles"
 													},
 													"response": []
 												}
@@ -13242,14 +13242,14 @@
 														],
 														"body": {
 															"mode": "raw",
-															"raw": "{\n  \"add\": [\n    {\n      \"role_id\": 1,\n      \"is_role_manager\": false,\n      \"meta\": {}\n    }\n  ],\n  \"remove\": [\n     {\n      \"role_id\": 2,\n      \"is_role_manager\": false,\n      \"meta\": {}\n    }\n  ]\n}",
+															"raw": "{\n  \"add\": [\n    {\n      \"role_id\": 17,\n      \"is_role_manager\": false,\n      \"meta\": {}\n    }\n  ],\n  \"remove\": [\n     {\n      \"role_id\": 14,\n      \"is_role_manager\": false,\n      \"meta\": {}\n    }\n  ]\n}",
 															"options": {
 																"raw": {
 																	"language": "json"
 																}
 															}
 														},
-														"url": "https://staging-api.infopool.ng/v1/users/11/roles"
+														"url": "https://staging-api.infopool.ng/v1/users/196/roles"
 													},
 													"response": []
 												}
