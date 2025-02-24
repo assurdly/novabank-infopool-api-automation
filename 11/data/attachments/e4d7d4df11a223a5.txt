@@ -1,0 +1,1 @@
+{"status":false,"statusCode":400,"timestamp":"2025-02-24T18:59:16.332Z","path":"/v1/auth/mfa/verify","message":"MFA not setup, enable it before attempting this action"}
