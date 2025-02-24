@@ -809,7 +809,7 @@
 														],
 														"body": {
 															"mode": "raw",
-															"raw": "{\n  \"verification_code\": \"099210\",\n  \"otp_type\": \"TOTP\",\n  \"operation\": \"LOGIN\"\n//   \"delivery_channel\": \"EMAIL\",\n//   \"recipient\": \"QA@yopmail.com\"\n}",
+															"raw": "{\n  \"verification_code\": \"421968\",\n  \"otp_type\": \"OTP\",\n  \"operation\": \"FORGOT_PASSWORD\",\n  \"delivery_channel\": \"EMAIL\",\n  \"recipient\": \"favourdesent@yopmail.com\"\n}",
 															"options": {
 																"raw": {
 																	"headerFamily": "json",
