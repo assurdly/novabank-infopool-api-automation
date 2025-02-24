@@ -13193,8 +13193,20 @@
 														"disableBodyPruning": true
 													},
 													"request": {
+														"auth": {
+															"type": "bearer",
+															"bearer": {
+																"token": "{{Bearer_token}}"
+															}
+														},
 														"method": "GET",
-														"header": []
+														"header": [
+															{
+																"key": "accept",
+																"value": "*/*"
+															}
+														],
+														"url": "https://staging-api.infopool.ng/v1/users/1/roles"
 													},
 													"response": []
 												}
