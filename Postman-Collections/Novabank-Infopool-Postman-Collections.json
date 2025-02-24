@@ -8066,12 +8066,10 @@
 																"id": "b2d98e00-a088-42b1-9d5c-f8a9eb6eb1a1",
 																"exec": [
 																	"var jsonData = pm.response.json();",
-																	"",
 																	"pm.test(\"Status code is 201\", function () {",
 																	"    pm.response.to.have.status(201);",
 																	"    pm.expect(jsonData.status).to.eql(true);",
 																	"});",
-																	"",
 																	"pm.test(\"Access credentials are returned\", function () {",
 																	"    pm.expect(jsonData.response.token_type).is.not.empty;",
 																	"    pm.expect(jsonData.response.access_token).is.not.empty;",
@@ -8244,10 +8242,8 @@
 																	"pm.test(\"Status code is 401\", function () {",
 																	"    pm.response.to.have.status(401);",
 																	"});",
-																	"",
 																	"pm.test(\"Error message is returned\", function () {",
 																	"    pm.expect(jsonData.message).to.eql('Unauthorized');",
-																	"",
 																	"});"
 																],
 																"type": "text/javascript",
