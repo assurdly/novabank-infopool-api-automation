@@ -1,0 +1,1 @@
+{"status":false,"statusCode":404,"timestamp":"2025-02-24T20:19:48.758Z","path":"/v1/organizations/%3Cnumber%3E","message":"Cannot PATCH /v1/organizations/%3Cnumber%3E"}
