@@ -1,0 +1,7 @@
+{
+  "template_id": "welcome_template",
+  "title": "Welcome Message",
+  "content": "Hello, thank you for joining our platform!",
+  "channels": ["EMAIL", "SMS"],
+  "cc_recipients": ["user1@example.com", "user2@example.com"]
+}
