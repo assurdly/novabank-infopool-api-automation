@@ -748,7 +748,15 @@
 																"id": "e4c55b62-9b10-40ba-93be-0c2a98875311",
 																"exec": [
 																	"var jsonData = pm.response.json();",
-																	"pm.environment.set(\"Bearer_token\", jsonData.response.access_token);"
+																	"// pm.environment.set(\"Bearer_token\", jsonData.response.access_token);",
+																	"",
+																	"pm.test(\"Status code is 400\", function () {",
+																	"    pm.response.to.have.status(400);",
+																	"});",
+																	"pm.test(\"Reponse body contains standard Error fields\", function () {",
+																	"    pm.expect(jsonData.statusCode).to.eql(400);",
+																	"    pm.expect(jsonData.status).to.eql(false);",
+																	"});"
 																],
 																"type": "text/javascript",
 																"packages": {}
