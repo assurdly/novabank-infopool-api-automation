@@ -9361,6 +9361,12 @@
 														"disableBodyPruning": true
 													},
 													"request": {
+														"auth": {
+															"type": "bearer",
+															"bearer": {
+																"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZW1haWwiOiJRQUB5b3BtYWlsLmNvbSIsInN1YiI6IjQiLCJkZXZpY2VfaWQiOiJlYWNhM2Y5MC1iMTMzLTQwNzEtOWU5Mi0yMTVhZjM1ZTA1YzIiLCJzZXNzaW9uIjoiYjNiOGVjZWJjMmM4ZjAyMDY5MzcwODc4ZDAwZGJlNDUiLCJzY29wZSI6WyJGVUxMX0FDQ0VTUyJdLCJpYXQiOjE3NDA0NTczMDcsImV4cCI6MTc0MDQ1ODUwNywiYXVkIjoiaW5mb3Bvb2wubmciLCJpc3MiOiJhdXRoLmluZm9wb29sLm5nIn0.OAo_CWvIECAp4ih9f8K_QbdRHG7-fBwhS8AjsKCWpEw"
+															}
+														},
 														"method": "POST",
 														"header": [
 															{
@@ -9375,7 +9381,7 @@
 																	"type": "file",
 																	"contentType": "application/pdf",
 																	"key": "definitions",
-																	"src": "xG7pHJIk1/INV-000002.pdf"
+																	"src": "/Users/tomi/Downloads/definition-1740455501453_update.txt"
 																}
 															]
 														},
