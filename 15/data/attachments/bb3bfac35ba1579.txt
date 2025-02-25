@@ -1,0 +1,14 @@
+{
+  "name": "Directorate Organization 2",
+  "description": "This is a Directorate organization",
+  "operations_manager_id": 4,
+  "business_manager_id": 4,
+
+  "street": "IKEJA",
+  "city": "LAGOS",
+  "state": 1,
+  "country": 1,
+  "organization_type": 1758,
+  "mis_code": "test",
+  "parent_id": 17
+}
