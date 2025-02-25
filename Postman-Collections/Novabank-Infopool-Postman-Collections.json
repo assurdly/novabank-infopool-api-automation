@@ -13287,8 +13287,8 @@
 														"exec": [
 															"var jsonData = pm.response.json();",
 															"",
-															"pm.test(\"Status code is 400\", function () {",
-															"    pm.response.to.have.status(400);",
+															"pm.test(\"Status code is 201\", function () {",
+															"    pm.response.to.have.status(201);",
 															"});",
 															"pm.test(\"Reponse body contains standard success fields\", function () {",
 															"    pm.expect(jsonData.statusCode).to.eql(400);",
