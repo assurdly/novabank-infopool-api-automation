@@ -13279,6 +13279,30 @@
 									"item": [
 										{
 											"name": "Create  organization",
+											"event": [
+												{
+													"listen": "test",
+													"script": {
+														"id": "f1987c12-0539-42c3-bfb4-377556ee8ae5",
+														"exec": [
+															"var jsonData = pm.response.json();",
+															"",
+															"pm.test(\"Status code is 400\", function () {",
+															"    pm.response.to.have.status(400);",
+															"});",
+															"pm.test(\"Reponse body contains standard success fields\", function () {",
+															"    pm.expect(jsonData.statusCode).to.eql(400);",
+															"    pm.expect(jsonData.status).to.eql(false);",
+															"    pm.expect(jsonData.message).to.eql('Cannot create organization without parent organization');",
+															"});",
+															"",
+															"pm.environment.set(\"test_organization_id\", jsonData.response.id)"
+														],
+														"type": "text/javascript",
+														"packages": {}
+													}
+												}
+											],
 											"id": "f4837cd8-39b9-45d2-ac48-cff3390fb895",
 											"protocolProfileBehavior": {
 												"disableBodyPruning": true
@@ -13303,7 +13327,7 @@
 												],
 												"body": {
 													"mode": "raw",
-													"raw": "{\n  \"name\": \"Directorate Organization 2\",\n  \"description\": \"This is a Directorate organization\",\n  \"operations_manager_id\": 4,\n  \"business_manager_id\": 4,\n//   \"hierarchy_id\": 1,\n  \"street\": \"IKEJA\",\n  \"city\": \"LAGOS\",\n  \"state\": 1,\n  \"country\": 1,\n  \"organization_type\": 1758,\n  \"mis_code\": \"test\",\n  \"parent_id\": 17\n}",
+													"raw": "{\n  \"name\": \"Automated API Test Organization\",\n  \"description\": \"This is for testing only\",\n//   \"hierarchy_id\": 1,\n  \"street\": \"IKEJA\",\n  \"city\": \"LAGOS\",\n  \"state\": 284,\n  \"country\": 1964,\n  \"organization_type\": 1758,\n  \"mis_code\": \"QA\",\n  \"parent_id\": 17\n}",
 													"options": {
 														"raw": {
 															"headerFamily": "json",
