@@ -14221,7 +14221,7 @@
 															"pm.test(\"Reponse body contains standard Error fields\", function () {",
 															"    pm.expect(jsonData.statusCode).to.eql(404);",
 															"    pm.expect(jsonData.status).to.eql(false);",
-															"    pm.expect(jsonData.message[5]).to.eql('Business manager provided does not exist');",
+															"    pm.expect(jsonData.message[4]).to.eql('Operations manager provided does not exist');",
 															"});"
 														],
 														"type": "text/javascript",
@@ -14884,7 +14884,7 @@
 															"pm.test(\"Reponse body contains standard Error fields\", function () {",
 															"    pm.expect(jsonData.statusCode).to.eql(404);",
 															"    pm.expect(jsonData.status).to.eql(false);",
-															"    pm.expect(jsonData.message[5]).to.eql('Business manager provided does not exist');",
+															"    pm.expect(jsonData.message[0]).to.eql('Organization type provided does not exist');",
 															"});"
 														],
 														"type": "text/javascript",
@@ -16533,7 +16533,7 @@
 												],
 												"body": {
 													"mode": "raw",
-													"raw": "{\n  \"action\": \"update\",\n  \"data\": {\n    \"name\": \"Directorate Organization\",\n    \"description\": \"This is a test glober Organization\",\n    // \"operation_manager_id\": \"<number>\",\n    // \"business_manager_id\": \"<number>\",\n    // \"hierarchy_id\": \"<number>\",\n    // \"street\": 12,\n    // \"city\": 12,\n    // \"state\": 12,\n    // \"country\": 12,\n    // \"organization_type\": \"<number>\",\n    \"mis_code\": \"QA\"\n    // \"parent_id\": \"<number>\"\n  }\n}",
+													"raw": "{\n  \"action\": \"update\",\n  \"data\": {\n    \"name\": \"Regional Business Units\",\n    \"description\": \"This is a test glober Organization\",\n    // \"operation_manager_id\": \"<number>\",\n    // \"business_manager_id\": \"<number>\",\n    // \"hierarchy_id\": \"<number>\",\n    // \"street\": 12,\n    // \"city\": 12,\n    // \"state\": 12,\n    // \"country\": 12,\n    // \"organization_type\": \"<number>\",\n    \"mis_code\": \"QA\"\n    // \"parent_id\": \"<number>\"\n  }\n}",
 													"options": {
 														"raw": {
 															"headerFamily": "json",
@@ -16553,7 +16553,6 @@
 													],
 													"variable": [
 														{
-															"id": "89c98f7c-aa2c-4dec-b610-f9738f2b081a",
 															"key": "organizationId",
 															"value": "17",
 															"description": "(Required) "
