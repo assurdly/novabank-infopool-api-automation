@@ -2572,7 +2572,7 @@
 													}
 												],
 												"url": {
-													"raw": "{{baseUrl}}/v1/audit-trails?page=1&limit=10",
+													"raw": "{{baseUrl}}/v1/audit-trails?page=1&limit=10&date_start=2025-02-24&date_end=2025-02-26&user=4",
 													"host": [
 														"{{baseUrl}}"
 													],
@@ -2591,13 +2591,16 @@
 														},
 														{
 															"key": "date_start",
-															"value": "2025-01-26",
-															"disabled": true
+															"value": "2025-02-24"
 														},
 														{
 															"key": "date_end",
-															"value": "2025-02-18",
-															"disabled": true
+															"value": "2025-02-26"
+														},
+														{
+															"key": "user",
+															"value": "4",
+															"type": "text"
 														}
 													]
 												}
@@ -20025,6 +20028,66 @@
 										}
 									],
 									"id": "f3683561-21f7-4779-8f61-1cbb9a810a8d"
+								},
+								{
+									"name": "Managers",
+									"item": [
+										{
+											"name": "Fetch managers of an organization",
+											"item": [
+												{
+													"name": "managers",
+													"id": "37cf3051-2a23-4cae-a50a-31ab7ec0d14c",
+													"protocolProfileBehavior": {
+														"disableBodyPruning": true
+													},
+													"request": {
+														"auth": {
+															"type": "bearer",
+															"bearer": {
+																"token": "{{Bearer_token}}"
+															}
+														},
+														"method": "GET",
+														"header": [
+															{
+																"key": "accept",
+																"value": "*/*"
+															}
+														],
+														"url": {
+															"raw": "https://staging-api.infopool.ng/v1/organizations/17/managers?page=1&limit=10",
+															"protocol": "https",
+															"host": [
+																"staging-api",
+																"infopool",
+																"ng"
+															],
+															"path": [
+																"v1",
+																"organizations",
+																"17",
+																"managers"
+															],
+															"query": [
+																{
+																	"key": "page",
+																	"value": "1"
+																},
+																{
+																	"key": "limit",
+																	"value": "10"
+																}
+															]
+														}
+													},
+													"response": []
+												}
+											],
+											"id": "6a5f1c04-d03f-4302-9ff5-a6932ef00677"
+										}
+									],
+									"id": "52d342a7-3466-4a2b-bc68-aa5393f4f18d"
 								}
 							],
 							"id": "02b50633-2d9b-40c1-bbd2-947a7ac30574"
