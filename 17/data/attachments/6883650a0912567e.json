@@ -1,0 +1,14 @@
+{
+    "Server": "nginx",
+    "Date": "Tue, 25 Feb 2025 17:25:41 GMT",
+    "Content-Type": "text/csv; charset=utf-8",
+    "Content-Length": "1663",
+    "Connection": "keep-alive",
+    "X-Powered-By": "Express",
+    "Access-Control-Allow-Origin": "*",
+    "X-RateLimit-Limit": "6",
+    "X-RateLimit-Remaining": "5",
+    "X-RateLimit-Reset": "2",
+    "Content-Disposition": "attachment; filename=statement-4790-NB5005760-2025-02-25.csv",
+    "ETag": "W/\"67f-0RkQ/1mTNSQgYl3GUst9vsDFpPI\""
+}
