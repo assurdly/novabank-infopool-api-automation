@@ -17988,13 +17988,13 @@
 														"exec": [
 															"var jsonData = pm.response.json();",
 															"",
-															"pm.test(\"Status code is 400\", function () {",
-															"    pm.response.to.have.status(400);",
+															"pm.test(\"Status code is 404\", function () {",
+															"    pm.response.to.have.status(404);",
 															"});",
 															"pm.test(\"Reponse body contains standard success fields\", function () {",
 															"    pm.expect(jsonData.status).to.eql(false);",
-															"     pm.expect(jsonData.statusCode).to.eql(400);",
-															"    pm.expect(jsonData.message).to.eql('business manager does not exist');",
+															"     pm.expect(jsonData.statusCode).to.eql(404);",
+															"    pm.expect(jsonData.message[0]).to.eql('Business manager provided does not exist');",
 															"});"
 														],
 														"type": "text/javascript",
@@ -18046,7 +18046,6 @@
 													],
 													"variable": [
 														{
-															"id": "d4d8a9f0-75f1-4ecd-bc6e-ff530ff329b0",
 															"key": "organizationId",
 															"value": "17",
 															"description": "(Required) "
