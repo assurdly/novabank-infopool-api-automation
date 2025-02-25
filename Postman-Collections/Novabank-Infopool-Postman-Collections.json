@@ -2572,7 +2572,7 @@
 													}
 												],
 												"url": {
-													"raw": "{{baseUrl}}/v1/audit-trails?page=1&limit=10",
+													"raw": "{{baseUrl}}/v1/audit-trails?page=1&limit=10&date_start=2025-02-24&date_end=2025-02-26&user=4",
 													"host": [
 														"{{baseUrl}}"
 													],
@@ -2591,13 +2591,16 @@
 														},
 														{
 															"key": "date_start",
-															"value": "2025-01-26",
-															"disabled": true
+															"value": "2025-02-24"
 														},
 														{
 															"key": "date_end",
-															"value": "2025-02-18",
-															"disabled": true
+															"value": "2025-02-26"
+														},
+														{
+															"key": "user",
+															"value": "4",
+															"type": "text"
 														}
 													]
 												}
