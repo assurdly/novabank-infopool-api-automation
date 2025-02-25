@@ -17728,7 +17728,7 @@
 												],
 												"body": {
 													"mode": "raw",
-													"raw": "{\n  \"action\": \"update\",\n  \"data\": {\n    \"operation_manager_id\": 4\n  }\n}",
+													"raw": "{\n  \"action\": \"update\",\n  \"data\": {\n    \"operation_manager_id\": 10000\n  }\n}",
 													"options": {
 														"raw": {
 															"headerFamily": "json",
@@ -17748,7 +17748,6 @@
 													],
 													"variable": [
 														{
-															"id": "a9ee85b7-f9fe-4b65-998e-990d7b824798",
 															"key": "organizationId",
 															"value": "17",
 															"description": "(Required) "
