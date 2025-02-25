@@ -8078,402 +8078,6 @@
 					"name": "v1",
 					"item": [
 						{
-							"name": "Authentication",
-							"item": [
-								{
-									"name": "Session",
-									"item": [
-										{
-											"name": "Login",
-											"item": [
-												{
-													"name": "Login - successful",
-													"event": [
-														{
-															"listen": "test",
-															"script": {
-																"id": "b2d98e00-a088-42b1-9d5c-f8a9eb6eb1a1",
-																"exec": [
-																	"var jsonData = pm.response.json();",
-																	"pm.test(\"Status code is 201\", function () {",
-																	"    pm.response.to.have.status(201);",
-																	"    pm.expect(jsonData.status).to.eql(true);",
-																	"});",
-																	"pm.test(\"Access credentials are returned\", function () {",
-																	"    pm.expect(jsonData.response.token_type).is.not.empty;",
-																	"    pm.expect(jsonData.response.access_token).is.not.empty;",
-																	"    pm.expect(jsonData.response.refresh_token).is.not.empty;",
-																	"    pm.expect(jsonData.response.session_id).is.not.empty;",
-																	"",
-																	"});",
-																	"pm.environment.set(\"Bearer_token\", jsonData.response.access_token);",
-																	"pm.environment.set(\"refresh_token\", jsonData.response.refresh_token);",
-																	""
-																],
-																"type": "text/javascript",
-																"packages": {}
-															}
-														}
-													],
-													"id": "422de44a-931c-47cc-a8cb-f01bb2f8c2bb",
-													"protocolProfileBehavior": {
-														"disableBodyPruning": true
-													},
-													"request": {
-														"method": "POST",
-														"header": [
-															{
-																"key": "Content-Type",
-																"value": "application/json"
-															}
-														],
-														"body": {
-															"mode": "raw",
-															"raw": "{\n  \"email\": \"favourdesent@yopmail.com\",\n  \"password\": \"@passwordA1\",\n//   \"device_id\": \"b9f1cd14-db59-4831-88e5-e8abf06eefb6\",\n  \"device_type\": \"mobile\",\n  \"device_name\": \"iPhone 11\",\n  \"location\": \"Lagos\"\n}",
-															"options": {
-																"raw": {
-																	"headerFamily": "json",
-																	"language": "json"
-																}
-															}
-														},
-														"url": "{{baseUrl}}/v1/auth/session"
-													},
-													"response": [
-														{
-															"id": "50bf7414-7c78-4505-9e03-922cfbeebd71",
-															"name": "Untitled Response",
-															"originalRequest": {
-																"method": "POST",
-																"header": [
-																	{
-																		"key": "Content-Type",
-																		"value": "application/json"
-																	}
-																],
-																"body": {
-																	"mode": "raw",
-																	"raw": "{\n  \"email\": \"test@test.com\",\n  \"password\": \"Password1@\"\n}",
-																	"options": {
-																		"raw": {
-																			"headerFamily": "json",
-																			"language": "json"
-																		}
-																	}
-																},
-																"url": "{{baseUrl}}/v1/auth/session"
-															},
-															"status": "Created",
-															"code": 201,
-															"_postman_previewlanguage": "text",
-															"header": [],
-															"cookie": [],
-															"responseTime": null,
-															"body": ""
-														}
-													]
-												},
-												{
-													"name": "Invalid credentials",
-													"event": [
-														{
-															"listen": "test",
-															"script": {
-																"id": "b2d98e00-a088-42b1-9d5c-f8a9eb6eb1a1",
-																"exec": [
-																	"var jsonData = pm.response.json();",
-																	"",
-																	"pm.test(\"Status code is 401\", function () {",
-																	"    pm.response.to.have.status(401);",
-																	"});",
-																	"pm.test(\"Reponse body contains standard error fields\", function () {",
-																	"    pm.expect(jsonData.statusCode).to.eql(401);",
-																	"    pm.expect(jsonData.status).to.eql(false);",
-																	"    pm.expect(jsonData.message).to.eql('Invalid credentials');",
-																	"});",
-																	"pm.test(\"Error message stating invalid credentials is returned\", function () {",
-																	"    pm.expect(jsonData.message).to.eql('Invalid credentials');",
-																	"});"
-																],
-																"type": "text/javascript",
-																"packages": {}
-															}
-														}
-													],
-													"id": "6ebed2c9-2915-4ce8-a397-a3c3e2600973",
-													"protocolProfileBehavior": {
-														"disableBodyPruning": true
-													},
-													"request": {
-														"method": "POST",
-														"header": [
-															{
-																"key": "Content-Type",
-																"value": "application/json"
-															}
-														],
-														"body": {
-															"mode": "raw",
-															"raw": "{\n  \"email\": \"favour@yopmail.com\",\n  \"password\": \"blank@A1\"\n}",
-															"options": {
-																"raw": {
-																	"headerFamily": "json",
-																	"language": "json"
-																}
-															}
-														},
-														"url": "{{baseUrl}}/v1/auth/session"
-													},
-													"response": [
-														{
-															"id": "bc0ba42a-7e05-4f05-9d8b-4235e2b4a52a",
-															"name": "Untitled Response",
-															"originalRequest": {
-																"method": "POST",
-																"header": [
-																	{
-																		"key": "Content-Type",
-																		"value": "application/json"
-																	}
-																],
-																"body": {
-																	"mode": "raw",
-																	"raw": "{\n  \"email\": \"test@test.com\",\n  \"password\": \"Password1@\"\n}",
-																	"options": {
-																		"raw": {
-																			"headerFamily": "json",
-																			"language": "json"
-																		}
-																	}
-																},
-																"url": "{{baseUrl}}/v1/auth/session"
-															},
-															"status": "Created",
-															"code": 201,
-															"_postman_previewlanguage": "text",
-															"header": [],
-															"cookie": [],
-															"responseTime": null,
-															"body": ""
-														}
-													]
-												},
-												{
-													"name": "No user credentials",
-													"event": [
-														{
-															"listen": "test",
-															"script": {
-																"id": "b2d98e00-a088-42b1-9d5c-f8a9eb6eb1a1",
-																"exec": [
-																	"var jsonData = pm.response.json();",
-																	"",
-																	"pm.test(\"Status code is 401\", function () {",
-																	"    pm.response.to.have.status(401);",
-																	"});",
-																	"pm.test(\"Error message is returned\", function () {",
-																	"    pm.expect(jsonData.message).to.eql('Unauthorized');",
-																	"});"
-																],
-																"type": "text/javascript",
-																"packages": {}
-															}
-														}
-													],
-													"id": "c6c21d83-0f90-4a0d-a9d2-9a094a0d56ed",
-													"protocolProfileBehavior": {
-														"disableBodyPruning": true
-													},
-													"request": {
-														"method": "POST",
-														"header": [
-															{
-																"key": "Content-Type",
-																"value": "application/json"
-															}
-														],
-														"body": {
-															"mode": "raw",
-															"raw": "{\n  \"email\": \"\",\n  \"password\": \"\"\n}",
-															"options": {
-																"raw": {
-																	"headerFamily": "json",
-																	"language": "json"
-																}
-															}
-														},
-														"url": "{{baseUrl}}/v1/auth/session"
-													},
-													"response": [
-														{
-															"id": "05af6008-f7f1-42ec-92ab-632d475660fa",
-															"name": "Untitled Response",
-															"originalRequest": {
-																"method": "POST",
-																"header": [
-																	{
-																		"key": "Content-Type",
-																		"value": "application/json"
-																	}
-																],
-																"body": {
-																	"mode": "raw",
-																	"raw": "{\n  \"email\": \"test@test.com\",\n  \"password\": \"Password1@\"\n}",
-																	"options": {
-																		"raw": {
-																			"headerFamily": "json",
-																			"language": "json"
-																		}
-																	}
-																},
-																"url": "{{baseUrl}}/v1/auth/session"
-															},
-															"status": "Created",
-															"code": 201,
-															"_postman_previewlanguage": "text",
-															"header": [],
-															"cookie": [],
-															"responseTime": null,
-															"body": ""
-														}
-													]
-												}
-											],
-											"id": "2fc6b8dc-d237-4dbf-8421-fccd89db44b3"
-										}
-									],
-									"id": "d224446f-0d20-4a35-94f5-c3da0609e9af"
-								},
-								{
-									"name": "Password Reset",
-									"item": [
-										{
-											"name": "Successful reset request",
-											"id": "c0b9b39a-4b0c-4479-8ff5-1e492469d2c5",
-											"protocolProfileBehavior": {
-												"disableBodyPruning": true
-											},
-											"request": {
-												"method": "POST",
-												"header": [],
-												"url": "{{baseUrl}}/v1/auth/password-reset"
-											},
-											"response": [
-												{
-													"id": "001e8fa9-8af7-4783-bb6e-eb752149ed51",
-													"name": "Untitled Response",
-													"originalRequest": {
-														"method": "POST",
-														"header": [],
-														"url": "{{baseUrl}}/v1/auth/password-reset"
-													},
-													"status": "Created",
-													"code": 201,
-													"_postman_previewlanguage": "text",
-													"header": [],
-													"cookie": [],
-													"responseTime": null,
-													"body": ""
-												}
-											]
-										},
-										{
-											"name": "Empty user credentials",
-											"id": "27184b61-bc74-4028-8b9e-4277331a6e89",
-											"protocolProfileBehavior": {
-												"disableBodyPruning": true
-											},
-											"request": {
-												"method": "POST",
-												"header": [],
-												"url": "{{baseUrl}}/v1/auth/password-reset"
-											},
-											"response": [
-												{
-													"id": "f1e8324e-7946-43af-9062-290abbe3b21d",
-													"name": "Untitled Response",
-													"originalRequest": {
-														"method": "POST",
-														"header": [],
-														"url": "{{baseUrl}}/v1/auth/password-reset"
-													},
-													"status": "Created",
-													"code": 201,
-													"_postman_previewlanguage": "text",
-													"header": [],
-													"cookie": [],
-													"responseTime": null,
-													"body": ""
-												}
-											]
-										},
-										{
-											"name": "User does not exist",
-											"id": "4cee8850-3b0c-4341-825c-c88440124466",
-											"protocolProfileBehavior": {
-												"disableBodyPruning": true
-											},
-											"request": {
-												"method": "POST",
-												"header": [],
-												"url": "{{baseUrl}}/v1/auth/password-reset"
-											},
-											"response": [
-												{
-													"id": "4113480f-a0ef-4ec3-ab91-edbb2798143a",
-													"name": "Untitled Response",
-													"originalRequest": {
-														"method": "POST",
-														"header": [],
-														"url": "{{baseUrl}}/v1/auth/password-reset"
-													},
-													"status": "Created",
-													"code": 201,
-													"_postman_previewlanguage": "text",
-													"header": [],
-													"cookie": [],
-													"responseTime": null,
-													"body": ""
-												}
-											]
-										},
-										{
-											"name": "Invalid data format",
-											"id": "ff2eea6c-50c3-47fe-8b7f-62a024b3095d",
-											"protocolProfileBehavior": {
-												"disableBodyPruning": true
-											},
-											"request": {
-												"method": "POST",
-												"header": [],
-												"url": "{{baseUrl}}/v1/auth/password-reset"
-											},
-											"response": [
-												{
-													"id": "20c0d1de-c2ea-44f8-ac24-9f1266fbfedd",
-													"name": "Untitled Response",
-													"originalRequest": {
-														"method": "POST",
-														"header": [],
-														"url": "{{baseUrl}}/v1/auth/password-reset"
-													},
-													"status": "Created",
-													"code": 201,
-													"_postman_previewlanguage": "text",
-													"header": [],
-													"cookie": [],
-													"responseTime": null,
-													"body": ""
-												}
-											]
-										}
-									],
-									"id": "1115a435-04a0-444d-92bf-0b57623d914b"
-								}
-							],
-							"id": "8b7943e7-99ed-41a2-b6ef-5b18f5bb992d"
-						},
-						{
 							"name": "Health",
 							"item": [
 								{
@@ -8488,9 +8092,11 @@
 													"",
 													"pm.test(\"Status code is 200\", function () {",
 													"    pm.response.to.have.status(200);",
-													"    pm.expect(jsonData.status).to.eql(\"OK\");",
 													"});",
-													""
+													"pm.test(\"Reponse body contains success fields\", function () {",
+													"    pm.expect(jsonData.status).to.eql(true);",
+													"    pm.expect(jsonData.response.status).to.eql(\"OK\");",
+													"});"
 												],
 												"type": "text/javascript",
 												"packages": {}
@@ -8930,7 +8536,7 @@
 												],
 												"body": {
 													"mode": "raw",
-													"raw": "{\n  \"slug\": \"nga\",\n  \"name\": \"Nigeria\",\n  \"description\": \"A country\",\n  \"parent_id\": \"root\",\n  \"meta\": {\n    \"iso-2-code\": \"ng\"\n  }\n}",
+													"raw": "{ \"definitions\": [{\n  \"slug\": \"issue-status\",\n  \"name\": \"Issue Status\",\n  \"description\": \"Issue Status\",\n  \"parent_id\": \"root\"\n}]\n}",
 													"options": {
 														"raw": {
 															"headerFamily": "json",
@@ -9755,6 +9361,12 @@
 														"disableBodyPruning": true
 													},
 													"request": {
+														"auth": {
+															"type": "bearer",
+															"bearer": {
+																"token": "{{Bearer_token}}"
+															}
+														},
 														"method": "POST",
 														"header": [
 															{
@@ -9769,7 +9381,7 @@
 																	"type": "file",
 																	"contentType": "application/pdf",
 																	"key": "definitions",
-																	"src": "xG7pHJIk1/INV-000002.pdf"
+																	"value": null
 																}
 															]
 														},
@@ -13573,6 +13185,85 @@
 										}
 									],
 									"id": "96ef46cd-1298-419c-b6f1-63ef89297caf"
+								},
+								{
+									"name": "Role",
+									"item": [
+										{
+											"name": "Get role",
+											"item": [
+												{
+													"name": "get user role",
+													"id": "1590543b-ae8b-47fc-8812-80a8affc2147",
+													"protocolProfileBehavior": {
+														"disableBodyPruning": true
+													},
+													"request": {
+														"auth": {
+															"type": "bearer",
+															"bearer": {
+																"token": "{{Bearer_token}}"
+															}
+														},
+														"method": "GET",
+														"header": [
+															{
+																"key": "accept",
+																"value": "*/*"
+															}
+														],
+														"url": "https://staging-api.infopool.ng/v1/users/196/roles"
+													},
+													"response": []
+												}
+											],
+											"id": "d25c2a6f-dba9-411a-81e6-2af3d60ec691"
+										},
+										{
+											"name": "Update role",
+											"item": [
+												{
+													"name": "update role",
+													"id": "88b15574-80a0-4076-9c94-f4c0ed4a7452",
+													"protocolProfileBehavior": {
+														"disableBodyPruning": true
+													},
+													"request": {
+														"auth": {
+															"type": "bearer",
+															"bearer": {
+																"token": "{{Bearer_token}}"
+															}
+														},
+														"method": "PATCH",
+														"header": [
+															{
+																"key": "accept",
+																"value": "*/*"
+															},
+															{
+																"key": "Content-Type",
+																"value": "application/json"
+															}
+														],
+														"body": {
+															"mode": "raw",
+															"raw": "{\n  \"add\": [\n    {\n      \"role_id\": 17,\n      \"is_role_manager\": false,\n      \"meta\": {}\n    }\n  ],\n  \"remove\": [\n     {\n      \"role_id\": 14,\n      \"is_role_manager\": false,\n      \"meta\": {}\n    }\n  ]\n}",
+															"options": {
+																"raw": {
+																	"language": "json"
+																}
+															}
+														},
+														"url": "https://staging-api.infopool.ng/v1/users/196/roles"
+													},
+													"response": []
+												}
+											],
+											"id": "9402513d-7605-4dab-a6c3-ffd47f285049"
+										}
+									],
+									"id": "08ec2384-cbcb-4c9c-b4c6-f3af72228f3a"
 								}
 							],
 							"id": "cc3c27aa-1460-49ba-af0f-cacf62cf59fa"
@@ -20337,214 +20028,6 @@
 								}
 							],
 							"id": "02b50633-2d9b-40c1-bbd2-947a7ac30574"
-						},
-						{
-							"name": "Sessions",
-							"item": [
-								{
-									"name": "Get Sessions - successful",
-									"id": "3a34b6d0-3762-4111-8323-1f547d2a21ae",
-									"protocolProfileBehavior": {
-										"disableBodyPruning": true
-									},
-									"request": {
-										"method": "GET",
-										"header": [],
-										"url": {
-											"raw": "{{baseUrl}}/v1/sessions?page=1&limit=10&active=<boolean>",
-											"host": [
-												"{{baseUrl}}"
-											],
-											"path": [
-												"v1",
-												"sessions"
-											],
-											"query": [
-												{
-													"key": "page",
-													"value": "1"
-												},
-												{
-													"key": "limit",
-													"value": "10"
-												},
-												{
-													"key": "active",
-													"value": "<boolean>"
-												}
-											]
-										}
-									},
-									"response": [
-										{
-											"id": "8d7fb570-b60e-448c-af9c-9de775770e96",
-											"name": "Untitled Response",
-											"originalRequest": {
-												"method": "GET",
-												"header": [],
-												"url": {
-													"raw": "{{baseUrl}}/v1/sessions?page=1&limit=10&active=<boolean>",
-													"host": [
-														"{{baseUrl}}"
-													],
-													"path": [
-														"v1",
-														"sessions"
-													],
-													"query": [
-														{
-															"key": "page",
-															"value": "1"
-														},
-														{
-															"key": "limit",
-															"value": "10"
-														},
-														{
-															"key": "active",
-															"value": "<boolean>"
-														}
-													]
-												}
-											},
-											"status": "OK",
-											"code": 200,
-											"_postman_previewlanguage": "text",
-											"header": [],
-											"cookie": [],
-											"responseTime": null,
-											"body": ""
-										}
-									]
-								},
-								{
-									"name": "Delete a Session by ID - valid session ID",
-									"id": "84954693-3694-4c26-870c-304e8bfbfefe",
-									"protocolProfileBehavior": {
-										"disableBodyPruning": true
-									},
-									"request": {
-										"method": "DELETE",
-										"header": [],
-										"url": {
-											"raw": "{{baseUrl}}/v1/sessions/:id",
-											"host": [
-												"{{baseUrl}}"
-											],
-											"path": [
-												"v1",
-												"sessions",
-												":id"
-											],
-											"variable": [
-												{
-													"id": "7e8859fb-666f-4c7d-9e3c-4654d471c905",
-													"key": "id",
-													"value": "<string>",
-													"description": "(Required) "
-												}
-											]
-										}
-									},
-									"response": [
-										{
-											"id": "6c559963-2724-4fc8-a9f8-e3c3efffe239",
-											"name": "Untitled Response",
-											"originalRequest": {
-												"method": "DELETE",
-												"header": [],
-												"url": {
-													"raw": "{{baseUrl}}/v1/sessions/:id",
-													"host": [
-														"{{baseUrl}}"
-													],
-													"path": [
-														"v1",
-														"sessions",
-														":id"
-													],
-													"variable": [
-														{
-															"key": "id"
-														}
-													]
-												}
-											},
-											"status": "OK",
-											"code": 200,
-											"_postman_previewlanguage": "text",
-											"header": [],
-											"cookie": [],
-											"responseTime": null,
-											"body": ""
-										}
-									]
-								},
-								{
-									"name": "Delete a Session by ID - invalid session ID",
-									"id": "eb0eee13-4fc9-461a-b1e5-00c13102a09f",
-									"protocolProfileBehavior": {
-										"disableBodyPruning": true
-									},
-									"request": {
-										"method": "DELETE",
-										"header": [],
-										"url": {
-											"raw": "{{baseUrl}}/v1/sessions/:id",
-											"host": [
-												"{{baseUrl}}"
-											],
-											"path": [
-												"v1",
-												"sessions",
-												":id"
-											],
-											"variable": [
-												{
-													"id": "7e8859fb-666f-4c7d-9e3c-4654d471c905",
-													"key": "id",
-													"value": "<string>",
-													"description": "(Required) "
-												}
-											]
-										}
-									},
-									"response": [
-										{
-											"id": "6104ce99-289b-46b4-9c91-69bd7b71d32e",
-											"name": "Untitled Response",
-											"originalRequest": {
-												"method": "DELETE",
-												"header": [],
-												"url": {
-													"raw": "{{baseUrl}}/v1/sessions/:id",
-													"host": [
-														"{{baseUrl}}"
-													],
-													"path": [
-														"v1",
-														"sessions",
-														":id"
-													],
-													"variable": [
-														{
-															"key": "id"
-														}
-													]
-												}
-											},
-											"status": "OK",
-											"code": 200,
-											"_postman_previewlanguage": "text",
-											"header": [],
-											"cookie": [],
-											"responseTime": null,
-											"body": ""
-										}
-									]
-								}
-							],
-							"id": "69df82bb-67e8-4698-bc07-f827bc42db21"
 						},
 						{
 							"name": "Roles",
