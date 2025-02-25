@@ -18497,25 +18497,7 @@
 														}
 													}
 												},
-												"url": {
-													"raw": "{{baseUrl}}/v1/organizations/:organizationId",
-													"host": [
-														"{{baseUrl}}"
-													],
-													"path": [
-														"v1",
-														"organizations",
-														":organizationId"
-													],
-													"variable": [
-														{
-															"id": "b6452e30-8adf-49dd-b5ca-2bddda202cd2",
-															"key": "organizationId",
-															"value": "19",
-															"description": "(Required) "
-														}
-													]
-												}
+												"url": "{{baseUrl}}/v1/organizations/{{test_organization_id}}"
 											},
 											"response": [
 												{
