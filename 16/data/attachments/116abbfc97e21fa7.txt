@@ -1,0 +1,1 @@
+{"status":false,"statusCode":400,"timestamp":"2025-02-25T14:54:38.339Z","path":"/v1/roles/1","message":["data.property status should not exist"]}

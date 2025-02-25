@@ -1,0 +1,1 @@
+{"status":false,"statusCode":404,"timestamp":"2025-02-25T14:54:38.895Z","path":"/v1/notifications/templates?page=1&limit=10&category=1","message":"Cannot GET /v1/notifications/templates?page=1&limit=10&category=1"}

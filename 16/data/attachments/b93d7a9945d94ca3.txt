@@ -1,0 +1,10 @@
+{
+  "entity_type": "user",
+  "entity_id": 1,
+  "settings_master_id": 1,
+  "value": true,
+  "meta": {
+    "displayName": "User Notifications",
+    "icon": "bell"
+  }
+}
