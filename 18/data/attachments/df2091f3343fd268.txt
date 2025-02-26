@@ -1,0 +1,1 @@
+{"status":false,"statusCode":400,"timestamp":"2025-02-26T18:43:35.421Z","path":"/v1/onboarding/9eabc9358b32c5a86ba1bdc7e762e24ff2c43f9ad420f0967439b4c5c8201b90","message":["device_type should not be empty","device_type must be a string","device_name should not be empty","device_name must be a string","location should not be empty","location must be a string"]}

@@ -1,0 +1,1 @@
+{"status":false,"statusCode":404,"timestamp":"2025-02-26T18:44:01.398Z","path":"/v1/roles/7/permissions","message":"Cannot GET /v1/roles/7/permissions"}

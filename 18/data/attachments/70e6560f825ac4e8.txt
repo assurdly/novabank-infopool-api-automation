@@ -1,0 +1,7 @@
+{
+  "action": "update",
+  "data": {
+    "organization_type": 1763
+    
+  }
+}

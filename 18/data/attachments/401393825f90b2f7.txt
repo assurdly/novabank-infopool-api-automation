@@ -1,0 +1,14 @@
+{
+  "name": "Glober Organization",
+  "description": "This is a Glober organization",
+
+
+
+  "street": "IKEJA",
+  "city": "LAGOS",
+  "state": 1,
+  "country": 1,
+  "organization_type": 1757,
+  "mis_code": "test"
+  
+}
