@@ -1,0 +1,11 @@
+var jsonData = pm.response.json();
+
+pm.test("Status code is 401", function () {
+    pm.response.to.have.status(401);
+});
+
+pm.test("Response body contains error fields", function () {
+    pm.expect(pm.response.json().status).to.eql(false);
+    pm.expect(pm.response.json()).to.have.property('message');
+     pm.expect(pm.response.json().statusCode).to.eql(401);
+});

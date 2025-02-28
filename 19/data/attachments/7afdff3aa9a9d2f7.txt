@@ -1,0 +1,10 @@
+{
+  "add": [
+    "<string>",
+    "<string>"
+  ],
+  "remove": [
+    "<string>",
+    "<string>"
+  ]
+}
