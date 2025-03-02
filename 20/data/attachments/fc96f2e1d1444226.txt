@@ -1,0 +1,17 @@
+{
+  "action": "update",
+  "data": {
+    "name": "Regional Business Units",
+    "description": "This is a test glober Organization",
+    
+    
+    
+    
+    
+    
+    
+    
+    "mis_code": "QA"
+    
+  }
+}

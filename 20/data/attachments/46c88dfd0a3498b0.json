@@ -1,0 +1,10 @@
+{
+    "Server": "nginx",
+    "Date": "Sun, 02 Mar 2025 20:23:31 GMT",
+    "Content-Type": "application/json; charset=utf-8",
+    "Content-Length": "168",
+    "Connection": "keep-alive",
+    "X-Powered-By": "Express",
+    "Access-Control-Allow-Origin": "*",
+    "ETag": "W/\"a8-tAbD4E/gam0J8d3m4NxA7Wy1Bg0\""
+}
