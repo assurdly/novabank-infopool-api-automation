@@ -20985,8 +20985,8 @@
 															"    pm.expect(jsonData.response.permission_group).to.not.be.oneOf([null, \"\"]);",
 															"    ([null, \"\"]);",
 															"    pm.expect(jsonData.response.permission_group.slug).to.not.be.oneOf([null, \"\"]);",
-															"     pm.expect(jsonData.response.permission_group.name).to.not.be.oneOf([null, \"\"]);",
-															"      pm.expect(jsonData.response.permission_group.id).to.not.be.oneOf([null, \"\"]);",
+															"    pm.expect(jsonData.response.permission_group.name).to.not.be.oneOf([null, \"\"]);",
+															"    pm.expect(jsonData.response.permission_group.id).to.not.be.oneOf([null, \"\"]);",
 															"});",
 															""
 														],
@@ -21014,7 +21014,6 @@
 													],
 													"variable": [
 														{
-															"id": "b8cd354d-c779-405b-aaee-fefe1ed9e37d",
 															"key": "id",
 															"value": "{{permission_id}}",
 															"description": "(Required) "
