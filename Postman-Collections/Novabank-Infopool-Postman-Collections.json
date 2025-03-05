@@ -65,7 +65,7 @@
 														],
 														"body": {
 															"mode": "raw",
-															"raw": "{\n  \"email\": \"favourdesent@yopmail.com\",\n  \"password\": \"@passwordA1\",\n  //\"device_id\": \"10.32.2.66\",\n  \"device_type\": \"mobile\",\n  \"device_name\": \"iPhone 11\",\n  \"location\": \"Lagos\"\n}",
+															"raw": "{\n  \"email\": \"favour.admin@yopmail.com\",\n  \"password\": \"@passwordA1\",\n  //\"device_id\": \"10.32.2.66\",\n  \"device_type\": \"mobile\",\n  \"device_name\": \"iPhone 11\",\n  \"location\": \"Lagos\"\n}",
 															"options": {
 																"raw": {
 																	"headerFamily": "json",
