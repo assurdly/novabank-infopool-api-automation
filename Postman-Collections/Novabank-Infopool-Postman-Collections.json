@@ -7908,6 +7908,128 @@
 										}
 									],
 									"id": "b9caee7f-cdef-40f7-820c-63e2be230960"
+								},
+								{
+									"name": "Fetch customer channel",
+									"item": [
+										{
+											"name": "Fetch Customers Channels",
+											"id": "406c36eb-01d2-4deb-ae10-8440e439bc63",
+											"protocolProfileBehavior": {
+												"disableBodyPruning": true
+											},
+											"request": {
+												"auth": {
+													"type": "bearer",
+													"bearer": {
+														"token": "{{Bearer_token}}"
+													}
+												},
+												"method": "GET",
+												"header": [],
+												"url": {
+													"raw": "{{baseUrl}}/v1/customers/:id/channels",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"v1",
+														"customers",
+														":id",
+														"channels"
+													],
+													"variable": [
+														{
+															"id": "3f09494e-96a9-41ce-a641-c3e516e4a76d",
+															"key": "id",
+															"value": "4790"
+														}
+													]
+												}
+											},
+											"response": [
+												{
+													"id": "41c6ad67-0179-4c92-8c5a-64c7bbff6450",
+													"name": "Fetch Customers Channels",
+													"originalRequest": {
+														"method": "GET",
+														"header": [],
+														"url": {
+															"raw": "{{baseUrl}}/v1/customers/:id/channels",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"v1",
+																"customers",
+																":id",
+																"channels"
+															],
+															"variable": [
+																{
+																	"key": "id",
+																	"value": "4790"
+																}
+															]
+														}
+													},
+													"status": "OK",
+													"code": 200,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "X-Powered-By",
+															"value": "Express"
+														},
+														{
+															"key": "Access-Control-Allow-Origin",
+															"value": "*"
+														},
+														{
+															"key": "X-RateLimit-Limit",
+															"value": "6"
+														},
+														{
+															"key": "X-RateLimit-Remaining",
+															"value": "5"
+														},
+														{
+															"key": "X-RateLimit-Reset",
+															"value": "2"
+														},
+														{
+															"key": "Content-Type",
+															"value": "application/json; charset=utf-8"
+														},
+														{
+															"key": "Content-Length",
+															"value": "944"
+														},
+														{
+															"key": "ETag",
+															"value": "W/\"3b0-WklI6okmulJkOIwCM0TcgblwZ1s\""
+														},
+														{
+															"key": "Date",
+															"value": "Tue, 04 Mar 2025 04:49:21 GMT"
+														},
+														{
+															"key": "Connection",
+															"value": "keep-alive"
+														},
+														{
+															"key": "Keep-Alive",
+															"value": "timeout=5"
+														}
+													],
+													"cookie": [],
+													"responseTime": null,
+													"body": "{\n    \"status\": true,\n    \"response\": {\n        \"data\": [\n            {\n                \"channel_id\": \"corporate-internet-banking\",\n                \"name\": \"Corporate Internet Banking\",\n                \"last_login\": \"2000-12-31T23:00:00.000Z\",\n                \"profiles\": \"1\",\n                \"total_transaction_value\": 0\n            },\n            {\n                \"channel_id\": \"retail-internet-banking\",\n                \"name\": \"Retail Internet Banking\",\n                \"last_login\": null,\n                \"profiles\": 0,\n                \"total_transaction_value\": 0\n            },\n            {\n                \"channel_id\": \"retail-mobile-banking\",\n                \"name\": \"Retail Mobile Banking\",\n                \"last_login\": null,\n                \"profiles\": 0,\n                \"total_transaction_value\": 0\n            },\n            {\n                \"channel_id\": \"debit-cards\",\n                \"name\": \"Debit Cards\",\n                \"last_login\": null,\n                \"profiles\": 0,\n                \"total_transaction_value\": 0\n            },\n            {\n                \"channel_id\": \"pos-terminals\",\n                \"name\": \"POS Terminals\",\n                \"last_login\": null,\n                \"profiles\": 0,\n                \"total_transaction_value\": 0\n            },\n            {\n                \"channel_id\": \"atm-terminals\",\n                \"name\": \"ATM Terminals\",\n                \"last_login\": null,\n                \"profiles\": 0,\n                \"total_transaction_value\": 0\n            },\n            {\n                \"channel_id\": \"new-slug\",\n                \"name\": \"New def\",\n                \"last_login\": null,\n                \"profiles\": 0,\n                \"total_transaction_value\": 0\n            }\n        ],\n        \"total\": 7,\n        \"page\": 1,\n        \"limit\": 10,\n        \"totalPages\": 1\n    }\n}"
+												}
+											]
+										}
+									],
+									"id": "8a3e1f49-c632-4be5-8d8e-96c32a8918b3"
 								}
 							],
 							"id": "e60885ec-43e9-4b8b-b371-2d2fbd2949e9"
