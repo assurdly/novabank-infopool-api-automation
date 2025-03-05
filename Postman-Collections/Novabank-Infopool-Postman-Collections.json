@@ -6082,7 +6082,7 @@
 														"method": "GET",
 														"header": [],
 														"url": {
-															"raw": "{{baseUrl}}/v1/customers/search?q=sunrise",
+															"raw": "{{baseUrl}}/v1/customers/search?q=MUSA UMAR",
 															"host": [
 																"{{baseUrl}}"
 															],
@@ -6094,7 +6094,7 @@
 															"query": [
 																{
 																	"key": "q",
-																	"value": "sunrise"
+																	"value": "MUSA UMAR"
 																}
 															]
 														}
