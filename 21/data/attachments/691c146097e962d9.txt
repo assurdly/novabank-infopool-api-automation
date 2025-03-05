@@ -1,0 +1,6 @@
+{
+  "action": "update",
+  "data": {
+    "custom_validation": "{        \"$schema\": \"http://json-schema.org/draft-07/schema#\",        \"title\": \"Generated schema for Root\",        \"type\": \"object\",        \"properties\": {            \"minLength\": {                \"type\": \"number\"            },            \"minLowercase\": {                \"type\": \"number\"            },            \"minUppercase\": {                \"type\": \"number\"            },            \"minNumbers\": {                \"type\": \"number\"            },            \"minSymbols\": {                \"type\": \"number\"            }        },        \"required\": [            \"minLength\",            \"minLowercase\",            \"minUppercase\",            \"minNumbers\",            \"minSymbols\"        ]    }"
+  }
+}

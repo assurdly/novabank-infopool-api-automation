@@ -1,0 +1,1 @@
+{"status":false,"statusCode":404,"timestamp":"2025-03-05T18:44:35.995Z","path":"/v1/roles/%3Cnumber%3E/permissions","message":"Cannot PATCH /v1/roles/%3Cnumber%3E/permissions"}

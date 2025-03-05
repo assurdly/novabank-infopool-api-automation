@@ -1,0 +1,4 @@
+{
+  "current_password": "",
+  "new_password": "@passwordA1"
+}
