@@ -8383,7 +8383,7 @@
 												],
 												"body": {
 													"mode": "raw",
-													"raw": "{ \"definitions\": [{\n  \"slug\": \"issue-status\",\n  \"name\": \"Issue Status\",\n  \"description\": \"Issue Status\",\n  \"parent_id\": \"root\"\n}]\n}",
+													"raw": "{\n    \"definitions\": [\n        {\n            \"slug\": \"issue-status\",\n            \"name\": \"Issue Status\",\n            \"description\": \"Issue Status\",\n            \"parent_id\": \"root\"\n        }\n    ]\n}",
 													"options": {
 														"raw": {
 															"headerFamily": "json",
