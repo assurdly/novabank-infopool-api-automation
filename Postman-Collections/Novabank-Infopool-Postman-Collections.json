@@ -10711,23 +10711,29 @@
 												"disableBodyPruning": true
 											},
 											"request": {
+												"auth": {
+													"type": "bearer",
+													"bearer": {
+														"token": "{{Bearer_token}}"
+													}
+												},
 												"method": "GET",
 												"header": [],
 												"url": {
-													"raw": "{{baseUrl}}/v1/settings/:id",
+													"raw": "{{baseUrl}}/v1/settings/master/:id",
 													"host": [
 														"{{baseUrl}}"
 													],
 													"path": [
 														"v1",
 														"settings",
+														"master",
 														":id"
 													],
 													"variable": [
 														{
 															"key": "id",
-															"value": "29",
-															"description": "(Required) "
+															"value": "33"
 														}
 													]
 												}
