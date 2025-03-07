@@ -1,6 +1,0 @@
-{
-  "token": "862193",
-  "email": "favour@yopmail.com",
-  "password": "QAtester@A11",
-  "confirm_password": "QAtester@A11"
-}

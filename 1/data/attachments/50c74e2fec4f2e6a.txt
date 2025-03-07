@@ -1,1 +1,0 @@
-{"status":false,"statusCode":403,"timestamp":"2025-02-09T16:00:26.511Z","path":"/v1/notifications/templates?page=1&limit=10&category=1","message":"Forbidden resource"}
