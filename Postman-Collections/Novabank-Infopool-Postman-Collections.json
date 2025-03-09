@@ -2763,6 +2763,28 @@
 								},
 								{
 									"name": "Send user invitation token - empty authentication type",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "e0304a98-0df3-4b6f-bd6c-189f8b5fc651",
+												"exec": [
+													"var jsonData = pm.response.json();",
+													"",
+													"pm.test(\"Status code is 400\", function () {",
+													"    pm.response.to.have.status(400);",
+													"});",
+													"pm.test(\"Reponse body contains standard Error fields\", function () {",
+													"    pm.expect(jsonData.statusCode).to.eql(400);",
+													"    pm.expect(jsonData.status).to.eql(false);",
+													"    pm.expect(jsonData.message[1]).to.eql(\"authentication_type should not be empty\");",
+													"});"
+												],
+												"type": "text/javascript",
+												"packages": {}
+											}
+										}
+									],
 									"id": "6d456506-34e2-4ad6-983b-d33ecdc5d07e",
 									"protocolProfileBehavior": {
 										"disableBodyPruning": true
@@ -2777,7 +2799,7 @@
 										],
 										"body": {
 											"mode": "raw",
-											"raw": "{\n  \"authentication_type\": \"password\",\n  \"first_name\": \"Udeme\",\n  \"last_name\": \"tester\",\n  \"password\": \"@passwordA1\",\n  \"device_type\": \"@passwordA1\",\n  \"device_name\": \"iPhone 13\",\n  \"location\": \"Lagos\"\n}",
+											"raw": "{\n  \"authentication_type\": \"\",\n  \"first_name\": \"Udeme\",\n  \"last_name\": \"tester\",\n  \"password\": \"@passwordA1\",\n  \"device_type\": \"@passwordA1\",\n  \"device_name\": \"iPhone 13\",\n  \"location\": \"Lagos\"\n}",
 											"options": {
 												"raw": {
 													"headerFamily": "json",
@@ -2868,7 +2890,7 @@
 										],
 										"body": {
 											"mode": "raw",
-											"raw": "{\n  \"authentication_type\": \"password\",\n  \"first_name\": \"\",\n  \"last_name\": \"Elijah\",\n  \"password\": \"@passwordA1\"\n}",
+											"raw": "{\n  \"authentication_type\": \"password\",\n  \"first_name\": \"Udeme\",\n  \"last_name\": \"tester\",\n  \"password\": \"@passwordA1\",\n  \"device_type\": \"@passwordA1\",\n  \"device_name\": \"iPhone 13\",\n  \"location\": \"Lagos\"\n}",
 											"options": {
 												"raw": {
 													"headerFamily": "json",
@@ -2888,7 +2910,6 @@
 											],
 											"variable": [
 												{
-													"id": "dc29bf58-c6e2-4dbf-8844-d055e96a7333",
 													"key": "id",
 													"value": "9eabc9358b32c5a86ba1bdc7e762e24ff2c43f9ad420f0967439b4c5c8201b90"
 												}
@@ -2960,7 +2981,7 @@
 										],
 										"body": {
 											"mode": "raw",
-											"raw": "{\n  \"authentication_type\": \"password\",\n  \"first_name\": \"Favour\",\n  \"last_name\": \"\",\n  \"password\": \"@passwordA1\"\n}",
+											"raw": "{\n  \"authentication_type\": \"password\",\n  \"first_name\": \"Udeme\",\n  \"last_name\": \"tester\",\n  \"password\": \"@passwordA1\",\n  \"device_type\": \"@passwordA1\",\n  \"device_name\": \"iPhone 13\",\n  \"location\": \"Lagos\"\n}",
 											"options": {
 												"raw": {
 													"headerFamily": "json",
@@ -2980,7 +3001,6 @@
 											],
 											"variable": [
 												{
-													"id": "87147629-5f4c-4054-a862-6527ff941760",
 													"key": "id",
 													"value": "9eabc9358b32c5a86ba1bdc7e762e24ff2c43f9ad420f0967439b4c5c8201b90"
 												}
@@ -3052,7 +3072,7 @@
 										],
 										"body": {
 											"mode": "raw",
-											"raw": "{\n  \"authentication_type\": \"password\",\n  \"first_name\": \"Favour\",\n  \"last_name\": \"Elijah\",\n  \"password\": \"\"\n}",
+											"raw": "{\n  \"authentication_type\": \"password\",\n  \"first_name\": \"Udeme\",\n  \"last_name\": \"tester\",\n  \"password\": \"@passwordA1\",\n  \"device_type\": \"@passwordA1\",\n  \"device_name\": \"iPhone 13\",\n  \"location\": \"Lagos\"\n}",
 											"options": {
 												"raw": {
 													"headerFamily": "json",
@@ -3072,7 +3092,6 @@
 											],
 											"variable": [
 												{
-													"id": "1d83cb9b-963b-48e9-b164-546cf38d81dd",
 													"key": "id",
 													"value": "9eabc9358b32c5a86ba1bdc7e762e24ff2c43f9ad420f0967439b4c5c8201b90"
 												}
@@ -3144,7 +3163,7 @@
 										],
 										"body": {
 											"mode": "raw",
-											"raw": "{\n  \"authentication_type\": \"password\",\n  \"first_name\": \"Favour\",\n  \"last_name\": \"Elijah\",\n  \"password\": \"password\"\n}",
+											"raw": "{\n  \"authentication_type\": \"password\",\n  \"first_name\": \"Udeme\",\n  \"last_name\": \"tester\",\n  \"password\": \"@passwordA1\",\n  \"device_type\": \"@passwordA1\",\n  \"device_name\": \"iPhone 13\",\n  \"location\": \"Lagos\"\n}",
 											"options": {
 												"raw": {
 													"headerFamily": "json",
@@ -3164,7 +3183,6 @@
 											],
 											"variable": [
 												{
-													"id": "01b2187b-d41c-46eb-ac56-3eefe5896705",
 													"key": "id",
 													"value": "9eabc9358b32c5a86ba1bdc7e762e24ff2c43f9ad420f0967439b4c5c8201b90"
 												}
