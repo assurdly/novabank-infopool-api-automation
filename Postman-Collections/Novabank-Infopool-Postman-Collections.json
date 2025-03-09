@@ -1,7 +1,7 @@
 {
 	"info": {
 		"_postman_id": "b449374b-96bd-4b23-ade9-f54ab6c31c5d",
-		"name": "Nova Bank - Infopool",
+		"name": "QA|Nova Bank - Infopool",
 		"schema": "https://schema.postman.com/json/collection/v2.0.0/collection.json"
 	},
 	"item": [
@@ -65,7 +65,7 @@
 														],
 														"body": {
 															"mode": "raw",
-															"raw": "{\n  \"email\": \"favourdesent@yopmail.com\",\n  \"password\": \"@passwordA1\",\n  //\"device_id\": \"10.32.2.66\",\n  \"device_type\": \"mobile\",\n  \"device_name\": \"iPhone 11\",\n  \"location\": \"Lagos\"\n}",
+															"raw": "{\n  \"email\": \"test_superadmin_staging_01@yopmail.com\",\n  \"password\": \"Password12$\",\n  //\"device_id\": \"10.32.2.66\",\n  \"device_type\": \"mobile\",\n  \"device_name\": \"iPhone 11\",\n  \"location\": \"Lagos\"\n}",
 															"options": {
 																"raw": {
 																	"headerFamily": "json",
@@ -383,7 +383,7 @@
 																	"",
 																	"pm.test(\"Reponse body contains success fields\", function () {",
 																	"    pm.expect(jsonData.status).to.eql(true);",
-																	"    pm.expect(jsonData.response.message).to.eql('Password reset instructions sent to favour@yopmail.com if it exists on our system.');",
+																	"    pm.expect(jsonData.response.message).to.eql('Password reset instructions sent to favourdesent@yopmail.com if it exists on our system.');",
 																	"});",
 																	""
 																],
@@ -1184,7 +1184,7 @@
 															"    pm.expect(jsonData.statusCode).to.eql(400);",
 															"    pm.expect(jsonData.path).is.not.null;",
 															"    pm.expect(jsonData.status).to.eql(false);",
-															"   pm.expect(jsonData.message[0]).to.eql('Password should be at least 8 characters long'); ",
+															"   pm.expect(jsonData.message[2]).to.eql('Password should have 1 numbers minimum'); ",
 															"});",
 															""
 														],
@@ -1213,7 +1213,7 @@
 												],
 												"body": {
 													"mode": "raw",
-													"raw": "{\n  \"current_password\": \"@passwordA1\",\n  \"new_password\": \"@passwordA\"\n}",
+													"raw": "{\n  \"current_password\": \"Password12$\",\n  \"new_password\": \"@passwordA\"\n}",
 													"options": {
 														"raw": {
 															"headerFamily": "json",
@@ -1580,7 +1580,15 @@
 															"",
 															"pm.test(\"Status code is 200\", function () {",
 															"    pm.response.to.have.status(200);",
+															"});",
+															"pm.test(\"Reponse body contains success fields\", function () {",
 															"    pm.expect(jsonData.status).to.eql(true);",
+															"    pm.expect(jsonData.response.phone).is.not.null;",
+															"      pm.expect(jsonData.response.first_name).is.not.null;",
+															"      pm.expect(jsonData.response.last_name).is.not.null;",
+															"       pm.expect(jsonData.response.email).is.not.null;",
+															"       pm.expect(jsonData.response.last_login_date).is.not.null;",
+															"        pm.expect(jsonData.response.mfaEnabled).to.be.oneOf([false, true]);",
 															"});"
 														],
 														"type": "text/javascript",
@@ -1612,7 +1620,7 @@
 												],
 												"body": {
 													"mode": "raw",
-													"raw": "{\n  \"phone\": \"09033362914\"\n}",
+													"raw": "{\n  \"phone\": \"08000000001\"\n}",
 													"options": {
 														"raw": {
 															"language": "json"
@@ -2067,158 +2075,6 @@
 										}
 									],
 									"id": "c3c17a42-dde4-4a48-a68a-9f6312dd366c"
-								},
-								{
-									"name": "mfa",
-									"item": [
-										{
-											"name": "setup",
-											"item": [
-												{
-													"name": "Profile Controller setup MFA v1",
-													"id": "8e712d72-df1c-4c68-941c-240572a4316f",
-													"protocolProfileBehavior": {
-														"disableBodyPruning": true
-													},
-													"request": {
-														"auth": {
-															"type": "bearer",
-															"bearer": {
-																"token": "{{bearerToken}}"
-															}
-														},
-														"method": "POST",
-														"header": [
-															{
-																"key": "Accept",
-																"value": "application/json"
-															}
-														],
-														"url": "{{baseUrl}}/v1/profile/mfa/setup"
-													},
-													"response": [
-														{
-															"id": "c8506cb6-30ad-4786-9265-28e0d7976cea",
-															"name": "Untitled Response",
-															"originalRequest": {
-																"method": "POST",
-																"header": [
-																	{
-																		"key": "Accept",
-																		"value": "application/json"
-																	},
-																	{
-																		"description": "Added as a part of security scheme: bearer",
-																		"key": "Authorization",
-																		"value": "Bearer <token>"
-																	}
-																],
-																"url": "{{baseUrl}}/v1/profile/mfa/setup"
-															},
-															"status": "Unauthorized",
-															"code": 401,
-															"_postman_previewlanguage": "json",
-															"header": [
-																{
-																	"key": "Content-Type",
-																	"value": "application/json"
-																}
-															],
-															"cookie": [],
-															"responseTime": null,
-															"body": "{\n  \"status\": false,\n  \"statusCode\": 401,\n  \"timestamp\": \"<date>\",\n  \"path\": \"/v1/path/guarded\",\n  \"message\": \"Unauthorized\"\n}"
-														}
-													]
-												}
-											],
-											"id": "e2839f15-aea1-4e8c-b9eb-85b41f32eb0e"
-										},
-										{
-											"name": "Profile Controller toggle MFA v1",
-											"id": "d07ca273-b12f-49b2-956b-05613ff9cdf6",
-											"protocolProfileBehavior": {
-												"disableBodyPruning": true
-											},
-											"request": {
-												"auth": {
-													"type": "bearer",
-													"bearer": {
-														"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZW1haWwiOiJRQUB5b3BtYWlsLmNvbSIsInN1YiI6IjQiLCJzY29wZSI6WyJGVUxMX0FDQ0VTUyJdLCJpYXQiOjE3Mzk0NDY2MzcsImV4cCI6MTczOTQ0NzUzNywiYXVkIjoiaW5mb3Bvb2wubmciLCJpc3MiOiJhdXRoLmluZm9wb29sLm5nIn0.B8nPx31pzkt7QR6uexSL72984eQpCWrcM4mZ6KSiUhg"
-													}
-												},
-												"method": "PATCH",
-												"header": [
-													{
-														"key": "Content-Type",
-														"value": "application/json"
-													},
-													{
-														"key": "Accept",
-														"value": "application/json"
-													}
-												],
-												"body": {
-													"mode": "raw",
-													"raw": "{\n  \"action\": \"disable\",\n  \"password\": \"@passwordA1\",\n  \"code\": \"017689\",\n  \"secret\": \"GEVEQA2GOUWUCIBH\"\n}",
-													"options": {
-														"raw": {
-															"headerFamily": "json",
-															"language": "json"
-														}
-													}
-												},
-												"url": "{{baseUrl}}/v1/profile/mfa"
-											},
-											"response": [
-												{
-													"id": "5b2f55ed-2ce5-49a6-9b0e-0710fb4a3665",
-													"name": "Untitled Response",
-													"originalRequest": {
-														"method": "PATCH",
-														"header": [
-															{
-																"key": "Content-Type",
-																"value": "application/json"
-															},
-															{
-																"key": "Accept",
-																"value": "application/json"
-															},
-															{
-																"description": "Added as a part of security scheme: bearer",
-																"key": "Authorization",
-																"value": "Bearer <token>"
-															}
-														],
-														"body": {
-															"mode": "raw",
-															"raw": "{\n  \"action\": \"enable\",\n  \"password\": \"<string>\",\n  \"code\": \"<string>\",\n  \"secret\": \"<string>\"\n}",
-															"options": {
-																"raw": {
-																	"headerFamily": "json",
-																	"language": "json"
-																}
-															}
-														},
-														"url": "{{baseUrl}}/v1/profile/mfa"
-													},
-													"status": "Unauthorized",
-													"code": 401,
-													"_postman_previewlanguage": "json",
-													"header": [
-														{
-															"key": "Content-Type",
-															"value": "application/json"
-														}
-													],
-													"cookie": [],
-													"responseTime": null,
-													"body": "{\n  \"status\": false,\n  \"statusCode\": 401,\n  \"timestamp\": \"<date>\",\n  \"path\": \"/v1/path/guarded\",\n  \"message\": \"Unauthorized\"\n}"
-												}
-											]
-										}
-									],
-									"id": "140da798-b45b-4cd2-9a0f-02cb354226a9"
 								}
 							],
 							"id": "b36ec4f5-f770-40dd-a172-f5650beefb7c"
@@ -2617,39 +2473,37 @@
 							"name": "Onboarding",
 							"item": [
 								{
-									"name": "Validate user invitation token",
-									"id": "48754575-fa85-4537-88aa-60f8cb411444",
-									"protocolProfileBehavior": {
-										"disableBodyPruning": true
-									},
-									"request": {
-										"method": "GET",
-										"header": [],
-										"url": {
-											"raw": "{{baseUrl}}/v1/onboarding/:token",
-											"host": [
-												"{{baseUrl}}"
-											],
-											"path": [
-												"v1",
-												"onboarding",
-												":token"
-											],
-											"variable": [
-												{
-													"id": "97d6abf9-13ba-4a84-ac7a-a5b1f45b31b8",
-													"key": "token",
-													"value": "9eabc9358b32c5a86ba1bdc7e762e24ff2c43f9ad420f0967439b4c5c8201b90",
-													"description": "(Required) "
-												}
-											]
-										}
-									},
-									"response": [
+									"name": "Validate invitation",
+									"item": [
 										{
-											"id": "950d01a8-16b8-436a-a137-6dc32474c612",
-											"name": "Untitled Response",
-											"originalRequest": {
+											"name": "Validate user invitation token",
+											"event": [
+												{
+													"listen": "test",
+													"script": {
+														"id": "b1527f0e-333e-4b51-a306-e69a88c03453",
+														"exec": [
+															"var jsonData = pm.response.json();",
+															"",
+															"pm.test(\"Status code is 400\", function () {",
+															"    pm.response.to.have.status(400);",
+															"});",
+															"pm.test(\"Reponse body contains standard Error fields\", function () {",
+															"    pm.expect(jsonData.statusCode).to.eql(400);",
+															"    pm.expect(jsonData.status).to.eql(false);",
+															"    pm.expect(jsonData.message).to.eql(\"Invalid user invitation token\");",
+															"});"
+														],
+														"type": "text/javascript",
+														"packages": {}
+													}
+												}
+											],
+											"id": "48754575-fa85-4537-88aa-60f8cb411444",
+											"protocolProfileBehavior": {
+												"disableBodyPruning": true
+											},
+											"request": {
 												"method": "GET",
 												"header": [],
 												"url": {
@@ -2664,69 +2518,82 @@
 													],
 													"variable": [
 														{
-															"key": "token"
+															"key": "token",
+															"value": "9eabc9358b32c5a86ba1bdc7e762e24ff2c43f9ad420f0967439b4c5c8201b90",
+															"description": "(Required) "
 														}
 													]
 												}
 											},
-											"status": "OK",
-											"code": 200,
-											"_postman_previewlanguage": "text",
-											"header": [],
-											"cookie": [],
-											"responseTime": null,
-											"body": ""
-										}
-									]
-								},
-								{
-									"name": "Send user invitation token - successful",
-									"id": "a6d23a32-5162-4aa6-922e-6839e144327a",
-									"protocolProfileBehavior": {
-										"disableBodyPruning": true
-									},
-									"request": {
-										"method": "POST",
-										"header": [
-											{
-												"key": "Content-Type",
-												"value": "application/json"
-											}
-										],
-										"body": {
-											"mode": "raw",
-											"raw": "{\n  \"authentication_type\": \"password\",\n  \"first_name\": \"Favour\",\n  \"last_name\": \"Elijah\",\n  \"password\": \"@passwordA1\"\n}",
-											"options": {
-												"raw": {
-													"headerFamily": "json",
-													"language": "json"
-												}
-											}
-										},
-										"url": {
-											"raw": "{{baseUrl}}/v1/onboarding/:id",
-											"host": [
-												"{{baseUrl}}"
-											],
-											"path": [
-												"v1",
-												"onboarding",
-												":id"
-											],
-											"variable": [
+											"response": [
 												{
-													"id": "4994a9eb-bc12-416f-9d5e-ffa5340c2c0f",
-													"key": "id",
-													"value": "9eabc9358b32c5a86ba1bdc7e762e24ff2c43f9ad420f0967439b4c5c8201b90"
+													"id": "950d01a8-16b8-436a-a137-6dc32474c612",
+													"name": "Untitled Response",
+													"originalRequest": {
+														"method": "GET",
+														"header": [],
+														"url": {
+															"raw": "{{baseUrl}}/v1/onboarding/:token",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"v1",
+																"onboarding",
+																":token"
+															],
+															"variable": [
+																{
+																	"key": "token"
+																}
+															]
+														}
+													},
+													"status": "OK",
+													"code": 200,
+													"_postman_previewlanguage": "text",
+													"header": [],
+													"cookie": [],
+													"responseTime": null,
+													"body": ""
 												}
 											]
 										}
-									},
-									"response": [
+									],
+									"id": "63dc0bcd-f2fe-493f-b4d7-bdbe2075abbe"
+								},
+								{
+									"name": "Complete profile",
+									"item": [
 										{
-											"id": "0e89edb2-77c3-4f8c-99dd-9ae8eb5530f3",
-											"name": "Untitled Response",
-											"originalRequest": {
+											"name": "Send user invitation token - successful",
+											"event": [
+												{
+													"listen": "test",
+													"script": {
+														"id": "2d557b44-ea02-41e1-ba85-8849915497b4",
+														"exec": [
+															"var jsonData = pm.response.json();",
+															"",
+															"pm.test(\"Status code is 400\", function () {",
+															"    pm.response.to.have.status(400);",
+															"});",
+															"pm.test(\"Reponse body contains standard Error fields\", function () {",
+															"    pm.expect(jsonData.statusCode).to.eql(400);",
+															"    pm.expect(jsonData.status).to.eql(false);",
+															"    pm.expect(jsonData.message).to.eql('This invitation has expired or is invalid. Please contact your administrator for more details.');",
+															"});"
+														],
+														"type": "text/javascript",
+														"packages": {}
+													}
+												}
+											],
+											"id": "a6d23a32-5162-4aa6-922e-6839e144327a",
+											"protocolProfileBehavior": {
+												"disableBodyPruning": true
+											},
+											"request": {
 												"method": "POST",
 												"header": [
 													{
@@ -2736,7 +2603,7 @@
 												],
 												"body": {
 													"mode": "raw",
-													"raw": "{\n  \"authentication_type\": \"password\",\n  \"first_name\": \"John\",\n  \"last_name\": \"Doe\",\n  \"password\": \"Password1@\"\n}",
+													"raw": "{\n  \"authentication_type\": \"password\",\n  \"first_name\": \"Udeme\",\n  \"last_name\": \"tester\",\n  \"password\": \"@passwordA1\",\n  \"device_type\": \"@passwordA1\",\n  \"device_name\": \"iPhone 13\",\n  \"location\": \"Lagos\"\n}",
 													"options": {
 														"raw": {
 															"headerFamily": "json",
@@ -2745,80 +2612,101 @@
 													}
 												},
 												"url": {
-													"raw": "{{baseUrl}}/v1/onboarding/:token",
+													"raw": "{{baseUrl}}/v1/onboarding/:id",
 													"host": [
 														"{{baseUrl}}"
 													],
 													"path": [
 														"v1",
 														"onboarding",
-														":token"
+														":id"
 													],
 													"variable": [
 														{
-															"key": "token"
+															"key": "id",
+															"value": "9eabc9358b32c5a86ba1bdc7e762e24ff2c43f9ad420f0967439b4c5c8201b90"
 														}
 													]
 												}
 											},
-											"status": "Created",
-											"code": 201,
-											"_postman_previewlanguage": "text",
-											"header": [],
-											"cookie": [],
-											"responseTime": null,
-											"body": ""
-										}
-									]
-								},
-								{
-									"name": "Send user invitation token - invalid authentication type",
-									"id": "c03e0829-966e-46eb-8294-14176257e2b2",
-									"protocolProfileBehavior": {
-										"disableBodyPruning": true
-									},
-									"request": {
-										"method": "POST",
-										"header": [
-											{
-												"key": "Content-Type",
-												"value": "application/json"
-											}
-										],
-										"body": {
-											"mode": "raw",
-											"raw": "{\n  \"authentication_type\": \"password\",\n  \"first_name\": \"Favour\",\n  \"last_name\": \"Elijah\",\n  \"password\": \"@passwordA1\"\n}",
-											"options": {
-												"raw": {
-													"headerFamily": "json",
-													"language": "json"
-												}
-											}
-										},
-										"url": {
-											"raw": "{{baseUrl}}/v1/onboarding/:id",
-											"host": [
-												"{{baseUrl}}"
-											],
-											"path": [
-												"v1",
-												"onboarding",
-												":id"
-											],
-											"variable": [
+											"response": [
 												{
-													"id": "9df1aaab-8c1e-4305-a19f-cad721a2f4cf",
-													"key": "id",
-													"value": "9eabc9358b32c5a86ba1bdc7e762e24ff2c43f9ad420f0967439b4c5c8201b90"
+													"id": "0e89edb2-77c3-4f8c-99dd-9ae8eb5530f3",
+													"name": "Untitled Response",
+													"originalRequest": {
+														"method": "POST",
+														"header": [
+															{
+																"key": "Content-Type",
+																"value": "application/json"
+															}
+														],
+														"body": {
+															"mode": "raw",
+															"raw": "{\n  \"authentication_type\": \"password\",\n  \"first_name\": \"John\",\n  \"last_name\": \"Doe\",\n  \"password\": \"Password1@\"\n}",
+															"options": {
+																"raw": {
+																	"headerFamily": "json",
+																	"language": "json"
+																}
+															}
+														},
+														"url": {
+															"raw": "{{baseUrl}}/v1/onboarding/:token",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"v1",
+																"onboarding",
+																":token"
+															],
+															"variable": [
+																{
+																	"key": "token"
+																}
+															]
+														}
+													},
+													"status": "Created",
+													"code": 201,
+													"_postman_previewlanguage": "text",
+													"header": [],
+													"cookie": [],
+													"responseTime": null,
+													"body": ""
 												}
 											]
-										}
-									},
-									"response": [
+										},
 										{
-											"id": "2cfee55d-fd3d-4603-96ad-cbe749f38721",
-											"name": "Untitled Response",
-											"originalRequest": {
+											"name": "Send user invitation token - invalid authentication",
+											"event": [
+												{
+													"listen": "test",
+													"script": {
+														"id": "ccf1f754-8bc4-43cd-bb57-2dc207d92301",
+														"exec": [
+															"var jsonData = pm.response.json();",
+															"",
+															"pm.test(\"Status code is 400\", function () {",
+															"    pm.response.to.have.status(400);",
+															"});",
+															"pm.test(\"Reponse body contains standard Error fields\", function () {",
+															"    pm.expect(jsonData.statusCode).to.eql(400);",
+															"    pm.expect(jsonData.status).to.eql(false);",
+															"    pm.expect(jsonData.message[0]).to.eql(\"authentication_type must be one of the following values: \\\"password\\\", \\\"sso\\\"\");",
+															"});"
+														],
+														"type": "text/javascript",
+														"packages": {}
+													}
+												}
+											],
+											"id": "c03e0829-966e-46eb-8294-14176257e2b2",
+											"protocolProfileBehavior": {
+												"disableBodyPruning": true
+											},
+											"request": {
 												"method": "POST",
 												"header": [
 													{
@@ -2828,7 +2716,7 @@
 												],
 												"body": {
 													"mode": "raw",
-													"raw": "{\n  \"authentication_type\": \"password\",\n  \"first_name\": \"John\",\n  \"last_name\": \"Doe\",\n  \"password\": \"Password1@\"\n}",
+													"raw": "{\n  \"authentication_type\": \"USERNAME\",\n  \"first_name\": \"Udeme\",\n  \"last_name\": \"tester\",\n  \"password\": \"@passwordA1\",\n  \"device_type\": \"@passwordA1\",\n  \"device_name\": \"iPhone 13\",\n  \"location\": \"Lagos\"\n}",
 													"options": {
 														"raw": {
 															"headerFamily": "json",
@@ -2837,80 +2725,101 @@
 													}
 												},
 												"url": {
-													"raw": "{{baseUrl}}/v1/onboarding/:token",
+													"raw": "{{baseUrl}}/v1/onboarding/:id",
 													"host": [
 														"{{baseUrl}}"
 													],
 													"path": [
 														"v1",
 														"onboarding",
-														":token"
+														":id"
 													],
 													"variable": [
 														{
-															"key": "token"
+															"key": "id",
+															"value": "9eabc9358b32c5a86ba1bdc7e762e24ff2c43f9ad420f0967439b4c5c8201b90"
 														}
 													]
 												}
 											},
-											"status": "Created",
-											"code": 201,
-											"_postman_previewlanguage": "text",
-											"header": [],
-											"cookie": [],
-											"responseTime": null,
-											"body": ""
-										}
-									]
-								},
-								{
-									"name": "Send user invitation token - empty authentication type",
-									"id": "6d456506-34e2-4ad6-983b-d33ecdc5d07e",
-									"protocolProfileBehavior": {
-										"disableBodyPruning": true
-									},
-									"request": {
-										"method": "POST",
-										"header": [
-											{
-												"key": "Content-Type",
-												"value": "application/json"
-											}
-										],
-										"body": {
-											"mode": "raw",
-											"raw": "{\n  \"authentication_type\": \"\",\n  \"first_name\": \"Favour\",\n  \"last_name\": \"Elijah\",\n  \"password\": \"@passwordA1\"\n}",
-											"options": {
-												"raw": {
-													"headerFamily": "json",
-													"language": "json"
-												}
-											}
-										},
-										"url": {
-											"raw": "{{baseUrl}}/v1/onboarding/:id",
-											"host": [
-												"{{baseUrl}}"
-											],
-											"path": [
-												"v1",
-												"onboarding",
-												":id"
-											],
-											"variable": [
+											"response": [
 												{
-													"id": "4485f777-5213-4777-93e9-02d3e7c66fde",
-													"key": "id",
-													"value": "9eabc9358b32c5a86ba1bdc7e762e24ff2c43f9ad420f0967439b4c5c8201b90"
+													"id": "2cfee55d-fd3d-4603-96ad-cbe749f38721",
+													"name": "Untitled Response",
+													"originalRequest": {
+														"method": "POST",
+														"header": [
+															{
+																"key": "Content-Type",
+																"value": "application/json"
+															}
+														],
+														"body": {
+															"mode": "raw",
+															"raw": "{\n  \"authentication_type\": \"password\",\n  \"first_name\": \"John\",\n  \"last_name\": \"Doe\",\n  \"password\": \"Password1@\"\n}",
+															"options": {
+																"raw": {
+																	"headerFamily": "json",
+																	"language": "json"
+																}
+															}
+														},
+														"url": {
+															"raw": "{{baseUrl}}/v1/onboarding/:token",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"v1",
+																"onboarding",
+																":token"
+															],
+															"variable": [
+																{
+																	"key": "token"
+																}
+															]
+														}
+													},
+													"status": "Created",
+													"code": 201,
+													"_postman_previewlanguage": "text",
+													"header": [],
+													"cookie": [],
+													"responseTime": null,
+													"body": ""
 												}
 											]
-										}
-									},
-									"response": [
+										},
 										{
-											"id": "85676085-c16f-4eee-a471-cab05b3bdb47",
-											"name": "Untitled Response",
-											"originalRequest": {
+											"name": "Send user invitation token - empty authentication type",
+											"event": [
+												{
+													"listen": "test",
+													"script": {
+														"id": "e0304a98-0df3-4b6f-bd6c-189f8b5fc651",
+														"exec": [
+															"var jsonData = pm.response.json();",
+															"",
+															"pm.test(\"Status code is 400\", function () {",
+															"    pm.response.to.have.status(400);",
+															"});",
+															"pm.test(\"Reponse body contains standard Error fields\", function () {",
+															"    pm.expect(jsonData.statusCode).to.eql(400);",
+															"    pm.expect(jsonData.status).to.eql(false);",
+															"    pm.expect(jsonData.message[1]).to.eql(\"authentication_type should not be empty\");",
+															"});"
+														],
+														"type": "text/javascript",
+														"packages": {}
+													}
+												}
+											],
+											"id": "6d456506-34e2-4ad6-983b-d33ecdc5d07e",
+											"protocolProfileBehavior": {
+												"disableBodyPruning": true
+											},
+											"request": {
 												"method": "POST",
 												"header": [
 													{
@@ -2920,7 +2829,7 @@
 												],
 												"body": {
 													"mode": "raw",
-													"raw": "{\n  \"authentication_type\": \"password\",\n  \"first_name\": \"John\",\n  \"last_name\": \"Doe\",\n  \"password\": \"Password1@\"\n}",
+													"raw": "{\n  \"authentication_type\": \"\",\n  \"first_name\": \"Udeme\",\n  \"last_name\": \"tester\",\n  \"password\": \"@passwordA1\",\n  \"device_type\": \"@passwordA1\",\n  \"device_name\": \"iPhone 13\",\n  \"location\": \"Lagos\"\n}",
 													"options": {
 														"raw": {
 															"headerFamily": "json",
@@ -2929,80 +2838,101 @@
 													}
 												},
 												"url": {
-													"raw": "{{baseUrl}}/v1/onboarding/:token",
+													"raw": "{{baseUrl}}/v1/onboarding/:id",
 													"host": [
 														"{{baseUrl}}"
 													],
 													"path": [
 														"v1",
 														"onboarding",
-														":token"
+														":id"
 													],
 													"variable": [
 														{
-															"key": "token"
+															"key": "id",
+															"value": "9eabc9358b32c5a86ba1bdc7e762e24ff2c43f9ad420f0967439b4c5c8201b90"
 														}
 													]
 												}
 											},
-											"status": "Created",
-											"code": 201,
-											"_postman_previewlanguage": "text",
-											"header": [],
-											"cookie": [],
-											"responseTime": null,
-											"body": ""
-										}
-									]
-								},
-								{
-									"name": "Send user invitation token - empty first name",
-									"id": "6e1d91bb-57de-4436-9be3-c2f5550aaacc",
-									"protocolProfileBehavior": {
-										"disableBodyPruning": true
-									},
-									"request": {
-										"method": "POST",
-										"header": [
-											{
-												"key": "Content-Type",
-												"value": "application/json"
-											}
-										],
-										"body": {
-											"mode": "raw",
-											"raw": "{\n  \"authentication_type\": \"password\",\n  \"first_name\": \"\",\n  \"last_name\": \"Elijah\",\n  \"password\": \"@passwordA1\"\n}",
-											"options": {
-												"raw": {
-													"headerFamily": "json",
-													"language": "json"
-												}
-											}
-										},
-										"url": {
-											"raw": "{{baseUrl}}/v1/onboarding/:id",
-											"host": [
-												"{{baseUrl}}"
-											],
-											"path": [
-												"v1",
-												"onboarding",
-												":id"
-											],
-											"variable": [
+											"response": [
 												{
-													"id": "dc29bf58-c6e2-4dbf-8844-d055e96a7333",
-													"key": "id",
-													"value": "9eabc9358b32c5a86ba1bdc7e762e24ff2c43f9ad420f0967439b4c5c8201b90"
+													"id": "85676085-c16f-4eee-a471-cab05b3bdb47",
+													"name": "Untitled Response",
+													"originalRequest": {
+														"method": "POST",
+														"header": [
+															{
+																"key": "Content-Type",
+																"value": "application/json"
+															}
+														],
+														"body": {
+															"mode": "raw",
+															"raw": "{\n  \"authentication_type\": \"password\",\n  \"first_name\": \"John\",\n  \"last_name\": \"Doe\",\n  \"password\": \"Password1@\"\n}",
+															"options": {
+																"raw": {
+																	"headerFamily": "json",
+																	"language": "json"
+																}
+															}
+														},
+														"url": {
+															"raw": "{{baseUrl}}/v1/onboarding/:token",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"v1",
+																"onboarding",
+																":token"
+															],
+															"variable": [
+																{
+																	"key": "token"
+																}
+															]
+														}
+													},
+													"status": "Created",
+													"code": 201,
+													"_postman_previewlanguage": "text",
+													"header": [],
+													"cookie": [],
+													"responseTime": null,
+													"body": ""
 												}
 											]
-										}
-									},
-									"response": [
+										},
 										{
-											"id": "56b35183-4393-4381-82c4-843c014e1112",
-											"name": "Untitled Response",
-											"originalRequest": {
+											"name": "Send user invitation token - empty first name",
+											"event": [
+												{
+													"listen": "test",
+													"script": {
+														"id": "ece5d7a0-ee63-44aa-b744-a43dbb52c232",
+														"exec": [
+															"var jsonData = pm.response.json();",
+															"",
+															"pm.test(\"Status code is 400\", function () {",
+															"    pm.response.to.have.status(400);",
+															"});",
+															"pm.test(\"Reponse body contains standard Error fields\", function () {",
+															"    pm.expect(jsonData.statusCode).to.eql(400);",
+															"    pm.expect(jsonData.status).to.eql(false);",
+															"    pm.expect(jsonData.message[0]).to.eql(\"first_name should not be empty\");",
+															"});"
+														],
+														"type": "text/javascript",
+														"packages": {}
+													}
+												}
+											],
+											"id": "6e1d91bb-57de-4436-9be3-c2f5550aaacc",
+											"protocolProfileBehavior": {
+												"disableBodyPruning": true
+											},
+											"request": {
 												"method": "POST",
 												"header": [
 													{
@@ -3012,7 +2942,7 @@
 												],
 												"body": {
 													"mode": "raw",
-													"raw": "{\n  \"authentication_type\": \"password\",\n  \"first_name\": \"John\",\n  \"last_name\": \"Doe\",\n  \"password\": \"Password1@\"\n}",
+													"raw": "{\n  \"authentication_type\": \"password\",\n  \"first_name\": \"\",\n  \"last_name\": \"tester\",\n  \"password\": \"@passwordA1\",\n  \"device_type\": \"mobile\",\n  \"device_name\": \"iPhone 13\",\n  \"location\": \"Lagos\"\n}",
 													"options": {
 														"raw": {
 															"headerFamily": "json",
@@ -3021,80 +2951,101 @@
 													}
 												},
 												"url": {
-													"raw": "{{baseUrl}}/v1/onboarding/:token",
+													"raw": "{{baseUrl}}/v1/onboarding/:id",
 													"host": [
 														"{{baseUrl}}"
 													],
 													"path": [
 														"v1",
 														"onboarding",
-														":token"
+														":id"
 													],
 													"variable": [
 														{
-															"key": "token"
+															"key": "id",
+															"value": "9eabc9358b32c5a86ba1bdc7e762e24ff2c43f9ad420f0967439b4c5c8201b90"
 														}
 													]
 												}
 											},
-											"status": "Created",
-											"code": 201,
-											"_postman_previewlanguage": "text",
-											"header": [],
-											"cookie": [],
-											"responseTime": null,
-											"body": ""
-										}
-									]
-								},
-								{
-									"name": "Send user invitation token - empty last name",
-									"id": "b95c28b5-6135-4dbc-a194-cbd856cd542b",
-									"protocolProfileBehavior": {
-										"disableBodyPruning": true
-									},
-									"request": {
-										"method": "POST",
-										"header": [
-											{
-												"key": "Content-Type",
-												"value": "application/json"
-											}
-										],
-										"body": {
-											"mode": "raw",
-											"raw": "{\n  \"authentication_type\": \"password\",\n  \"first_name\": \"Favour\",\n  \"last_name\": \"\",\n  \"password\": \"@passwordA1\"\n}",
-											"options": {
-												"raw": {
-													"headerFamily": "json",
-													"language": "json"
-												}
-											}
-										},
-										"url": {
-											"raw": "{{baseUrl}}/v1/onboarding/:id",
-											"host": [
-												"{{baseUrl}}"
-											],
-											"path": [
-												"v1",
-												"onboarding",
-												":id"
-											],
-											"variable": [
+											"response": [
 												{
-													"id": "87147629-5f4c-4054-a862-6527ff941760",
-													"key": "id",
-													"value": "9eabc9358b32c5a86ba1bdc7e762e24ff2c43f9ad420f0967439b4c5c8201b90"
+													"id": "56b35183-4393-4381-82c4-843c014e1112",
+													"name": "Untitled Response",
+													"originalRequest": {
+														"method": "POST",
+														"header": [
+															{
+																"key": "Content-Type",
+																"value": "application/json"
+															}
+														],
+														"body": {
+															"mode": "raw",
+															"raw": "{\n  \"authentication_type\": \"password\",\n  \"first_name\": \"John\",\n  \"last_name\": \"Doe\",\n  \"password\": \"Password1@\"\n}",
+															"options": {
+																"raw": {
+																	"headerFamily": "json",
+																	"language": "json"
+																}
+															}
+														},
+														"url": {
+															"raw": "{{baseUrl}}/v1/onboarding/:token",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"v1",
+																"onboarding",
+																":token"
+															],
+															"variable": [
+																{
+																	"key": "token"
+																}
+															]
+														}
+													},
+													"status": "Created",
+													"code": 201,
+													"_postman_previewlanguage": "text",
+													"header": [],
+													"cookie": [],
+													"responseTime": null,
+													"body": ""
 												}
 											]
-										}
-									},
-									"response": [
+										},
 										{
-											"id": "75da39bc-4b2d-433b-8e84-53d291b118e3",
-											"name": "Untitled Response",
-											"originalRequest": {
+											"name": "Send user invitation token - empty last name",
+											"event": [
+												{
+													"listen": "test",
+													"script": {
+														"id": "da64967a-498e-4ff2-b217-e69d0ab28768",
+														"exec": [
+															"var jsonData = pm.response.json();",
+															"",
+															"pm.test(\"Status code is 400\", function () {",
+															"    pm.response.to.have.status(400);",
+															"});",
+															"pm.test(\"Reponse body contains standard Error fields\", function () {",
+															"    pm.expect(jsonData.statusCode).to.eql(400);",
+															"    pm.expect(jsonData.status).to.eql(false);",
+															"    pm.expect(jsonData.message[0]).to.eql(\"last_name should not be empty\");",
+															"});"
+														],
+														"type": "text/javascript",
+														"packages": {}
+													}
+												}
+											],
+											"id": "b95c28b5-6135-4dbc-a194-cbd856cd542b",
+											"protocolProfileBehavior": {
+												"disableBodyPruning": true
+											},
+											"request": {
 												"method": "POST",
 												"header": [
 													{
@@ -3104,7 +3055,7 @@
 												],
 												"body": {
 													"mode": "raw",
-													"raw": "{\n  \"authentication_type\": \"password\",\n  \"first_name\": \"John\",\n  \"last_name\": \"Doe\",\n  \"password\": \"Password1@\"\n}",
+													"raw": "{\n  \"authentication_type\": \"password\",\n  \"first_name\": \"Udeme\",\n  \"last_name\": \"\",\n  \"password\": \"@passwordA1\",\n  \"device_type\": \"mobile\",\n  \"device_name\": \"iPhone 13\",\n  \"location\": \"Lagos\"\n}",
 													"options": {
 														"raw": {
 															"headerFamily": "json",
@@ -3113,80 +3064,101 @@
 													}
 												},
 												"url": {
-													"raw": "{{baseUrl}}/v1/onboarding/:token",
+													"raw": "{{baseUrl}}/v1/onboarding/:id",
 													"host": [
 														"{{baseUrl}}"
 													],
 													"path": [
 														"v1",
 														"onboarding",
-														":token"
+														":id"
 													],
 													"variable": [
 														{
-															"key": "token"
+															"key": "id",
+															"value": "9eabc9358b32c5a86ba1bdc7e762e24ff2c43f9ad420f0967439b4c5c8201b90"
 														}
 													]
 												}
 											},
-											"status": "Created",
-											"code": 201,
-											"_postman_previewlanguage": "text",
-											"header": [],
-											"cookie": [],
-											"responseTime": null,
-											"body": ""
-										}
-									]
-								},
-								{
-									"name": "Send user invitation token - empty password",
-									"id": "9c6505c8-9fe1-43fc-aed5-0d4511d0bb09",
-									"protocolProfileBehavior": {
-										"disableBodyPruning": true
-									},
-									"request": {
-										"method": "POST",
-										"header": [
-											{
-												"key": "Content-Type",
-												"value": "application/json"
-											}
-										],
-										"body": {
-											"mode": "raw",
-											"raw": "{\n  \"authentication_type\": \"password\",\n  \"first_name\": \"Favour\",\n  \"last_name\": \"Elijah\",\n  \"password\": \"\"\n}",
-											"options": {
-												"raw": {
-													"headerFamily": "json",
-													"language": "json"
-												}
-											}
-										},
-										"url": {
-											"raw": "{{baseUrl}}/v1/onboarding/:id",
-											"host": [
-												"{{baseUrl}}"
-											],
-											"path": [
-												"v1",
-												"onboarding",
-												":id"
-											],
-											"variable": [
+											"response": [
 												{
-													"id": "1d83cb9b-963b-48e9-b164-546cf38d81dd",
-													"key": "id",
-													"value": "9eabc9358b32c5a86ba1bdc7e762e24ff2c43f9ad420f0967439b4c5c8201b90"
+													"id": "75da39bc-4b2d-433b-8e84-53d291b118e3",
+													"name": "Untitled Response",
+													"originalRequest": {
+														"method": "POST",
+														"header": [
+															{
+																"key": "Content-Type",
+																"value": "application/json"
+															}
+														],
+														"body": {
+															"mode": "raw",
+															"raw": "{\n  \"authentication_type\": \"password\",\n  \"first_name\": \"John\",\n  \"last_name\": \"Doe\",\n  \"password\": \"Password1@\"\n}",
+															"options": {
+																"raw": {
+																	"headerFamily": "json",
+																	"language": "json"
+																}
+															}
+														},
+														"url": {
+															"raw": "{{baseUrl}}/v1/onboarding/:token",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"v1",
+																"onboarding",
+																":token"
+															],
+															"variable": [
+																{
+																	"key": "token"
+																}
+															]
+														}
+													},
+													"status": "Created",
+													"code": 201,
+													"_postman_previewlanguage": "text",
+													"header": [],
+													"cookie": [],
+													"responseTime": null,
+													"body": ""
 												}
 											]
-										}
-									},
-									"response": [
+										},
 										{
-											"id": "6e911a2b-9702-4d56-ac6b-a59197ce8c46",
-											"name": "Untitled Response",
-											"originalRequest": {
+											"name": "Send user invitation token - empty password",
+											"event": [
+												{
+													"listen": "test",
+													"script": {
+														"id": "2ac71efe-f1bb-4b55-8622-2078d1331409",
+														"exec": [
+															"var jsonData = pm.response.json();",
+															"",
+															"pm.test(\"Status code is 400\", function () {",
+															"    pm.response.to.have.status(400);",
+															"});",
+															"pm.test(\"Reponse body contains standard Error fields\", function () {",
+															"    pm.expect(jsonData.statusCode).to.eql(400);",
+															"    pm.expect(jsonData.status).to.eql(false);",
+															"    pm.expect(jsonData.message[0]).to.eql(\"password should not be empty\");",
+															"});"
+														],
+														"type": "text/javascript",
+														"packages": {}
+													}
+												}
+											],
+											"id": "9c6505c8-9fe1-43fc-aed5-0d4511d0bb09",
+											"protocolProfileBehavior": {
+												"disableBodyPruning": true
+											},
+											"request": {
 												"method": "POST",
 												"header": [
 													{
@@ -3196,7 +3168,7 @@
 												],
 												"body": {
 													"mode": "raw",
-													"raw": "{\n  \"authentication_type\": \"password\",\n  \"first_name\": \"John\",\n  \"last_name\": \"Doe\",\n  \"password\": \"Password1@\"\n}",
+													"raw": "{\n  \"authentication_type\": \"password\",\n  \"first_name\": \"Udeme\",\n  \"last_name\": \"tester\",\n  \"password\": \"\",\n  \"device_type\": \"mobile\",\n  \"device_name\": \"iPhone 13\",\n  \"location\": \"Lagos\"\n}",
 													"options": {
 														"raw": {
 															"headerFamily": "json",
@@ -3205,123 +3177,74 @@
 													}
 												},
 												"url": {
-													"raw": "{{baseUrl}}/v1/onboarding/:token",
+													"raw": "{{baseUrl}}/v1/onboarding/:id",
 													"host": [
 														"{{baseUrl}}"
 													],
 													"path": [
 														"v1",
 														"onboarding",
-														":token"
+														":id"
 													],
 													"variable": [
 														{
-															"key": "token"
+															"key": "id",
+															"value": "9eabc9358b32c5a86ba1bdc7e762e24ff2c43f9ad420f0967439b4c5c8201b90"
 														}
 													]
 												}
 											},
-											"status": "Created",
-											"code": 201,
-											"_postman_previewlanguage": "text",
-											"header": [],
-											"cookie": [],
-											"responseTime": null,
-											"body": ""
-										}
-									]
-								},
-								{
-									"name": "Send user invitation token - weak password",
-									"id": "289222f4-9d9a-46b7-9528-700c8223432f",
-									"protocolProfileBehavior": {
-										"disableBodyPruning": true
-									},
-									"request": {
-										"method": "POST",
-										"header": [
-											{
-												"key": "Content-Type",
-												"value": "application/json"
-											}
-										],
-										"body": {
-											"mode": "raw",
-											"raw": "{\n  \"authentication_type\": \"password\",\n  \"first_name\": \"Favour\",\n  \"last_name\": \"Elijah\",\n  \"password\": \"password\"\n}",
-											"options": {
-												"raw": {
-													"headerFamily": "json",
-													"language": "json"
-												}
-											}
-										},
-										"url": {
-											"raw": "{{baseUrl}}/v1/onboarding/:id",
-											"host": [
-												"{{baseUrl}}"
-											],
-											"path": [
-												"v1",
-												"onboarding",
-												":id"
-											],
-											"variable": [
+											"response": [
 												{
-													"id": "01b2187b-d41c-46eb-ac56-3eefe5896705",
-													"key": "id",
-													"value": "9eabc9358b32c5a86ba1bdc7e762e24ff2c43f9ad420f0967439b4c5c8201b90"
+													"id": "6e911a2b-9702-4d56-ac6b-a59197ce8c46",
+													"name": "Untitled Response",
+													"originalRequest": {
+														"method": "POST",
+														"header": [
+															{
+																"key": "Content-Type",
+																"value": "application/json"
+															}
+														],
+														"body": {
+															"mode": "raw",
+															"raw": "{\n  \"authentication_type\": \"password\",\n  \"first_name\": \"John\",\n  \"last_name\": \"Doe\",\n  \"password\": \"Password1@\"\n}",
+															"options": {
+																"raw": {
+																	"headerFamily": "json",
+																	"language": "json"
+																}
+															}
+														},
+														"url": {
+															"raw": "{{baseUrl}}/v1/onboarding/:token",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"v1",
+																"onboarding",
+																":token"
+															],
+															"variable": [
+																{
+																	"key": "token"
+																}
+															]
+														}
+													},
+													"status": "Created",
+													"code": 201,
+													"_postman_previewlanguage": "text",
+													"header": [],
+													"cookie": [],
+													"responseTime": null,
+													"body": ""
 												}
 											]
 										}
-									},
-									"response": [
-										{
-											"id": "b10f03f6-b973-47a3-b22e-6124a0b0d312",
-											"name": "Untitled Response",
-											"originalRequest": {
-												"method": "POST",
-												"header": [
-													{
-														"key": "Content-Type",
-														"value": "application/json"
-													}
-												],
-												"body": {
-													"mode": "raw",
-													"raw": "{\n  \"authentication_type\": \"password\",\n  \"first_name\": \"John\",\n  \"last_name\": \"Doe\",\n  \"password\": \"Password1@\"\n}",
-													"options": {
-														"raw": {
-															"headerFamily": "json",
-															"language": "json"
-														}
-													}
-												},
-												"url": {
-													"raw": "{{baseUrl}}/v1/onboarding/:token",
-													"host": [
-														"{{baseUrl}}"
-													],
-													"path": [
-														"v1",
-														"onboarding",
-														":token"
-													],
-													"variable": [
-														{
-															"key": "token"
-														}
-													]
-												}
-											},
-											"status": "Created",
-											"code": 201,
-											"_postman_previewlanguage": "text",
-											"header": [],
-											"cookie": [],
-											"responseTime": null,
-											"body": ""
-										}
-									]
+									],
+									"id": "13557aba-fea8-4275-a22e-2a404870f5d6"
 								}
 							],
 							"id": "c9cf28b7-80b7-410a-b715-e7aad6e65443"
@@ -6082,7 +6005,7 @@
 														"method": "GET",
 														"header": [],
 														"url": {
-															"raw": "{{baseUrl}}/v1/customers/search?q=sunrise",
+															"raw": "{{baseUrl}}/v1/customers/search?q=MUSA UMAR",
 															"host": [
 																"{{baseUrl}}"
 															],
@@ -6094,7 +6017,7 @@
 															"query": [
 																{
 																	"key": "q",
-																	"value": "sunrise"
+																	"value": "MUSA UMAR"
 																}
 															]
 														}
@@ -6792,7 +6715,7 @@
 													"variable": [
 														{
 															"key": "id",
-															"value": "22039"
+															"value": "2097"
 														}
 													]
 												}
@@ -7415,6 +7338,268 @@
 													"body": "{\n    \"status\": true,\n    \"response\": {\n        \"data\": [\n            {\n                \"TRAN_DATE\": \"2024-12-30T23:00:00.000Z\",\n                \"TRAN_ID\": \"SS0047305\",\n                \"PART_TRAN_SRL_NUM\": \"   9\",\n                \"DEL_FLG\": \"N\",\n                \"TRAN_TYPE\": \"T\",\n                \"TRAN_SUB_TYPE\": \"IC\",\n                \"PART_TRAN_TYPE\": \"D\",\n                \"GL_SUB_HEAD_CODE\": \"20002\",\n                \"ACID\": \"NB5000029\",\n                \"VALUE_DATE\": \"2024-12-30T23:00:00.000Z\",\n                \"TRAN_AMT\": \"6936291.3000\",\n                \"TRAN_PARTICULAR\": \"1001012469:Int.Coll:01-12-2024 to 31-12-2024\",\n                \"ENTRY_USER_ID\": \"OS224\",\n                \"PSTD_USER_ID\": \"OS224\",\n                \"VFD_USER_ID\": null,\n                \"ENTRY_DATE\": \"2024-12-31T23:00:00.000Z\",\n                \"PSTD_DATE\": \"2024-12-31T23:00:00.000Z\",\n                \"VFD_DATE\": \"1900-12-31T23:46:25.000Z\",\n                \"RPT_CODE\": null,\n                \"REF_NUM\": null,\n                \"INSTRMNT_TYPE\": null,\n                \"INSTRMNT_DATE\": null,\n                \"INSTRMNT_NUM\": null,\n                \"INSTRMNT_ALPHA\": null,\n                \"TRAN_RMKS\": \"Interest run\",\n                \"PSTD_FLG\": \"Y\",\n                \"PRNT_ADVC_IND\": \"\",\n                \"AMT_RESERVATION_IND\": \"C\",\n                \"RESERVATION_AMT\": \"6936291.3000\",\n                \"RESTRICT_MODIFY_IND\": \"4\",\n                \"LCHG_USER_ID\": \"OS224\",\n                \"LCHG_TIME\": \"2024-12-31T23:00:00.000Z\",\n                \"RCRE_USER_ID\": \"OS224\",\n                \"RCRE_TIME\": \"2024-12-31T23:00:00.000Z\",\n                \"CUST_ID\": \"4790\",\n                \"VOUCHER_PRINT_FLG\": \"\",\n                \"MODULE_ID\": null,\n                \"BR_CODE\": null,\n                \"FX_TRAN_AMT\": \"0.0000\",\n                \"RATE_CODE\": null,\n                \"RATE\": \"1.0000000000\",\n                \"CRNCY_CODE\": null,\n                \"NAVIGATION_FLG\": \"\",\n                \"TRAN_CRNCY_CODE\": \"NGN\",\n                \"REF_CRNCY_CODE\": \"NGN\",\n                \"REF_AMT\": \"6936291.3000\",\n                \"SOL_ID\": \"001\",\n                \"BANK_CODE\": null,\n                \"TREA_REF_NUM\": null,\n                \"TREA_RATE\": \"0.0000000000\",\n                \"TS_CNT\": \"2\",\n                \"GST_UPD_FLG\": \"Y\",\n                \"ISO_FLG\": \"S\",\n                \"EABFAB_UPD_FLG\": \"Y\",\n                \"LIFT_LIEN_FLG\": \"N\",\n                \"PROXY_POST_IND\": \"B\",\n                \"SI_SRL_NUM\": null,\n                \"SI_ORG_EXEC_DATE\": \"1900-12-31T23:46:25.000Z\",\n                \"PR_SRL_NUM\": null,\n                \"SERIAL_NUM\": null,\n                \"DEL_MEMO_PAD\": \"N\",\n                \"UAD_MODULE_ID\": null,\n                \"UAD_MODULE_KEY\": null,\n                \"REVERSAL_DATE\": null,\n                \"REVERSAL_VALUE_DATE\": null,\n                \"PTTM_EVENT_TYPE\": null,\n                \"PROXY_ACID\": null,\n                \"TOD_ENTITY_TYPE\": null,\n                \"TOD_ENTITY_ID\": null,\n                \"DTH_INIT_SOL_ID\": \"001\",\n                \"REGULARIZATION_AMT\": \"0.0000\",\n                \"PRINCIPAL_PORTION_AMT\": \"0.0000\",\n                \"TF_ENTITY_SOL_ID\": null,\n                \"TRAN_PARTICULAR_2\": null,\n                \"TRAN_PARTICULAR_CODE\": null,\n                \"TR_STATUS\": \"\",\n                \"SVS_TRAN_ID\": null,\n                \"CRNCY_HOL_CHK_DONE_FLG\": \"\",\n                \"REFERRAL_ID\": null,\n                \"PARTY_CODE\": null,\n                \"GL_DATE\": \"2024-12-30T23:00:00.000Z\",\n                \"BKDT_TRAN_FLG\": \"\",\n                \"BANK_ID\": \"01\",\n                \"IMPL_CASH_PART_TRAN_FLG\": \"\",\n                \"PTRAN_CHRG_EXISTS_FLG\": \"N\",\n                \"MUD_POOL_BAL_BUILD_FLG\": \"N\",\n                \"USED_CLEAN_SINGLE_TRAN_LIM\": \"0.0000\",\n                \"USED_SINGLE_TRAN_LIM\": \"0.0000\",\n                \"USED_UN_CLR_OVER_DACC_AMT\": \"0.0000\",\n                \"USED_CLEAN_EMER_ADVN\": \"0.0000\",\n                \"USED_EMER_ADVN\": \"0.0000\",\n                \"GL_SEGMENT_STRING\": null,\n                \"COMB_TRAN_ID\": null,\n                \"SYS_PART_TRAN_CODE\": \"PTRN02215\",\n                \"USER_PART_TRAN_CODE\": null,\n                \"TRAN_FREE_CODE1\": null,\n                \"TRAN_FREE_CODE2\": null,\n                \"RESP_ACCT_REF_NO\": null,\n                \"PURPOSE_CODE\": null,\n                \"ENT_ACCOUNT_ID\": null,\n                \"VA_REPL_STATUS\": \"\",\n                \"VA_REAL_TXN_REQD_FLG\": \"\",\n                \"ENT_ACCOUNT_TYPE\": \"\",\n                \"VA_ACCOUNT_ID\": null,\n                \"PSTD_SRL_NUM\": \"46\",\n                \"REVERSAL_STATUS\": \"\",\n                \"USED_SANCT_LIM\": \"0.0000\",\n                \"USED_POOL_AMT\": \"0.0000\",\n                \"AVAILABLE_AMT\": \"0.0000\",\n                \"ACCT_BALANCE\": \"0.0000\",\n                \"PURGE_FLG\": \"N\",\n                \"load_date\": \"2025-01-04T13:37:50.000Z\"\n            },\n            {\n                \"TRAN_DATE\": \"2024-12-29T23:00:00.000Z\",\n                \"TRAN_ID\": \"M00001916\",\n                \"PART_TRAN_SRL_NUM\": \"   1\",\n                \"DEL_FLG\": \"N\",\n                \"TRAN_TYPE\": \"T\",\n                \"TRAN_SUB_TYPE\": \"BI\",\n                \"PART_TRAN_TYPE\": \"D\",\n                \"GL_SUB_HEAD_CODE\": \"15005\",\n                \"ACID\": \"NB5013523\",\n                \"VALUE_DATE\": \"2024-12-29T23:00:00.000Z\",\n                \"TRAN_AMT\": \"48612.4800\",\n                \"TRAN_PARTICULAR\": \"Loan Disbursement Debit For 1600304712\",\n                \"ENTRY_USER_ID\": \"FA247\",\n                \"PSTD_USER_ID\": \"UU050\",\n                \"VFD_USER_ID\": \"UU050\",\n                \"ENTRY_DATE\": \"2024-12-29T23:00:00.000Z\",\n                \"PSTD_DATE\": \"2024-12-29T23:00:00.000Z\",\n                \"VFD_DATE\": \"2024-12-29T23:00:00.000Z\",\n                \"RPT_CODE\": null,\n                \"REF_NUM\": null,\n                \"INSTRMNT_TYPE\": null,\n                \"INSTRMNT_DATE\": null,\n                \"INSTRMNT_NUM\": null,\n                \"INSTRMNT_ALPHA\": null,\n                \"TRAN_RMKS\": null,\n                \"PSTD_FLG\": \"Y\",\n                \"PRNT_ADVC_IND\": \"\",\n                \"AMT_RESERVATION_IND\": \"\",\n                \"RESERVATION_AMT\": \"0.0000\",\n                \"RESTRICT_MODIFY_IND\": \"2\",\n                \"LCHG_USER_ID\": \"UU050\",\n                \"LCHG_TIME\": \"2024-12-29T23:00:00.000Z\",\n                \"RCRE_USER_ID\": \"UU050\",\n                \"RCRE_TIME\": \"2024-12-29T23:00:00.000Z\",\n                \"CUST_ID\": \"4790\",\n                \"VOUCHER_PRINT_FLG\": \"\",\n                \"MODULE_ID\": \"LA\",\n                \"BR_CODE\": null,\n                \"FX_TRAN_AMT\": \"0.0000\",\n                \"RATE_CODE\": null,\n                \"RATE\": \"1.0000000000\",\n                \"CRNCY_CODE\": null,\n                \"NAVIGATION_FLG\": \"\",\n                \"TRAN_CRNCY_CODE\": \"USD\",\n                \"REF_CRNCY_CODE\": \"USD\",\n                \"REF_AMT\": \"48612.4800\",\n                \"SOL_ID\": \"001\",\n                \"BANK_CODE\": null,\n                \"TREA_REF_NUM\": null,\n                \"TREA_RATE\": \"0.0000000000\",\n                \"TS_CNT\": \"2\",\n                \"GST_UPD_FLG\": \"Y\",\n                \"ISO_FLG\": \"S\",\n                \"EABFAB_UPD_FLG\": \"Y\",\n                \"LIFT_LIEN_FLG\": \"N\",\n                \"PROXY_POST_IND\": \"B\",\n                \"SI_SRL_NUM\": null,\n                \"SI_ORG_EXEC_DATE\": \"1900-12-31T23:46:25.000Z\",\n                \"PR_SRL_NUM\": null,\n                \"SERIAL_NUM\": null,\n                \"DEL_MEMO_PAD\": \"N\",\n                \"UAD_MODULE_ID\": null,\n                \"UAD_MODULE_KEY\": null,\n                \"REVERSAL_DATE\": null,\n                \"REVERSAL_VALUE_DATE\": null,\n                \"PTTM_EVENT_TYPE\": null,\n                \"PROXY_ACID\": null,\n                \"TOD_ENTITY_TYPE\": null,\n                \"TOD_ENTITY_ID\": null,\n                \"DTH_INIT_SOL_ID\": \"001\",\n                \"REGULARIZATION_AMT\": \"0.0000\",\n                \"PRINCIPAL_PORTION_AMT\": \"0.0000\",\n                \"TF_ENTITY_SOL_ID\": null,\n                \"TRAN_PARTICULAR_2\": null,\n                \"TRAN_PARTICULAR_CODE\": null,\n                \"TR_STATUS\": \"\",\n                \"SVS_TRAN_ID\": null,\n                \"CRNCY_HOL_CHK_DONE_FLG\": \"\",\n                \"REFERRAL_ID\": null,\n                \"PARTY_CODE\": null,\n                \"GL_DATE\": \"2024-12-29T23:00:00.000Z\",\n                \"BKDT_TRAN_FLG\": \"\",\n                \"BANK_ID\": \"01\",\n                \"IMPL_CASH_PART_TRAN_FLG\": \"\",\n                \"PTRAN_CHRG_EXISTS_FLG\": \"N\",\n                \"MUD_POOL_BAL_BUILD_FLG\": \"N\",\n                \"USED_CLEAN_SINGLE_TRAN_LIM\": \"0.0000\",\n                \"USED_SINGLE_TRAN_LIM\": \"0.0000\",\n                \"USED_UN_CLR_OVER_DACC_AMT\": \"0.0000\",\n                \"USED_CLEAN_EMER_ADVN\": \"0.0000\",\n                \"USED_EMER_ADVN\": \"0.0000\",\n                \"GL_SEGMENT_STRING\": null,\n                \"COMB_TRAN_ID\": null,\n                \"SYS_PART_TRAN_CODE\": \"PTRN02142\",\n                \"USER_PART_TRAN_CODE\": null,\n                \"TRAN_FREE_CODE1\": null,\n                \"TRAN_FREE_CODE2\": null,\n                \"RESP_ACCT_REF_NO\": null,\n                \"PURPOSE_CODE\": null,\n                \"ENT_ACCOUNT_ID\": \"1600304712\",\n                \"VA_REPL_STATUS\": \"\",\n                \"VA_REAL_TXN_REQD_FLG\": \"\",\n                \"ENT_ACCOUNT_TYPE\": \"\",\n                \"VA_ACCOUNT_ID\": null,\n                \"PSTD_SRL_NUM\": \"1\",\n                \"REVERSAL_STATUS\": \"\",\n                \"USED_SANCT_LIM\": \"0.0000\",\n                \"USED_POOL_AMT\": \"0.0000\",\n                \"AVAILABLE_AMT\": \"0.0000\",\n                \"ACCT_BALANCE\": \"0.0000\",\n                \"PURGE_FLG\": \"N\",\n                \"load_date\": \"2025-01-04T12:38:36.000Z\"\n            },\n            {\n                \"TRAN_DATE\": \"2024-12-29T23:00:00.000Z\",\n                \"TRAN_ID\": \"SS0045579\",\n                \"PART_TRAN_SRL_NUM\": \"   1\",\n                \"DEL_FLG\": \"N\",\n                \"TRAN_TYPE\": \"T\",\n                \"TRAN_SUB_TYPE\": \"BI\",\n                \"PART_TRAN_TYPE\": \"D\",\n                \"GL_SUB_HEAD_CODE\": \"15001\",\n                \"ACID\": \"NB5000029\",\n                \"VALUE_DATE\": \"2024-12-29T23:00:00.000Z\",\n                \"TRAN_AMT\": \"6936291.3000\",\n                \"TRAN_PARTICULAR\": \"Account transferred from GL 15001 to 20002\",\n                \"ENTRY_USER_ID\": \"CE148\",\n                \"PSTD_USER_ID\": \"CE148\",\n                \"VFD_USER_ID\": \"SYSTEM\",\n                \"ENTRY_DATE\": \"2024-12-26T23:00:00.000Z\",\n                \"PSTD_DATE\": \"2024-12-26T23:00:00.000Z\",\n                \"VFD_DATE\": \"2024-12-26T23:00:00.000Z\",\n                \"RPT_CODE\": null,\n                \"REF_NUM\": null,\n                \"INSTRMNT_TYPE\": null,\n                \"INSTRMNT_DATE\": null,\n                \"INSTRMNT_NUM\": null,\n                \"INSTRMNT_ALPHA\": null,\n                \"TRAN_RMKS\": \"Transfer A/c. between subheads\",\n                \"PSTD_FLG\": \"Y\",\n                \"PRNT_ADVC_IND\": \"\",\n                \"AMT_RESERVATION_IND\": \"\",\n                \"RESERVATION_AMT\": \"0.0000\",\n                \"RESTRICT_MODIFY_IND\": \"\",\n                \"LCHG_USER_ID\": \"CE148\",\n                \"LCHG_TIME\": \"2024-12-26T23:00:00.000Z\",\n                \"RCRE_USER_ID\": \"CE148\",\n                \"RCRE_TIME\": \"2024-12-26T23:00:00.000Z\",\n                \"CUST_ID\": \"4790\",\n                \"VOUCHER_PRINT_FLG\": \"N\",\n                \"MODULE_ID\": \"XGL\",\n                \"BR_CODE\": null,\n                \"FX_TRAN_AMT\": \"0.0000\",\n                \"RATE_CODE\": null,\n                \"RATE\": \"1.0000000000\",\n                \"CRNCY_CODE\": null,\n                \"NAVIGATION_FLG\": \"\",\n                \"TRAN_CRNCY_CODE\": \"NGN\",\n                \"REF_CRNCY_CODE\": \"NGN\",\n                \"REF_AMT\": \"6936291.3000\",\n                \"SOL_ID\": \"001\",\n                \"BANK_CODE\": null,\n                \"TREA_REF_NUM\": null,\n                \"TREA_RATE\": \"0.0000000000\",\n                \"TS_CNT\": \"2\",\n                \"GST_UPD_FLG\": \"Y\",\n                \"ISO_FLG\": \"S\",\n                \"EABFAB_UPD_FLG\": \"Y\",\n                \"LIFT_LIEN_FLG\": \"N\",\n                \"PROXY_POST_IND\": \"B\",\n                \"SI_SRL_NUM\": null,\n                \"SI_ORG_EXEC_DATE\": \"1900-12-31T23:46:25.000Z\",\n                \"PR_SRL_NUM\": null,\n                \"SERIAL_NUM\": null,\n                \"DEL_MEMO_PAD\": \"N\",\n                \"UAD_MODULE_ID\": null,\n                \"UAD_MODULE_KEY\": null,\n                \"REVERSAL_DATE\": null,\n                \"REVERSAL_VALUE_DATE\": null,\n                \"PTTM_EVENT_TYPE\": null,\n                \"PROXY_ACID\": null,\n                \"TOD_ENTITY_TYPE\": null,\n                \"TOD_ENTITY_ID\": null,\n                \"DTH_INIT_SOL_ID\": \"001\",\n                \"REGULARIZATION_AMT\": \"0.0000\",\n                \"PRINCIPAL_PORTION_AMT\": \"0.0000\",\n                \"TF_ENTITY_SOL_ID\": null,\n                \"TRAN_PARTICULAR_2\": null,\n                \"TRAN_PARTICULAR_CODE\": null,\n                \"TR_STATUS\": \"\",\n                \"SVS_TRAN_ID\": null,\n                \"CRNCY_HOL_CHK_DONE_FLG\": \"\",\n                \"REFERRAL_ID\": null,\n                \"PARTY_CODE\": null,\n                \"GL_DATE\": \"2024-12-29T23:00:00.000Z\",\n                \"BKDT_TRAN_FLG\": \"\",\n                \"BANK_ID\": \"01\",\n                \"IMPL_CASH_PART_TRAN_FLG\": \"\",\n                \"PTRAN_CHRG_EXISTS_FLG\": \"N\",\n                \"MUD_POOL_BAL_BUILD_FLG\": \"\",\n                \"USED_CLEAN_SINGLE_TRAN_LIM\": \"0.0000\",\n                \"USED_SINGLE_TRAN_LIM\": \"0.0000\",\n                \"USED_UN_CLR_OVER_DACC_AMT\": \"0.0000\",\n                \"USED_CLEAN_EMER_ADVN\": \"0.0000\",\n                \"USED_EMER_ADVN\": \"0.0000\",\n                \"GL_SEGMENT_STRING\": null,\n                \"COMB_TRAN_ID\": null,\n                \"SYS_PART_TRAN_CODE\": \"PTRN02300\",\n                \"USER_PART_TRAN_CODE\": null,\n                \"TRAN_FREE_CODE1\": null,\n                \"TRAN_FREE_CODE2\": null,\n                \"RESP_ACCT_REF_NO\": null,\n                \"PURPOSE_CODE\": null,\n                \"ENT_ACCOUNT_ID\": null,\n                \"VA_REPL_STATUS\": \"\",\n                \"VA_REAL_TXN_REQD_FLG\": \"\",\n                \"ENT_ACCOUNT_TYPE\": \"\",\n                \"VA_ACCOUNT_ID\": null,\n                \"PSTD_SRL_NUM\": \"0\",\n                \"REVERSAL_STATUS\": \"\",\n                \"USED_SANCT_LIM\": \"0.0000\",\n                \"USED_POOL_AMT\": \"0.0000\",\n                \"AVAILABLE_AMT\": \"0.0000\",\n                \"ACCT_BALANCE\": \"0.0000\",\n                \"PURGE_FLG\": \"N\",\n                \"load_date\": \"2025-01-04T12:42:47.000Z\"\n            },\n            {\n                \"TRAN_DATE\": \"2024-12-29T23:00:00.000Z\",\n                \"TRAN_ID\": \"SS0045579\",\n                \"PART_TRAN_SRL_NUM\": \"   2\",\n                \"DEL_FLG\": \"N\",\n                \"TRAN_TYPE\": \"T\",\n                \"TRAN_SUB_TYPE\": \"BI\",\n                \"PART_TRAN_TYPE\": \"C\",\n                \"GL_SUB_HEAD_CODE\": \"20002\",\n                \"ACID\": \"NB5000029\",\n                \"VALUE_DATE\": \"2024-12-29T23:00:00.000Z\",\n                \"TRAN_AMT\": \"6936291.3000\",\n                \"TRAN_PARTICULAR\": \"Account transferred from GL 15001 to 20002\",\n                \"ENTRY_USER_ID\": \"CE148\",\n                \"PSTD_USER_ID\": \"CE148\",\n                \"VFD_USER_ID\": \"SYSTEM\",\n                \"ENTRY_DATE\": \"2024-12-26T23:00:00.000Z\",\n                \"PSTD_DATE\": \"2024-12-26T23:00:00.000Z\",\n                \"VFD_DATE\": \"2024-12-26T23:00:00.000Z\",\n                \"RPT_CODE\": null,\n                \"REF_NUM\": null,\n                \"INSTRMNT_TYPE\": null,\n                \"INSTRMNT_DATE\": null,\n                \"INSTRMNT_NUM\": null,\n                \"INSTRMNT_ALPHA\": null,\n                \"TRAN_RMKS\": \"Transfer A/c. between subheads\",\n                \"PSTD_FLG\": \"Y\",\n                \"PRNT_ADVC_IND\": \"\",\n                \"AMT_RESERVATION_IND\": \"\",\n                \"RESERVATION_AMT\": \"0.0000\",\n                \"RESTRICT_MODIFY_IND\": \"\",\n                \"LCHG_USER_ID\": \"CE148\",\n                \"LCHG_TIME\": \"2024-12-26T23:00:00.000Z\",\n                \"RCRE_USER_ID\": \"CE148\",\n                \"RCRE_TIME\": \"2024-12-26T23:00:00.000Z\",\n                \"CUST_ID\": \"4790\",\n                \"VOUCHER_PRINT_FLG\": \"N\",\n                \"MODULE_ID\": \"XGL\",\n                \"BR_CODE\": null,\n                \"FX_TRAN_AMT\": \"0.0000\",\n                \"RATE_CODE\": null,\n                \"RATE\": \"1.0000000000\",\n                \"CRNCY_CODE\": null,\n                \"NAVIGATION_FLG\": \"\",\n                \"TRAN_CRNCY_CODE\": \"NGN\",\n                \"REF_CRNCY_CODE\": \"NGN\",\n                \"REF_AMT\": \"6936291.3000\",\n                \"SOL_ID\": \"001\",\n                \"BANK_CODE\": null,\n                \"TREA_REF_NUM\": null,\n                \"TREA_RATE\": \"0.0000000000\",\n                \"TS_CNT\": \"2\",\n                \"GST_UPD_FLG\": \"Y\",\n                \"ISO_FLG\": \"S\",\n                \"EABFAB_UPD_FLG\": \"Y\",\n                \"LIFT_LIEN_FLG\": \"N\",\n                \"PROXY_POST_IND\": \"B\",\n                \"SI_SRL_NUM\": null,\n                \"SI_ORG_EXEC_DATE\": \"1900-12-31T23:46:25.000Z\",\n                \"PR_SRL_NUM\": null,\n                \"SERIAL_NUM\": null,\n                \"DEL_MEMO_PAD\": \"N\",\n                \"UAD_MODULE_ID\": null,\n                \"UAD_MODULE_KEY\": null,\n                \"REVERSAL_DATE\": null,\n                \"REVERSAL_VALUE_DATE\": null,\n                \"PTTM_EVENT_TYPE\": null,\n                \"PROXY_ACID\": null,\n                \"TOD_ENTITY_TYPE\": null,\n                \"TOD_ENTITY_ID\": null,\n                \"DTH_INIT_SOL_ID\": \"001\",\n                \"REGULARIZATION_AMT\": \"0.0000\",\n                \"PRINCIPAL_PORTION_AMT\": \"0.0000\",\n                \"TF_ENTITY_SOL_ID\": null,\n                \"TRAN_PARTICULAR_2\": null,\n                \"TRAN_PARTICULAR_CODE\": null,\n                \"TR_STATUS\": \"\",\n                \"SVS_TRAN_ID\": null,\n                \"CRNCY_HOL_CHK_DONE_FLG\": \"\",\n                \"REFERRAL_ID\": null,\n                \"PARTY_CODE\": null,\n                \"GL_DATE\": \"2024-12-29T23:00:00.000Z\",\n                \"BKDT_TRAN_FLG\": \"\",\n                \"BANK_ID\": \"01\",\n                \"IMPL_CASH_PART_TRAN_FLG\": \"\",\n                \"PTRAN_CHRG_EXISTS_FLG\": \"N\",\n                \"MUD_POOL_BAL_BUILD_FLG\": \"\",\n                \"USED_CLEAN_SINGLE_TRAN_LIM\": \"0.0000\",\n                \"USED_SINGLE_TRAN_LIM\": \"0.0000\",\n                \"USED_UN_CLR_OVER_DACC_AMT\": \"0.0000\",\n                \"USED_CLEAN_EMER_ADVN\": \"0.0000\",\n                \"USED_EMER_ADVN\": \"0.0000\",\n                \"GL_SEGMENT_STRING\": null,\n                \"COMB_TRAN_ID\": null,\n                \"SYS_PART_TRAN_CODE\": \"PTRN02302\",\n                \"USER_PART_TRAN_CODE\": null,\n                \"TRAN_FREE_CODE1\": null,\n                \"TRAN_FREE_CODE2\": null,\n                \"RESP_ACCT_REF_NO\": null,\n                \"PURPOSE_CODE\": null,\n                \"ENT_ACCOUNT_ID\": null,\n                \"VA_REPL_STATUS\": \"\",\n                \"VA_REAL_TXN_REQD_FLG\": \"\",\n                \"ENT_ACCOUNT_TYPE\": \"\",\n                \"VA_ACCOUNT_ID\": null,\n                \"PSTD_SRL_NUM\": \"0\",\n                \"REVERSAL_STATUS\": \"\",\n                \"USED_SANCT_LIM\": \"0.0000\",\n                \"USED_POOL_AMT\": \"0.0000\",\n                \"AVAILABLE_AMT\": \"0.0000\",\n                \"ACCT_BALANCE\": \"0.0000\",\n                \"PURGE_FLG\": \"N\",\n                \"load_date\": \"2025-01-04T12:42:48.000Z\"\n            },\n            {\n                \"TRAN_DATE\": \"2024-12-29T23:00:00.000Z\",\n                \"TRAN_ID\": \"M00001627\",\n                \"PART_TRAN_SRL_NUM\": \"   2\",\n                \"DEL_FLG\": \"N\",\n                \"TRAN_TYPE\": \"T\",\n                \"TRAN_SUB_TYPE\": \"BI\",\n                \"PART_TRAN_TYPE\": \"C\",\n                \"GL_SUB_HEAD_CODE\": \"25004\",\n                \"ACID\": \"NB5000814\",\n                \"VALUE_DATE\": \"2024-12-29T23:00:00.000Z\",\n                \"TRAN_AMT\": \"110912.2600\",\n                \"TRAN_PARTICULAR\": \"Loan Disbursement Credit For 1600304677\",\n                \"ENTRY_USER_ID\": \"FA247\",\n                \"PSTD_USER_ID\": \"UU050\",\n                \"VFD_USER_ID\": \"UU050\",\n                \"ENTRY_DATE\": \"2024-12-29T23:00:00.000Z\",\n                \"PSTD_DATE\": \"2024-12-29T23:00:00.000Z\",\n                \"VFD_DATE\": \"2024-12-29T23:00:00.000Z\",\n                \"RPT_CODE\": null,\n                \"REF_NUM\": null,\n                \"INSTRMNT_TYPE\": null,\n                \"INSTRMNT_DATE\": null,\n                \"INSTRMNT_NUM\": null,\n                \"INSTRMNT_ALPHA\": null,\n                \"TRAN_RMKS\": null,\n                \"PSTD_FLG\": \"Y\",\n                \"PRNT_ADVC_IND\": \"\",\n                \"AMT_RESERVATION_IND\": \"\",\n                \"RESERVATION_AMT\": \"0.0000\",\n                \"RESTRICT_MODIFY_IND\": \"2\",\n                \"LCHG_USER_ID\": \"UU050\",\n                \"LCHG_TIME\": \"2024-12-29T23:00:00.000Z\",\n                \"RCRE_USER_ID\": \"UU050\",\n                \"RCRE_TIME\": \"2024-12-29T23:00:00.000Z\",\n                \"CUST_ID\": \"4790\",\n                \"VOUCHER_PRINT_FLG\": \"\",\n                \"MODULE_ID\": \"LA\",\n                \"BR_CODE\": null,\n                \"FX_TRAN_AMT\": \"0.0000\",\n                \"RATE_CODE\": null,\n                \"RATE\": \"1.0000000000\",\n                \"CRNCY_CODE\": null,\n                \"NAVIGATION_FLG\": \"\",\n                \"TRAN_CRNCY_CODE\": \"USD\",\n                \"REF_CRNCY_CODE\": \"USD\",\n                \"REF_AMT\": \"110912.2600\",\n                \"SOL_ID\": \"001\",\n                \"BANK_CODE\": null,\n                \"TREA_REF_NUM\": null,\n                \"TREA_RATE\": \"0.0000000000\",\n                \"TS_CNT\": \"2\",\n                \"GST_UPD_FLG\": \"Y\",\n                \"ISO_FLG\": \"S\",\n                \"EABFAB_UPD_FLG\": \"Y\",\n                \"LIFT_LIEN_FLG\": \"N\",\n                \"PROXY_POST_IND\": \"B\",\n                \"SI_SRL_NUM\": null,\n                \"SI_ORG_EXEC_DATE\": \"1900-12-31T23:46:25.000Z\",\n                \"PR_SRL_NUM\": null,\n                \"SERIAL_NUM\": null,\n                \"DEL_MEMO_PAD\": \"N\",\n                \"UAD_MODULE_ID\": null,\n                \"UAD_MODULE_KEY\": null,\n                \"REVERSAL_DATE\": null,\n                \"REVERSAL_VALUE_DATE\": null,\n                \"PTTM_EVENT_TYPE\": null,\n                \"PROXY_ACID\": null,\n                \"TOD_ENTITY_TYPE\": null,\n                \"TOD_ENTITY_ID\": null,\n                \"DTH_INIT_SOL_ID\": \"001\",\n                \"REGULARIZATION_AMT\": \"0.0000\",\n                \"PRINCIPAL_PORTION_AMT\": \"0.0000\",\n                \"TF_ENTITY_SOL_ID\": null,\n                \"TRAN_PARTICULAR_2\": null,\n                \"TRAN_PARTICULAR_CODE\": null,\n                \"TR_STATUS\": \"\",\n                \"SVS_TRAN_ID\": null,\n                \"CRNCY_HOL_CHK_DONE_FLG\": \"\",\n                \"REFERRAL_ID\": null,\n                \"PARTY_CODE\": null,\n                \"GL_DATE\": \"2024-12-29T23:00:00.000Z\",\n                \"BKDT_TRAN_FLG\": \"\",\n                \"BANK_ID\": \"01\",\n                \"IMPL_CASH_PART_TRAN_FLG\": \"\",\n                \"PTRAN_CHRG_EXISTS_FLG\": \"N\",\n                \"MUD_POOL_BAL_BUILD_FLG\": \"N\",\n                \"USED_CLEAN_SINGLE_TRAN_LIM\": \"0.0000\",\n                \"USED_SINGLE_TRAN_LIM\": \"0.0000\",\n                \"USED_UN_CLR_OVER_DACC_AMT\": \"0.0000\",\n                \"USED_CLEAN_EMER_ADVN\": \"0.0000\",\n                \"USED_EMER_ADVN\": \"0.0000\",\n                \"GL_SEGMENT_STRING\": null,\n                \"COMB_TRAN_ID\": null,\n                \"SYS_PART_TRAN_CODE\": \"PTRN02160\",\n                \"USER_PART_TRAN_CODE\": null,\n                \"TRAN_FREE_CODE1\": null,\n                \"TRAN_FREE_CODE2\": null,\n                \"RESP_ACCT_REF_NO\": null,\n                \"PURPOSE_CODE\": null,\n                \"ENT_ACCOUNT_ID\": \"5020010123\",\n                \"VA_REPL_STATUS\": \"\",\n                \"VA_REAL_TXN_REQD_FLG\": \"\",\n                \"ENT_ACCOUNT_TYPE\": \"\",\n                \"VA_ACCOUNT_ID\": null,\n                \"PSTD_SRL_NUM\": \"47\",\n                \"REVERSAL_STATUS\": \"\",\n                \"USED_SANCT_LIM\": \"0.0000\",\n                \"USED_POOL_AMT\": \"0.0000\",\n                \"AVAILABLE_AMT\": \"0.0000\",\n                \"ACCT_BALANCE\": \"0.0000\",\n                \"PURGE_FLG\": \"N\",\n                \"load_date\": \"2025-01-04T12:34:58.000Z\"\n            },\n            {\n                \"TRAN_DATE\": \"2024-12-29T23:00:00.000Z\",\n                \"TRAN_ID\": \"M00001632\",\n                \"PART_TRAN_SRL_NUM\": \"   2\",\n                \"DEL_FLG\": \"N\",\n                \"TRAN_TYPE\": \"T\",\n                \"TRAN_SUB_TYPE\": \"BI\",\n                \"PART_TRAN_TYPE\": \"C\",\n                \"GL_SUB_HEAD_CODE\": \"25004\",\n                \"ACID\": \"NB5000814\",\n                \"VALUE_DATE\": \"2024-12-29T23:00:00.000Z\",\n                \"TRAN_AMT\": \"120811.1700\",\n                \"TRAN_PARTICULAR\": \"Loan Disbursement Credit For 1600304660\",\n                \"ENTRY_USER_ID\": \"FA247\",\n                \"PSTD_USER_ID\": \"UU050\",\n                \"VFD_USER_ID\": \"UU050\",\n                \"ENTRY_DATE\": \"2024-12-29T23:00:00.000Z\",\n                \"PSTD_DATE\": \"2024-12-29T23:00:00.000Z\",\n                \"VFD_DATE\": \"2024-12-29T23:00:00.000Z\",\n                \"RPT_CODE\": null,\n                \"REF_NUM\": null,\n                \"INSTRMNT_TYPE\": null,\n                \"INSTRMNT_DATE\": null,\n                \"INSTRMNT_NUM\": null,\n                \"INSTRMNT_ALPHA\": null,\n                \"TRAN_RMKS\": null,\n                \"PSTD_FLG\": \"Y\",\n                \"PRNT_ADVC_IND\": \"\",\n                \"AMT_RESERVATION_IND\": \"\",\n                \"RESERVATION_AMT\": \"0.0000\",\n                \"RESTRICT_MODIFY_IND\": \"2\",\n                \"LCHG_USER_ID\": \"UU050\",\n                \"LCHG_TIME\": \"2024-12-29T23:00:00.000Z\",\n                \"RCRE_USER_ID\": \"UU050\",\n                \"RCRE_TIME\": \"2024-12-29T23:00:00.000Z\",\n                \"CUST_ID\": \"4790\",\n                \"VOUCHER_PRINT_FLG\": \"\",\n                \"MODULE_ID\": \"LA\",\n                \"BR_CODE\": null,\n                \"FX_TRAN_AMT\": \"0.0000\",\n                \"RATE_CODE\": null,\n                \"RATE\": \"1.0000000000\",\n                \"CRNCY_CODE\": null,\n                \"NAVIGATION_FLG\": \"\",\n                \"TRAN_CRNCY_CODE\": \"USD\",\n                \"REF_CRNCY_CODE\": \"USD\",\n                \"REF_AMT\": \"120811.1700\",\n                \"SOL_ID\": \"001\",\n                \"BANK_CODE\": null,\n                \"TREA_REF_NUM\": null,\n                \"TREA_RATE\": \"0.0000000000\",\n                \"TS_CNT\": \"2\",\n                \"GST_UPD_FLG\": \"Y\",\n                \"ISO_FLG\": \"S\",\n                \"EABFAB_UPD_FLG\": \"Y\",\n                \"LIFT_LIEN_FLG\": \"N\",\n                \"PROXY_POST_IND\": \"B\",\n                \"SI_SRL_NUM\": null,\n                \"SI_ORG_EXEC_DATE\": \"1900-12-31T23:46:25.000Z\",\n                \"PR_SRL_NUM\": null,\n                \"SERIAL_NUM\": null,\n                \"DEL_MEMO_PAD\": \"N\",\n                \"UAD_MODULE_ID\": null,\n                \"UAD_MODULE_KEY\": null,\n                \"REVERSAL_DATE\": null,\n                \"REVERSAL_VALUE_DATE\": null,\n                \"PTTM_EVENT_TYPE\": null,\n                \"PROXY_ACID\": null,\n                \"TOD_ENTITY_TYPE\": null,\n                \"TOD_ENTITY_ID\": null,\n                \"DTH_INIT_SOL_ID\": \"001\",\n                \"REGULARIZATION_AMT\": \"0.0000\",\n                \"PRINCIPAL_PORTION_AMT\": \"0.0000\",\n                \"TF_ENTITY_SOL_ID\": null,\n                \"TRAN_PARTICULAR_2\": null,\n                \"TRAN_PARTICULAR_CODE\": null,\n                \"TR_STATUS\": \"\",\n                \"SVS_TRAN_ID\": null,\n                \"CRNCY_HOL_CHK_DONE_FLG\": \"\",\n                \"REFERRAL_ID\": null,\n                \"PARTY_CODE\": null,\n                \"GL_DATE\": \"2024-12-29T23:00:00.000Z\",\n                \"BKDT_TRAN_FLG\": \"\",\n                \"BANK_ID\": \"01\",\n                \"IMPL_CASH_PART_TRAN_FLG\": \"\",\n                \"PTRAN_CHRG_EXISTS_FLG\": \"N\",\n                \"MUD_POOL_BAL_BUILD_FLG\": \"N\",\n                \"USED_CLEAN_SINGLE_TRAN_LIM\": \"0.0000\",\n                \"USED_SINGLE_TRAN_LIM\": \"0.0000\",\n                \"USED_UN_CLR_OVER_DACC_AMT\": \"0.0000\",\n                \"USED_CLEAN_EMER_ADVN\": \"0.0000\",\n                \"USED_EMER_ADVN\": \"0.0000\",\n                \"GL_SEGMENT_STRING\": null,\n                \"COMB_TRAN_ID\": null,\n                \"SYS_PART_TRAN_CODE\": \"PTRN02160\",\n                \"USER_PART_TRAN_CODE\": null,\n                \"TRAN_FREE_CODE1\": null,\n                \"TRAN_FREE_CODE2\": null,\n                \"RESP_ACCT_REF_NO\": null,\n                \"PURPOSE_CODE\": null,\n                \"ENT_ACCOUNT_ID\": \"5020010123\",\n                \"VA_REPL_STATUS\": \"\",\n                \"VA_REAL_TXN_REQD_FLG\": \"\",\n                \"ENT_ACCOUNT_TYPE\": \"\",\n                \"VA_ACCOUNT_ID\": null,\n                \"PSTD_SRL_NUM\": \"48\",\n                \"REVERSAL_STATUS\": \"\",\n                \"USED_SANCT_LIM\": \"0.0000\",\n                \"USED_POOL_AMT\": \"0.0000\",\n                \"AVAILABLE_AMT\": \"0.0000\",\n                \"ACCT_BALANCE\": \"0.0000\",\n                \"PURGE_FLG\": \"N\",\n                \"load_date\": \"2025-01-04T12:34:59.000Z\"\n            },\n            {\n                \"TRAN_DATE\": \"2024-12-29T23:00:00.000Z\",\n                \"TRAN_ID\": \"M00001634\",\n                \"PART_TRAN_SRL_NUM\": \"   2\",\n                \"DEL_FLG\": \"N\",\n                \"TRAN_TYPE\": \"T\",\n                \"TRAN_SUB_TYPE\": \"BI\",\n                \"PART_TRAN_TYPE\": \"C\",\n                \"GL_SUB_HEAD_CODE\": \"25004\",\n                \"ACID\": \"NB5000814\",\n                \"VALUE_DATE\": \"2024-12-29T23:00:00.000Z\",\n                \"TRAN_AMT\": \"121266.8700\",\n                \"TRAN_PARTICULAR\": \"Loan Disbursement Credit For 1600304653\",\n                \"ENTRY_USER_ID\": \"FA247\",\n                \"PSTD_USER_ID\": \"UU050\",\n                \"VFD_USER_ID\": \"UU050\",\n                \"ENTRY_DATE\": \"2024-12-29T23:00:00.000Z\",\n                \"PSTD_DATE\": \"2024-12-29T23:00:00.000Z\",\n                \"VFD_DATE\": \"2024-12-29T23:00:00.000Z\",\n                \"RPT_CODE\": null,\n                \"REF_NUM\": null,\n                \"INSTRMNT_TYPE\": null,\n                \"INSTRMNT_DATE\": null,\n                \"INSTRMNT_NUM\": null,\n                \"INSTRMNT_ALPHA\": null,\n                \"TRAN_RMKS\": null,\n                \"PSTD_FLG\": \"Y\",\n                \"PRNT_ADVC_IND\": \"\",\n                \"AMT_RESERVATION_IND\": \"\",\n                \"RESERVATION_AMT\": \"0.0000\",\n                \"RESTRICT_MODIFY_IND\": \"2\",\n                \"LCHG_USER_ID\": \"UU050\",\n                \"LCHG_TIME\": \"2024-12-29T23:00:00.000Z\",\n                \"RCRE_USER_ID\": \"UU050\",\n                \"RCRE_TIME\": \"2024-12-29T23:00:00.000Z\",\n                \"CUST_ID\": \"4790\",\n                \"VOUCHER_PRINT_FLG\": \"\",\n                \"MODULE_ID\": \"LA\",\n                \"BR_CODE\": null,\n                \"FX_TRAN_AMT\": \"0.0000\",\n                \"RATE_CODE\": null,\n                \"RATE\": \"1.0000000000\",\n                \"CRNCY_CODE\": null,\n                \"NAVIGATION_FLG\": \"\",\n                \"TRAN_CRNCY_CODE\": \"USD\",\n                \"REF_CRNCY_CODE\": \"USD\",\n                \"REF_AMT\": \"121266.8700\",\n                \"SOL_ID\": \"001\",\n                \"BANK_CODE\": null,\n                \"TREA_REF_NUM\": null,\n                \"TREA_RATE\": \"0.0000000000\",\n                \"TS_CNT\": \"2\",\n                \"GST_UPD_FLG\": \"Y\",\n                \"ISO_FLG\": \"S\",\n                \"EABFAB_UPD_FLG\": \"Y\",\n                \"LIFT_LIEN_FLG\": \"N\",\n                \"PROXY_POST_IND\": \"B\",\n                \"SI_SRL_NUM\": null,\n                \"SI_ORG_EXEC_DATE\": \"1900-12-31T23:46:25.000Z\",\n                \"PR_SRL_NUM\": null,\n                \"SERIAL_NUM\": null,\n                \"DEL_MEMO_PAD\": \"N\",\n                \"UAD_MODULE_ID\": null,\n                \"UAD_MODULE_KEY\": null,\n                \"REVERSAL_DATE\": null,\n                \"REVERSAL_VALUE_DATE\": null,\n                \"PTTM_EVENT_TYPE\": null,\n                \"PROXY_ACID\": null,\n                \"TOD_ENTITY_TYPE\": null,\n                \"TOD_ENTITY_ID\": null,\n                \"DTH_INIT_SOL_ID\": \"001\",\n                \"REGULARIZATION_AMT\": \"0.0000\",\n                \"PRINCIPAL_PORTION_AMT\": \"0.0000\",\n                \"TF_ENTITY_SOL_ID\": null,\n                \"TRAN_PARTICULAR_2\": null,\n                \"TRAN_PARTICULAR_CODE\": null,\n                \"TR_STATUS\": \"\",\n                \"SVS_TRAN_ID\": null,\n                \"CRNCY_HOL_CHK_DONE_FLG\": \"\",\n                \"REFERRAL_ID\": null,\n                \"PARTY_CODE\": null,\n                \"GL_DATE\": \"2024-12-29T23:00:00.000Z\",\n                \"BKDT_TRAN_FLG\": \"\",\n                \"BANK_ID\": \"01\",\n                \"IMPL_CASH_PART_TRAN_FLG\": \"\",\n                \"PTRAN_CHRG_EXISTS_FLG\": \"N\",\n                \"MUD_POOL_BAL_BUILD_FLG\": \"N\",\n                \"USED_CLEAN_SINGLE_TRAN_LIM\": \"0.0000\",\n                \"USED_SINGLE_TRAN_LIM\": \"0.0000\",\n                \"USED_UN_CLR_OVER_DACC_AMT\": \"0.0000\",\n                \"USED_CLEAN_EMER_ADVN\": \"0.0000\",\n                \"USED_EMER_ADVN\": \"0.0000\",\n                \"GL_SEGMENT_STRING\": null,\n                \"COMB_TRAN_ID\": null,\n                \"SYS_PART_TRAN_CODE\": \"PTRN02160\",\n                \"USER_PART_TRAN_CODE\": null,\n                \"TRAN_FREE_CODE1\": null,\n                \"TRAN_FREE_CODE2\": null,\n                \"RESP_ACCT_REF_NO\": null,\n                \"PURPOSE_CODE\": null,\n                \"ENT_ACCOUNT_ID\": \"5020010123\",\n                \"VA_REPL_STATUS\": \"\",\n                \"VA_REAL_TXN_REQD_FLG\": \"\",\n                \"ENT_ACCOUNT_TYPE\": \"\",\n                \"VA_ACCOUNT_ID\": null,\n                \"PSTD_SRL_NUM\": \"49\",\n                \"REVERSAL_STATUS\": \"\",\n                \"USED_SANCT_LIM\": \"0.0000\",\n                \"USED_POOL_AMT\": \"0.0000\",\n                \"AVAILABLE_AMT\": \"0.0000\",\n                \"ACCT_BALANCE\": \"0.0000\",\n                \"PURGE_FLG\": \"N\",\n                \"load_date\": \"2025-01-04T12:35:00.000Z\"\n            },\n            {\n                \"TRAN_DATE\": \"2024-12-29T23:00:00.000Z\",\n                \"TRAN_ID\": \"M00001637\",\n                \"PART_TRAN_SRL_NUM\": \"   2\",\n                \"DEL_FLG\": \"N\",\n                \"TRAN_TYPE\": \"T\",\n                \"TRAN_SUB_TYPE\": \"BI\",\n                \"PART_TRAN_TYPE\": \"C\",\n                \"GL_SUB_HEAD_CODE\": \"25004\",\n                \"ACID\": \"NB5000814\",\n                \"VALUE_DATE\": \"2024-12-29T23:00:00.000Z\",\n                \"TRAN_AMT\": \"109711.8900\",\n                \"TRAN_PARTICULAR\": \"Loan Disbursement Credit For 1600304684\",\n                \"ENTRY_USER_ID\": \"FA247\",\n                \"PSTD_USER_ID\": \"UU050\",\n                \"VFD_USER_ID\": \"UU050\",\n                \"ENTRY_DATE\": \"2024-12-29T23:00:00.000Z\",\n                \"PSTD_DATE\": \"2024-12-29T23:00:00.000Z\",\n                \"VFD_DATE\": \"2024-12-29T23:00:00.000Z\",\n                \"RPT_CODE\": null,\n                \"REF_NUM\": null,\n                \"INSTRMNT_TYPE\": null,\n                \"INSTRMNT_DATE\": null,\n                \"INSTRMNT_NUM\": null,\n                \"INSTRMNT_ALPHA\": null,\n                \"TRAN_RMKS\": null,\n                \"PSTD_FLG\": \"Y\",\n                \"PRNT_ADVC_IND\": \"\",\n                \"AMT_RESERVATION_IND\": \"\",\n                \"RESERVATION_AMT\": \"0.0000\",\n                \"RESTRICT_MODIFY_IND\": \"2\",\n                \"LCHG_USER_ID\": \"UU050\",\n                \"LCHG_TIME\": \"2024-12-29T23:00:00.000Z\",\n                \"RCRE_USER_ID\": \"UU050\",\n                \"RCRE_TIME\": \"2024-12-29T23:00:00.000Z\",\n                \"CUST_ID\": \"4790\",\n                \"VOUCHER_PRINT_FLG\": \"\",\n                \"MODULE_ID\": \"LA\",\n                \"BR_CODE\": null,\n                \"FX_TRAN_AMT\": \"0.0000\",\n                \"RATE_CODE\": null,\n                \"RATE\": \"1.0000000000\",\n                \"CRNCY_CODE\": null,\n                \"NAVIGATION_FLG\": \"\",\n                \"TRAN_CRNCY_CODE\": \"USD\",\n                \"REF_CRNCY_CODE\": \"USD\",\n                \"REF_AMT\": \"109711.8900\",\n                \"SOL_ID\": \"001\",\n                \"BANK_CODE\": null,\n                \"TREA_REF_NUM\": null,\n                \"TREA_RATE\": \"0.0000000000\",\n                \"TS_CNT\": \"2\",\n                \"GST_UPD_FLG\": \"Y\",\n                \"ISO_FLG\": \"S\",\n                \"EABFAB_UPD_FLG\": \"Y\",\n                \"LIFT_LIEN_FLG\": \"N\",\n                \"PROXY_POST_IND\": \"B\",\n                \"SI_SRL_NUM\": null,\n                \"SI_ORG_EXEC_DATE\": \"1900-12-31T23:46:25.000Z\",\n                \"PR_SRL_NUM\": null,\n                \"SERIAL_NUM\": null,\n                \"DEL_MEMO_PAD\": \"N\",\n                \"UAD_MODULE_ID\": null,\n                \"UAD_MODULE_KEY\": null,\n                \"REVERSAL_DATE\": null,\n                \"REVERSAL_VALUE_DATE\": null,\n                \"PTTM_EVENT_TYPE\": null,\n                \"PROXY_ACID\": null,\n                \"TOD_ENTITY_TYPE\": null,\n                \"TOD_ENTITY_ID\": null,\n                \"DTH_INIT_SOL_ID\": \"001\",\n                \"REGULARIZATION_AMT\": \"0.0000\",\n                \"PRINCIPAL_PORTION_AMT\": \"0.0000\",\n                \"TF_ENTITY_SOL_ID\": null,\n                \"TRAN_PARTICULAR_2\": null,\n                \"TRAN_PARTICULAR_CODE\": null,\n                \"TR_STATUS\": \"\",\n                \"SVS_TRAN_ID\": null,\n                \"CRNCY_HOL_CHK_DONE_FLG\": \"\",\n                \"REFERRAL_ID\": null,\n                \"PARTY_CODE\": null,\n                \"GL_DATE\": \"2024-12-29T23:00:00.000Z\",\n                \"BKDT_TRAN_FLG\": \"\",\n                \"BANK_ID\": \"01\",\n                \"IMPL_CASH_PART_TRAN_FLG\": \"\",\n                \"PTRAN_CHRG_EXISTS_FLG\": \"N\",\n                \"MUD_POOL_BAL_BUILD_FLG\": \"N\",\n                \"USED_CLEAN_SINGLE_TRAN_LIM\": \"0.0000\",\n                \"USED_SINGLE_TRAN_LIM\": \"0.0000\",\n                \"USED_UN_CLR_OVER_DACC_AMT\": \"0.0000\",\n                \"USED_CLEAN_EMER_ADVN\": \"0.0000\",\n                \"USED_EMER_ADVN\": \"0.0000\",\n                \"GL_SEGMENT_STRING\": null,\n                \"COMB_TRAN_ID\": null,\n                \"SYS_PART_TRAN_CODE\": \"PTRN02160\",\n                \"USER_PART_TRAN_CODE\": null,\n                \"TRAN_FREE_CODE1\": null,\n                \"TRAN_FREE_CODE2\": null,\n                \"RESP_ACCT_REF_NO\": null,\n                \"PURPOSE_CODE\": null,\n                \"ENT_ACCOUNT_ID\": \"5020010123\",\n                \"VA_REPL_STATUS\": \"\",\n                \"VA_REAL_TXN_REQD_FLG\": \"\",\n                \"ENT_ACCOUNT_TYPE\": \"\",\n                \"VA_ACCOUNT_ID\": null,\n                \"PSTD_SRL_NUM\": \"50\",\n                \"REVERSAL_STATUS\": \"\",\n                \"USED_SANCT_LIM\": \"0.0000\",\n                \"USED_POOL_AMT\": \"0.0000\",\n                \"AVAILABLE_AMT\": \"0.0000\",\n                \"ACCT_BALANCE\": \"0.0000\",\n                \"PURGE_FLG\": \"N\",\n                \"load_date\": \"2025-01-04T12:35:02.000Z\"\n            },\n            {\n                \"TRAN_DATE\": \"2024-12-29T23:00:00.000Z\",\n                \"TRAN_ID\": \"M00001641\",\n                \"PART_TRAN_SRL_NUM\": \"   2\",\n                \"DEL_FLG\": \"N\",\n                \"TRAN_TYPE\": \"T\",\n                \"TRAN_SUB_TYPE\": \"BI\",\n                \"PART_TRAN_TYPE\": \"C\",\n                \"GL_SUB_HEAD_CODE\": \"25004\",\n                \"ACID\": \"NB5000814\",\n                \"VALUE_DATE\": \"2024-12-29T23:00:00.000Z\",\n                \"TRAN_AMT\": \"122610.0900\",\n                \"TRAN_PARTICULAR\": \"Loan Disbursement Credit For 1600304646\",\n                \"ENTRY_USER_ID\": \"FA247\",\n                \"PSTD_USER_ID\": \"UU050\",\n                \"VFD_USER_ID\": \"UU050\",\n                \"ENTRY_DATE\": \"2024-12-29T23:00:00.000Z\",\n                \"PSTD_DATE\": \"2024-12-29T23:00:00.000Z\",\n                \"VFD_DATE\": \"2024-12-29T23:00:00.000Z\",\n                \"RPT_CODE\": null,\n                \"REF_NUM\": null,\n                \"INSTRMNT_TYPE\": null,\n                \"INSTRMNT_DATE\": null,\n                \"INSTRMNT_NUM\": null,\n                \"INSTRMNT_ALPHA\": null,\n                \"TRAN_RMKS\": null,\n                \"PSTD_FLG\": \"Y\",\n                \"PRNT_ADVC_IND\": \"\",\n                \"AMT_RESERVATION_IND\": \"\",\n                \"RESERVATION_AMT\": \"0.0000\",\n                \"RESTRICT_MODIFY_IND\": \"2\",\n                \"LCHG_USER_ID\": \"UU050\",\n                \"LCHG_TIME\": \"2024-12-29T23:00:00.000Z\",\n                \"RCRE_USER_ID\": \"UU050\",\n                \"RCRE_TIME\": \"2024-12-29T23:00:00.000Z\",\n                \"CUST_ID\": \"4790\",\n                \"VOUCHER_PRINT_FLG\": \"\",\n                \"MODULE_ID\": \"LA\",\n                \"BR_CODE\": null,\n                \"FX_TRAN_AMT\": \"0.0000\",\n                \"RATE_CODE\": null,\n                \"RATE\": \"1.0000000000\",\n                \"CRNCY_CODE\": null,\n                \"NAVIGATION_FLG\": \"\",\n                \"TRAN_CRNCY_CODE\": \"USD\",\n                \"REF_CRNCY_CODE\": \"USD\",\n                \"REF_AMT\": \"122610.0900\",\n                \"SOL_ID\": \"001\",\n                \"BANK_CODE\": null,\n                \"TREA_REF_NUM\": null,\n                \"TREA_RATE\": \"0.0000000000\",\n                \"TS_CNT\": \"2\",\n                \"GST_UPD_FLG\": \"Y\",\n                \"ISO_FLG\": \"S\",\n                \"EABFAB_UPD_FLG\": \"Y\",\n                \"LIFT_LIEN_FLG\": \"N\",\n                \"PROXY_POST_IND\": \"B\",\n                \"SI_SRL_NUM\": null,\n                \"SI_ORG_EXEC_DATE\": \"1900-12-31T23:46:25.000Z\",\n                \"PR_SRL_NUM\": null,\n                \"SERIAL_NUM\": null,\n                \"DEL_MEMO_PAD\": \"N\",\n                \"UAD_MODULE_ID\": null,\n                \"UAD_MODULE_KEY\": null,\n                \"REVERSAL_DATE\": null,\n                \"REVERSAL_VALUE_DATE\": null,\n                \"PTTM_EVENT_TYPE\": null,\n                \"PROXY_ACID\": null,\n                \"TOD_ENTITY_TYPE\": null,\n                \"TOD_ENTITY_ID\": null,\n                \"DTH_INIT_SOL_ID\": \"001\",\n                \"REGULARIZATION_AMT\": \"0.0000\",\n                \"PRINCIPAL_PORTION_AMT\": \"0.0000\",\n                \"TF_ENTITY_SOL_ID\": null,\n                \"TRAN_PARTICULAR_2\": null,\n                \"TRAN_PARTICULAR_CODE\": null,\n                \"TR_STATUS\": \"\",\n                \"SVS_TRAN_ID\": null,\n                \"CRNCY_HOL_CHK_DONE_FLG\": \"\",\n                \"REFERRAL_ID\": null,\n                \"PARTY_CODE\": null,\n                \"GL_DATE\": \"2024-12-29T23:00:00.000Z\",\n                \"BKDT_TRAN_FLG\": \"\",\n                \"BANK_ID\": \"01\",\n                \"IMPL_CASH_PART_TRAN_FLG\": \"\",\n                \"PTRAN_CHRG_EXISTS_FLG\": \"N\",\n                \"MUD_POOL_BAL_BUILD_FLG\": \"N\",\n                \"USED_CLEAN_SINGLE_TRAN_LIM\": \"0.0000\",\n                \"USED_SINGLE_TRAN_LIM\": \"0.0000\",\n                \"USED_UN_CLR_OVER_DACC_AMT\": \"0.0000\",\n                \"USED_CLEAN_EMER_ADVN\": \"0.0000\",\n                \"USED_EMER_ADVN\": \"0.0000\",\n                \"GL_SEGMENT_STRING\": null,\n                \"COMB_TRAN_ID\": null,\n                \"SYS_PART_TRAN_CODE\": \"PTRN02160\",\n                \"USER_PART_TRAN_CODE\": null,\n                \"TRAN_FREE_CODE1\": null,\n                \"TRAN_FREE_CODE2\": null,\n                \"RESP_ACCT_REF_NO\": null,\n                \"PURPOSE_CODE\": null,\n                \"ENT_ACCOUNT_ID\": \"5020010123\",\n                \"VA_REPL_STATUS\": \"\",\n                \"VA_REAL_TXN_REQD_FLG\": \"\",\n                \"ENT_ACCOUNT_TYPE\": \"\",\n                \"VA_ACCOUNT_ID\": null,\n                \"PSTD_SRL_NUM\": \"51\",\n                \"REVERSAL_STATUS\": \"\",\n                \"USED_SANCT_LIM\": \"0.0000\",\n                \"USED_POOL_AMT\": \"0.0000\",\n                \"AVAILABLE_AMT\": \"0.0000\",\n                \"ACCT_BALANCE\": \"0.0000\",\n                \"PURGE_FLG\": \"N\",\n                \"load_date\": \"2025-01-04T12:35:03.000Z\"\n            },\n            {\n                \"TRAN_DATE\": \"2024-12-29T23:00:00.000Z\",\n                \"TRAN_ID\": \"M00001644\",\n                \"PART_TRAN_SRL_NUM\": \"   2\",\n                \"DEL_FLG\": \"N\",\n                \"TRAN_TYPE\": \"T\",\n                \"TRAN_SUB_TYPE\": \"BI\",\n                \"PART_TRAN_TYPE\": \"C\",\n                \"GL_SUB_HEAD_CODE\": \"25004\",\n                \"ACID\": \"NB5000814\",\n                \"VALUE_DATE\": \"2024-12-29T23:00:00.000Z\",\n                \"TRAN_AMT\": \"124334.0800\",\n                \"TRAN_PARTICULAR\": \"Loan Disbursement Credit For 1600304639\",\n                \"ENTRY_USER_ID\": \"FA247\",\n                \"PSTD_USER_ID\": \"UU050\",\n                \"VFD_USER_ID\": \"UU050\",\n                \"ENTRY_DATE\": \"2024-12-29T23:00:00.000Z\",\n                \"PSTD_DATE\": \"2024-12-29T23:00:00.000Z\",\n                \"VFD_DATE\": \"2024-12-29T23:00:00.000Z\",\n                \"RPT_CODE\": null,\n                \"REF_NUM\": null,\n                \"INSTRMNT_TYPE\": null,\n                \"INSTRMNT_DATE\": null,\n                \"INSTRMNT_NUM\": null,\n                \"INSTRMNT_ALPHA\": null,\n                \"TRAN_RMKS\": null,\n                \"PSTD_FLG\": \"Y\",\n                \"PRNT_ADVC_IND\": \"\",\n                \"AMT_RESERVATION_IND\": \"\",\n                \"RESERVATION_AMT\": \"0.0000\",\n                \"RESTRICT_MODIFY_IND\": \"2\",\n                \"LCHG_USER_ID\": \"UU050\",\n                \"LCHG_TIME\": \"2024-12-29T23:00:00.000Z\",\n                \"RCRE_USER_ID\": \"UU050\",\n                \"RCRE_TIME\": \"2024-12-29T23:00:00.000Z\",\n                \"CUST_ID\": \"4790\",\n                \"VOUCHER_PRINT_FLG\": \"\",\n                \"MODULE_ID\": \"LA\",\n                \"BR_CODE\": null,\n                \"FX_TRAN_AMT\": \"0.0000\",\n                \"RATE_CODE\": null,\n                \"RATE\": \"1.0000000000\",\n                \"CRNCY_CODE\": null,\n                \"NAVIGATION_FLG\": \"\",\n                \"TRAN_CRNCY_CODE\": \"USD\",\n                \"REF_CRNCY_CODE\": \"USD\",\n                \"REF_AMT\": \"124334.0800\",\n                \"SOL_ID\": \"001\",\n                \"BANK_CODE\": null,\n                \"TREA_REF_NUM\": null,\n                \"TREA_RATE\": \"0.0000000000\",\n                \"TS_CNT\": \"2\",\n                \"GST_UPD_FLG\": \"Y\",\n                \"ISO_FLG\": \"S\",\n                \"EABFAB_UPD_FLG\": \"Y\",\n                \"LIFT_LIEN_FLG\": \"N\",\n                \"PROXY_POST_IND\": \"B\",\n                \"SI_SRL_NUM\": null,\n                \"SI_ORG_EXEC_DATE\": \"1900-12-31T23:46:25.000Z\",\n                \"PR_SRL_NUM\": null,\n                \"SERIAL_NUM\": null,\n                \"DEL_MEMO_PAD\": \"N\",\n                \"UAD_MODULE_ID\": null,\n                \"UAD_MODULE_KEY\": null,\n                \"REVERSAL_DATE\": null,\n                \"REVERSAL_VALUE_DATE\": null,\n                \"PTTM_EVENT_TYPE\": null,\n                \"PROXY_ACID\": null,\n                \"TOD_ENTITY_TYPE\": null,\n                \"TOD_ENTITY_ID\": null,\n                \"DTH_INIT_SOL_ID\": \"001\",\n                \"REGULARIZATION_AMT\": \"0.0000\",\n                \"PRINCIPAL_PORTION_AMT\": \"0.0000\",\n                \"TF_ENTITY_SOL_ID\": null,\n                \"TRAN_PARTICULAR_2\": null,\n                \"TRAN_PARTICULAR_CODE\": null,\n                \"TR_STATUS\": \"\",\n                \"SVS_TRAN_ID\": null,\n                \"CRNCY_HOL_CHK_DONE_FLG\": \"\",\n                \"REFERRAL_ID\": null,\n                \"PARTY_CODE\": null,\n                \"GL_DATE\": \"2024-12-29T23:00:00.000Z\",\n                \"BKDT_TRAN_FLG\": \"\",\n                \"BANK_ID\": \"01\",\n                \"IMPL_CASH_PART_TRAN_FLG\": \"\",\n                \"PTRAN_CHRG_EXISTS_FLG\": \"N\",\n                \"MUD_POOL_BAL_BUILD_FLG\": \"N\",\n                \"USED_CLEAN_SINGLE_TRAN_LIM\": \"0.0000\",\n                \"USED_SINGLE_TRAN_LIM\": \"0.0000\",\n                \"USED_UN_CLR_OVER_DACC_AMT\": \"0.0000\",\n                \"USED_CLEAN_EMER_ADVN\": \"0.0000\",\n                \"USED_EMER_ADVN\": \"0.0000\",\n                \"GL_SEGMENT_STRING\": null,\n                \"COMB_TRAN_ID\": null,\n                \"SYS_PART_TRAN_CODE\": \"PTRN02160\",\n                \"USER_PART_TRAN_CODE\": null,\n                \"TRAN_FREE_CODE1\": null,\n                \"TRAN_FREE_CODE2\": null,\n                \"RESP_ACCT_REF_NO\": null,\n                \"PURPOSE_CODE\": null,\n                \"ENT_ACCOUNT_ID\": \"5020010123\",\n                \"VA_REPL_STATUS\": \"\",\n                \"VA_REAL_TXN_REQD_FLG\": \"\",\n                \"ENT_ACCOUNT_TYPE\": \"\",\n                \"VA_ACCOUNT_ID\": null,\n                \"PSTD_SRL_NUM\": \"52\",\n                \"REVERSAL_STATUS\": \"\",\n                \"USED_SANCT_LIM\": \"0.0000\",\n                \"USED_POOL_AMT\": \"0.0000\",\n                \"AVAILABLE_AMT\": \"0.0000\",\n                \"ACCT_BALANCE\": \"0.0000\",\n                \"PURGE_FLG\": \"N\",\n                \"load_date\": \"2025-01-04T12:35:04.000Z\"\n            }\n        ],\n        \"total\": 766,\n        \"page\": 1,\n        \"limit\": 10,\n        \"totalPages\": 77\n    }\n}"
 												}
 											]
+										},
+										{
+											"name": "Fetch Customers Transactions",
+											"id": "bd1227cb-63af-45ce-a979-5297a72d419f",
+											"protocolProfileBehavior": {
+												"disableBodyPruning": true
+											},
+											"request": {
+												"auth": {
+													"type": "bearer",
+													"bearer": {
+														"token": "{{Bearer_token}}"
+													}
+												},
+												"method": "GET",
+												"header": [],
+												"url": {
+													"raw": "{{baseUrl}}/v1/customers/:id/transactions?account_id=025012477&date_start=2023-01-01&date_end=2025-01-01&part_transaction_type=D&reference_number=060003241223232605527778715976&q=060003241223232605527778715976&limit=100&page=1",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"v1",
+														"customers",
+														":id",
+														"transactions"
+													],
+													"query": [
+														{
+															"key": "account_id",
+															"value": "025012477"
+														},
+														{
+															"key": "date_start",
+															"value": "2023-01-01"
+														},
+														{
+															"key": "date_end",
+															"value": "2025-01-01"
+														},
+														{
+															"key": "part_transaction_type",
+															"value": "D"
+														},
+														{
+															"key": "reference_number",
+															"value": "060003241223232605527778715976"
+														},
+														{
+															"key": "q",
+															"value": "060003241223232605527778715976"
+														},
+														{
+															"key": "limit",
+															"value": "100"
+														},
+														{
+															"key": "page",
+															"value": "1"
+														}
+													],
+													"variable": [
+														{
+															"id": "55913412-4d42-47bc-aa42-91d67752d8f0",
+															"key": "id",
+															"value": "21374"
+														}
+													]
+												}
+											},
+											"response": [
+												{
+													"id": "363c72b9-26f8-485f-bfa0-bf3fb14bcc25",
+													"name": "Fetch Customers Transactions",
+													"originalRequest": {
+														"method": "GET",
+														"header": [],
+														"url": {
+															"raw": "{{baseUrl}}/v1/customers/:id/transactions",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"v1",
+																"customers",
+																":id",
+																"transactions"
+															],
+															"variable": [
+																{
+																	"key": "id",
+																	"value": "4790"
+																}
+															]
+														}
+													},
+													"status": "OK",
+													"code": 200,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "X-Powered-By",
+															"value": "Express"
+														},
+														{
+															"key": "Access-Control-Allow-Origin",
+															"value": "*"
+														},
+														{
+															"key": "X-RateLimit-Limit",
+															"value": "10"
+														},
+														{
+															"key": "X-RateLimit-Remaining",
+															"value": "9"
+														},
+														{
+															"key": "X-RateLimit-Reset",
+															"value": "60"
+														},
+														{
+															"key": "Content-Type",
+															"value": "application/json; charset=utf-8"
+														},
+														{
+															"key": "Content-Length",
+															"value": "27204"
+														},
+														{
+															"key": "ETag",
+															"value": "W/\"6a44-GKSBqgZamKg+JJk2hjegSeh9Hq8\""
+														},
+														{
+															"key": "Date",
+															"value": "Mon, 27 Jan 2025 06:38:10 GMT"
+														},
+														{
+															"key": "Connection",
+															"value": "keep-alive"
+														},
+														{
+															"key": "Keep-Alive",
+															"value": "timeout=5"
+														}
+													],
+													"cookie": [],
+													"responseTime": null,
+													"body": "{\n    \"status\": true,\n    \"response\": {\n        \"data\": [\n            {\n                \"TRAN_DATE\": \"2024-12-30T23:00:00.000Z\",\n                \"TRAN_ID\": \"SS0047305\",\n                \"PART_TRAN_SRL_NUM\": \"   9\",\n                \"DEL_FLG\": \"N\",\n                \"TRAN_TYPE\": \"T\",\n                \"TRAN_SUB_TYPE\": \"IC\",\n                \"PART_TRAN_TYPE\": \"D\",\n                \"GL_SUB_HEAD_CODE\": \"20002\",\n                \"ACID\": \"NB5000029\",\n                \"VALUE_DATE\": \"2024-12-30T23:00:00.000Z\",\n                \"TRAN_AMT\": \"6936291.3000\",\n                \"TRAN_PARTICULAR\": \"1001012469:Int.Coll:01-12-2024 to 31-12-2024\",\n                \"ENTRY_USER_ID\": \"OS224\",\n                \"PSTD_USER_ID\": \"OS224\",\n                \"VFD_USER_ID\": null,\n                \"ENTRY_DATE\": \"2024-12-31T23:00:00.000Z\",\n                \"PSTD_DATE\": \"2024-12-31T23:00:00.000Z\",\n                \"VFD_DATE\": \"1900-12-31T23:46:25.000Z\",\n                \"RPT_CODE\": null,\n                \"REF_NUM\": null,\n                \"INSTRMNT_TYPE\": null,\n                \"INSTRMNT_DATE\": null,\n                \"INSTRMNT_NUM\": null,\n                \"INSTRMNT_ALPHA\": null,\n                \"TRAN_RMKS\": \"Interest run\",\n                \"PSTD_FLG\": \"Y\",\n                \"PRNT_ADVC_IND\": \"\",\n                \"AMT_RESERVATION_IND\": \"C\",\n                \"RESERVATION_AMT\": \"6936291.3000\",\n                \"RESTRICT_MODIFY_IND\": \"4\",\n                \"LCHG_USER_ID\": \"OS224\",\n                \"LCHG_TIME\": \"2024-12-31T23:00:00.000Z\",\n                \"RCRE_USER_ID\": \"OS224\",\n                \"RCRE_TIME\": \"2024-12-31T23:00:00.000Z\",\n                \"CUST_ID\": \"4790\",\n                \"VOUCHER_PRINT_FLG\": \"\",\n                \"MODULE_ID\": null,\n                \"BR_CODE\": null,\n                \"FX_TRAN_AMT\": \"0.0000\",\n                \"RATE_CODE\": null,\n                \"RATE\": \"1.0000000000\",\n                \"CRNCY_CODE\": null,\n                \"NAVIGATION_FLG\": \"\",\n                \"TRAN_CRNCY_CODE\": \"NGN\",\n                \"REF_CRNCY_CODE\": \"NGN\",\n                \"REF_AMT\": \"6936291.3000\",\n                \"SOL_ID\": \"001\",\n                \"BANK_CODE\": null,\n                \"TREA_REF_NUM\": null,\n                \"TREA_RATE\": \"0.0000000000\",\n                \"TS_CNT\": \"2\",\n                \"GST_UPD_FLG\": \"Y\",\n                \"ISO_FLG\": \"S\",\n                \"EABFAB_UPD_FLG\": \"Y\",\n                \"LIFT_LIEN_FLG\": \"N\",\n                \"PROXY_POST_IND\": \"B\",\n                \"SI_SRL_NUM\": null,\n                \"SI_ORG_EXEC_DATE\": \"1900-12-31T23:46:25.000Z\",\n                \"PR_SRL_NUM\": null,\n                \"SERIAL_NUM\": null,\n                \"DEL_MEMO_PAD\": \"N\",\n                \"UAD_MODULE_ID\": null,\n                \"UAD_MODULE_KEY\": null,\n                \"REVERSAL_DATE\": null,\n                \"REVERSAL_VALUE_DATE\": null,\n                \"PTTM_EVENT_TYPE\": null,\n                \"PROXY_ACID\": null,\n                \"TOD_ENTITY_TYPE\": null,\n                \"TOD_ENTITY_ID\": null,\n                \"DTH_INIT_SOL_ID\": \"001\",\n                \"REGULARIZATION_AMT\": \"0.0000\",\n                \"PRINCIPAL_PORTION_AMT\": \"0.0000\",\n                \"TF_ENTITY_SOL_ID\": null,\n                \"TRAN_PARTICULAR_2\": null,\n                \"TRAN_PARTICULAR_CODE\": null,\n                \"TR_STATUS\": \"\",\n                \"SVS_TRAN_ID\": null,\n                \"CRNCY_HOL_CHK_DONE_FLG\": \"\",\n                \"REFERRAL_ID\": null,\n                \"PARTY_CODE\": null,\n                \"GL_DATE\": \"2024-12-30T23:00:00.000Z\",\n                \"BKDT_TRAN_FLG\": \"\",\n                \"BANK_ID\": \"01\",\n                \"IMPL_CASH_PART_TRAN_FLG\": \"\",\n                \"PTRAN_CHRG_EXISTS_FLG\": \"N\",\n                \"MUD_POOL_BAL_BUILD_FLG\": \"N\",\n                \"USED_CLEAN_SINGLE_TRAN_LIM\": \"0.0000\",\n                \"USED_SINGLE_TRAN_LIM\": \"0.0000\",\n                \"USED_UN_CLR_OVER_DACC_AMT\": \"0.0000\",\n                \"USED_CLEAN_EMER_ADVN\": \"0.0000\",\n                \"USED_EMER_ADVN\": \"0.0000\",\n                \"GL_SEGMENT_STRING\": null,\n                \"COMB_TRAN_ID\": null,\n                \"SYS_PART_TRAN_CODE\": \"PTRN02215\",\n                \"USER_PART_TRAN_CODE\": null,\n                \"TRAN_FREE_CODE1\": null,\n                \"TRAN_FREE_CODE2\": null,\n                \"RESP_ACCT_REF_NO\": null,\n                \"PURPOSE_CODE\": null,\n                \"ENT_ACCOUNT_ID\": null,\n                \"VA_REPL_STATUS\": \"\",\n                \"VA_REAL_TXN_REQD_FLG\": \"\",\n                \"ENT_ACCOUNT_TYPE\": \"\",\n                \"VA_ACCOUNT_ID\": null,\n                \"PSTD_SRL_NUM\": \"46\",\n                \"REVERSAL_STATUS\": \"\",\n                \"USED_SANCT_LIM\": \"0.0000\",\n                \"USED_POOL_AMT\": \"0.0000\",\n                \"AVAILABLE_AMT\": \"0.0000\",\n                \"ACCT_BALANCE\": \"0.0000\",\n                \"PURGE_FLG\": \"N\",\n                \"load_date\": \"2025-01-04T13:37:50.000Z\"\n            },\n            {\n                \"TRAN_DATE\": \"2024-12-29T23:00:00.000Z\",\n                \"TRAN_ID\": \"M00001916\",\n                \"PART_TRAN_SRL_NUM\": \"   1\",\n                \"DEL_FLG\": \"N\",\n                \"TRAN_TYPE\": \"T\",\n                \"TRAN_SUB_TYPE\": \"BI\",\n                \"PART_TRAN_TYPE\": \"D\",\n                \"GL_SUB_HEAD_CODE\": \"15005\",\n                \"ACID\": \"NB5013523\",\n                \"VALUE_DATE\": \"2024-12-29T23:00:00.000Z\",\n                \"TRAN_AMT\": \"48612.4800\",\n                \"TRAN_PARTICULAR\": \"Loan Disbursement Debit For 1600304712\",\n                \"ENTRY_USER_ID\": \"FA247\",\n                \"PSTD_USER_ID\": \"UU050\",\n                \"VFD_USER_ID\": \"UU050\",\n                \"ENTRY_DATE\": \"2024-12-29T23:00:00.000Z\",\n                \"PSTD_DATE\": \"2024-12-29T23:00:00.000Z\",\n                \"VFD_DATE\": \"2024-12-29T23:00:00.000Z\",\n                \"RPT_CODE\": null,\n                \"REF_NUM\": null,\n                \"INSTRMNT_TYPE\": null,\n                \"INSTRMNT_DATE\": null,\n                \"INSTRMNT_NUM\": null,\n                \"INSTRMNT_ALPHA\": null,\n                \"TRAN_RMKS\": null,\n                \"PSTD_FLG\": \"Y\",\n                \"PRNT_ADVC_IND\": \"\",\n                \"AMT_RESERVATION_IND\": \"\",\n                \"RESERVATION_AMT\": \"0.0000\",\n                \"RESTRICT_MODIFY_IND\": \"2\",\n                \"LCHG_USER_ID\": \"UU050\",\n                \"LCHG_TIME\": \"2024-12-29T23:00:00.000Z\",\n                \"RCRE_USER_ID\": \"UU050\",\n                \"RCRE_TIME\": \"2024-12-29T23:00:00.000Z\",\n                \"CUST_ID\": \"4790\",\n                \"VOUCHER_PRINT_FLG\": \"\",\n                \"MODULE_ID\": \"LA\",\n                \"BR_CODE\": null,\n                \"FX_TRAN_AMT\": \"0.0000\",\n                \"RATE_CODE\": null,\n                \"RATE\": \"1.0000000000\",\n                \"CRNCY_CODE\": null,\n                \"NAVIGATION_FLG\": \"\",\n                \"TRAN_CRNCY_CODE\": \"USD\",\n                \"REF_CRNCY_CODE\": \"USD\",\n                \"REF_AMT\": \"48612.4800\",\n                \"SOL_ID\": \"001\",\n                \"BANK_CODE\": null,\n                \"TREA_REF_NUM\": null,\n                \"TREA_RATE\": \"0.0000000000\",\n                \"TS_CNT\": \"2\",\n                \"GST_UPD_FLG\": \"Y\",\n                \"ISO_FLG\": \"S\",\n                \"EABFAB_UPD_FLG\": \"Y\",\n                \"LIFT_LIEN_FLG\": \"N\",\n                \"PROXY_POST_IND\": \"B\",\n                \"SI_SRL_NUM\": null,\n                \"SI_ORG_EXEC_DATE\": \"1900-12-31T23:46:25.000Z\",\n                \"PR_SRL_NUM\": null,\n                \"SERIAL_NUM\": null,\n                \"DEL_MEMO_PAD\": \"N\",\n                \"UAD_MODULE_ID\": null,\n                \"UAD_MODULE_KEY\": null,\n                \"REVERSAL_DATE\": null,\n                \"REVERSAL_VALUE_DATE\": null,\n                \"PTTM_EVENT_TYPE\": null,\n                \"PROXY_ACID\": null,\n                \"TOD_ENTITY_TYPE\": null,\n                \"TOD_ENTITY_ID\": null,\n                \"DTH_INIT_SOL_ID\": \"001\",\n                \"REGULARIZATION_AMT\": \"0.0000\",\n                \"PRINCIPAL_PORTION_AMT\": \"0.0000\",\n                \"TF_ENTITY_SOL_ID\": null,\n                \"TRAN_PARTICULAR_2\": null,\n                \"TRAN_PARTICULAR_CODE\": null,\n                \"TR_STATUS\": \"\",\n                \"SVS_TRAN_ID\": null,\n                \"CRNCY_HOL_CHK_DONE_FLG\": \"\",\n                \"REFERRAL_ID\": null,\n                \"PARTY_CODE\": null,\n                \"GL_DATE\": \"2024-12-29T23:00:00.000Z\",\n                \"BKDT_TRAN_FLG\": \"\",\n                \"BANK_ID\": \"01\",\n                \"IMPL_CASH_PART_TRAN_FLG\": \"\",\n                \"PTRAN_CHRG_EXISTS_FLG\": \"N\",\n                \"MUD_POOL_BAL_BUILD_FLG\": \"N\",\n                \"USED_CLEAN_SINGLE_TRAN_LIM\": \"0.0000\",\n                \"USED_SINGLE_TRAN_LIM\": \"0.0000\",\n                \"USED_UN_CLR_OVER_DACC_AMT\": \"0.0000\",\n                \"USED_CLEAN_EMER_ADVN\": \"0.0000\",\n                \"USED_EMER_ADVN\": \"0.0000\",\n                \"GL_SEGMENT_STRING\": null,\n                \"COMB_TRAN_ID\": null,\n                \"SYS_PART_TRAN_CODE\": \"PTRN02142\",\n                \"USER_PART_TRAN_CODE\": null,\n                \"TRAN_FREE_CODE1\": null,\n                \"TRAN_FREE_CODE2\": null,\n                \"RESP_ACCT_REF_NO\": null,\n                \"PURPOSE_CODE\": null,\n                \"ENT_ACCOUNT_ID\": \"1600304712\",\n                \"VA_REPL_STATUS\": \"\",\n                \"VA_REAL_TXN_REQD_FLG\": \"\",\n                \"ENT_ACCOUNT_TYPE\": \"\",\n                \"VA_ACCOUNT_ID\": null,\n                \"PSTD_SRL_NUM\": \"1\",\n                \"REVERSAL_STATUS\": \"\",\n                \"USED_SANCT_LIM\": \"0.0000\",\n                \"USED_POOL_AMT\": \"0.0000\",\n                \"AVAILABLE_AMT\": \"0.0000\",\n                \"ACCT_BALANCE\": \"0.0000\",\n                \"PURGE_FLG\": \"N\",\n                \"load_date\": \"2025-01-04T12:38:36.000Z\"\n            },\n            {\n                \"TRAN_DATE\": \"2024-12-29T23:00:00.000Z\",\n                \"TRAN_ID\": \"SS0045579\",\n                \"PART_TRAN_SRL_NUM\": \"   1\",\n                \"DEL_FLG\": \"N\",\n                \"TRAN_TYPE\": \"T\",\n                \"TRAN_SUB_TYPE\": \"BI\",\n                \"PART_TRAN_TYPE\": \"D\",\n                \"GL_SUB_HEAD_CODE\": \"15001\",\n                \"ACID\": \"NB5000029\",\n                \"VALUE_DATE\": \"2024-12-29T23:00:00.000Z\",\n                \"TRAN_AMT\": \"6936291.3000\",\n                \"TRAN_PARTICULAR\": \"Account transferred from GL 15001 to 20002\",\n                \"ENTRY_USER_ID\": \"CE148\",\n                \"PSTD_USER_ID\": \"CE148\",\n                \"VFD_USER_ID\": \"SYSTEM\",\n                \"ENTRY_DATE\": \"2024-12-26T23:00:00.000Z\",\n                \"PSTD_DATE\": \"2024-12-26T23:00:00.000Z\",\n                \"VFD_DATE\": \"2024-12-26T23:00:00.000Z\",\n                \"RPT_CODE\": null,\n                \"REF_NUM\": null,\n                \"INSTRMNT_TYPE\": null,\n                \"INSTRMNT_DATE\": null,\n                \"INSTRMNT_NUM\": null,\n                \"INSTRMNT_ALPHA\": null,\n                \"TRAN_RMKS\": \"Transfer A/c. between subheads\",\n                \"PSTD_FLG\": \"Y\",\n                \"PRNT_ADVC_IND\": \"\",\n                \"AMT_RESERVATION_IND\": \"\",\n                \"RESERVATION_AMT\": \"0.0000\",\n                \"RESTRICT_MODIFY_IND\": \"\",\n                \"LCHG_USER_ID\": \"CE148\",\n                \"LCHG_TIME\": \"2024-12-26T23:00:00.000Z\",\n                \"RCRE_USER_ID\": \"CE148\",\n                \"RCRE_TIME\": \"2024-12-26T23:00:00.000Z\",\n                \"CUST_ID\": \"4790\",\n                \"VOUCHER_PRINT_FLG\": \"N\",\n                \"MODULE_ID\": \"XGL\",\n                \"BR_CODE\": null,\n                \"FX_TRAN_AMT\": \"0.0000\",\n                \"RATE_CODE\": null,\n                \"RATE\": \"1.0000000000\",\n                \"CRNCY_CODE\": null,\n                \"NAVIGATION_FLG\": \"\",\n                \"TRAN_CRNCY_CODE\": \"NGN\",\n                \"REF_CRNCY_CODE\": \"NGN\",\n                \"REF_AMT\": \"6936291.3000\",\n                \"SOL_ID\": \"001\",\n                \"BANK_CODE\": null,\n                \"TREA_REF_NUM\": null,\n                \"TREA_RATE\": \"0.0000000000\",\n                \"TS_CNT\": \"2\",\n                \"GST_UPD_FLG\": \"Y\",\n                \"ISO_FLG\": \"S\",\n                \"EABFAB_UPD_FLG\": \"Y\",\n                \"LIFT_LIEN_FLG\": \"N\",\n                \"PROXY_POST_IND\": \"B\",\n                \"SI_SRL_NUM\": null,\n                \"SI_ORG_EXEC_DATE\": \"1900-12-31T23:46:25.000Z\",\n                \"PR_SRL_NUM\": null,\n                \"SERIAL_NUM\": null,\n                \"DEL_MEMO_PAD\": \"N\",\n                \"UAD_MODULE_ID\": null,\n                \"UAD_MODULE_KEY\": null,\n                \"REVERSAL_DATE\": null,\n                \"REVERSAL_VALUE_DATE\": null,\n                \"PTTM_EVENT_TYPE\": null,\n                \"PROXY_ACID\": null,\n                \"TOD_ENTITY_TYPE\": null,\n                \"TOD_ENTITY_ID\": null,\n                \"DTH_INIT_SOL_ID\": \"001\",\n                \"REGULARIZATION_AMT\": \"0.0000\",\n                \"PRINCIPAL_PORTION_AMT\": \"0.0000\",\n                \"TF_ENTITY_SOL_ID\": null,\n                \"TRAN_PARTICULAR_2\": null,\n                \"TRAN_PARTICULAR_CODE\": null,\n                \"TR_STATUS\": \"\",\n                \"SVS_TRAN_ID\": null,\n                \"CRNCY_HOL_CHK_DONE_FLG\": \"\",\n                \"REFERRAL_ID\": null,\n                \"PARTY_CODE\": null,\n                \"GL_DATE\": \"2024-12-29T23:00:00.000Z\",\n                \"BKDT_TRAN_FLG\": \"\",\n                \"BANK_ID\": \"01\",\n                \"IMPL_CASH_PART_TRAN_FLG\": \"\",\n                \"PTRAN_CHRG_EXISTS_FLG\": \"N\",\n                \"MUD_POOL_BAL_BUILD_FLG\": \"\",\n                \"USED_CLEAN_SINGLE_TRAN_LIM\": \"0.0000\",\n                \"USED_SINGLE_TRAN_LIM\": \"0.0000\",\n                \"USED_UN_CLR_OVER_DACC_AMT\": \"0.0000\",\n                \"USED_CLEAN_EMER_ADVN\": \"0.0000\",\n                \"USED_EMER_ADVN\": \"0.0000\",\n                \"GL_SEGMENT_STRING\": null,\n                \"COMB_TRAN_ID\": null,\n                \"SYS_PART_TRAN_CODE\": \"PTRN02300\",\n                \"USER_PART_TRAN_CODE\": null,\n                \"TRAN_FREE_CODE1\": null,\n                \"TRAN_FREE_CODE2\": null,\n                \"RESP_ACCT_REF_NO\": null,\n                \"PURPOSE_CODE\": null,\n                \"ENT_ACCOUNT_ID\": null,\n                \"VA_REPL_STATUS\": \"\",\n                \"VA_REAL_TXN_REQD_FLG\": \"\",\n                \"ENT_ACCOUNT_TYPE\": \"\",\n                \"VA_ACCOUNT_ID\": null,\n                \"PSTD_SRL_NUM\": \"0\",\n                \"REVERSAL_STATUS\": \"\",\n                \"USED_SANCT_LIM\": \"0.0000\",\n                \"USED_POOL_AMT\": \"0.0000\",\n                \"AVAILABLE_AMT\": \"0.0000\",\n                \"ACCT_BALANCE\": \"0.0000\",\n                \"PURGE_FLG\": \"N\",\n                \"load_date\": \"2025-01-04T12:42:47.000Z\"\n            },\n            {\n                \"TRAN_DATE\": \"2024-12-29T23:00:00.000Z\",\n                \"TRAN_ID\": \"SS0045579\",\n                \"PART_TRAN_SRL_NUM\": \"   2\",\n                \"DEL_FLG\": \"N\",\n                \"TRAN_TYPE\": \"T\",\n                \"TRAN_SUB_TYPE\": \"BI\",\n                \"PART_TRAN_TYPE\": \"C\",\n                \"GL_SUB_HEAD_CODE\": \"20002\",\n                \"ACID\": \"NB5000029\",\n                \"VALUE_DATE\": \"2024-12-29T23:00:00.000Z\",\n                \"TRAN_AMT\": \"6936291.3000\",\n                \"TRAN_PARTICULAR\": \"Account transferred from GL 15001 to 20002\",\n                \"ENTRY_USER_ID\": \"CE148\",\n                \"PSTD_USER_ID\": \"CE148\",\n                \"VFD_USER_ID\": \"SYSTEM\",\n                \"ENTRY_DATE\": \"2024-12-26T23:00:00.000Z\",\n                \"PSTD_DATE\": \"2024-12-26T23:00:00.000Z\",\n                \"VFD_DATE\": \"2024-12-26T23:00:00.000Z\",\n                \"RPT_CODE\": null,\n                \"REF_NUM\": null,\n                \"INSTRMNT_TYPE\": null,\n                \"INSTRMNT_DATE\": null,\n                \"INSTRMNT_NUM\": null,\n                \"INSTRMNT_ALPHA\": null,\n                \"TRAN_RMKS\": \"Transfer A/c. between subheads\",\n                \"PSTD_FLG\": \"Y\",\n                \"PRNT_ADVC_IND\": \"\",\n                \"AMT_RESERVATION_IND\": \"\",\n                \"RESERVATION_AMT\": \"0.0000\",\n                \"RESTRICT_MODIFY_IND\": \"\",\n                \"LCHG_USER_ID\": \"CE148\",\n                \"LCHG_TIME\": \"2024-12-26T23:00:00.000Z\",\n                \"RCRE_USER_ID\": \"CE148\",\n                \"RCRE_TIME\": \"2024-12-26T23:00:00.000Z\",\n                \"CUST_ID\": \"4790\",\n                \"VOUCHER_PRINT_FLG\": \"N\",\n                \"MODULE_ID\": \"XGL\",\n                \"BR_CODE\": null,\n                \"FX_TRAN_AMT\": \"0.0000\",\n                \"RATE_CODE\": null,\n                \"RATE\": \"1.0000000000\",\n                \"CRNCY_CODE\": null,\n                \"NAVIGATION_FLG\": \"\",\n                \"TRAN_CRNCY_CODE\": \"NGN\",\n                \"REF_CRNCY_CODE\": \"NGN\",\n                \"REF_AMT\": \"6936291.3000\",\n                \"SOL_ID\": \"001\",\n                \"BANK_CODE\": null,\n                \"TREA_REF_NUM\": null,\n                \"TREA_RATE\": \"0.0000000000\",\n                \"TS_CNT\": \"2\",\n                \"GST_UPD_FLG\": \"Y\",\n                \"ISO_FLG\": \"S\",\n                \"EABFAB_UPD_FLG\": \"Y\",\n                \"LIFT_LIEN_FLG\": \"N\",\n                \"PROXY_POST_IND\": \"B\",\n                \"SI_SRL_NUM\": null,\n                \"SI_ORG_EXEC_DATE\": \"1900-12-31T23:46:25.000Z\",\n                \"PR_SRL_NUM\": null,\n                \"SERIAL_NUM\": null,\n                \"DEL_MEMO_PAD\": \"N\",\n                \"UAD_MODULE_ID\": null,\n                \"UAD_MODULE_KEY\": null,\n                \"REVERSAL_DATE\": null,\n                \"REVERSAL_VALUE_DATE\": null,\n                \"PTTM_EVENT_TYPE\": null,\n                \"PROXY_ACID\": null,\n                \"TOD_ENTITY_TYPE\": null,\n                \"TOD_ENTITY_ID\": null,\n                \"DTH_INIT_SOL_ID\": \"001\",\n                \"REGULARIZATION_AMT\": \"0.0000\",\n                \"PRINCIPAL_PORTION_AMT\": \"0.0000\",\n                \"TF_ENTITY_SOL_ID\": null,\n                \"TRAN_PARTICULAR_2\": null,\n                \"TRAN_PARTICULAR_CODE\": null,\n                \"TR_STATUS\": \"\",\n                \"SVS_TRAN_ID\": null,\n                \"CRNCY_HOL_CHK_DONE_FLG\": \"\",\n                \"REFERRAL_ID\": null,\n                \"PARTY_CODE\": null,\n                \"GL_DATE\": \"2024-12-29T23:00:00.000Z\",\n                \"BKDT_TRAN_FLG\": \"\",\n                \"BANK_ID\": \"01\",\n                \"IMPL_CASH_PART_TRAN_FLG\": \"\",\n                \"PTRAN_CHRG_EXISTS_FLG\": \"N\",\n                \"MUD_POOL_BAL_BUILD_FLG\": \"\",\n                \"USED_CLEAN_SINGLE_TRAN_LIM\": \"0.0000\",\n                \"USED_SINGLE_TRAN_LIM\": \"0.0000\",\n                \"USED_UN_CLR_OVER_DACC_AMT\": \"0.0000\",\n                \"USED_CLEAN_EMER_ADVN\": \"0.0000\",\n                \"USED_EMER_ADVN\": \"0.0000\",\n                \"GL_SEGMENT_STRING\": null,\n                \"COMB_TRAN_ID\": null,\n                \"SYS_PART_TRAN_CODE\": \"PTRN02302\",\n                \"USER_PART_TRAN_CODE\": null,\n                \"TRAN_FREE_CODE1\": null,\n                \"TRAN_FREE_CODE2\": null,\n                \"RESP_ACCT_REF_NO\": null,\n                \"PURPOSE_CODE\": null,\n                \"ENT_ACCOUNT_ID\": null,\n                \"VA_REPL_STATUS\": \"\",\n                \"VA_REAL_TXN_REQD_FLG\": \"\",\n                \"ENT_ACCOUNT_TYPE\": \"\",\n                \"VA_ACCOUNT_ID\": null,\n                \"PSTD_SRL_NUM\": \"0\",\n                \"REVERSAL_STATUS\": \"\",\n                \"USED_SANCT_LIM\": \"0.0000\",\n                \"USED_POOL_AMT\": \"0.0000\",\n                \"AVAILABLE_AMT\": \"0.0000\",\n                \"ACCT_BALANCE\": \"0.0000\",\n                \"PURGE_FLG\": \"N\",\n                \"load_date\": \"2025-01-04T12:42:48.000Z\"\n            },\n            {\n                \"TRAN_DATE\": \"2024-12-29T23:00:00.000Z\",\n                \"TRAN_ID\": \"M00001627\",\n                \"PART_TRAN_SRL_NUM\": \"   2\",\n                \"DEL_FLG\": \"N\",\n                \"TRAN_TYPE\": \"T\",\n                \"TRAN_SUB_TYPE\": \"BI\",\n                \"PART_TRAN_TYPE\": \"C\",\n                \"GL_SUB_HEAD_CODE\": \"25004\",\n                \"ACID\": \"NB5000814\",\n                \"VALUE_DATE\": \"2024-12-29T23:00:00.000Z\",\n                \"TRAN_AMT\": \"110912.2600\",\n                \"TRAN_PARTICULAR\": \"Loan Disbursement Credit For 1600304677\",\n                \"ENTRY_USER_ID\": \"FA247\",\n                \"PSTD_USER_ID\": \"UU050\",\n                \"VFD_USER_ID\": \"UU050\",\n                \"ENTRY_DATE\": \"2024-12-29T23:00:00.000Z\",\n                \"PSTD_DATE\": \"2024-12-29T23:00:00.000Z\",\n                \"VFD_DATE\": \"2024-12-29T23:00:00.000Z\",\n                \"RPT_CODE\": null,\n                \"REF_NUM\": null,\n                \"INSTRMNT_TYPE\": null,\n                \"INSTRMNT_DATE\": null,\n                \"INSTRMNT_NUM\": null,\n                \"INSTRMNT_ALPHA\": null,\n                \"TRAN_RMKS\": null,\n                \"PSTD_FLG\": \"Y\",\n                \"PRNT_ADVC_IND\": \"\",\n                \"AMT_RESERVATION_IND\": \"\",\n                \"RESERVATION_AMT\": \"0.0000\",\n                \"RESTRICT_MODIFY_IND\": \"2\",\n                \"LCHG_USER_ID\": \"UU050\",\n                \"LCHG_TIME\": \"2024-12-29T23:00:00.000Z\",\n                \"RCRE_USER_ID\": \"UU050\",\n                \"RCRE_TIME\": \"2024-12-29T23:00:00.000Z\",\n                \"CUST_ID\": \"4790\",\n                \"VOUCHER_PRINT_FLG\": \"\",\n                \"MODULE_ID\": \"LA\",\n                \"BR_CODE\": null,\n                \"FX_TRAN_AMT\": \"0.0000\",\n                \"RATE_CODE\": null,\n                \"RATE\": \"1.0000000000\",\n                \"CRNCY_CODE\": null,\n                \"NAVIGATION_FLG\": \"\",\n                \"TRAN_CRNCY_CODE\": \"USD\",\n                \"REF_CRNCY_CODE\": \"USD\",\n                \"REF_AMT\": \"110912.2600\",\n                \"SOL_ID\": \"001\",\n                \"BANK_CODE\": null,\n                \"TREA_REF_NUM\": null,\n                \"TREA_RATE\": \"0.0000000000\",\n                \"TS_CNT\": \"2\",\n                \"GST_UPD_FLG\": \"Y\",\n                \"ISO_FLG\": \"S\",\n                \"EABFAB_UPD_FLG\": \"Y\",\n                \"LIFT_LIEN_FLG\": \"N\",\n                \"PROXY_POST_IND\": \"B\",\n                \"SI_SRL_NUM\": null,\n                \"SI_ORG_EXEC_DATE\": \"1900-12-31T23:46:25.000Z\",\n                \"PR_SRL_NUM\": null,\n                \"SERIAL_NUM\": null,\n                \"DEL_MEMO_PAD\": \"N\",\n                \"UAD_MODULE_ID\": null,\n                \"UAD_MODULE_KEY\": null,\n                \"REVERSAL_DATE\": null,\n                \"REVERSAL_VALUE_DATE\": null,\n                \"PTTM_EVENT_TYPE\": null,\n                \"PROXY_ACID\": null,\n                \"TOD_ENTITY_TYPE\": null,\n                \"TOD_ENTITY_ID\": null,\n                \"DTH_INIT_SOL_ID\": \"001\",\n                \"REGULARIZATION_AMT\": \"0.0000\",\n                \"PRINCIPAL_PORTION_AMT\": \"0.0000\",\n                \"TF_ENTITY_SOL_ID\": null,\n                \"TRAN_PARTICULAR_2\": null,\n                \"TRAN_PARTICULAR_CODE\": null,\n                \"TR_STATUS\": \"\",\n                \"SVS_TRAN_ID\": null,\n                \"CRNCY_HOL_CHK_DONE_FLG\": \"\",\n                \"REFERRAL_ID\": null,\n                \"PARTY_CODE\": null,\n                \"GL_DATE\": \"2024-12-29T23:00:00.000Z\",\n                \"BKDT_TRAN_FLG\": \"\",\n                \"BANK_ID\": \"01\",\n                \"IMPL_CASH_PART_TRAN_FLG\": \"\",\n                \"PTRAN_CHRG_EXISTS_FLG\": \"N\",\n                \"MUD_POOL_BAL_BUILD_FLG\": \"N\",\n                \"USED_CLEAN_SINGLE_TRAN_LIM\": \"0.0000\",\n                \"USED_SINGLE_TRAN_LIM\": \"0.0000\",\n                \"USED_UN_CLR_OVER_DACC_AMT\": \"0.0000\",\n                \"USED_CLEAN_EMER_ADVN\": \"0.0000\",\n                \"USED_EMER_ADVN\": \"0.0000\",\n                \"GL_SEGMENT_STRING\": null,\n                \"COMB_TRAN_ID\": null,\n                \"SYS_PART_TRAN_CODE\": \"PTRN02160\",\n                \"USER_PART_TRAN_CODE\": null,\n                \"TRAN_FREE_CODE1\": null,\n                \"TRAN_FREE_CODE2\": null,\n                \"RESP_ACCT_REF_NO\": null,\n                \"PURPOSE_CODE\": null,\n                \"ENT_ACCOUNT_ID\": \"5020010123\",\n                \"VA_REPL_STATUS\": \"\",\n                \"VA_REAL_TXN_REQD_FLG\": \"\",\n                \"ENT_ACCOUNT_TYPE\": \"\",\n                \"VA_ACCOUNT_ID\": null,\n                \"PSTD_SRL_NUM\": \"47\",\n                \"REVERSAL_STATUS\": \"\",\n                \"USED_SANCT_LIM\": \"0.0000\",\n                \"USED_POOL_AMT\": \"0.0000\",\n                \"AVAILABLE_AMT\": \"0.0000\",\n                \"ACCT_BALANCE\": \"0.0000\",\n                \"PURGE_FLG\": \"N\",\n                \"load_date\": \"2025-01-04T12:34:58.000Z\"\n            },\n            {\n                \"TRAN_DATE\": \"2024-12-29T23:00:00.000Z\",\n                \"TRAN_ID\": \"M00001632\",\n                \"PART_TRAN_SRL_NUM\": \"   2\",\n                \"DEL_FLG\": \"N\",\n                \"TRAN_TYPE\": \"T\",\n                \"TRAN_SUB_TYPE\": \"BI\",\n                \"PART_TRAN_TYPE\": \"C\",\n                \"GL_SUB_HEAD_CODE\": \"25004\",\n                \"ACID\": \"NB5000814\",\n                \"VALUE_DATE\": \"2024-12-29T23:00:00.000Z\",\n                \"TRAN_AMT\": \"120811.1700\",\n                \"TRAN_PARTICULAR\": \"Loan Disbursement Credit For 1600304660\",\n                \"ENTRY_USER_ID\": \"FA247\",\n                \"PSTD_USER_ID\": \"UU050\",\n                \"VFD_USER_ID\": \"UU050\",\n                \"ENTRY_DATE\": \"2024-12-29T23:00:00.000Z\",\n                \"PSTD_DATE\": \"2024-12-29T23:00:00.000Z\",\n                \"VFD_DATE\": \"2024-12-29T23:00:00.000Z\",\n                \"RPT_CODE\": null,\n                \"REF_NUM\": null,\n                \"INSTRMNT_TYPE\": null,\n                \"INSTRMNT_DATE\": null,\n                \"INSTRMNT_NUM\": null,\n                \"INSTRMNT_ALPHA\": null,\n                \"TRAN_RMKS\": null,\n                \"PSTD_FLG\": \"Y\",\n                \"PRNT_ADVC_IND\": \"\",\n                \"AMT_RESERVATION_IND\": \"\",\n                \"RESERVATION_AMT\": \"0.0000\",\n                \"RESTRICT_MODIFY_IND\": \"2\",\n                \"LCHG_USER_ID\": \"UU050\",\n                \"LCHG_TIME\": \"2024-12-29T23:00:00.000Z\",\n                \"RCRE_USER_ID\": \"UU050\",\n                \"RCRE_TIME\": \"2024-12-29T23:00:00.000Z\",\n                \"CUST_ID\": \"4790\",\n                \"VOUCHER_PRINT_FLG\": \"\",\n                \"MODULE_ID\": \"LA\",\n                \"BR_CODE\": null,\n                \"FX_TRAN_AMT\": \"0.0000\",\n                \"RATE_CODE\": null,\n                \"RATE\": \"1.0000000000\",\n                \"CRNCY_CODE\": null,\n                \"NAVIGATION_FLG\": \"\",\n                \"TRAN_CRNCY_CODE\": \"USD\",\n                \"REF_CRNCY_CODE\": \"USD\",\n                \"REF_AMT\": \"120811.1700\",\n                \"SOL_ID\": \"001\",\n                \"BANK_CODE\": null,\n                \"TREA_REF_NUM\": null,\n                \"TREA_RATE\": \"0.0000000000\",\n                \"TS_CNT\": \"2\",\n                \"GST_UPD_FLG\": \"Y\",\n                \"ISO_FLG\": \"S\",\n                \"EABFAB_UPD_FLG\": \"Y\",\n                \"LIFT_LIEN_FLG\": \"N\",\n                \"PROXY_POST_IND\": \"B\",\n                \"SI_SRL_NUM\": null,\n                \"SI_ORG_EXEC_DATE\": \"1900-12-31T23:46:25.000Z\",\n                \"PR_SRL_NUM\": null,\n                \"SERIAL_NUM\": null,\n                \"DEL_MEMO_PAD\": \"N\",\n                \"UAD_MODULE_ID\": null,\n                \"UAD_MODULE_KEY\": null,\n                \"REVERSAL_DATE\": null,\n                \"REVERSAL_VALUE_DATE\": null,\n                \"PTTM_EVENT_TYPE\": null,\n                \"PROXY_ACID\": null,\n                \"TOD_ENTITY_TYPE\": null,\n                \"TOD_ENTITY_ID\": null,\n                \"DTH_INIT_SOL_ID\": \"001\",\n                \"REGULARIZATION_AMT\": \"0.0000\",\n                \"PRINCIPAL_PORTION_AMT\": \"0.0000\",\n                \"TF_ENTITY_SOL_ID\": null,\n                \"TRAN_PARTICULAR_2\": null,\n                \"TRAN_PARTICULAR_CODE\": null,\n                \"TR_STATUS\": \"\",\n                \"SVS_TRAN_ID\": null,\n                \"CRNCY_HOL_CHK_DONE_FLG\": \"\",\n                \"REFERRAL_ID\": null,\n                \"PARTY_CODE\": null,\n                \"GL_DATE\": \"2024-12-29T23:00:00.000Z\",\n                \"BKDT_TRAN_FLG\": \"\",\n                \"BANK_ID\": \"01\",\n                \"IMPL_CASH_PART_TRAN_FLG\": \"\",\n                \"PTRAN_CHRG_EXISTS_FLG\": \"N\",\n                \"MUD_POOL_BAL_BUILD_FLG\": \"N\",\n                \"USED_CLEAN_SINGLE_TRAN_LIM\": \"0.0000\",\n                \"USED_SINGLE_TRAN_LIM\": \"0.0000\",\n                \"USED_UN_CLR_OVER_DACC_AMT\": \"0.0000\",\n                \"USED_CLEAN_EMER_ADVN\": \"0.0000\",\n                \"USED_EMER_ADVN\": \"0.0000\",\n                \"GL_SEGMENT_STRING\": null,\n                \"COMB_TRAN_ID\": null,\n                \"SYS_PART_TRAN_CODE\": \"PTRN02160\",\n                \"USER_PART_TRAN_CODE\": null,\n                \"TRAN_FREE_CODE1\": null,\n                \"TRAN_FREE_CODE2\": null,\n                \"RESP_ACCT_REF_NO\": null,\n                \"PURPOSE_CODE\": null,\n                \"ENT_ACCOUNT_ID\": \"5020010123\",\n                \"VA_REPL_STATUS\": \"\",\n                \"VA_REAL_TXN_REQD_FLG\": \"\",\n                \"ENT_ACCOUNT_TYPE\": \"\",\n                \"VA_ACCOUNT_ID\": null,\n                \"PSTD_SRL_NUM\": \"48\",\n                \"REVERSAL_STATUS\": \"\",\n                \"USED_SANCT_LIM\": \"0.0000\",\n                \"USED_POOL_AMT\": \"0.0000\",\n                \"AVAILABLE_AMT\": \"0.0000\",\n                \"ACCT_BALANCE\": \"0.0000\",\n                \"PURGE_FLG\": \"N\",\n                \"load_date\": \"2025-01-04T12:34:59.000Z\"\n            },\n            {\n                \"TRAN_DATE\": \"2024-12-29T23:00:00.000Z\",\n                \"TRAN_ID\": \"M00001634\",\n                \"PART_TRAN_SRL_NUM\": \"   2\",\n                \"DEL_FLG\": \"N\",\n                \"TRAN_TYPE\": \"T\",\n                \"TRAN_SUB_TYPE\": \"BI\",\n                \"PART_TRAN_TYPE\": \"C\",\n                \"GL_SUB_HEAD_CODE\": \"25004\",\n                \"ACID\": \"NB5000814\",\n                \"VALUE_DATE\": \"2024-12-29T23:00:00.000Z\",\n                \"TRAN_AMT\": \"121266.8700\",\n                \"TRAN_PARTICULAR\": \"Loan Disbursement Credit For 1600304653\",\n                \"ENTRY_USER_ID\": \"FA247\",\n                \"PSTD_USER_ID\": \"UU050\",\n                \"VFD_USER_ID\": \"UU050\",\n                \"ENTRY_DATE\": \"2024-12-29T23:00:00.000Z\",\n                \"PSTD_DATE\": \"2024-12-29T23:00:00.000Z\",\n                \"VFD_DATE\": \"2024-12-29T23:00:00.000Z\",\n                \"RPT_CODE\": null,\n                \"REF_NUM\": null,\n                \"INSTRMNT_TYPE\": null,\n                \"INSTRMNT_DATE\": null,\n                \"INSTRMNT_NUM\": null,\n                \"INSTRMNT_ALPHA\": null,\n                \"TRAN_RMKS\": null,\n                \"PSTD_FLG\": \"Y\",\n                \"PRNT_ADVC_IND\": \"\",\n                \"AMT_RESERVATION_IND\": \"\",\n                \"RESERVATION_AMT\": \"0.0000\",\n                \"RESTRICT_MODIFY_IND\": \"2\",\n                \"LCHG_USER_ID\": \"UU050\",\n                \"LCHG_TIME\": \"2024-12-29T23:00:00.000Z\",\n                \"RCRE_USER_ID\": \"UU050\",\n                \"RCRE_TIME\": \"2024-12-29T23:00:00.000Z\",\n                \"CUST_ID\": \"4790\",\n                \"VOUCHER_PRINT_FLG\": \"\",\n                \"MODULE_ID\": \"LA\",\n                \"BR_CODE\": null,\n                \"FX_TRAN_AMT\": \"0.0000\",\n                \"RATE_CODE\": null,\n                \"RATE\": \"1.0000000000\",\n                \"CRNCY_CODE\": null,\n                \"NAVIGATION_FLG\": \"\",\n                \"TRAN_CRNCY_CODE\": \"USD\",\n                \"REF_CRNCY_CODE\": \"USD\",\n                \"REF_AMT\": \"121266.8700\",\n                \"SOL_ID\": \"001\",\n                \"BANK_CODE\": null,\n                \"TREA_REF_NUM\": null,\n                \"TREA_RATE\": \"0.0000000000\",\n                \"TS_CNT\": \"2\",\n                \"GST_UPD_FLG\": \"Y\",\n                \"ISO_FLG\": \"S\",\n                \"EABFAB_UPD_FLG\": \"Y\",\n                \"LIFT_LIEN_FLG\": \"N\",\n                \"PROXY_POST_IND\": \"B\",\n                \"SI_SRL_NUM\": null,\n                \"SI_ORG_EXEC_DATE\": \"1900-12-31T23:46:25.000Z\",\n                \"PR_SRL_NUM\": null,\n                \"SERIAL_NUM\": null,\n                \"DEL_MEMO_PAD\": \"N\",\n                \"UAD_MODULE_ID\": null,\n                \"UAD_MODULE_KEY\": null,\n                \"REVERSAL_DATE\": null,\n                \"REVERSAL_VALUE_DATE\": null,\n                \"PTTM_EVENT_TYPE\": null,\n                \"PROXY_ACID\": null,\n                \"TOD_ENTITY_TYPE\": null,\n                \"TOD_ENTITY_ID\": null,\n                \"DTH_INIT_SOL_ID\": \"001\",\n                \"REGULARIZATION_AMT\": \"0.0000\",\n                \"PRINCIPAL_PORTION_AMT\": \"0.0000\",\n                \"TF_ENTITY_SOL_ID\": null,\n                \"TRAN_PARTICULAR_2\": null,\n                \"TRAN_PARTICULAR_CODE\": null,\n                \"TR_STATUS\": \"\",\n                \"SVS_TRAN_ID\": null,\n                \"CRNCY_HOL_CHK_DONE_FLG\": \"\",\n                \"REFERRAL_ID\": null,\n                \"PARTY_CODE\": null,\n                \"GL_DATE\": \"2024-12-29T23:00:00.000Z\",\n                \"BKDT_TRAN_FLG\": \"\",\n                \"BANK_ID\": \"01\",\n                \"IMPL_CASH_PART_TRAN_FLG\": \"\",\n                \"PTRAN_CHRG_EXISTS_FLG\": \"N\",\n                \"MUD_POOL_BAL_BUILD_FLG\": \"N\",\n                \"USED_CLEAN_SINGLE_TRAN_LIM\": \"0.0000\",\n                \"USED_SINGLE_TRAN_LIM\": \"0.0000\",\n                \"USED_UN_CLR_OVER_DACC_AMT\": \"0.0000\",\n                \"USED_CLEAN_EMER_ADVN\": \"0.0000\",\n                \"USED_EMER_ADVN\": \"0.0000\",\n                \"GL_SEGMENT_STRING\": null,\n                \"COMB_TRAN_ID\": null,\n                \"SYS_PART_TRAN_CODE\": \"PTRN02160\",\n                \"USER_PART_TRAN_CODE\": null,\n                \"TRAN_FREE_CODE1\": null,\n                \"TRAN_FREE_CODE2\": null,\n                \"RESP_ACCT_REF_NO\": null,\n                \"PURPOSE_CODE\": null,\n                \"ENT_ACCOUNT_ID\": \"5020010123\",\n                \"VA_REPL_STATUS\": \"\",\n                \"VA_REAL_TXN_REQD_FLG\": \"\",\n                \"ENT_ACCOUNT_TYPE\": \"\",\n                \"VA_ACCOUNT_ID\": null,\n                \"PSTD_SRL_NUM\": \"49\",\n                \"REVERSAL_STATUS\": \"\",\n                \"USED_SANCT_LIM\": \"0.0000\",\n                \"USED_POOL_AMT\": \"0.0000\",\n                \"AVAILABLE_AMT\": \"0.0000\",\n                \"ACCT_BALANCE\": \"0.0000\",\n                \"PURGE_FLG\": \"N\",\n                \"load_date\": \"2025-01-04T12:35:00.000Z\"\n            },\n            {\n                \"TRAN_DATE\": \"2024-12-29T23:00:00.000Z\",\n                \"TRAN_ID\": \"M00001637\",\n                \"PART_TRAN_SRL_NUM\": \"   2\",\n                \"DEL_FLG\": \"N\",\n                \"TRAN_TYPE\": \"T\",\n                \"TRAN_SUB_TYPE\": \"BI\",\n                \"PART_TRAN_TYPE\": \"C\",\n                \"GL_SUB_HEAD_CODE\": \"25004\",\n                \"ACID\": \"NB5000814\",\n                \"VALUE_DATE\": \"2024-12-29T23:00:00.000Z\",\n                \"TRAN_AMT\": \"109711.8900\",\n                \"TRAN_PARTICULAR\": \"Loan Disbursement Credit For 1600304684\",\n                \"ENTRY_USER_ID\": \"FA247\",\n                \"PSTD_USER_ID\": \"UU050\",\n                \"VFD_USER_ID\": \"UU050\",\n                \"ENTRY_DATE\": \"2024-12-29T23:00:00.000Z\",\n                \"PSTD_DATE\": \"2024-12-29T23:00:00.000Z\",\n                \"VFD_DATE\": \"2024-12-29T23:00:00.000Z\",\n                \"RPT_CODE\": null,\n                \"REF_NUM\": null,\n                \"INSTRMNT_TYPE\": null,\n                \"INSTRMNT_DATE\": null,\n                \"INSTRMNT_NUM\": null,\n                \"INSTRMNT_ALPHA\": null,\n                \"TRAN_RMKS\": null,\n                \"PSTD_FLG\": \"Y\",\n                \"PRNT_ADVC_IND\": \"\",\n                \"AMT_RESERVATION_IND\": \"\",\n                \"RESERVATION_AMT\": \"0.0000\",\n                \"RESTRICT_MODIFY_IND\": \"2\",\n                \"LCHG_USER_ID\": \"UU050\",\n                \"LCHG_TIME\": \"2024-12-29T23:00:00.000Z\",\n                \"RCRE_USER_ID\": \"UU050\",\n                \"RCRE_TIME\": \"2024-12-29T23:00:00.000Z\",\n                \"CUST_ID\": \"4790\",\n                \"VOUCHER_PRINT_FLG\": \"\",\n                \"MODULE_ID\": \"LA\",\n                \"BR_CODE\": null,\n                \"FX_TRAN_AMT\": \"0.0000\",\n                \"RATE_CODE\": null,\n                \"RATE\": \"1.0000000000\",\n                \"CRNCY_CODE\": null,\n                \"NAVIGATION_FLG\": \"\",\n                \"TRAN_CRNCY_CODE\": \"USD\",\n                \"REF_CRNCY_CODE\": \"USD\",\n                \"REF_AMT\": \"109711.8900\",\n                \"SOL_ID\": \"001\",\n                \"BANK_CODE\": null,\n                \"TREA_REF_NUM\": null,\n                \"TREA_RATE\": \"0.0000000000\",\n                \"TS_CNT\": \"2\",\n                \"GST_UPD_FLG\": \"Y\",\n                \"ISO_FLG\": \"S\",\n                \"EABFAB_UPD_FLG\": \"Y\",\n                \"LIFT_LIEN_FLG\": \"N\",\n                \"PROXY_POST_IND\": \"B\",\n                \"SI_SRL_NUM\": null,\n                \"SI_ORG_EXEC_DATE\": \"1900-12-31T23:46:25.000Z\",\n                \"PR_SRL_NUM\": null,\n                \"SERIAL_NUM\": null,\n                \"DEL_MEMO_PAD\": \"N\",\n                \"UAD_MODULE_ID\": null,\n                \"UAD_MODULE_KEY\": null,\n                \"REVERSAL_DATE\": null,\n                \"REVERSAL_VALUE_DATE\": null,\n                \"PTTM_EVENT_TYPE\": null,\n                \"PROXY_ACID\": null,\n                \"TOD_ENTITY_TYPE\": null,\n                \"TOD_ENTITY_ID\": null,\n                \"DTH_INIT_SOL_ID\": \"001\",\n                \"REGULARIZATION_AMT\": \"0.0000\",\n                \"PRINCIPAL_PORTION_AMT\": \"0.0000\",\n                \"TF_ENTITY_SOL_ID\": null,\n                \"TRAN_PARTICULAR_2\": null,\n                \"TRAN_PARTICULAR_CODE\": null,\n                \"TR_STATUS\": \"\",\n                \"SVS_TRAN_ID\": null,\n                \"CRNCY_HOL_CHK_DONE_FLG\": \"\",\n                \"REFERRAL_ID\": null,\n                \"PARTY_CODE\": null,\n                \"GL_DATE\": \"2024-12-29T23:00:00.000Z\",\n                \"BKDT_TRAN_FLG\": \"\",\n                \"BANK_ID\": \"01\",\n                \"IMPL_CASH_PART_TRAN_FLG\": \"\",\n                \"PTRAN_CHRG_EXISTS_FLG\": \"N\",\n                \"MUD_POOL_BAL_BUILD_FLG\": \"N\",\n                \"USED_CLEAN_SINGLE_TRAN_LIM\": \"0.0000\",\n                \"USED_SINGLE_TRAN_LIM\": \"0.0000\",\n                \"USED_UN_CLR_OVER_DACC_AMT\": \"0.0000\",\n                \"USED_CLEAN_EMER_ADVN\": \"0.0000\",\n                \"USED_EMER_ADVN\": \"0.0000\",\n                \"GL_SEGMENT_STRING\": null,\n                \"COMB_TRAN_ID\": null,\n                \"SYS_PART_TRAN_CODE\": \"PTRN02160\",\n                \"USER_PART_TRAN_CODE\": null,\n                \"TRAN_FREE_CODE1\": null,\n                \"TRAN_FREE_CODE2\": null,\n                \"RESP_ACCT_REF_NO\": null,\n                \"PURPOSE_CODE\": null,\n                \"ENT_ACCOUNT_ID\": \"5020010123\",\n                \"VA_REPL_STATUS\": \"\",\n                \"VA_REAL_TXN_REQD_FLG\": \"\",\n                \"ENT_ACCOUNT_TYPE\": \"\",\n                \"VA_ACCOUNT_ID\": null,\n                \"PSTD_SRL_NUM\": \"50\",\n                \"REVERSAL_STATUS\": \"\",\n                \"USED_SANCT_LIM\": \"0.0000\",\n                \"USED_POOL_AMT\": \"0.0000\",\n                \"AVAILABLE_AMT\": \"0.0000\",\n                \"ACCT_BALANCE\": \"0.0000\",\n                \"PURGE_FLG\": \"N\",\n                \"load_date\": \"2025-01-04T12:35:02.000Z\"\n            },\n            {\n                \"TRAN_DATE\": \"2024-12-29T23:00:00.000Z\",\n                \"TRAN_ID\": \"M00001641\",\n                \"PART_TRAN_SRL_NUM\": \"   2\",\n                \"DEL_FLG\": \"N\",\n                \"TRAN_TYPE\": \"T\",\n                \"TRAN_SUB_TYPE\": \"BI\",\n                \"PART_TRAN_TYPE\": \"C\",\n                \"GL_SUB_HEAD_CODE\": \"25004\",\n                \"ACID\": \"NB5000814\",\n                \"VALUE_DATE\": \"2024-12-29T23:00:00.000Z\",\n                \"TRAN_AMT\": \"122610.0900\",\n                \"TRAN_PARTICULAR\": \"Loan Disbursement Credit For 1600304646\",\n                \"ENTRY_USER_ID\": \"FA247\",\n                \"PSTD_USER_ID\": \"UU050\",\n                \"VFD_USER_ID\": \"UU050\",\n                \"ENTRY_DATE\": \"2024-12-29T23:00:00.000Z\",\n                \"PSTD_DATE\": \"2024-12-29T23:00:00.000Z\",\n                \"VFD_DATE\": \"2024-12-29T23:00:00.000Z\",\n                \"RPT_CODE\": null,\n                \"REF_NUM\": null,\n                \"INSTRMNT_TYPE\": null,\n                \"INSTRMNT_DATE\": null,\n                \"INSTRMNT_NUM\": null,\n                \"INSTRMNT_ALPHA\": null,\n                \"TRAN_RMKS\": null,\n                \"PSTD_FLG\": \"Y\",\n                \"PRNT_ADVC_IND\": \"\",\n                \"AMT_RESERVATION_IND\": \"\",\n                \"RESERVATION_AMT\": \"0.0000\",\n                \"RESTRICT_MODIFY_IND\": \"2\",\n                \"LCHG_USER_ID\": \"UU050\",\n                \"LCHG_TIME\": \"2024-12-29T23:00:00.000Z\",\n                \"RCRE_USER_ID\": \"UU050\",\n                \"RCRE_TIME\": \"2024-12-29T23:00:00.000Z\",\n                \"CUST_ID\": \"4790\",\n                \"VOUCHER_PRINT_FLG\": \"\",\n                \"MODULE_ID\": \"LA\",\n                \"BR_CODE\": null,\n                \"FX_TRAN_AMT\": \"0.0000\",\n                \"RATE_CODE\": null,\n                \"RATE\": \"1.0000000000\",\n                \"CRNCY_CODE\": null,\n                \"NAVIGATION_FLG\": \"\",\n                \"TRAN_CRNCY_CODE\": \"USD\",\n                \"REF_CRNCY_CODE\": \"USD\",\n                \"REF_AMT\": \"122610.0900\",\n                \"SOL_ID\": \"001\",\n                \"BANK_CODE\": null,\n                \"TREA_REF_NUM\": null,\n                \"TREA_RATE\": \"0.0000000000\",\n                \"TS_CNT\": \"2\",\n                \"GST_UPD_FLG\": \"Y\",\n                \"ISO_FLG\": \"S\",\n                \"EABFAB_UPD_FLG\": \"Y\",\n                \"LIFT_LIEN_FLG\": \"N\",\n                \"PROXY_POST_IND\": \"B\",\n                \"SI_SRL_NUM\": null,\n                \"SI_ORG_EXEC_DATE\": \"1900-12-31T23:46:25.000Z\",\n                \"PR_SRL_NUM\": null,\n                \"SERIAL_NUM\": null,\n                \"DEL_MEMO_PAD\": \"N\",\n                \"UAD_MODULE_ID\": null,\n                \"UAD_MODULE_KEY\": null,\n                \"REVERSAL_DATE\": null,\n                \"REVERSAL_VALUE_DATE\": null,\n                \"PTTM_EVENT_TYPE\": null,\n                \"PROXY_ACID\": null,\n                \"TOD_ENTITY_TYPE\": null,\n                \"TOD_ENTITY_ID\": null,\n                \"DTH_INIT_SOL_ID\": \"001\",\n                \"REGULARIZATION_AMT\": \"0.0000\",\n                \"PRINCIPAL_PORTION_AMT\": \"0.0000\",\n                \"TF_ENTITY_SOL_ID\": null,\n                \"TRAN_PARTICULAR_2\": null,\n                \"TRAN_PARTICULAR_CODE\": null,\n                \"TR_STATUS\": \"\",\n                \"SVS_TRAN_ID\": null,\n                \"CRNCY_HOL_CHK_DONE_FLG\": \"\",\n                \"REFERRAL_ID\": null,\n                \"PARTY_CODE\": null,\n                \"GL_DATE\": \"2024-12-29T23:00:00.000Z\",\n                \"BKDT_TRAN_FLG\": \"\",\n                \"BANK_ID\": \"01\",\n                \"IMPL_CASH_PART_TRAN_FLG\": \"\",\n                \"PTRAN_CHRG_EXISTS_FLG\": \"N\",\n                \"MUD_POOL_BAL_BUILD_FLG\": \"N\",\n                \"USED_CLEAN_SINGLE_TRAN_LIM\": \"0.0000\",\n                \"USED_SINGLE_TRAN_LIM\": \"0.0000\",\n                \"USED_UN_CLR_OVER_DACC_AMT\": \"0.0000\",\n                \"USED_CLEAN_EMER_ADVN\": \"0.0000\",\n                \"USED_EMER_ADVN\": \"0.0000\",\n                \"GL_SEGMENT_STRING\": null,\n                \"COMB_TRAN_ID\": null,\n                \"SYS_PART_TRAN_CODE\": \"PTRN02160\",\n                \"USER_PART_TRAN_CODE\": null,\n                \"TRAN_FREE_CODE1\": null,\n                \"TRAN_FREE_CODE2\": null,\n                \"RESP_ACCT_REF_NO\": null,\n                \"PURPOSE_CODE\": null,\n                \"ENT_ACCOUNT_ID\": \"5020010123\",\n                \"VA_REPL_STATUS\": \"\",\n                \"VA_REAL_TXN_REQD_FLG\": \"\",\n                \"ENT_ACCOUNT_TYPE\": \"\",\n                \"VA_ACCOUNT_ID\": null,\n                \"PSTD_SRL_NUM\": \"51\",\n                \"REVERSAL_STATUS\": \"\",\n                \"USED_SANCT_LIM\": \"0.0000\",\n                \"USED_POOL_AMT\": \"0.0000\",\n                \"AVAILABLE_AMT\": \"0.0000\",\n                \"ACCT_BALANCE\": \"0.0000\",\n                \"PURGE_FLG\": \"N\",\n                \"load_date\": \"2025-01-04T12:35:03.000Z\"\n            },\n            {\n                \"TRAN_DATE\": \"2024-12-29T23:00:00.000Z\",\n                \"TRAN_ID\": \"M00001644\",\n                \"PART_TRAN_SRL_NUM\": \"   2\",\n                \"DEL_FLG\": \"N\",\n                \"TRAN_TYPE\": \"T\",\n                \"TRAN_SUB_TYPE\": \"BI\",\n                \"PART_TRAN_TYPE\": \"C\",\n                \"GL_SUB_HEAD_CODE\": \"25004\",\n                \"ACID\": \"NB5000814\",\n                \"VALUE_DATE\": \"2024-12-29T23:00:00.000Z\",\n                \"TRAN_AMT\": \"124334.0800\",\n                \"TRAN_PARTICULAR\": \"Loan Disbursement Credit For 1600304639\",\n                \"ENTRY_USER_ID\": \"FA247\",\n                \"PSTD_USER_ID\": \"UU050\",\n                \"VFD_USER_ID\": \"UU050\",\n                \"ENTRY_DATE\": \"2024-12-29T23:00:00.000Z\",\n                \"PSTD_DATE\": \"2024-12-29T23:00:00.000Z\",\n                \"VFD_DATE\": \"2024-12-29T23:00:00.000Z\",\n                \"RPT_CODE\": null,\n                \"REF_NUM\": null,\n                \"INSTRMNT_TYPE\": null,\n                \"INSTRMNT_DATE\": null,\n                \"INSTRMNT_NUM\": null,\n                \"INSTRMNT_ALPHA\": null,\n                \"TRAN_RMKS\": null,\n                \"PSTD_FLG\": \"Y\",\n                \"PRNT_ADVC_IND\": \"\",\n                \"AMT_RESERVATION_IND\": \"\",\n                \"RESERVATION_AMT\": \"0.0000\",\n                \"RESTRICT_MODIFY_IND\": \"2\",\n                \"LCHG_USER_ID\": \"UU050\",\n                \"LCHG_TIME\": \"2024-12-29T23:00:00.000Z\",\n                \"RCRE_USER_ID\": \"UU050\",\n                \"RCRE_TIME\": \"2024-12-29T23:00:00.000Z\",\n                \"CUST_ID\": \"4790\",\n                \"VOUCHER_PRINT_FLG\": \"\",\n                \"MODULE_ID\": \"LA\",\n                \"BR_CODE\": null,\n                \"FX_TRAN_AMT\": \"0.0000\",\n                \"RATE_CODE\": null,\n                \"RATE\": \"1.0000000000\",\n                \"CRNCY_CODE\": null,\n                \"NAVIGATION_FLG\": \"\",\n                \"TRAN_CRNCY_CODE\": \"USD\",\n                \"REF_CRNCY_CODE\": \"USD\",\n                \"REF_AMT\": \"124334.0800\",\n                \"SOL_ID\": \"001\",\n                \"BANK_CODE\": null,\n                \"TREA_REF_NUM\": null,\n                \"TREA_RATE\": \"0.0000000000\",\n                \"TS_CNT\": \"2\",\n                \"GST_UPD_FLG\": \"Y\",\n                \"ISO_FLG\": \"S\",\n                \"EABFAB_UPD_FLG\": \"Y\",\n                \"LIFT_LIEN_FLG\": \"N\",\n                \"PROXY_POST_IND\": \"B\",\n                \"SI_SRL_NUM\": null,\n                \"SI_ORG_EXEC_DATE\": \"1900-12-31T23:46:25.000Z\",\n                \"PR_SRL_NUM\": null,\n                \"SERIAL_NUM\": null,\n                \"DEL_MEMO_PAD\": \"N\",\n                \"UAD_MODULE_ID\": null,\n                \"UAD_MODULE_KEY\": null,\n                \"REVERSAL_DATE\": null,\n                \"REVERSAL_VALUE_DATE\": null,\n                \"PTTM_EVENT_TYPE\": null,\n                \"PROXY_ACID\": null,\n                \"TOD_ENTITY_TYPE\": null,\n                \"TOD_ENTITY_ID\": null,\n                \"DTH_INIT_SOL_ID\": \"001\",\n                \"REGULARIZATION_AMT\": \"0.0000\",\n                \"PRINCIPAL_PORTION_AMT\": \"0.0000\",\n                \"TF_ENTITY_SOL_ID\": null,\n                \"TRAN_PARTICULAR_2\": null,\n                \"TRAN_PARTICULAR_CODE\": null,\n                \"TR_STATUS\": \"\",\n                \"SVS_TRAN_ID\": null,\n                \"CRNCY_HOL_CHK_DONE_FLG\": \"\",\n                \"REFERRAL_ID\": null,\n                \"PARTY_CODE\": null,\n                \"GL_DATE\": \"2024-12-29T23:00:00.000Z\",\n                \"BKDT_TRAN_FLG\": \"\",\n                \"BANK_ID\": \"01\",\n                \"IMPL_CASH_PART_TRAN_FLG\": \"\",\n                \"PTRAN_CHRG_EXISTS_FLG\": \"N\",\n                \"MUD_POOL_BAL_BUILD_FLG\": \"N\",\n                \"USED_CLEAN_SINGLE_TRAN_LIM\": \"0.0000\",\n                \"USED_SINGLE_TRAN_LIM\": \"0.0000\",\n                \"USED_UN_CLR_OVER_DACC_AMT\": \"0.0000\",\n                \"USED_CLEAN_EMER_ADVN\": \"0.0000\",\n                \"USED_EMER_ADVN\": \"0.0000\",\n                \"GL_SEGMENT_STRING\": null,\n                \"COMB_TRAN_ID\": null,\n                \"SYS_PART_TRAN_CODE\": \"PTRN02160\",\n                \"USER_PART_TRAN_CODE\": null,\n                \"TRAN_FREE_CODE1\": null,\n                \"TRAN_FREE_CODE2\": null,\n                \"RESP_ACCT_REF_NO\": null,\n                \"PURPOSE_CODE\": null,\n                \"ENT_ACCOUNT_ID\": \"5020010123\",\n                \"VA_REPL_STATUS\": \"\",\n                \"VA_REAL_TXN_REQD_FLG\": \"\",\n                \"ENT_ACCOUNT_TYPE\": \"\",\n                \"VA_ACCOUNT_ID\": null,\n                \"PSTD_SRL_NUM\": \"52\",\n                \"REVERSAL_STATUS\": \"\",\n                \"USED_SANCT_LIM\": \"0.0000\",\n                \"USED_POOL_AMT\": \"0.0000\",\n                \"AVAILABLE_AMT\": \"0.0000\",\n                \"ACCT_BALANCE\": \"0.0000\",\n                \"PURGE_FLG\": \"N\",\n                \"load_date\": \"2025-01-04T12:35:04.000Z\"\n            }\n        ],\n        \"total\": 766,\n        \"page\": 1,\n        \"limit\": 10,\n        \"totalPages\": 77\n    }\n}"
+												},
+												{
+													"id": "a739cbe9-3c88-4471-9f44-440173c4e1ca",
+													"name": "Fetch Customers Transactions (Filter)",
+													"originalRequest": {
+														"method": "GET",
+														"header": [],
+														"url": {
+															"raw": "{{baseUrl}}/v1/customers/:id/transactions?account_id=025012477&date_start=2023-01-01&date_end=2025-01-01&part_transaction_type=D&reference_number=060003241223232605527778715976&q=060003241223232605527778715976&limit=100&page=1",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"v1",
+																"customers",
+																":id",
+																"transactions"
+															],
+															"query": [
+																{
+																	"key": "account_id",
+																	"value": "025012477"
+																},
+																{
+																	"key": "date_start",
+																	"value": "2023-01-01"
+																},
+																{
+																	"key": "date_end",
+																	"value": "2025-01-01"
+																},
+																{
+																	"key": "part_transaction_type",
+																	"value": "D"
+																},
+																{
+																	"key": "reference_number",
+																	"value": "060003241223232605527778715976"
+																},
+																{
+																	"key": "q",
+																	"value": "060003241223232605527778715976"
+																},
+																{
+																	"key": "limit",
+																	"value": "100"
+																},
+																{
+																	"key": "page",
+																	"value": "1"
+																}
+															],
+															"variable": [
+																{
+																	"key": "id",
+																	"value": "21374"
+																}
+															]
+														}
+													},
+													"status": "OK",
+													"code": 200,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "X-Powered-By",
+															"value": "Express"
+														},
+														{
+															"key": "Access-Control-Allow-Origin",
+															"value": "*"
+														},
+														{
+															"key": "X-RateLimit-Limit",
+															"value": "6"
+														},
+														{
+															"key": "X-RateLimit-Remaining",
+															"value": "5"
+														},
+														{
+															"key": "X-RateLimit-Reset",
+															"value": "2"
+														},
+														{
+															"key": "Content-Type",
+															"value": "application/json; charset=utf-8"
+														},
+														{
+															"key": "Content-Length",
+															"value": "2751"
+														},
+														{
+															"key": "ETag",
+															"value": "W/\"abf-eOeytShCTooTZj+1NVGoUnPzW+0\""
+														},
+														{
+															"key": "Date",
+															"value": "Tue, 04 Mar 2025 04:37:49 GMT"
+														},
+														{
+															"key": "Connection",
+															"value": "keep-alive"
+														},
+														{
+															"key": "Keep-Alive",
+															"value": "timeout=5"
+														}
+													],
+													"cookie": [],
+													"responseTime": null,
+													"body": "{\n    \"status\": true,\n    \"response\": {\n        \"data\": [\n            {\n                \"transaction_id\": \"M00000086\",\n                \"part_transaction_serial_number\": \"   5\",\n                \"transaction_date\": \"2024-12-23T23:00:00.000Z\",\n                \"transaction_type\": \"T\",\n                \"reference_number\": \"060003241223232605527778715976\",\n                \"svs_transaction_id\": null,\n                \"customer_id\": \"21374\",\n                \"transaction_sub_type\": \"CI\",\n                \"part_transaction_type\": \"D\",\n                \"account_id\": \"025012477\",\n                \"value_date\": \"2024-12-23T23:00:00.000Z\",\n                \"transaction_amount\": \"25.0000\",\n                \"transaction_particular\": \"NIP/OUT NIP Transaction Charge\",\n                \"entry_user_id\": \"FIVUSR\",\n                \"entry_date\": \"2024-12-22T23:00:00.000Z\",\n                \"currency_code\": null,\n                \"transaction_remarks\": \"060003241223232605527778715976\",\n                \"bank_id\": \"01\",\n                \"gl_sub_head_code\": \"20002\",\n                \"transaction_currency_code\": \"NGN\",\n                \"solution_id\": \"002\",\n                \"foreign_transaction_amount\": \"0.0000\",\n                \"rate_code\": null,\n                \"rate\": \"1.0000000000\",\n                \"navigation_flag\": \"\",\n                \"reference_amount\": \"25.0000\",\n                \"branch_code\": null,\n                \"posted_flag\": \"Y\",\n                \"print_advice_indicator\": \"\",\n                \"posted_date\": \"2024-12-22T23:00:00.000Z\",\n                \"module_id\": null,\n                \"last_changed_user_id\": \"OS224\",\n                \"last_changed_time\": \"2024-12-23T23:00:00.000Z\",\n                \"record_created_user_id\": \"FIVUSR\",\n                \"record_created_time\": \"2024-12-22T23:00:00.000Z\",\n                \"transaction_sequence_count\": 2,\n                \"user_defined_module_key\": null,\n                \"reversal_date\": \"1900-12-31T23:46:25.000Z\",\n                \"reversal_status\": \"\",\n                \"used_sanction_limit\": 0,\n                \"used_pool_amount\": 0,\n                \"account_balance\": 11192450,\n                \"load_date\": \"2025-01-03T17:13:24.000Z\"\n            },\n            {\n                \"transaction_id\": \"M00000086\",\n                \"part_transaction_serial_number\": \"   6\",\n                \"transaction_date\": \"2024-12-23T23:00:00.000Z\",\n                \"transaction_type\": \"T\",\n                \"reference_number\": \"060003241223232605527778715976\",\n                \"svs_transaction_id\": null,\n                \"customer_id\": \"21374\",\n                \"transaction_sub_type\": \"CI\",\n                \"part_transaction_type\": \"D\",\n                \"account_id\": \"025012477\",\n                \"value_date\": \"2024-12-23T23:00:00.000Z\",\n                \"transaction_amount\": \"1.8800\",\n                \"transaction_particular\": \"NIP/OUT VAT on NIP Transaction\",\n                \"entry_user_id\": \"FIVUSR\",\n                \"entry_date\": \"2024-12-22T23:00:00.000Z\",\n                \"currency_code\": null,\n                \"transaction_remarks\": \"060003241223232605527778715976\",\n                \"bank_id\": \"01\",\n                \"gl_sub_head_code\": \"20002\",\n                \"transaction_currency_code\": \"NGN\",\n                \"solution_id\": \"002\",\n                \"foreign_transaction_amount\": \"0.0000\",\n                \"rate_code\": null,\n                \"rate\": \"1.0000000000\",\n                \"navigation_flag\": \"\",\n                \"reference_amount\": \"1.8800\",\n                \"branch_code\": null,\n                \"posted_flag\": \"Y\",\n                \"print_advice_indicator\": \"\",\n                \"posted_date\": \"2024-12-22T23:00:00.000Z\",\n                \"module_id\": null,\n                \"last_changed_user_id\": \"OS224\",\n                \"last_changed_time\": \"2024-12-23T23:00:00.000Z\",\n                \"record_created_user_id\": \"FIVUSR\",\n                \"record_created_time\": \"2024-12-22T23:00:00.000Z\",\n                \"transaction_sequence_count\": 2,\n                \"user_defined_module_key\": null,\n                \"reversal_date\": \"1900-12-31T23:46:25.000Z\",\n                \"reversal_status\": \"\",\n                \"used_sanction_limit\": 0,\n                \"used_pool_amount\": 0,\n                \"account_balance\": 11192425,\n                \"load_date\": \"2025-01-03T17:13:24.000Z\"\n            }\n        ],\n        \"total\": 2,\n        \"page\": 1,\n        \"limit\": 100,\n        \"totalPages\": 1\n    }\n}"
+												}
+											]
 										}
 									],
 									"id": "980812d0-52e4-4e7c-b658-1c64bb2791fc"
@@ -7908,6 +8093,128 @@
 										}
 									],
 									"id": "b9caee7f-cdef-40f7-820c-63e2be230960"
+								},
+								{
+									"name": "Fetch customer channel",
+									"item": [
+										{
+											"name": "Fetch Customers Channels",
+											"id": "406c36eb-01d2-4deb-ae10-8440e439bc63",
+											"protocolProfileBehavior": {
+												"disableBodyPruning": true
+											},
+											"request": {
+												"auth": {
+													"type": "bearer",
+													"bearer": {
+														"token": "{{Bearer_token}}"
+													}
+												},
+												"method": "GET",
+												"header": [],
+												"url": {
+													"raw": "{{baseUrl}}/v1/customers/:id/channels",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"v1",
+														"customers",
+														":id",
+														"channels"
+													],
+													"variable": [
+														{
+															"id": "3f09494e-96a9-41ce-a641-c3e516e4a76d",
+															"key": "id",
+															"value": "4790"
+														}
+													]
+												}
+											},
+											"response": [
+												{
+													"id": "41c6ad67-0179-4c92-8c5a-64c7bbff6450",
+													"name": "Fetch Customers Channels",
+													"originalRequest": {
+														"method": "GET",
+														"header": [],
+														"url": {
+															"raw": "{{baseUrl}}/v1/customers/:id/channels",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"v1",
+																"customers",
+																":id",
+																"channels"
+															],
+															"variable": [
+																{
+																	"key": "id",
+																	"value": "4790"
+																}
+															]
+														}
+													},
+													"status": "OK",
+													"code": 200,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "X-Powered-By",
+															"value": "Express"
+														},
+														{
+															"key": "Access-Control-Allow-Origin",
+															"value": "*"
+														},
+														{
+															"key": "X-RateLimit-Limit",
+															"value": "6"
+														},
+														{
+															"key": "X-RateLimit-Remaining",
+															"value": "5"
+														},
+														{
+															"key": "X-RateLimit-Reset",
+															"value": "2"
+														},
+														{
+															"key": "Content-Type",
+															"value": "application/json; charset=utf-8"
+														},
+														{
+															"key": "Content-Length",
+															"value": "944"
+														},
+														{
+															"key": "ETag",
+															"value": "W/\"3b0-WklI6okmulJkOIwCM0TcgblwZ1s\""
+														},
+														{
+															"key": "Date",
+															"value": "Tue, 04 Mar 2025 04:49:21 GMT"
+														},
+														{
+															"key": "Connection",
+															"value": "keep-alive"
+														},
+														{
+															"key": "Keep-Alive",
+															"value": "timeout=5"
+														}
+													],
+													"cookie": [],
+													"responseTime": null,
+													"body": "{\n    \"status\": true,\n    \"response\": {\n        \"data\": [\n            {\n                \"channel_id\": \"corporate-internet-banking\",\n                \"name\": \"Corporate Internet Banking\",\n                \"last_login\": \"2000-12-31T23:00:00.000Z\",\n                \"profiles\": \"1\",\n                \"total_transaction_value\": 0\n            },\n            {\n                \"channel_id\": \"retail-internet-banking\",\n                \"name\": \"Retail Internet Banking\",\n                \"last_login\": null,\n                \"profiles\": 0,\n                \"total_transaction_value\": 0\n            },\n            {\n                \"channel_id\": \"retail-mobile-banking\",\n                \"name\": \"Retail Mobile Banking\",\n                \"last_login\": null,\n                \"profiles\": 0,\n                \"total_transaction_value\": 0\n            },\n            {\n                \"channel_id\": \"debit-cards\",\n                \"name\": \"Debit Cards\",\n                \"last_login\": null,\n                \"profiles\": 0,\n                \"total_transaction_value\": 0\n            },\n            {\n                \"channel_id\": \"pos-terminals\",\n                \"name\": \"POS Terminals\",\n                \"last_login\": null,\n                \"profiles\": 0,\n                \"total_transaction_value\": 0\n            },\n            {\n                \"channel_id\": \"atm-terminals\",\n                \"name\": \"ATM Terminals\",\n                \"last_login\": null,\n                \"profiles\": 0,\n                \"total_transaction_value\": 0\n            },\n            {\n                \"channel_id\": \"new-slug\",\n                \"name\": \"New def\",\n                \"last_login\": null,\n                \"profiles\": 0,\n                \"total_transaction_value\": 0\n            }\n        ],\n        \"total\": 7,\n        \"page\": 1,\n        \"limit\": 10,\n        \"totalPages\": 1\n    }\n}"
+												}
+											]
+										}
+									],
+									"id": "8a3e1f49-c632-4be5-8d8e-96c32a8918b3"
 								}
 							],
 							"id": "e60885ec-43e9-4b8b-b371-2d2fbd2949e9"
@@ -8383,7 +8690,7 @@
 												],
 												"body": {
 													"mode": "raw",
-													"raw": "{ \"definitions\": [{\n  \"slug\": \"issue-status\",\n  \"name\": \"Issue Status\",\n  \"description\": \"Issue Status\",\n  \"parent_id\": \"root\"\n}]\n}",
+													"raw": "{\n    \"definitions\": [\n        {\n            \"slug\": \"issue-status\",\n            \"name\": \"Issue Status\",\n            \"description\": \"Issue Status\",\n            \"parent_id\": \"root\"\n        }\n    ]\n}",
 													"options": {
 														"raw": {
 															"headerFamily": "json",
@@ -10711,23 +11018,29 @@
 												"disableBodyPruning": true
 											},
 											"request": {
+												"auth": {
+													"type": "bearer",
+													"bearer": {
+														"token": "{{Bearer_token}}"
+													}
+												},
 												"method": "GET",
 												"header": [],
 												"url": {
-													"raw": "{{baseUrl}}/v1/settings/:id",
+													"raw": "{{baseUrl}}/v1/settings/master/:id",
 													"host": [
 														"{{baseUrl}}"
 													],
 													"path": [
 														"v1",
 														"settings",
+														"master",
 														":id"
 													],
 													"variable": [
 														{
 															"key": "id",
-															"value": "29",
-															"description": "(Required) "
+															"value": "33"
 														}
 													]
 												}
@@ -11984,7 +12297,7 @@
 															}
 														],
 														"url": {
-															"raw": "{{baseUrl}}/v1/settings/master/categories/organization-settings?page=1&limit=10",
+															"raw": "{{baseUrl}}/v1/settings/master/categories/system-settings-category?page=1&limit=10",
 															"host": [
 																"{{baseUrl}}"
 															],
@@ -11993,7 +12306,7 @@
 																"settings",
 																"master",
 																"categories",
-																"organization-settings"
+																"system-settings-category"
 															],
 															"query": [
 																{
@@ -12123,14 +12436,14 @@
 														],
 														"body": {
 															"mode": "raw",
-															"raw": "{\n  \"action\": \"delete\",\n  \"data\": {}\n}",
+															"raw": "{\n  \"action\": \"update\",\n  \"data\": {\n    \"default_value\": \"{\\\"minLength\\\":8,\\\"minLowercase\\\":1,\\\"minUppercase\\\":1,\\\"minNumbers\\\":1,\\\"minSymbols\\\":1}\"\n  }\n}",
 															"options": {
 																"raw": {
 																	"language": "json"
 																}
 															}
 														},
-														"url": "{{baseUrl}}/v1/settings/master/1/values/1"
+														"url": "{{baseUrl}}/v1/settings/master/27/values/59"
 													},
 													"response": []
 												}
@@ -20979,8 +21292,8 @@
 															"    pm.expect(jsonData.response.permission_group).to.not.be.oneOf([null, \"\"]);",
 															"    ([null, \"\"]);",
 															"    pm.expect(jsonData.response.permission_group.slug).to.not.be.oneOf([null, \"\"]);",
-															"     pm.expect(jsonData.response.permission_group.name).to.not.be.oneOf([null, \"\"]);",
-															"      pm.expect(jsonData.response.permission_group.id).to.not.be.oneOf([null, \"\"]);",
+															"    pm.expect(jsonData.response.permission_group.name).to.not.be.oneOf([null, \"\"]);",
+															"    pm.expect(jsonData.response.permission_group.id).to.not.be.oneOf([null, \"\"]);",
 															"});",
 															""
 														],
@@ -21008,7 +21321,6 @@
 													],
 													"variable": [
 														{
-															"id": "b8cd354d-c779-405b-aaee-fefe1ed9e37d",
 															"key": "id",
 															"value": "{{permission_id}}",
 															"description": "(Required) "
