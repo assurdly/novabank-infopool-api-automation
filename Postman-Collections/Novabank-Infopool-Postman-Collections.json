@@ -12386,7 +12386,7 @@
 															}
 														],
 														"url": {
-															"raw": "{{baseUrl}}/v1/settings/master/categories/organization-settings?page=1&limit=10",
+															"raw": "{{baseUrl}}/v1/settings/master/categories/system-settings-category?page=1&limit=10",
 															"host": [
 																"{{baseUrl}}"
 															],
@@ -12395,7 +12395,7 @@
 																"settings",
 																"master",
 																"categories",
-																"organization-settings"
+																"system-settings-category"
 															],
 															"query": [
 																{
