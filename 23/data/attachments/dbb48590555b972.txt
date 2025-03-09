@@ -1,0 +1,1 @@
+{"status":false,"statusCode":404,"timestamp":"2025-03-09T15:10:57.706Z","path":"/v1/settings/entity/%3Cstring%3E/%3Cnumber%3E","message":"Cannot GET /v1/settings/entity/%3Cstring%3E/%3Cnumber%3E"}

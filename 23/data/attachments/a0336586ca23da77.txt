@@ -1,0 +1,1 @@
+{"status":false,"statusCode":400,"timestamp":"2025-03-09T15:10:59.777Z","path":"/v1/organizations","message":["mis_code should not be empty","mis_code must be a string"]}

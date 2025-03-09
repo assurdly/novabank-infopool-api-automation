@@ -1,7 +1,0 @@
-{
-  "verification_code": "352407",
-  "otp_type": "OTP",
-  "operation": "FORGOT_PASSWORD",
-  "delivery_channel": "EMAIL",
-  "recipient": "QA@yopmail.com"
-}

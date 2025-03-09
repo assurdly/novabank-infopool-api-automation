@@ -1,1 +1,0 @@
-{"status":false,"statusCode":403,"timestamp":"2025-02-09T20:21:54.456Z","path":"/v1/definitions?search=organization_type","message":"Forbidden resource"}

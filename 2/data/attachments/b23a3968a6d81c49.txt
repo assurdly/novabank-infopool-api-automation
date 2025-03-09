@@ -1,1 +1,0 @@
-{"status":false,"statusCode":400,"timestamp":"2025-02-09T20:21:51.764Z","path":"/v1/profile/password","message":["Password must be at least 8 characters long, include one uppercase letter, one lowercase letter, one number, and one special character","new_password should not be empty"]}
