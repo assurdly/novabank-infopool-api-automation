@@ -2664,7 +2664,7 @@
 													"pm.test(\"Reponse body contains standard Error fields\", function () {",
 													"    pm.expect(jsonData.statusCode).to.eql(400);",
 													"    pm.expect(jsonData.status).to.eql(false);",
-													"    pm.expect(jsonData.message).to.eql('This invitation has expired or is invalid. Please contact your administrator for more details.');",
+													"    pm.expect(jsonData.message[0]).to.eql(\"authentication_type must be one of the following values: \\\"password\\\", \\\"sso\\\"\");",
 													"});"
 												],
 												"type": "text/javascript",
@@ -2686,7 +2686,7 @@
 										],
 										"body": {
 											"mode": "raw",
-											"raw": "{\n  \"authentication_type\": \"password\",\n  \"first_name\": \"Udeme\",\n  \"last_name\": \"tester\",\n  \"password\": \"@passwordA1\",\n  \"device_type\": \"@passwordA1\",\n  \"device_name\": \"iPhone 13\",\n  \"location\": \"Lagos\"\n}",
+											"raw": "{\n  \"authentication_type\": \"USERNAME\",\n  \"first_name\": \"Udeme\",\n  \"last_name\": \"tester\",\n  \"password\": \"@passwordA1\",\n  \"device_type\": \"@passwordA1\",\n  \"device_name\": \"iPhone 13\",\n  \"location\": \"Lagos\"\n}",
 											"options": {
 												"raw": {
 													"headerFamily": "json",
@@ -2777,7 +2777,7 @@
 										],
 										"body": {
 											"mode": "raw",
-											"raw": "{\n  \"authentication_type\": \"\",\n  \"first_name\": \"Favour\",\n  \"last_name\": \"Elijah\",\n  \"password\": \"@passwordA1\"\n}",
+											"raw": "{\n  \"authentication_type\": \"password\",\n  \"first_name\": \"Udeme\",\n  \"last_name\": \"tester\",\n  \"password\": \"@passwordA1\",\n  \"device_type\": \"@passwordA1\",\n  \"device_name\": \"iPhone 13\",\n  \"location\": \"Lagos\"\n}",
 											"options": {
 												"raw": {
 													"headerFamily": "json",
@@ -2797,7 +2797,6 @@
 											],
 											"variable": [
 												{
-													"id": "4485f777-5213-4777-93e9-02d3e7c66fde",
 													"key": "id",
 													"value": "9eabc9358b32c5a86ba1bdc7e762e24ff2c43f9ad420f0967439b4c5c8201b90"
 												}
