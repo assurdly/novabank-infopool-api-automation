@@ -2981,7 +2981,7 @@
 										],
 										"body": {
 											"mode": "raw",
-											"raw": "{\n  \"authentication_type\": \"password\",\n  \"first_name\": \"Udeme\",\n  \"last_name\": \"tester\",\n  \"password\": \"@passwordA1\",\n  \"device_type\": \"@passwordA1\",\n  \"device_name\": \"iPhone 13\",\n  \"location\": \"Lagos\"\n}",
+											"raw": "{\n  \"authentication_type\": \"password\",\n  \"first_name\": \"Udeme\",\n  \"last_name\": \"\",\n  \"password\": \"@passwordA1\",\n  \"device_type\": \"mobile\",\n  \"device_name\": \"iPhone 13\",\n  \"location\": \"Lagos\"\n}",
 											"options": {
 												"raw": {
 													"headerFamily": "json",
@@ -3101,97 +3101,6 @@
 									"response": [
 										{
 											"id": "6e911a2b-9702-4d56-ac6b-a59197ce8c46",
-											"name": "Untitled Response",
-											"originalRequest": {
-												"method": "POST",
-												"header": [
-													{
-														"key": "Content-Type",
-														"value": "application/json"
-													}
-												],
-												"body": {
-													"mode": "raw",
-													"raw": "{\n  \"authentication_type\": \"password\",\n  \"first_name\": \"John\",\n  \"last_name\": \"Doe\",\n  \"password\": \"Password1@\"\n}",
-													"options": {
-														"raw": {
-															"headerFamily": "json",
-															"language": "json"
-														}
-													}
-												},
-												"url": {
-													"raw": "{{baseUrl}}/v1/onboarding/:token",
-													"host": [
-														"{{baseUrl}}"
-													],
-													"path": [
-														"v1",
-														"onboarding",
-														":token"
-													],
-													"variable": [
-														{
-															"key": "token"
-														}
-													]
-												}
-											},
-											"status": "Created",
-											"code": 201,
-											"_postman_previewlanguage": "text",
-											"header": [],
-											"cookie": [],
-											"responseTime": null,
-											"body": ""
-										}
-									]
-								},
-								{
-									"name": "Send user invitation token - weak password",
-									"id": "289222f4-9d9a-46b7-9528-700c8223432f",
-									"protocolProfileBehavior": {
-										"disableBodyPruning": true
-									},
-									"request": {
-										"method": "POST",
-										"header": [
-											{
-												"key": "Content-Type",
-												"value": "application/json"
-											}
-										],
-										"body": {
-											"mode": "raw",
-											"raw": "{\n  \"authentication_type\": \"password\",\n  \"first_name\": \"Udeme\",\n  \"last_name\": \"tester\",\n  \"password\": \"@passwordA1\",\n  \"device_type\": \"@passwordA1\",\n  \"device_name\": \"iPhone 13\",\n  \"location\": \"Lagos\"\n}",
-											"options": {
-												"raw": {
-													"headerFamily": "json",
-													"language": "json"
-												}
-											}
-										},
-										"url": {
-											"raw": "{{baseUrl}}/v1/onboarding/:id",
-											"host": [
-												"{{baseUrl}}"
-											],
-											"path": [
-												"v1",
-												"onboarding",
-												":id"
-											],
-											"variable": [
-												{
-													"key": "id",
-													"value": "9eabc9358b32c5a86ba1bdc7e762e24ff2c43f9ad420f0967439b4c5c8201b90"
-												}
-											]
-										}
-									},
-									"response": [
-										{
-											"id": "b10f03f6-b973-47a3-b22e-6124a0b0d312",
 											"name": "Untitled Response",
 											"originalRequest": {
 												"method": "POST",
