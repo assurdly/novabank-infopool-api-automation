@@ -2473,39 +2473,15 @@
 							"name": "Onboarding",
 							"item": [
 								{
-									"name": "Validate user invitation token",
-									"id": "48754575-fa85-4537-88aa-60f8cb411444",
-									"protocolProfileBehavior": {
-										"disableBodyPruning": true
-									},
-									"request": {
-										"method": "GET",
-										"header": [],
-										"url": {
-											"raw": "{{baseUrl}}/v1/onboarding/:token",
-											"host": [
-												"{{baseUrl}}"
-											],
-											"path": [
-												"v1",
-												"onboarding",
-												":token"
-											],
-											"variable": [
-												{
-													"id": "97d6abf9-13ba-4a84-ac7a-a5b1f45b31b8",
-													"key": "token",
-													"value": "9eabc9358b32c5a86ba1bdc7e762e24ff2c43f9ad420f0967439b4c5c8201b90",
-													"description": "(Required) "
-												}
-											]
-										}
-									},
-									"response": [
+									"name": "Validate invitation",
+									"item": [
 										{
-											"id": "950d01a8-16b8-436a-a137-6dc32474c612",
-											"name": "Untitled Response",
-											"originalRequest": {
+											"name": "Validate user invitation token",
+											"id": "48754575-fa85-4537-88aa-60f8cb411444",
+											"protocolProfileBehavior": {
+												"disableBodyPruning": true
+											},
+											"request": {
 												"method": "GET",
 												"header": [],
 												"url": {
@@ -2520,20 +2496,50 @@
 													],
 													"variable": [
 														{
-															"key": "token"
+															"id": "97d6abf9-13ba-4a84-ac7a-a5b1f45b31b8",
+															"key": "token",
+															"value": "9eabc9358b32c5a86ba1bdc7e762e24ff2c43f9ad420f0967439b4c5c8201b90",
+															"description": "(Required) "
 														}
 													]
 												}
 											},
-											"status": "OK",
-											"code": 200,
-											"_postman_previewlanguage": "text",
-											"header": [],
-											"cookie": [],
-											"responseTime": null,
-											"body": ""
+											"response": [
+												{
+													"id": "950d01a8-16b8-436a-a137-6dc32474c612",
+													"name": "Untitled Response",
+													"originalRequest": {
+														"method": "GET",
+														"header": [],
+														"url": {
+															"raw": "{{baseUrl}}/v1/onboarding/:token",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"v1",
+																"onboarding",
+																":token"
+															],
+															"variable": [
+																{
+																	"key": "token"
+																}
+															]
+														}
+													},
+													"status": "OK",
+													"code": 200,
+													"_postman_previewlanguage": "text",
+													"header": [],
+													"cookie": [],
+													"responseTime": null,
+													"body": ""
+												}
+											]
 										}
-									]
+									],
+									"id": "63dc0bcd-f2fe-493f-b4d7-bdbe2075abbe"
 								},
 								{
 									"name": "Send user invitation token - successful",
@@ -2876,6 +2882,28 @@
 								},
 								{
 									"name": "Send user invitation token - empty first name",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "ece5d7a0-ee63-44aa-b744-a43dbb52c232",
+												"exec": [
+													"var jsonData = pm.response.json();",
+													"",
+													"pm.test(\"Status code is 400\", function () {",
+													"    pm.response.to.have.status(400);",
+													"});",
+													"pm.test(\"Reponse body contains standard Error fields\", function () {",
+													"    pm.expect(jsonData.statusCode).to.eql(400);",
+													"    pm.expect(jsonData.status).to.eql(false);",
+													"    pm.expect(jsonData.message[0]).to.eql(\"first_name should not be empty\");",
+													"});"
+												],
+												"type": "text/javascript",
+												"packages": {}
+											}
+										}
+									],
 									"id": "6e1d91bb-57de-4436-9be3-c2f5550aaacc",
 									"protocolProfileBehavior": {
 										"disableBodyPruning": true
@@ -2890,7 +2918,7 @@
 										],
 										"body": {
 											"mode": "raw",
-											"raw": "{\n  \"authentication_type\": \"password\",\n  \"first_name\": \"Udeme\",\n  \"last_name\": \"tester\",\n  \"password\": \"@passwordA1\",\n  \"device_type\": \"@passwordA1\",\n  \"device_name\": \"iPhone 13\",\n  \"location\": \"Lagos\"\n}",
+											"raw": "{\n  \"authentication_type\": \"password\",\n  \"first_name\": \"\",\n  \"last_name\": \"tester\",\n  \"password\": \"@passwordA1\",\n  \"device_type\": \"mobile\",\n  \"device_name\": \"iPhone 13\",\n  \"location\": \"Lagos\"\n}",
 											"options": {
 												"raw": {
 													"headerFamily": "json",
@@ -2967,6 +2995,28 @@
 								},
 								{
 									"name": "Send user invitation token - empty last name",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "da64967a-498e-4ff2-b217-e69d0ab28768",
+												"exec": [
+													"var jsonData = pm.response.json();",
+													"",
+													"pm.test(\"Status code is 400\", function () {",
+													"    pm.response.to.have.status(400);",
+													"});",
+													"pm.test(\"Reponse body contains standard Error fields\", function () {",
+													"    pm.expect(jsonData.statusCode).to.eql(400);",
+													"    pm.expect(jsonData.status).to.eql(false);",
+													"    pm.expect(jsonData.message[0]).to.eql(\"last_name should not be empty\");",
+													"});"
+												],
+												"type": "text/javascript",
+												"packages": {}
+											}
+										}
+									],
 									"id": "b95c28b5-6135-4dbc-a194-cbd856cd542b",
 									"protocolProfileBehavior": {
 										"disableBodyPruning": true
