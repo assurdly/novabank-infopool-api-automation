@@ -1,1 +1,0 @@
-{"status":false,"statusCode":404,"timestamp":"2025-02-12T18:42:55.111Z","path":"/v1/invitations/batch/","message":"Cannot GET /v1/invitations/batch/"}

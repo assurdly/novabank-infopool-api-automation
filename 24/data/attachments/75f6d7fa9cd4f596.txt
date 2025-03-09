@@ -1,0 +1,1 @@
+{"status":false,"statusCode":401,"timestamp":"2025-03-09T20:22:04.641Z","path":"/v1/customers/:customerId/issues/6/attachments/dfgtyhujiko","message":"Unauthorized"}

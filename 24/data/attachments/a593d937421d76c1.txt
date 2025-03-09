@@ -1,0 +1,1 @@
+{"status":false,"statusCode":400,"timestamp":"2025-03-09T20:22:05.142Z","path":"/v1/customers/search?q=09055785081","message":"Typesense is not available"}
