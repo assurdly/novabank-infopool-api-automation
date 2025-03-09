@@ -2537,6 +2537,28 @@
 								},
 								{
 									"name": "Send user invitation token - successful",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "2d557b44-ea02-41e1-ba85-8849915497b4",
+												"exec": [
+													"var jsonData = pm.response.json();",
+													"",
+													"pm.test(\"Status code is 400\", function () {",
+													"    pm.response.to.have.status(400);",
+													"});",
+													"pm.test(\"Reponse body contains standard Error fields\", function () {",
+													"    pm.expect(jsonData.statusCode).to.eql(400);",
+													"    pm.expect(jsonData.status).to.eql(false);",
+													"    pm.expect(jsonData.message).to.eql('This invitation has expired or is invalid. Please contact your administrator for more details.');",
+													"});"
+												],
+												"type": "text/javascript",
+												"packages": {}
+											}
+										}
+									],
 									"id": "a6d23a32-5162-4aa6-922e-6839e144327a",
 									"protocolProfileBehavior": {
 										"disableBodyPruning": true
@@ -2551,7 +2573,7 @@
 										],
 										"body": {
 											"mode": "raw",
-											"raw": "{\n  \"authentication_type\": \"password\",\n  \"first_name\": \"Favour\",\n  \"last_name\": \"Elijah\",\n  \"password\": \"@passwordA1\"\n}",
+											"raw": "{\n  \"authentication_type\": \"password\",\n  \"first_name\": \"Udeme\",\n  \"last_name\": \"tester\",\n  \"password\": \"@passwordA1\",\n  \"device_type\": \"@passwordA1\",\n  \"device_name\": \"iPhone 13\",\n  \"location\": \"Lagos\"\n}",
 											"options": {
 												"raw": {
 													"headerFamily": "json",
@@ -2571,7 +2593,6 @@
 											],
 											"variable": [
 												{
-													"id": "4994a9eb-bc12-416f-9d5e-ffa5340c2c0f",
 													"key": "id",
 													"value": "9eabc9358b32c5a86ba1bdc7e762e24ff2c43f9ad420f0967439b4c5c8201b90"
 												}
@@ -2628,7 +2649,29 @@
 									]
 								},
 								{
-									"name": "Send user invitation token - invalid authentication type",
+									"name": "Send user invitation token - invalid authentication",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "ccf1f754-8bc4-43cd-bb57-2dc207d92301",
+												"exec": [
+													"var jsonData = pm.response.json();",
+													"",
+													"pm.test(\"Status code is 400\", function () {",
+													"    pm.response.to.have.status(400);",
+													"});",
+													"pm.test(\"Reponse body contains standard Error fields\", function () {",
+													"    pm.expect(jsonData.statusCode).to.eql(400);",
+													"    pm.expect(jsonData.status).to.eql(false);",
+													"    pm.expect(jsonData.message).to.eql('This invitation has expired or is invalid. Please contact your administrator for more details.');",
+													"});"
+												],
+												"type": "text/javascript",
+												"packages": {}
+											}
+										}
+									],
 									"id": "c03e0829-966e-46eb-8294-14176257e2b2",
 									"protocolProfileBehavior": {
 										"disableBodyPruning": true
@@ -2643,7 +2686,7 @@
 										],
 										"body": {
 											"mode": "raw",
-											"raw": "{\n  \"authentication_type\": \"password\",\n  \"first_name\": \"Favour\",\n  \"last_name\": \"Elijah\",\n  \"password\": \"@passwordA1\"\n}",
+											"raw": "{\n  \"authentication_type\": \"password\",\n  \"first_name\": \"Udeme\",\n  \"last_name\": \"tester\",\n  \"password\": \"@passwordA1\",\n  \"device_type\": \"@passwordA1\",\n  \"device_name\": \"iPhone 13\",\n  \"location\": \"Lagos\"\n}",
 											"options": {
 												"raw": {
 													"headerFamily": "json",
@@ -2663,7 +2706,6 @@
 											],
 											"variable": [
 												{
-													"id": "9df1aaab-8c1e-4305-a19f-cad721a2f4cf",
 													"key": "id",
 													"value": "9eabc9358b32c5a86ba1bdc7e762e24ff2c43f9ad420f0967439b4c5c8201b90"
 												}
