@@ -1184,7 +1184,7 @@
 															"    pm.expect(jsonData.statusCode).to.eql(400);",
 															"    pm.expect(jsonData.path).is.not.null;",
 															"    pm.expect(jsonData.status).to.eql(false);",
-															"   pm.expect(jsonData.message[0]).to.eql('Password should be at least 8 characters long'); ",
+															"   pm.expect(jsonData.message[2]).to.eql('Password should have 1 numbers minimum'); ",
 															"});",
 															""
 														],
@@ -1213,7 +1213,7 @@
 												],
 												"body": {
 													"mode": "raw",
-													"raw": "{\n  \"current_password\": \"@passwordA1\",\n  \"new_password\": \"@passwordA\"\n}",
+													"raw": "{\n  \"current_password\": \"Password12$\",\n  \"new_password\": \"@passwordA\"\n}",
 													"options": {
 														"raw": {
 															"headerFamily": "json",
