@@ -2542,6 +2542,11 @@
 									"id": "63dc0bcd-f2fe-493f-b4d7-bdbe2075abbe"
 								},
 								{
+									"name": "New Folder",
+									"item": [],
+									"id": "13557aba-fea8-4275-a22e-2a404870f5d6"
+								},
+								{
 									"name": "Send user invitation token - successful",
 									"event": [
 										{
