@@ -8335,7 +8335,7 @@
 												"method": "GET",
 												"header": [],
 												"url": {
-													"raw": "{{baseUrl}}/v1/definitions?search=organization_type",
+													"raw": "{{baseUrl}}/v1/definitions",
 													"host": [
 														"{{baseUrl}}"
 													],
@@ -8347,7 +8347,7 @@
 														{
 															"key": "search",
 															"value": "organization_type",
-															"type": "text"
+															"disabled": true
 														}
 													]
 												}
