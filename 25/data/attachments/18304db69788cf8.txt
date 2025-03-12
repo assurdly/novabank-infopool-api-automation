@@ -1,0 +1,1 @@
+{"status":true,"response":{"data":[{"customer_name":"MUSA UMAR","customer_start_date":"","email":"novabank@assurdly.com","first_name":"MUSA","gender":"","id":"22039","last_name":"UMAR","middle_name":"UKPONG","phone":"09055785081","type":"customers"}],"total":1,"page":1,"limit":10,"totalPages":1}}

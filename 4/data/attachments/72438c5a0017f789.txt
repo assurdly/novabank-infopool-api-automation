@@ -1,1 +1,0 @@
-{"status":false,"statusCode":406,"timestamp":"2025-02-14T18:52:12.573Z","path":"/v1/organizations/17/users","message":"User already assigned to this organization"}
