@@ -1,1 +1,0 @@
-{"status":false,"statusCode":400,"timestamp":"2025-02-17T07:41:01.350Z","path":"/v1/invitations","message":["invitations.0.organization_id must be an array","invitations.0.manager_id must be an array"]}

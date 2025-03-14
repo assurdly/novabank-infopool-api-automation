@@ -1,4 +1,0 @@
-{
-  "current_password": "@passwordA133",
-  "new_password": "@passwordA1"
-}

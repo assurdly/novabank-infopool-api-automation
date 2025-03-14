@@ -1,1 +1,0 @@
-{"status":false,"statusCode":404,"timestamp":"2025-02-16T20:23:43.641Z","path":"/v1/organizations","message":"Parent organization does not exist"}

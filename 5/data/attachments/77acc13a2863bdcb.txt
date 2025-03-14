@@ -1,1 +1,0 @@
-{"status":false,"statusCode":400,"timestamp":"2025-02-16T20:23:19.124Z","path":"/v1/profile/mfa","message":"Invalid MFA, regenerate it and try again"}

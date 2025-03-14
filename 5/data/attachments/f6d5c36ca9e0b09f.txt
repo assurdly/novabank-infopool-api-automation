@@ -1,7 +1,0 @@
-{
-  "invitations": [
-    {
-      "email": ""
-    }
-  ]
-}
