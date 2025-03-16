@@ -1,0 +1,1 @@
+{"status":false,"statusCode":404,"timestamp":"2025-03-16T20:24:39.574Z","path":"/v1/settings/master/33","message":"Setting Master with slug 33 not found"}

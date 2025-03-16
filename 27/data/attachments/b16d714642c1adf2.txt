@@ -1,0 +1,10 @@
+var jsonData = pm.response.json();
+
+pm.test("Status code is 404", function () {
+    pm.response.to.have.status(404);
+});
+pm.test("Reponse body contains standard Error fields", function () {
+    pm.expect(jsonData.statusCode).to.eql(404);
+    pm.expect(jsonData.status).to.eql(false);
+    pm.expect(jsonData.message[4]).to.eql('Operations manager provided does not exist');
+});

@@ -1,6 +1,0 @@
-{
-  "operation": "<string>",
-  "delivery_channel": "SMS",
-  "email": "<string>",
-  "phone": "<string>"
-}

@@ -1,1 +1,0 @@
-{"status":false,"statusCode":404,"timestamp":"2025-02-17T07:24:42.963Z","path":"/v1/settings","message":"Cannot POST /v1/settings"}
