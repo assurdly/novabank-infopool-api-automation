@@ -3911,6 +3911,12 @@
 														"disableBodyPruning": true
 													},
 													"request": {
+														"auth": {
+															"type": "bearer",
+															"bearer": {
+																"token": "{{Bearer_token}}"
+															}
+														},
 														"method": "GET",
 														"header": [],
 														"body": {
@@ -4070,6 +4076,12 @@
 														"disableBodyPruning": true
 													},
 													"request": {
+														"auth": {
+															"type": "bearer",
+															"bearer": {
+																"token": "{{Bearer_token}}"
+															}
+														},
 														"method": "GET",
 														"header": [],
 														"body": {
@@ -8335,7 +8347,7 @@
 												"method": "GET",
 												"header": [],
 												"url": {
-													"raw": "{{baseUrl}}/v1/definitions?search=organization_type",
+													"raw": "{{baseUrl}}/v1/definitions",
 													"host": [
 														"{{baseUrl}}"
 													],
@@ -8347,7 +8359,7 @@
 														{
 															"key": "search",
 															"value": "organization_type",
-															"type": "text"
+															"disabled": true
 														}
 													]
 												}
@@ -12412,43 +12424,6 @@
 												}
 											],
 											"id": "be3c6b1f-701a-4e84-9384-d4fc908c78a0"
-										},
-										{
-											"name": "Update value",
-											"item": [
-												{
-													"name": "update value",
-													"id": "276e7d62-b9e2-4fcd-ad41-a0d1dd7dec92",
-													"protocolProfileBehavior": {
-														"disableBodyPruning": true
-													},
-													"request": {
-														"method": "PATCH",
-														"header": [
-															{
-																"key": "accept",
-																"value": "*/*"
-															},
-															{
-																"key": "Content-Type",
-																"value": "application/json"
-															}
-														],
-														"body": {
-															"mode": "raw",
-															"raw": "{\n  \"action\": \"update\",\n  \"data\": {\n    \"default_value\": \"{\\\"minLength\\\":8,\\\"minLowercase\\\":1,\\\"minUppercase\\\":1,\\\"minNumbers\\\":1,\\\"minSymbols\\\":1}\"\n  }\n}",
-															"options": {
-																"raw": {
-																	"language": "json"
-																}
-															}
-														},
-														"url": "{{baseUrl}}/v1/settings/master/27/values/59"
-													},
-													"response": []
-												}
-											],
-											"id": "5059f9ab-05dc-4dd5-a06d-43a70a1b49d4"
 										}
 									],
 									"id": "951cdd80-a7ad-40d6-8c6e-18aa2c553af7"
