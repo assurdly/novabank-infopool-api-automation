@@ -1,7 +1,0 @@
-{
-  "verification_code": "077786",
-  "otp_type": "TOTP",
-  "operation": "LOGIN"
-
-
-}

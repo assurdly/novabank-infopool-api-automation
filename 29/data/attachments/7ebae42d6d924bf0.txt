@@ -1,0 +1,1 @@
+{"status":false,"statusCode":404,"timestamp":"2025-03-19T18:45:03.867Z","path":"/v1/settings/master/1/values/4","message":"Setting with id 4 not found"}

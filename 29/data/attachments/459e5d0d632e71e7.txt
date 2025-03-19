@@ -1,0 +1,16 @@
+{
+  "add": [
+    {
+      "role_id": 17,
+      "is_role_manager": false,
+      "meta": {}
+    }
+  ],
+  "remove": [
+     {
+      "role_id": 14,
+      "is_role_manager": false,
+      "meta": {}
+    }
+  ]
+}

@@ -1,1 +1,0 @@
-{"status":false,"statusCode":403,"timestamp":"2025-02-23T20:22:55.799Z","path":"/v1/definitions/upload","message":"Multi-factor authentication required to complete this action"}
