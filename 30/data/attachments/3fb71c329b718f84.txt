@@ -1,0 +1,1 @@
+{"status":false,"statusCode":404,"timestamp":"2025-03-21T18:52:21.495Z","path":"/v1/organizations/1","message":"Organization does not exist"}

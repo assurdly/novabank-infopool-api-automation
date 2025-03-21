@@ -1,0 +1,1 @@
+{"status":false,"statusCode":400,"timestamp":"2025-03-21T18:52:14.535Z","path":"/v1/definitions/upload","message":"Uploaded file must be csv, txt, or excel"}

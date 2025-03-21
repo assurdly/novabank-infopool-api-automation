@@ -1,0 +1,1 @@
+{"status":false,"statusCode":400,"timestamp":"2025-03-21T18:52:22.531Z","path":"/v1/roles/7/permissions","message":"Unexpected token ] in JSON at position 264"}
