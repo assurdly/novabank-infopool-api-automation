@@ -4945,6 +4945,12 @@
 														"disableBodyPruning": true
 													},
 													"request": {
+														"auth": {
+															"type": "bearer",
+															"bearer": {
+																"token": "{{Bearer_token}}"
+															}
+														},
 														"method": "POST",
 														"header": [],
 														"body": {
@@ -4953,7 +4959,7 @@
 																{
 																	"type": "file",
 																	"key": "file",
-																	"src": "/Users/tomi/Downloads/banani-ui.png"
+																	"src": "BJhjyy4IT/Screen Shot 2025-03-22 at 2.34.52 PM.png"
 																}
 															]
 														},
@@ -4972,14 +4978,12 @@
 															],
 															"variable": [
 																{
-																	"id": "97a28e47-a1a6-4335-b5eb-1b75b58ad331",
 																	"key": "customerId",
 																	"value": ""
 																},
 																{
-																	"id": "7e028323-d1d2-4b1d-83a8-b1e5b0f3a719",
 																	"key": "id",
-																	"value": "6"
+																	"value": "{{issue_id}}"
 																}
 															]
 														}
