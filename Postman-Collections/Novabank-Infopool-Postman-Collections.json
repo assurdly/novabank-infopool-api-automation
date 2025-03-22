@@ -5120,6 +5120,12 @@
 														"disableBodyPruning": true
 													},
 													"request": {
+														"auth": {
+															"type": "bearer",
+															"bearer": {
+																"token": "{{Bearer_token}}"
+															}
+														},
 														"method": "DELETE",
 														"header": [],
 														"body": {
@@ -5152,7 +5158,7 @@
 																},
 																{
 																	"key": "id",
-																	"value": "6"
+																	"value": "{{issue_id}}"
 																},
 																{
 																	"key": "attachmentId",
@@ -5279,7 +5285,7 @@
 																	"pm.test(\"Response body contains error fields\", function () {",
 																	"    pm.expect(jsonData.status).to.eql(false);",
 																	"    pm.expect(jsonData.statusCode).to.eql(404);",
-																	"     pm.expect(jsonData.message).to.eql('No attachments found');",
+																	"     pm.expect(jsonData.message).to.eql('Attachment not found');",
 																	"});"
 																],
 																"type": "text/javascript",
@@ -5292,6 +5298,12 @@
 														"disableBodyPruning": true
 													},
 													"request": {
+														"auth": {
+															"type": "bearer",
+															"bearer": {
+																"token": "{{Bearer_token}}"
+															}
+														},
 														"method": "DELETE",
 														"header": [],
 														"body": {
@@ -5324,7 +5336,7 @@
 																},
 																{
 																	"key": "id",
-																	"value": "6"
+																	"value": "{{issue_id}}"
 																},
 																{
 																	"key": "attachmentId",
