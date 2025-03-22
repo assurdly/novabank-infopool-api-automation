@@ -17885,9 +17885,8 @@
 													],
 													"variable": [
 														{
-															"id": "e4ba47a9-8128-4a41-bbb8-08e5742ea0f4",
 															"key": "organizationId",
-															"value": "<number>",
+															"value": "1",
 															"description": "(Required) "
 														}
 													]
