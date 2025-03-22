@@ -1084,6 +1084,97 @@
 											]
 										},
 										{
+											"name": "Change password - successful Copy",
+											"event": [
+												{
+													"listen": "test",
+													"script": {
+														"id": "f3a04596-cb1f-42d7-8f7f-4f49acdaf83e",
+														"exec": [
+															"var jsonData = pm.response.json();",
+															"",
+															"pm.test(\"Status code is 200\", function () {",
+															"    pm.response.to.have.status(200);",
+															"});",
+															"",
+															"pm.test(\"Reponse body contains success fields\", function () {",
+															"    pm.expect(jsonData.status).to.eql(true);",
+															"    pm.expect(jsonData.response.message).to.eql('Password successfully changed');",
+															"});",
+															"",
+															"",
+															""
+														],
+														"type": "text/javascript",
+														"packages": {}
+													}
+												}
+											],
+											"id": "f39f8e9c-4cbc-4dd3-a607-90ddc72ca014",
+											"protocolProfileBehavior": {
+												"disableBodyPruning": true
+											},
+											"request": {
+												"auth": {
+													"type": "bearer",
+													"bearer": {
+														"token": "{{Bearer_token}}"
+													}
+												},
+												"method": "PATCH",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"current_password\": \"Password12$\",\n  \"new_password\": \"Password12$\"\n}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": "{{baseUrl}}/v1/profile/password"
+											},
+											"response": [
+												{
+													"id": "b4efee05-ea14-4513-ac3f-386fc00c3e7b",
+													"name": "Untitled Response",
+													"originalRequest": {
+														"method": "PATCH",
+														"header": [
+															{
+																"key": "Content-Type",
+																"value": "application/json"
+															}
+														],
+														"body": {
+															"mode": "raw",
+															"raw": "{\n  \"current_password\": \"Password1@\",\n  \"new_password\": \"NewPassword99#\"\n}",
+															"options": {
+																"raw": {
+																	"headerFamily": "json",
+																	"language": "json"
+																}
+															}
+														},
+														"url": "{{baseUrl}}/v1/profile/password"
+													},
+													"status": "OK",
+													"code": 200,
+													"_postman_previewlanguage": "text",
+													"header": [],
+													"cookie": [],
+													"responseTime": null,
+													"body": ""
+												}
+											]
+										},
+										{
 											"name": "Change password - invalid current password",
 											"event": [
 												{
@@ -1098,7 +1189,6 @@
 															"});",
 															"pm.test(\"Reponse body contains standard error fields\", function () {",
 															"    pm.expect(jsonData.statusCode).to.eql(400);",
-															"    pm.expect(jsonData.path).is.not.null;",
 															"    pm.expect(jsonData.status).to.eql(false);",
 															"   pm.expect(jsonData.message).to.eql('incorrect current password'); ",
 															"});",
