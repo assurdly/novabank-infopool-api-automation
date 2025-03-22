@@ -1084,7 +1084,7 @@
 											]
 										},
 										{
-											"name": "Change password - successful Copy",
+											"name": "Change password - No Auth",
 											"event": [
 												{
 													"listen": "test",
