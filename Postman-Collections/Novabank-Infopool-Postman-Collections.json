@@ -4346,6 +4346,12 @@
 														"disableBodyPruning": true
 													},
 													"request": {
+														"auth": {
+															"type": "bearer",
+															"bearer": {
+																"token": "{{Bearer_token}}"
+															}
+														},
 														"method": "PATCH",
 														"header": [],
 														"body": {
@@ -4376,7 +4382,7 @@
 																},
 																{
 																	"key": "id",
-																	"value": "6"
+																	"value": "{{issue_id}}"
 																}
 															]
 														}
@@ -4825,7 +4831,7 @@
 																},
 																{
 																	"key": "id",
-																	"value": "6"
+																	"value": "{{issue_id}}"
 																}
 															]
 														}
