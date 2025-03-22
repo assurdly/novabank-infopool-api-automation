@@ -13571,8 +13571,8 @@
 															"    pm.response.to.have.status(201);",
 															"});",
 															"pm.test(\"Reponse body contains standard success fields\", function () {",
-															"    pm.expect(jsonData.status).to.eql(false);",
-															"    pm.expect(jsonData.message).to.eql('Cannot create organization without parent organization');",
+															"    pm.expect(jsonData.status).to.eql(true);",
+															"    pm.expect(jsonData.organization_type).to.not.be.null;",
 															"});",
 															"",
 															"pm.environment.set(\"test_organization_id\", jsonData.response.id)"
