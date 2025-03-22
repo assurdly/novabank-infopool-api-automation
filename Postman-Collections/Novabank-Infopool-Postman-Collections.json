@@ -1006,6 +1006,12 @@
 															"    pm.response.to.have.status(200);",
 															"});",
 															"",
+															"pm.test(\"Reponse body contains success fields\", function () {",
+															"    pm.expect(jsonData.status).to.eql(true);",
+															"    pm.expect(jsonData.response.message).to.eql('Password successfully changed');",
+															"});",
+															"",
+															"",
 															""
 														],
 														"type": "text/javascript",
@@ -1033,7 +1039,7 @@
 												],
 												"body": {
 													"mode": "raw",
-													"raw": "{\n  \"current_password\": \"@passwordA1\",\n  \"new_password\": \"@passwordA1\"\n}",
+													"raw": "{\n  \"current_password\": \"Password12$\",\n  \"new_password\": \"Password12$\"\n}",
 													"options": {
 														"raw": {
 															"headerFamily": "json",
