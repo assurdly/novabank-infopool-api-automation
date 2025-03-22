@@ -3993,7 +3993,12 @@
 																	"",
 																	"pm.test(\"Status code is 200\", function () {",
 																	"    pm.response.to.have.status(200);",
-																	"});"
+																	"});",
+																	"pm.test(\"Response body contains success fields\", function () {",
+																	"    pm.expect(jsonData.status).to.eql(true);",
+																	"    pm.expect(jsonData.response.data).to.not.be.oneOf([], null);",
+																	"});",
+																	"pm.environment.set(\"issue_id\", jsonData.response.data[0].id);"
 																],
 																"type": "text/javascript",
 																"packages": {}
@@ -4158,7 +4163,7 @@
 																	"    pm.expect(jsonData.response.source_channel).to.not.be.null;",
 																	"    pm.expect(jsonData.response.issue).to.not.be.null;",
 																	"});",
-																	"pm.environment.set(\"attachment_id\", jsonData.response.attachments[0].id);"
+																	"// pm.environment.set(\"attachment_id\", jsonData.response.attachments[0].id);"
 																],
 																"type": "text/javascript",
 																"packages": {}
@@ -4206,7 +4211,7 @@
 																},
 																{
 																	"key": "id",
-																	"value": "6"
+																	"value": "{{issue_id}}"
 																}
 															]
 														}
