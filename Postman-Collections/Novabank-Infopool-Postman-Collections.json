@@ -4163,7 +4163,7 @@
 																	"    pm.expect(jsonData.response.source_channel).to.not.be.null;",
 																	"    pm.expect(jsonData.response.issue).to.not.be.null;",
 																	"});",
-																	"// pm.environment.set(\"attachment_id\", jsonData.response.attachments[0].id);"
+																	"pm.environment.set(\"attachment_id\", jsonData.response.attachments[0].id);"
 																],
 																"type": "text/javascript",
 																"packages": {}
