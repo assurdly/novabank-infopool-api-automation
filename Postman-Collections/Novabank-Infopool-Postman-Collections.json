@@ -21429,6 +21429,12 @@
 												"disableBodyPruning": true
 											},
 											"request": {
+												"auth": {
+													"type": "bearer",
+													"bearer": {
+														"token": "{{Bearer_token}}"
+													}
+												},
 												"method": "GET",
 												"header": [],
 												"url": {
@@ -21518,6 +21524,12 @@
 												"disableBodyPruning": true
 											},
 											"request": {
+												"auth": {
+													"type": "bearer",
+													"bearer": {
+														"token": "{{Bearer_token}}"
+													}
+												},
 												"method": "GET",
 												"header": [],
 												"url": {
@@ -21532,7 +21544,6 @@
 													],
 													"variable": [
 														{
-															"id": "92489187-ebe1-4938-98ca-46e19080d95a",
 															"key": "id",
 															"value": "{{permission_id}}",
 															"description": "(Required) "
@@ -22813,6 +22824,12 @@
 										"disableBodyPruning": true
 									},
 									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": {
+												"token": "{{Bearer_token}}"
+											}
+										},
 										"method": "DELETE",
 										"header": [],
 										"url": "{{baseUrl}}/v1/auth/session"
