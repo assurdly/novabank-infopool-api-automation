@@ -985,6 +985,62 @@
 													"body": ""
 												}
 											]
+										},
+										{
+											"name": "Get profile roles - No Auth",
+											"event": [
+												{
+													"listen": "test",
+													"script": {
+														"id": "c537a045-f381-4d1f-8a8f-f6f1ffd4409c",
+														"exec": [
+															"var jsonData = pm.response.json();",
+															"",
+															"pm.test(\"Status code is 401\", function () {",
+															"    pm.response.to.have.status(401);",
+															"});",
+															"",
+															"pm.test(\"Reponse body contains standard error fields\", function () {",
+															"    pm.expect(jsonData.statusCode).to.eql(401);",
+															"    pm.expect(jsonData.status).to.eql(false);",
+															"   pm.expect(jsonData.message).to.eql('Unauthorized'); ",
+															"});"
+														],
+														"type": "text/javascript",
+														"packages": {}
+													}
+												}
+											],
+											"id": "73c92e13-88f4-4db3-8805-90d993fbbfe3",
+											"protocolProfileBehavior": {
+												"disableBodyPruning": true
+											},
+											"request": {
+												"auth": {
+													"type": "noauth"
+												},
+												"method": "GET",
+												"header": [],
+												"url": "{{baseUrl}}/v1/profile/roles"
+											},
+											"response": [
+												{
+													"id": "616205cc-9680-4763-932b-4848dbf544d4",
+													"name": "Untitled Response",
+													"originalRequest": {
+														"method": "GET",
+														"header": [],
+														"url": "{{baseUrl}}/v1/profile/roles"
+													},
+													"status": "OK",
+													"code": 200,
+													"_postman_previewlanguage": "text",
+													"header": [],
+													"cookie": [],
+													"responseTime": null,
+													"body": ""
+												}
+											]
 										}
 									],
 									"id": "4478b8f7-bd72-4879-ba9c-e1b744746ac3"
