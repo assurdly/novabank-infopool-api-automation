@@ -8931,6 +8931,28 @@
 									"item": [
 										{
 											"name": "Update definition",
+											"event": [
+												{
+													"listen": "test",
+													"script": {
+														"id": "00a98454-63a4-46f4-b139-c5705db56179",
+														"exec": [
+															"var jsonData = pm.response.json();",
+															"",
+															"pm.test(\"Status code is 200\", function () {",
+															"    pm.response.to.have.status(200);",
+															"});",
+															"",
+															"pm.test(\"Reponse body contains success fields\", function () {",
+															"    pm.expect(jsonData.status).to.eql(true);",
+															"    pm.expect(jsonData.response.updated).to.eql(true);",
+															"});"
+														],
+														"type": "text/javascript",
+														"packages": {}
+													}
+												}
+											],
 											"id": "bbf16ca7-949c-4625-b245-884e471402e7",
 											"protocolProfileBehavior": {
 												"disableBodyPruning": true
@@ -8971,7 +8993,6 @@
 													],
 													"variable": [
 														{
-															"id": "0b36ab66-629a-43b0-9037-67f3ddc77edb",
 															"key": "id",
 															"value": "10",
 															"description": "(Required) "
@@ -8982,105 +9003,6 @@
 											"response": [
 												{
 													"id": "feb0cfd1-4e5f-415c-a428-07c08fc2656c",
-													"name": "Untitled Response",
-													"originalRequest": {
-														"method": "PATCH",
-														"header": [
-															{
-																"key": "Content-Type",
-																"value": "application/json"
-															}
-														],
-														"body": {
-															"mode": "raw",
-															"raw": "{\n  \"action\": \"update\",\n  \"data\": {\n    \"description\": \"Updated Country\"\n  }\n}",
-															"options": {
-																"raw": {
-																	"headerFamily": "json",
-																	"language": "json"
-																}
-															}
-														},
-														"url": {
-															"raw": "{{baseUrl}}/v1/definitions/:id",
-															"host": [
-																"{{baseUrl}}"
-															],
-															"path": [
-																"v1",
-																"definitions",
-																":id"
-															],
-															"variable": [
-																{
-																	"key": "id"
-																}
-															]
-														}
-													},
-													"status": "OK",
-													"code": 200,
-													"_postman_previewlanguage": "text",
-													"header": [],
-													"cookie": [],
-													"responseTime": null,
-													"body": ""
-												}
-											]
-										},
-										{
-											"name": "Update definition - invalid action",
-											"id": "be065e41-7625-456b-9453-95984f1400c1",
-											"protocolProfileBehavior": {
-												"disableBodyPruning": true
-											},
-											"request": {
-												"auth": {
-													"type": "bearer",
-													"bearer": {
-														"token": "{{Bearer_token}}"
-													}
-												},
-												"method": "PATCH",
-												"header": [
-													{
-														"key": "Content-Type",
-														"value": "application/json"
-													}
-												],
-												"body": {
-													"mode": "raw",
-													"raw": "{\n  \"action\": \"update\",\n  \"data\": {\n    \"description\": \"List of marital status\"\n  }\n}",
-													"options": {
-														"raw": {
-															"headerFamily": "json",
-															"language": "json"
-														}
-													}
-												},
-												"url": {
-													"raw": "{{baseUrl}}/v1/definitions/:id",
-													"host": [
-														"{{baseUrl}}"
-													],
-													"path": [
-														"v1",
-														"definitions",
-														":id"
-													],
-													"variable": [
-														{
-															"id": "0b36ab66-629a-43b0-9037-67f3ddc77edb",
-															"key": "id",
-															"value": "10",
-															"description": "(Required) "
-														}
-													]
-												}
-											},
-											"response": [
-												{
-													"id": "bf8124e8-50e8-40bb-a058-609621f56575",
 													"name": "Untitled Response",
 													"originalRequest": {
 														"method": "PATCH",
