@@ -7294,6 +7294,30 @@
 									"item": [
 										{
 											"name": "Fetch Customer's Financial Summary",
+											"event": [
+												{
+													"listen": "test",
+													"script": {
+														"id": "591d2bdc-d45f-4d21-899a-2a8a9db1f745",
+														"exec": [
+															"var jsonData = pm.response.json();",
+															"",
+															"pm.test(\"Status code is 200\", function () {",
+															"    pm.response.to.have.status(200);",
+															"});",
+															"",
+															"pm.test(\"Response body contains success fields\", function () {",
+															"    pm.expect(jsonData.status).to.eql(true);",
+															"    pm.expect(jsonData.response.account).to.not.eql(null);",
+															"    pm.expect(jsonData.response.transaction).to.not.eql(null);",
+															"});",
+															""
+														],
+														"type": "text/javascript",
+														"packages": {}
+													}
+												}
+											],
 											"id": "4d171c50-8c73-4756-b82e-13bc65f5ddea",
 											"protocolProfileBehavior": {
 												"disableBodyPruning": true
@@ -7320,7 +7344,6 @@
 													],
 													"variable": [
 														{
-															"id": "8e602140-918f-4ce8-a583-960697874dce",
 															"key": "id",
 															"value": "4790"
 														}
