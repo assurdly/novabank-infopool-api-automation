@@ -8315,6 +8315,29 @@
 									"item": [
 										{
 											"name": "Fetch Customers Channels",
+											"event": [
+												{
+													"listen": "test",
+													"script": {
+														"id": "563df387-59c6-4ac5-bdd2-6d6add5c4ac1",
+														"exec": [
+															"var jsonData = pm.response.json();",
+															"",
+															"pm.test(\"Status code is 200\", function () {",
+															"    pm.response.to.have.status(200);",
+															"});",
+															"",
+															"pm.test(\"Response body contains success fields\", function () {",
+															"    pm.expect(jsonData.status).to.eql(true);",
+															"    pm.expect(jsonData.response.data).to.not.eql(null);",
+															"});",
+															""
+														],
+														"type": "text/javascript",
+														"packages": {}
+													}
+												}
+											],
 											"id": "406c36eb-01d2-4deb-ae10-8440e439bc63",
 											"protocolProfileBehavior": {
 												"disableBodyPruning": true
@@ -8341,7 +8364,6 @@
 													],
 													"variable": [
 														{
-															"id": "3f09494e-96a9-41ce-a641-c3e516e4a76d",
 															"key": "id",
 															"value": "4790"
 														}
