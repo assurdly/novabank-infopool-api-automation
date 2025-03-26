@@ -11929,6 +11929,28 @@
 											"item": [
 												{
 													"name": "value",
+													"event": [
+														{
+															"listen": "test",
+															"script": {
+																"id": "7fe81c0c-a87a-4786-917e-ef3109ed8e65",
+																"exec": [
+																	"var jsonData = pm.response.json();",
+																	"",
+																	"pm.test(\"Status code is 200\", function () {",
+																	"    pm.response.to.have.status(200);",
+																	"});",
+																	"",
+																	"pm.test(\"Reponse body contains success fields\", function () {",
+																	"    pm.expect(jsonData.status).to.eql(true);",
+																	"    pm.expect(jsonData.response.data).to.not.eql(null);",
+																	"});"
+																],
+																"type": "text/javascript",
+																"packages": {}
+															}
+														}
+													],
 													"id": "85f81f6d-a801-49df-8732-9ca87038cb3a",
 													"protocolProfileBehavior": {
 														"disableBodyPruning": true
@@ -11981,6 +12003,28 @@
 											"item": [
 												{
 													"name": "value by id",
+													"event": [
+														{
+															"listen": "test",
+															"script": {
+																"id": "ff6d6a1a-6adf-4b91-8f56-d783d0d07c1e",
+																"exec": [
+																	"var jsonData = pm.response.json();",
+																	"",
+																	"pm.test(\"Status code is 200\", function () {",
+																	"    pm.response.to.have.status(200);",
+																	"});",
+																	"",
+																	"pm.test(\"Reponse body contains success fields\", function () {",
+																	"    pm.expect(jsonData.status).to.eql(true);",
+																	"    pm.expect(jsonData.response.data).to.not.eql(null);",
+																	"});"
+																],
+																"type": "text/javascript",
+																"packages": {}
+															}
+														}
+													],
 													"id": "dfaefc91-49f1-43d1-9fb3-bb9aa797d709",
 													"protocolProfileBehavior": {
 														"disableBodyPruning": true
