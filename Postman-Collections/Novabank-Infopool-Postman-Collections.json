@@ -9051,6 +9051,28 @@
 										},
 										{
 											"name": "Update definition - empty fields",
+											"event": [
+												{
+													"listen": "test",
+													"script": {
+														"id": "b27da600-c99b-4a7b-9b88-da7355907ba7",
+														"exec": [
+															"var jsonData = pm.response.json();",
+															"",
+															"pm.test(\"Status code is 400\", function () {",
+															"    pm.response.to.have.status(400);",
+															"});",
+															"",
+															"pm.test(\"Reponse body contains success fields\", function () {",
+															"    pm.expect(jsonData.status).to.eql(false);",
+															"    pm.expect(jsonData.message[1]).to.eql(\"action should not be empty\");",
+															"});"
+														],
+														"type": "text/javascript",
+														"packages": {}
+													}
+												}
+											],
 											"id": "2f72c7e9-a967-4369-a302-eaa5f8cb9554",
 											"protocolProfileBehavior": {
 												"disableBodyPruning": true
@@ -9071,7 +9093,7 @@
 												],
 												"body": {
 													"mode": "raw",
-													"raw": "{\n  \"action\": \"update\",\n  \"data\": {\n    \"description\": \"List of marital status\"\n  }\n}",
+													"raw": "{\n  \"action\": \"\",\n  \"data\": {\n    \"description\": \"List of marital status\"\n  }\n}",
 													"options": {
 														"raw": {
 															"headerFamily": "json",
@@ -9091,7 +9113,6 @@
 													],
 													"variable": [
 														{
-															"id": "0b36ab66-629a-43b0-9037-67f3ddc77edb",
 															"key": "id",
 															"value": "10",
 															"description": "(Required) "
@@ -9102,204 +9123,6 @@
 											"response": [
 												{
 													"id": "db1104ef-e5be-43b7-9e64-1e095ca1f8e0",
-													"name": "Untitled Response",
-													"originalRequest": {
-														"method": "PATCH",
-														"header": [
-															{
-																"key": "Content-Type",
-																"value": "application/json"
-															}
-														],
-														"body": {
-															"mode": "raw",
-															"raw": "{\n  \"action\": \"update\",\n  \"data\": {\n    \"description\": \"Updated Country\"\n  }\n}",
-															"options": {
-																"raw": {
-																	"headerFamily": "json",
-																	"language": "json"
-																}
-															}
-														},
-														"url": {
-															"raw": "{{baseUrl}}/v1/definitions/:id",
-															"host": [
-																"{{baseUrl}}"
-															],
-															"path": [
-																"v1",
-																"definitions",
-																":id"
-															],
-															"variable": [
-																{
-																	"key": "id"
-																}
-															]
-														}
-													},
-													"status": "OK",
-													"code": 200,
-													"_postman_previewlanguage": "text",
-													"header": [],
-													"cookie": [],
-													"responseTime": null,
-													"body": ""
-												}
-											]
-										},
-										{
-											"name": "Update definition - invalid slug name",
-											"id": "713dc27a-2c6a-405d-ba7d-479736f6ec80",
-											"protocolProfileBehavior": {
-												"disableBodyPruning": true
-											},
-											"request": {
-												"auth": {
-													"type": "bearer",
-													"bearer": {
-														"token": "{{Bearer_token}}"
-													}
-												},
-												"method": "PATCH",
-												"header": [
-													{
-														"key": "Content-Type",
-														"value": "application/json"
-													}
-												],
-												"body": {
-													"mode": "raw",
-													"raw": "{\n  \"action\": \"update\",\n  \"data\": {\n    \"description\": \"List of marital status\"\n  }\n}",
-													"options": {
-														"raw": {
-															"headerFamily": "json",
-															"language": "json"
-														}
-													}
-												},
-												"url": {
-													"raw": "{{baseUrl}}/v1/definitions/:id",
-													"host": [
-														"{{baseUrl}}"
-													],
-													"path": [
-														"v1",
-														"definitions",
-														":id"
-													],
-													"variable": [
-														{
-															"id": "0b36ab66-629a-43b0-9037-67f3ddc77edb",
-															"key": "id",
-															"value": "10",
-															"description": "(Required) "
-														}
-													]
-												}
-											},
-											"response": [
-												{
-													"id": "f556cc68-2c16-4c76-939a-3a0cc1443f87",
-													"name": "Untitled Response",
-													"originalRequest": {
-														"method": "PATCH",
-														"header": [
-															{
-																"key": "Content-Type",
-																"value": "application/json"
-															}
-														],
-														"body": {
-															"mode": "raw",
-															"raw": "{\n  \"action\": \"update\",\n  \"data\": {\n    \"description\": \"Updated Country\"\n  }\n}",
-															"options": {
-																"raw": {
-																	"headerFamily": "json",
-																	"language": "json"
-																}
-															}
-														},
-														"url": {
-															"raw": "{{baseUrl}}/v1/definitions/:id",
-															"host": [
-																"{{baseUrl}}"
-															],
-															"path": [
-																"v1",
-																"definitions",
-																":id"
-															],
-															"variable": [
-																{
-																	"key": "id"
-																}
-															]
-														}
-													},
-													"status": "OK",
-													"code": 200,
-													"_postman_previewlanguage": "text",
-													"header": [],
-													"cookie": [],
-													"responseTime": null,
-													"body": ""
-												}
-											]
-										},
-										{
-											"name": "Update definition - duplicated name",
-											"id": "e07c13b4-2c3d-4fca-87b2-87cf9366d74c",
-											"protocolProfileBehavior": {
-												"disableBodyPruning": true
-											},
-											"request": {
-												"auth": {
-													"type": "bearer",
-													"bearer": {
-														"token": "{{Bearer_token}}"
-													}
-												},
-												"method": "PATCH",
-												"header": [
-													{
-														"key": "Content-Type",
-														"value": "application/json"
-													}
-												],
-												"body": {
-													"mode": "raw",
-													"raw": "{\n  \"action\": \"update\",\n  \"data\": {\n    \"description\": \"List of marital status\"\n  }\n}",
-													"options": {
-														"raw": {
-															"headerFamily": "json",
-															"language": "json"
-														}
-													}
-												},
-												"url": {
-													"raw": "{{baseUrl}}/v1/definitions/:id",
-													"host": [
-														"{{baseUrl}}"
-													],
-													"path": [
-														"v1",
-														"definitions",
-														":id"
-													],
-													"variable": [
-														{
-															"id": "0b36ab66-629a-43b0-9037-67f3ddc77edb",
-															"key": "id",
-															"value": "10",
-															"description": "(Required) "
-														}
-													]
-												}
-											},
-											"response": [
-												{
-													"id": "b38ebf5a-17cc-4f5e-b9a8-340cd639943e",
 													"name": "Untitled Response",
 													"originalRequest": {
 														"method": "PATCH",
