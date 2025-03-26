@@ -1,2 +1,0 @@
-var jsonData = pm.response.json();
-pm.environment.set("Bearer_token", jsonData.response.access_token);
