@@ -34,7 +34,6 @@
 																	"    pm.response.to.have.status(200);",
 																	"    pm.expect(jsonData.status).to.eql(true);",
 																	"});",
-																	"",
 																	"pm.test(\"Access credentials are returned\", function () {",
 																	"    pm.expect(jsonData.response.token_type).is.not.empty;",
 																	"    pm.expect(jsonData.response.access_token).is.not.empty;",
