@@ -1,8 +1,0 @@
-{
-  "email": "favourdesent@yopmail.com",
-  "password": "@passwordA1",
-
-  "device_type": "mobile",
-  "device_name": "iPhone 11",
-  "location": "Lagos"
-}

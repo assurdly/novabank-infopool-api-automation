@@ -1,1 +1,0 @@
-{"status":false,"statusCode":404,"timestamp":"2025-02-24T20:19:56.317Z","path":"/v1/notifications/templates","message":"Cannot POST /v1/notifications/templates"}
