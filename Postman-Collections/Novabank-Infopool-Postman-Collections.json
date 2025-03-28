@@ -2,7 +2,7 @@
 	"info": {
 		"_postman_id": "b449374b-96bd-4b23-ade9-f54ab6c31c5d",
 		"name": "QA|Nova Bank - Infopool",
-		"schema": "https://schema.postman.com/json/collection/v2.0.0/collection.json"
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
 	},
 	"item": [
 		{
@@ -30,11 +30,10 @@
 																"exec": [
 																	"var jsonData = pm.response.json();",
 																	"",
-																	"pm.test(\"Status code is 201\", function () {",
-																	"    pm.response.to.have.status(201);",
+																	"pm.test(\"Status code is 200\", function () {",
+																	"    pm.response.to.have.status(200);",
 																	"    pm.expect(jsonData.status).to.eql(true);",
 																	"});",
-																	"",
 																	"pm.test(\"Access credentials are returned\", function () {",
 																	"    pm.expect(jsonData.response.token_type).is.not.empty;",
 																	"    pm.expect(jsonData.response.access_token).is.not.empty;",
@@ -985,6 +984,62 @@
 													"body": ""
 												}
 											]
+										},
+										{
+											"name": "Get profile roles - No Auth",
+											"event": [
+												{
+													"listen": "test",
+													"script": {
+														"id": "c537a045-f381-4d1f-8a8f-f6f1ffd4409c",
+														"exec": [
+															"var jsonData = pm.response.json();",
+															"",
+															"pm.test(\"Status code is 401\", function () {",
+															"    pm.response.to.have.status(401);",
+															"});",
+															"",
+															"pm.test(\"Reponse body contains standard error fields\", function () {",
+															"    pm.expect(jsonData.statusCode).to.eql(401);",
+															"    pm.expect(jsonData.status).to.eql(false);",
+															"   pm.expect(jsonData.message).to.eql('Unauthorized'); ",
+															"});"
+														],
+														"type": "text/javascript",
+														"packages": {}
+													}
+												}
+											],
+											"id": "73c92e13-88f4-4db3-8805-90d993fbbfe3",
+											"protocolProfileBehavior": {
+												"disableBodyPruning": true
+											},
+											"request": {
+												"auth": {
+													"type": "noauth"
+												},
+												"method": "GET",
+												"header": [],
+												"url": "{{baseUrl}}/v1/profile/roles"
+											},
+											"response": [
+												{
+													"id": "616205cc-9680-4763-932b-4848dbf544d4",
+													"name": "Untitled Response",
+													"originalRequest": {
+														"method": "GET",
+														"header": [],
+														"url": "{{baseUrl}}/v1/profile/roles"
+													},
+													"status": "OK",
+													"code": 200,
+													"_postman_previewlanguage": "text",
+													"header": [],
+													"cookie": [],
+													"responseTime": null,
+													"body": ""
+												}
+											]
 										}
 									],
 									"id": "4478b8f7-bd72-4879-ba9c-e1b744746ac3"
@@ -1005,6 +1060,12 @@
 															"pm.test(\"Status code is 200\", function () {",
 															"    pm.response.to.have.status(200);",
 															"});",
+															"",
+															"pm.test(\"Reponse body contains success fields\", function () {",
+															"    pm.expect(jsonData.status).to.eql(true);",
+															"    pm.expect(jsonData.response.message).to.eql('Password successfully changed');",
+															"});",
+															"",
 															"",
 															""
 														],
@@ -1033,7 +1094,7 @@
 												],
 												"body": {
 													"mode": "raw",
-													"raw": "{\n  \"current_password\": \"@passwordA1\",\n  \"new_password\": \"@passwordA1\"\n}",
+													"raw": "{\n  \"current_password\": \"Password12$\",\n  \"new_password\": \"Password12$\"\n}",
 													"options": {
 														"raw": {
 															"headerFamily": "json",
@@ -1046,6 +1107,95 @@
 											"response": [
 												{
 													"id": "56ba32a5-49be-4127-907d-83738515ccd3",
+													"name": "Untitled Response",
+													"originalRequest": {
+														"method": "PATCH",
+														"header": [
+															{
+																"key": "Content-Type",
+																"value": "application/json"
+															}
+														],
+														"body": {
+															"mode": "raw",
+															"raw": "{\n  \"current_password\": \"Password1@\",\n  \"new_password\": \"NewPassword99#\"\n}",
+															"options": {
+																"raw": {
+																	"headerFamily": "json",
+																	"language": "json"
+																}
+															}
+														},
+														"url": "{{baseUrl}}/v1/profile/password"
+													},
+													"status": "OK",
+													"code": 200,
+													"_postman_previewlanguage": "text",
+													"header": [],
+													"cookie": [],
+													"responseTime": null,
+													"body": ""
+												}
+											]
+										},
+										{
+											"name": "Change password - No Auth",
+											"event": [
+												{
+													"listen": "test",
+													"script": {
+														"id": "f3a04596-cb1f-42d7-8f7f-4f49acdaf83e",
+														"exec": [
+															"var jsonData = pm.response.json();",
+															"",
+															"pm.test(\"Status code is 401\", function () {",
+															"    pm.response.to.have.status(401);",
+															"});",
+															"",
+															"pm.test(\"Reponse body contains standard error fields\", function () {",
+															"    pm.expect(jsonData.statusCode).to.eql(401);",
+															"    pm.expect(jsonData.status).to.eql(false);",
+															"   pm.expect(jsonData.message).to.eql('Unauthorized'); ",
+															"});",
+															"",
+															"",
+															""
+														],
+														"type": "text/javascript",
+														"packages": {}
+													}
+												}
+											],
+											"id": "f39f8e9c-4cbc-4dd3-a607-90ddc72ca014",
+											"protocolProfileBehavior": {
+												"disableBodyPruning": true
+											},
+											"request": {
+												"auth": {
+													"type": "noauth"
+												},
+												"method": "PATCH",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"current_password\": \"Password12$\",\n  \"new_password\": \"Password12$\"\n}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": "{{baseUrl}}/v1/profile/password"
+											},
+											"response": [
+												{
+													"id": "b4efee05-ea14-4513-ac3f-386fc00c3e7b",
 													"name": "Untitled Response",
 													"originalRequest": {
 														"method": "PATCH",
@@ -1092,7 +1242,6 @@
 															"});",
 															"pm.test(\"Reponse body contains standard error fields\", function () {",
 															"    pm.expect(jsonData.statusCode).to.eql(400);",
-															"    pm.expect(jsonData.path).is.not.null;",
 															"    pm.expect(jsonData.status).to.eql(false);",
 															"   pm.expect(jsonData.message).to.eql('incorrect current password'); ",
 															"});",
@@ -3899,7 +4048,12 @@
 																	"",
 																	"pm.test(\"Status code is 200\", function () {",
 																	"    pm.response.to.have.status(200);",
-																	"});"
+																	"});",
+																	"pm.test(\"Response body contains success fields\", function () {",
+																	"    pm.expect(jsonData.status).to.eql(true);",
+																	"    pm.expect(jsonData.response.data).to.not.be.oneOf([], null);",
+																	"});",
+																	"pm.environment.set(\"issue_id\", jsonData.response.data[0].id);"
 																],
 																"type": "text/javascript",
 																"packages": {}
@@ -4112,7 +4266,7 @@
 																},
 																{
 																	"key": "id",
-																	"value": "6"
+																	"value": "{{issue_id}}"
 																}
 															]
 														}
@@ -4247,6 +4401,12 @@
 														"disableBodyPruning": true
 													},
 													"request": {
+														"auth": {
+															"type": "bearer",
+															"bearer": {
+																"token": "{{Bearer_token}}"
+															}
+														},
 														"method": "PATCH",
 														"header": [],
 														"body": {
@@ -4277,7 +4437,7 @@
 																},
 																{
 																	"key": "id",
-																	"value": "6"
+																	"value": "{{issue_id}}"
 																}
 															]
 														}
@@ -4726,7 +4886,7 @@
 																},
 																{
 																	"key": "id",
-																	"value": "6"
+																	"value": "{{issue_id}}"
 																}
 															]
 														}
@@ -4835,11 +4995,44 @@
 											"item": [
 												{
 													"name": "Add attachment to issue",
+													"event": [
+														{
+															"listen": "test",
+															"script": {
+																"id": "f780ac7d-49c1-4d70-93f6-483fa6f0b93f",
+																"exec": [
+																	"var jsonData = pm.response.json();",
+																	"",
+																	"pm.test(\"Status code is 201\", function () {",
+																	"    pm.response.to.have.status(201);",
+																	"});",
+																	"",
+																	"pm.test(\"Response body contains success fields\", function () {",
+																	"    pm.expect(jsonData.status).to.eql(true);",
+																	"    pm.expect(jsonData.response.issue_category_id).to.not.be.null;",
+																	"    pm.expect(jsonData.response.issue_responsibility).to.not.be.null;",
+																	"    pm.expect(jsonData.response.source_channel).to.not.be.null;",
+																	"    pm.expect(jsonData.response.issue).to.not.be.null;",
+																	"    pm.expect(jsonData.response.has_attachments).to.eql(true);",
+																	"});",
+																	""
+																],
+																"type": "text/javascript",
+																"packages": {}
+															}
+														}
+													],
 													"id": "edf4dbf7-f425-4df0-8097-f53cc5f3e086",
 													"protocolProfileBehavior": {
 														"disableBodyPruning": true
 													},
 													"request": {
+														"auth": {
+															"type": "bearer",
+															"bearer": {
+																"token": "{{Bearer_token}}"
+															}
+														},
 														"method": "POST",
 														"header": [],
 														"body": {
@@ -4848,7 +5041,7 @@
 																{
 																	"type": "file",
 																	"key": "file",
-																	"src": "/Users/tomi/Downloads/banani-ui.png"
+																	"src": "BJhjyy4IT/Screen Shot 2025-03-22 at 2.34.52 PM.png"
 																}
 															]
 														},
@@ -4867,14 +5060,12 @@
 															],
 															"variable": [
 																{
-																	"id": "97a28e47-a1a6-4335-b5eb-1b75b58ad331",
 																	"key": "customerId",
 																	"value": ""
 																},
 																{
-																	"id": "7e028323-d1d2-4b1d-83a8-b1e5b0f3a719",
 																	"key": "id",
-																	"value": "6"
+																	"value": "{{issue_id}}"
 																}
 															]
 														}
@@ -5011,6 +5202,12 @@
 														"disableBodyPruning": true
 													},
 													"request": {
+														"auth": {
+															"type": "bearer",
+															"bearer": {
+																"token": "{{Bearer_token}}"
+															}
+														},
 														"method": "DELETE",
 														"header": [],
 														"body": {
@@ -5043,7 +5240,7 @@
 																},
 																{
 																	"key": "id",
-																	"value": "6"
+																	"value": "{{issue_id}}"
 																},
 																{
 																	"key": "attachmentId",
@@ -5170,7 +5367,7 @@
 																	"pm.test(\"Response body contains error fields\", function () {",
 																	"    pm.expect(jsonData.status).to.eql(false);",
 																	"    pm.expect(jsonData.statusCode).to.eql(404);",
-																	"     pm.expect(jsonData.message).to.eql('No attachments found');",
+																	"     pm.expect(jsonData.message).to.eql('Attachment not found');",
 																	"});"
 																],
 																"type": "text/javascript",
@@ -5183,6 +5380,12 @@
 														"disableBodyPruning": true
 													},
 													"request": {
+														"auth": {
+															"type": "bearer",
+															"bearer": {
+																"token": "{{Bearer_token}}"
+															}
+														},
 														"method": "DELETE",
 														"header": [],
 														"body": {
@@ -5215,7 +5418,7 @@
 																},
 																{
 																	"key": "id",
-																	"value": "6"
+																	"value": "{{issue_id}}"
 																},
 																{
 																	"key": "attachmentId",
@@ -7090,6 +7293,30 @@
 									"item": [
 										{
 											"name": "Fetch Customer's Financial Summary",
+											"event": [
+												{
+													"listen": "test",
+													"script": {
+														"id": "591d2bdc-d45f-4d21-899a-2a8a9db1f745",
+														"exec": [
+															"var jsonData = pm.response.json();",
+															"",
+															"pm.test(\"Status code is 200\", function () {",
+															"    pm.response.to.have.status(200);",
+															"});",
+															"",
+															"pm.test(\"Response body contains success fields\", function () {",
+															"    pm.expect(jsonData.status).to.eql(true);",
+															"    pm.expect(jsonData.response.account).to.not.eql(null);",
+															"    pm.expect(jsonData.response.transaction).to.not.eql(null);",
+															"});",
+															""
+														],
+														"type": "text/javascript",
+														"packages": {}
+													}
+												}
+											],
 											"id": "4d171c50-8c73-4756-b82e-13bc65f5ddea",
 											"protocolProfileBehavior": {
 												"disableBodyPruning": true
@@ -7116,7 +7343,6 @@
 													],
 													"variable": [
 														{
-															"id": "8e602140-918f-4ce8-a583-960697874dce",
 															"key": "id",
 															"value": "4790"
 														}
@@ -8111,6 +8337,29 @@
 									"item": [
 										{
 											"name": "Fetch Customers Channels",
+											"event": [
+												{
+													"listen": "test",
+													"script": {
+														"id": "563df387-59c6-4ac5-bdd2-6d6add5c4ac1",
+														"exec": [
+															"var jsonData = pm.response.json();",
+															"",
+															"pm.test(\"Status code is 200\", function () {",
+															"    pm.response.to.have.status(200);",
+															"});",
+															"",
+															"pm.test(\"Response body contains success fields\", function () {",
+															"    pm.expect(jsonData.status).to.eql(true);",
+															"    pm.expect(jsonData.response.data).to.not.eql(null);",
+															"});",
+															""
+														],
+														"type": "text/javascript",
+														"packages": {}
+													}
+												}
+											],
 											"id": "406c36eb-01d2-4deb-ae10-8440e439bc63",
 											"protocolProfileBehavior": {
 												"disableBodyPruning": true
@@ -8137,7 +8386,6 @@
 													],
 													"variable": [
 														{
-															"id": "3f09494e-96a9-41ce-a641-c3e516e4a76d",
 															"key": "id",
 															"value": "4790"
 														}
@@ -8678,346 +8926,32 @@
 									"id": "948dba72-5b24-4064-8e4f-12c68326771c"
 								},
 								{
-									"name": "Create definition",
-									"item": [
-										{
-											"name": "Create definition - successful",
-											"id": "4ce6067f-c24b-4199-bc39-bc1b51c7bd49",
-											"protocolProfileBehavior": {
-												"disableBodyPruning": true
-											},
-											"request": {
-												"auth": {
-													"type": "bearer",
-													"bearer": {
-														"token": "{{Bearer_token}}"
-													}
-												},
-												"method": "POST",
-												"header": [
-													{
-														"key": "Content-Type",
-														"value": "application/json"
-													}
-												],
-												"body": {
-													"mode": "raw",
-													"raw": "{\n    \"definitions\": [\n        {\n            \"slug\": \"issue-status\",\n            \"name\": \"Issue Status\",\n            \"description\": \"Issue Status\",\n            \"parent_id\": \"root\"\n        }\n    ]\n}",
-													"options": {
-														"raw": {
-															"headerFamily": "json",
-															"language": "json"
-														}
-													}
-												},
-												"url": "{{baseUrl}}/v1/definitions"
-											},
-											"response": [
-												{
-													"id": "1bafc4ed-9c0c-4baf-a3bc-3e7060abb34f",
-													"name": "Untitled Response",
-													"originalRequest": {
-														"method": "POST",
-														"header": [
-															{
-																"key": "Content-Type",
-																"value": "application/json"
-															}
-														],
-														"body": {
-															"mode": "raw",
-															"raw": "{\n  \"slug\": \"nga\",\n  \"name\": \"Nigeria\",\n  \"description\": \"A country\",\n  \"parent_id\": \"root\",\n  \"meta\": {\n    \"iso-2-code\": \"ng\"\n  }\n}",
-															"options": {
-																"raw": {
-																	"headerFamily": "json",
-																	"language": "json"
-																}
-															}
-														},
-														"url": "{{baseUrl}}/v1/definitions"
-													},
-													"status": "Created",
-													"code": 201,
-													"_postman_previewlanguage": "text",
-													"header": [],
-													"cookie": [],
-													"responseTime": null,
-													"body": ""
-												}
-											]
-										},
-										{
-											"name": "Create definition - empty fields",
-											"id": "380dbb18-2e5e-4efd-bfb0-ac90f28473c1",
-											"protocolProfileBehavior": {
-												"disableBodyPruning": true
-											},
-											"request": {
-												"auth": {
-													"type": "bearer",
-													"bearer": {
-														"token": "{{Bearer_token}}"
-													}
-												},
-												"method": "POST",
-												"header": [
-													{
-														"key": "Content-Type",
-														"value": "application/json"
-													}
-												],
-												"body": {
-													"mode": "raw",
-													"raw": "{\n  \"slug\": \"nga\",\n  \"name\": \"Nigeria\",\n  \"description\": \"A country\",\n  \"parent_id\": \"root\",\n  \"meta\": {\n    \"iso-2-code\": \"ng\"\n  }\n}",
-													"options": {
-														"raw": {
-															"headerFamily": "json",
-															"language": "json"
-														}
-													}
-												},
-												"url": "{{baseUrl}}/v1/definitions"
-											},
-											"response": [
-												{
-													"id": "66beda7e-b045-4ef9-872f-bf3db2428c14",
-													"name": "Untitled Response",
-													"originalRequest": {
-														"method": "POST",
-														"header": [
-															{
-																"key": "Content-Type",
-																"value": "application/json"
-															}
-														],
-														"body": {
-															"mode": "raw",
-															"raw": "{\n  \"slug\": \"nga\",\n  \"name\": \"Nigeria\",\n  \"description\": \"A country\",\n  \"parent_id\": \"root\",\n  \"meta\": {\n    \"iso-2-code\": \"ng\"\n  }\n}",
-															"options": {
-																"raw": {
-																	"headerFamily": "json",
-																	"language": "json"
-																}
-															}
-														},
-														"url": "{{baseUrl}}/v1/definitions"
-													},
-													"status": "Created",
-													"code": 201,
-													"_postman_previewlanguage": "text",
-													"header": [],
-													"cookie": [],
-													"responseTime": null,
-													"body": ""
-												}
-											]
-										},
-										{
-											"name": "Create definition - duplicate entry",
-											"id": "c5e0dd73-1917-42c0-bb9a-c92ab7f5af78",
-											"protocolProfileBehavior": {
-												"disableBodyPruning": true
-											},
-											"request": {
-												"auth": {
-													"type": "bearer",
-													"bearer": {
-														"token": "{{Bearer_token}}"
-													}
-												},
-												"method": "POST",
-												"header": [
-													{
-														"key": "Content-Type",
-														"value": "application/json"
-													}
-												],
-												"body": {
-													"mode": "raw",
-													"raw": "{\n  \"slug\": \"nga\",\n  \"name\": \"Nigeria\",\n  \"description\": \"A country\",\n  \"parent_id\": \"root\",\n  \"meta\": {\n    \"iso-2-code\": \"ng\"\n  }\n}",
-													"options": {
-														"raw": {
-															"headerFamily": "json",
-															"language": "json"
-														}
-													}
-												},
-												"url": "{{baseUrl}}/v1/definitions"
-											},
-											"response": [
-												{
-													"id": "a54187ab-1432-4d69-bc1a-50eeb3cf96f8",
-													"name": "Untitled Response",
-													"originalRequest": {
-														"method": "POST",
-														"header": [
-															{
-																"key": "Content-Type",
-																"value": "application/json"
-															}
-														],
-														"body": {
-															"mode": "raw",
-															"raw": "{\n  \"slug\": \"nga\",\n  \"name\": \"Nigeria\",\n  \"description\": \"A country\",\n  \"parent_id\": \"root\",\n  \"meta\": {\n    \"iso-2-code\": \"ng\"\n  }\n}",
-															"options": {
-																"raw": {
-																	"headerFamily": "json",
-																	"language": "json"
-																}
-															}
-														},
-														"url": "{{baseUrl}}/v1/definitions"
-													},
-													"status": "Created",
-													"code": 201,
-													"_postman_previewlanguage": "text",
-													"header": [],
-													"cookie": [],
-													"responseTime": null,
-													"body": ""
-												}
-											]
-										},
-										{
-											"name": "Create definition - invalid parentID",
-											"id": "3b1941ae-a048-4a6e-86fc-63e42054da71",
-											"protocolProfileBehavior": {
-												"disableBodyPruning": true
-											},
-											"request": {
-												"auth": {
-													"type": "bearer",
-													"bearer": {
-														"token": "{{Bearer_token}}"
-													}
-												},
-												"method": "POST",
-												"header": [
-													{
-														"key": "Content-Type",
-														"value": "application/json"
-													}
-												],
-												"body": {
-													"mode": "raw",
-													"raw": "{\n  \"slug\": \"nga\",\n  \"name\": \"Nigeria\",\n  \"description\": \"A country\",\n  \"parent_id\": \"root\",\n  \"meta\": {\n    \"iso-2-code\": \"ng\"\n  }\n}",
-													"options": {
-														"raw": {
-															"headerFamily": "json",
-															"language": "json"
-														}
-													}
-												},
-												"url": "{{baseUrl}}/v1/definitions"
-											},
-											"response": [
-												{
-													"id": "ac7166c2-bca8-43b4-96fc-368362ace279",
-													"name": "Untitled Response",
-													"originalRequest": {
-														"method": "POST",
-														"header": [
-															{
-																"key": "Content-Type",
-																"value": "application/json"
-															}
-														],
-														"body": {
-															"mode": "raw",
-															"raw": "{\n  \"slug\": \"nga\",\n  \"name\": \"Nigeria\",\n  \"description\": \"A country\",\n  \"parent_id\": \"root\",\n  \"meta\": {\n    \"iso-2-code\": \"ng\"\n  }\n}",
-															"options": {
-																"raw": {
-																	"headerFamily": "json",
-																	"language": "json"
-																}
-															}
-														},
-														"url": "{{baseUrl}}/v1/definitions"
-													},
-													"status": "Created",
-													"code": 201,
-													"_postman_previewlanguage": "text",
-													"header": [],
-													"cookie": [],
-													"responseTime": null,
-													"body": ""
-												}
-											]
-										},
-										{
-											"name": "Create definition - invalid ISO code",
-											"id": "ce63db06-36a2-48c7-936b-923e99b3528d",
-											"protocolProfileBehavior": {
-												"disableBodyPruning": true
-											},
-											"request": {
-												"auth": {
-													"type": "bearer",
-													"bearer": {
-														"token": "{{Bearer_token}}"
-													}
-												},
-												"method": "POST",
-												"header": [
-													{
-														"key": "Content-Type",
-														"value": "application/json"
-													}
-												],
-												"body": {
-													"mode": "raw",
-													"raw": "{\n  \"slug\": \"nga\",\n  \"name\": \"Nigeria\",\n  \"description\": \"A country\",\n  \"parent_id\": \"root\",\n  \"meta\": {\n    \"iso-2-code\": \"ng\"\n  }\n}",
-													"options": {
-														"raw": {
-															"headerFamily": "json",
-															"language": "json"
-														}
-													}
-												},
-												"url": "{{baseUrl}}/v1/definitions"
-											},
-											"response": [
-												{
-													"id": "0c3297e5-f5aa-4ccb-880a-71924da01342",
-													"name": "Untitled Response",
-													"originalRequest": {
-														"method": "POST",
-														"header": [
-															{
-																"key": "Content-Type",
-																"value": "application/json"
-															}
-														],
-														"body": {
-															"mode": "raw",
-															"raw": "{\n  \"slug\": \"nga\",\n  \"name\": \"Nigeria\",\n  \"description\": \"A country\",\n  \"parent_id\": \"root\",\n  \"meta\": {\n    \"iso-2-code\": \"ng\"\n  }\n}",
-															"options": {
-																"raw": {
-																	"headerFamily": "json",
-																	"language": "json"
-																}
-															}
-														},
-														"url": "{{baseUrl}}/v1/definitions"
-													},
-													"status": "Created",
-													"code": 201,
-													"_postman_previewlanguage": "text",
-													"header": [],
-													"cookie": [],
-													"responseTime": null,
-													"body": ""
-												}
-											]
-										}
-									],
-									"id": "cf99d192-18a2-41b1-a932-3e796f166c85"
-								},
-								{
 									"name": "Update definition",
 									"item": [
 										{
 											"name": "Update definition",
+											"event": [
+												{
+													"listen": "test",
+													"script": {
+														"id": "00a98454-63a4-46f4-b139-c5705db56179",
+														"exec": [
+															"var jsonData = pm.response.json();",
+															"",
+															"pm.test(\"Status code is 200\", function () {",
+															"    pm.response.to.have.status(200);",
+															"});",
+															"",
+															"pm.test(\"Reponse body contains success fields\", function () {",
+															"    pm.expect(jsonData.status).to.eql(true);",
+															"    pm.expect(jsonData.response.updated).to.eql(true);",
+															"});"
+														],
+														"type": "text/javascript",
+														"packages": {}
+													}
+												}
+											],
 											"id": "bbf16ca7-949c-4625-b245-884e471402e7",
 											"protocolProfileBehavior": {
 												"disableBodyPruning": true
@@ -9058,7 +8992,6 @@
 													],
 													"variable": [
 														{
-															"id": "0b36ab66-629a-43b0-9037-67f3ddc77edb",
 															"key": "id",
 															"value": "10",
 															"description": "(Required) "
@@ -9116,106 +9049,29 @@
 											]
 										},
 										{
-											"name": "Update definition - invalid action",
-											"id": "be065e41-7625-456b-9453-95984f1400c1",
-											"protocolProfileBehavior": {
-												"disableBodyPruning": true
-											},
-											"request": {
-												"auth": {
-													"type": "bearer",
-													"bearer": {
-														"token": "{{Bearer_token}}"
-													}
-												},
-												"method": "PATCH",
-												"header": [
-													{
-														"key": "Content-Type",
-														"value": "application/json"
-													}
-												],
-												"body": {
-													"mode": "raw",
-													"raw": "{\n  \"action\": \"update\",\n  \"data\": {\n    \"description\": \"List of marital status\"\n  }\n}",
-													"options": {
-														"raw": {
-															"headerFamily": "json",
-															"language": "json"
-														}
-													}
-												},
-												"url": {
-													"raw": "{{baseUrl}}/v1/definitions/:id",
-													"host": [
-														"{{baseUrl}}"
-													],
-													"path": [
-														"v1",
-														"definitions",
-														":id"
-													],
-													"variable": [
-														{
-															"id": "0b36ab66-629a-43b0-9037-67f3ddc77edb",
-															"key": "id",
-															"value": "10",
-															"description": "(Required) "
-														}
-													]
-												}
-											},
-											"response": [
-												{
-													"id": "bf8124e8-50e8-40bb-a058-609621f56575",
-													"name": "Untitled Response",
-													"originalRequest": {
-														"method": "PATCH",
-														"header": [
-															{
-																"key": "Content-Type",
-																"value": "application/json"
-															}
-														],
-														"body": {
-															"mode": "raw",
-															"raw": "{\n  \"action\": \"update\",\n  \"data\": {\n    \"description\": \"Updated Country\"\n  }\n}",
-															"options": {
-																"raw": {
-																	"headerFamily": "json",
-																	"language": "json"
-																}
-															}
-														},
-														"url": {
-															"raw": "{{baseUrl}}/v1/definitions/:id",
-															"host": [
-																"{{baseUrl}}"
-															],
-															"path": [
-																"v1",
-																"definitions",
-																":id"
-															],
-															"variable": [
-																{
-																	"key": "id"
-																}
-															]
-														}
-													},
-													"status": "OK",
-													"code": 200,
-													"_postman_previewlanguage": "text",
-													"header": [],
-													"cookie": [],
-													"responseTime": null,
-													"body": ""
-												}
-											]
-										},
-										{
 											"name": "Update definition - empty fields",
+											"event": [
+												{
+													"listen": "test",
+													"script": {
+														"id": "b27da600-c99b-4a7b-9b88-da7355907ba7",
+														"exec": [
+															"var jsonData = pm.response.json();",
+															"",
+															"pm.test(\"Status code is 400\", function () {",
+															"    pm.response.to.have.status(400);",
+															"});",
+															"",
+															"pm.test(\"Reponse body contains success fields\", function () {",
+															"    pm.expect(jsonData.status).to.eql(false);",
+															"    pm.expect(jsonData.message[1]).to.eql(\"action should not be empty\");",
+															"});"
+														],
+														"type": "text/javascript",
+														"packages": {}
+													}
+												}
+											],
 											"id": "2f72c7e9-a967-4369-a302-eaa5f8cb9554",
 											"protocolProfileBehavior": {
 												"disableBodyPruning": true
@@ -9236,7 +9092,7 @@
 												],
 												"body": {
 													"mode": "raw",
-													"raw": "{\n  \"action\": \"update\",\n  \"data\": {\n    \"description\": \"List of marital status\"\n  }\n}",
+													"raw": "{\n  \"action\": \"\",\n  \"data\": {\n    \"description\": \"List of marital status\"\n  }\n}",
 													"options": {
 														"raw": {
 															"headerFamily": "json",
@@ -9256,7 +9112,6 @@
 													],
 													"variable": [
 														{
-															"id": "0b36ab66-629a-43b0-9037-67f3ddc77edb",
 															"key": "id",
 															"value": "10",
 															"description": "(Required) "
@@ -9312,3124 +9167,12 @@
 													"body": ""
 												}
 											]
-										},
-										{
-											"name": "Update definition - invalid slug name",
-											"id": "713dc27a-2c6a-405d-ba7d-479736f6ec80",
-											"protocolProfileBehavior": {
-												"disableBodyPruning": true
-											},
-											"request": {
-												"auth": {
-													"type": "bearer",
-													"bearer": {
-														"token": "{{Bearer_token}}"
-													}
-												},
-												"method": "PATCH",
-												"header": [
-													{
-														"key": "Content-Type",
-														"value": "application/json"
-													}
-												],
-												"body": {
-													"mode": "raw",
-													"raw": "{\n  \"action\": \"update\",\n  \"data\": {\n    \"description\": \"List of marital status\"\n  }\n}",
-													"options": {
-														"raw": {
-															"headerFamily": "json",
-															"language": "json"
-														}
-													}
-												},
-												"url": {
-													"raw": "{{baseUrl}}/v1/definitions/:id",
-													"host": [
-														"{{baseUrl}}"
-													],
-													"path": [
-														"v1",
-														"definitions",
-														":id"
-													],
-													"variable": [
-														{
-															"id": "0b36ab66-629a-43b0-9037-67f3ddc77edb",
-															"key": "id",
-															"value": "10",
-															"description": "(Required) "
-														}
-													]
-												}
-											},
-											"response": [
-												{
-													"id": "f556cc68-2c16-4c76-939a-3a0cc1443f87",
-													"name": "Untitled Response",
-													"originalRequest": {
-														"method": "PATCH",
-														"header": [
-															{
-																"key": "Content-Type",
-																"value": "application/json"
-															}
-														],
-														"body": {
-															"mode": "raw",
-															"raw": "{\n  \"action\": \"update\",\n  \"data\": {\n    \"description\": \"Updated Country\"\n  }\n}",
-															"options": {
-																"raw": {
-																	"headerFamily": "json",
-																	"language": "json"
-																}
-															}
-														},
-														"url": {
-															"raw": "{{baseUrl}}/v1/definitions/:id",
-															"host": [
-																"{{baseUrl}}"
-															],
-															"path": [
-																"v1",
-																"definitions",
-																":id"
-															],
-															"variable": [
-																{
-																	"key": "id"
-																}
-															]
-														}
-													},
-													"status": "OK",
-													"code": 200,
-													"_postman_previewlanguage": "text",
-													"header": [],
-													"cookie": [],
-													"responseTime": null,
-													"body": ""
-												}
-											]
-										},
-										{
-											"name": "Update definition - duplicated name",
-											"id": "e07c13b4-2c3d-4fca-87b2-87cf9366d74c",
-											"protocolProfileBehavior": {
-												"disableBodyPruning": true
-											},
-											"request": {
-												"auth": {
-													"type": "bearer",
-													"bearer": {
-														"token": "{{Bearer_token}}"
-													}
-												},
-												"method": "PATCH",
-												"header": [
-													{
-														"key": "Content-Type",
-														"value": "application/json"
-													}
-												],
-												"body": {
-													"mode": "raw",
-													"raw": "{\n  \"action\": \"update\",\n  \"data\": {\n    \"description\": \"List of marital status\"\n  }\n}",
-													"options": {
-														"raw": {
-															"headerFamily": "json",
-															"language": "json"
-														}
-													}
-												},
-												"url": {
-													"raw": "{{baseUrl}}/v1/definitions/:id",
-													"host": [
-														"{{baseUrl}}"
-													],
-													"path": [
-														"v1",
-														"definitions",
-														":id"
-													],
-													"variable": [
-														{
-															"id": "0b36ab66-629a-43b0-9037-67f3ddc77edb",
-															"key": "id",
-															"value": "10",
-															"description": "(Required) "
-														}
-													]
-												}
-											},
-											"response": [
-												{
-													"id": "b38ebf5a-17cc-4f5e-b9a8-340cd639943e",
-													"name": "Untitled Response",
-													"originalRequest": {
-														"method": "PATCH",
-														"header": [
-															{
-																"key": "Content-Type",
-																"value": "application/json"
-															}
-														],
-														"body": {
-															"mode": "raw",
-															"raw": "{\n  \"action\": \"update\",\n  \"data\": {\n    \"description\": \"Updated Country\"\n  }\n}",
-															"options": {
-																"raw": {
-																	"headerFamily": "json",
-																	"language": "json"
-																}
-															}
-														},
-														"url": {
-															"raw": "{{baseUrl}}/v1/definitions/:id",
-															"host": [
-																"{{baseUrl}}"
-															],
-															"path": [
-																"v1",
-																"definitions",
-																":id"
-															],
-															"variable": [
-																{
-																	"key": "id"
-																}
-															]
-														}
-													},
-													"status": "OK",
-													"code": 200,
-													"_postman_previewlanguage": "text",
-													"header": [],
-													"cookie": [],
-													"responseTime": null,
-													"body": ""
-												}
-											]
 										}
 									],
 									"id": "ab5de725-975f-4aff-8beb-3b3c725936a6"
-								},
-								{
-									"name": "Upload",
-									"item": [
-										{
-											"name": "Upload definition",
-											"item": [
-												{
-													"name": "upload",
-													"id": "bac0327d-59a9-40d0-97e7-1125c36d5806",
-													"protocolProfileBehavior": {
-														"disableBodyPruning": true
-													},
-													"request": {
-														"auth": {
-															"type": "bearer",
-															"bearer": {
-																"token": "{{Bearer_token}}"
-															}
-														},
-														"method": "POST",
-														"header": [
-															{
-																"key": "accept",
-																"value": "*/*"
-															}
-														],
-														"body": {
-															"mode": "formdata",
-															"formdata": [
-																{
-																	"type": "file",
-																	"contentType": "application/pdf",
-																	"key": "definitions",
-																	"value": null
-																}
-															]
-														},
-														"url": "https://staging-api.infopool.ng/v1/definitions/upload"
-													},
-													"response": []
-												}
-											],
-											"id": "96b581ba-b40f-4da5-ba2c-070a10279d74"
-										},
-										{
-											"name": "Get upload",
-											"item": [
-												{
-													"name": "upload",
-													"id": "e770a478-a8ce-4fd0-ac3f-a1a498ea433f",
-													"protocolProfileBehavior": {
-														"disableBodyPruning": true
-													},
-													"request": {
-														"auth": {
-															"type": "bearer",
-															"bearer": {
-																"token": "{{Bearer_token}}"
-															}
-														},
-														"method": "GET",
-														"header": [
-															{
-																"key": "accept",
-																"value": "*/*"
-															}
-														],
-														"url": "https://staging-api.infopool.ng/v1/definitions/upload"
-													},
-													"response": []
-												}
-											],
-											"id": "b1872208-21e9-4ed5-9edf-9ec24b34554c"
-										}
-									],
-									"id": "1cf19e7b-c9d2-4835-83e4-a7e26518b25b"
 								}
 							],
 							"id": "9f8d62a3-1546-4fcd-9fdc-60ed20cfba3e"
-						},
-						{
-							"name": "System Settings",
-							"item": [
-								{
-									"name": "Master",
-									"item": [
-										{
-											"name": "Update master settings",
-											"item": [
-												{
-													"name": "Update setting master - successful (no change)",
-													"id": "1c2ef325-ac48-4d7b-8453-0ed5330f05c5",
-													"protocolProfileBehavior": {
-														"disableBodyPruning": true
-													},
-													"request": {
-														"auth": {
-															"type": "bearer",
-															"bearer": {
-																"token": "{{Bearer_token}}"
-															}
-														},
-														"method": "PATCH",
-														"header": [
-															{
-																"key": "Content-Type",
-																"value": "application/json"
-															}
-														],
-														"body": {
-															"mode": "raw",
-															"raw": "{\n  \"action\": \"update\",\n  \"data\": {\n    \"custom_validation\": \"{        \\\"$schema\\\": \\\"http://json-schema.org/draft-07/schema#\\\",        \\\"title\\\": \\\"Generated schema for Root\\\",        \\\"type\\\": \\\"object\\\",        \\\"properties\\\": {            \\\"minLength\\\": {                \\\"type\\\": \\\"number\\\"            },            \\\"minLowercase\\\": {                \\\"type\\\": \\\"number\\\"            },            \\\"minUppercase\\\": {                \\\"type\\\": \\\"number\\\"            },            \\\"minNumbers\\\": {                \\\"type\\\": \\\"number\\\"            },            \\\"minSymbols\\\": {                \\\"type\\\": \\\"number\\\"            }        },        \\\"required\\\": [            \\\"minLength\\\",            \\\"minLowercase\\\",            \\\"minUppercase\\\",            \\\"minNumbers\\\",            \\\"minSymbols\\\"        ]    }\"\n  }\n}",
-															"options": {
-																"raw": {
-																	"headerFamily": "json",
-																	"language": "json"
-																}
-															}
-														},
-														"url": {
-															"raw": "{{baseUrl}}/v1/settings/master/:id",
-															"host": [
-																"{{baseUrl}}"
-															],
-															"path": [
-																"v1",
-																"settings",
-																"master",
-																":id"
-															],
-															"variable": [
-																{
-																	"key": "id",
-																	"value": "27",
-																	"description": "(Required) "
-																}
-															]
-														}
-													},
-													"response": [
-														{
-															"id": "af4a52b1-fe90-4cee-9797-08193bfccd73",
-															"name": "Untitled Response",
-															"originalRequest": {
-																"method": "PATCH",
-																"header": [
-																	{
-																		"key": "Content-Type",
-																		"value": "application/json"
-																	}
-																],
-																"body": {
-																	"mode": "raw",
-																	"raw": "{\n  \"action\": \"update\",\n  \"data\": {\n    \"description\": \"New Description\"\n  }\n}",
-																	"options": {
-																		"raw": {
-																			"headerFamily": "json",
-																			"language": "json"
-																		}
-																	}
-																},
-																"url": {
-																	"raw": "{{baseUrl}}/v1/settings/master/:id",
-																	"host": [
-																		"{{baseUrl}}"
-																	],
-																	"path": [
-																		"v1",
-																		"settings",
-																		"master",
-																		":id"
-																	],
-																	"variable": [
-																		{
-																			"key": "id"
-																		}
-																	]
-																}
-															},
-															"status": "OK",
-															"code": 200,
-															"_postman_previewlanguage": "text",
-															"header": [],
-															"cookie": [],
-															"responseTime": null,
-															"body": ""
-														}
-													]
-												},
-												{
-													"name": "Update master setting - invalid action",
-													"id": "f69a6fa4-b6de-43fd-a71a-2fc44216ac9d",
-													"protocolProfileBehavior": {
-														"disableBodyPruning": true
-													},
-													"request": {
-														"method": "PATCH",
-														"header": [
-															{
-																"key": "Content-Type",
-																"value": "application/json"
-															}
-														],
-														"body": {
-															"mode": "raw",
-															"raw": "{\n  \"action\": \"update\",\n  \"data\": {\n    \"description\": \"New Description\"\n  }\n}",
-															"options": {
-																"raw": {
-																	"headerFamily": "json",
-																	"language": "json"
-																}
-															}
-														},
-														"url": {
-															"raw": "{{baseUrl}}/v1/settings/master/:id",
-															"host": [
-																"{{baseUrl}}"
-															],
-															"path": [
-																"v1",
-																"settings",
-																"master",
-																":id"
-															],
-															"variable": [
-																{
-																	"id": "ba786e69-70d3-4db9-9858-77838365c8bd",
-																	"key": "id",
-																	"value": "<number>",
-																	"description": "(Required) "
-																}
-															]
-														}
-													},
-													"response": [
-														{
-															"id": "f212bf9a-562d-46a7-b3de-012ff644f503",
-															"name": "Untitled Response",
-															"originalRequest": {
-																"method": "PATCH",
-																"header": [
-																	{
-																		"key": "Content-Type",
-																		"value": "application/json"
-																	}
-																],
-																"body": {
-																	"mode": "raw",
-																	"raw": "{\n  \"action\": \"update\",\n  \"data\": {\n    \"description\": \"New Description\"\n  }\n}",
-																	"options": {
-																		"raw": {
-																			"headerFamily": "json",
-																			"language": "json"
-																		}
-																	}
-																},
-																"url": {
-																	"raw": "{{baseUrl}}/v1/settings/master/:id",
-																	"host": [
-																		"{{baseUrl}}"
-																	],
-																	"path": [
-																		"v1",
-																		"settings",
-																		"master",
-																		":id"
-																	],
-																	"variable": [
-																		{
-																			"key": "id"
-																		}
-																	]
-																}
-															},
-															"status": "OK",
-															"code": 200,
-															"_postman_previewlanguage": "text",
-															"header": [],
-															"cookie": [],
-															"responseTime": null,
-															"body": ""
-														}
-													]
-												},
-												{
-													"name": "Update master setting - ID does not exist",
-													"id": "677f0a74-cb97-41c4-aaaf-064c2f607b1f",
-													"protocolProfileBehavior": {
-														"disableBodyPruning": true
-													},
-													"request": {
-														"method": "PATCH",
-														"header": [
-															{
-																"key": "Content-Type",
-																"value": "application/json"
-															}
-														],
-														"body": {
-															"mode": "raw",
-															"raw": "{\n  \"action\": \"update\",\n  \"data\": {\n    \"description\": \"New Description\"\n  }\n}",
-															"options": {
-																"raw": {
-																	"headerFamily": "json",
-																	"language": "json"
-																}
-															}
-														},
-														"url": {
-															"raw": "{{baseUrl}}/v1/settings/master/:id",
-															"host": [
-																"{{baseUrl}}"
-															],
-															"path": [
-																"v1",
-																"settings",
-																"master",
-																":id"
-															],
-															"variable": [
-																{
-																	"id": "ba786e69-70d3-4db9-9858-77838365c8bd",
-																	"key": "id",
-																	"value": "<number>",
-																	"description": "(Required) "
-																}
-															]
-														}
-													},
-													"response": [
-														{
-															"id": "0e1b639d-974f-4b1c-bd9d-c00d772c4e81",
-															"name": "Untitled Response",
-															"originalRequest": {
-																"method": "PATCH",
-																"header": [
-																	{
-																		"key": "Content-Type",
-																		"value": "application/json"
-																	}
-																],
-																"body": {
-																	"mode": "raw",
-																	"raw": "{\n  \"action\": \"update\",\n  \"data\": {\n    \"description\": \"New Description\"\n  }\n}",
-																	"options": {
-																		"raw": {
-																			"headerFamily": "json",
-																			"language": "json"
-																		}
-																	}
-																},
-																"url": {
-																	"raw": "{{baseUrl}}/v1/settings/master/:id",
-																	"host": [
-																		"{{baseUrl}}"
-																	],
-																	"path": [
-																		"v1",
-																		"settings",
-																		"master",
-																		":id"
-																	],
-																	"variable": [
-																		{
-																			"key": "id"
-																		}
-																	]
-																}
-															},
-															"status": "OK",
-															"code": 200,
-															"_postman_previewlanguage": "text",
-															"header": [],
-															"cookie": [],
-															"responseTime": null,
-															"body": ""
-														}
-													]
-												},
-												{
-													"name": "Update master setting - no description",
-													"id": "e351c3be-2c2a-47b4-81b7-ca39e94fba14",
-													"protocolProfileBehavior": {
-														"disableBodyPruning": true
-													},
-													"request": {
-														"method": "PATCH",
-														"header": [
-															{
-																"key": "Content-Type",
-																"value": "application/json"
-															}
-														],
-														"body": {
-															"mode": "raw",
-															"raw": "{\n  \"action\": \"update\",\n  \"data\": {\n    \"description\": \"New Description\"\n  }\n}",
-															"options": {
-																"raw": {
-																	"headerFamily": "json",
-																	"language": "json"
-																}
-															}
-														},
-														"url": {
-															"raw": "{{baseUrl}}/v1/settings/master/:id",
-															"host": [
-																"{{baseUrl}}"
-															],
-															"path": [
-																"v1",
-																"settings",
-																"master",
-																":id"
-															],
-															"variable": [
-																{
-																	"id": "ba786e69-70d3-4db9-9858-77838365c8bd",
-																	"key": "id",
-																	"value": "<number>",
-																	"description": "(Required) "
-																}
-															]
-														}
-													},
-													"response": [
-														{
-															"id": "52f6ca16-60dd-4c82-af99-2173cc794165",
-															"name": "Untitled Response",
-															"originalRequest": {
-																"method": "PATCH",
-																"header": [
-																	{
-																		"key": "Content-Type",
-																		"value": "application/json"
-																	}
-																],
-																"body": {
-																	"mode": "raw",
-																	"raw": "{\n  \"action\": \"update\",\n  \"data\": {\n    \"description\": \"New Description\"\n  }\n}",
-																	"options": {
-																		"raw": {
-																			"headerFamily": "json",
-																			"language": "json"
-																		}
-																	}
-																},
-																"url": {
-																	"raw": "{{baseUrl}}/v1/settings/master/:id",
-																	"host": [
-																		"{{baseUrl}}"
-																	],
-																	"path": [
-																		"v1",
-																		"settings",
-																		"master",
-																		":id"
-																	],
-																	"variable": [
-																		{
-																			"key": "id"
-																		}
-																	]
-																}
-															},
-															"status": "OK",
-															"code": 200,
-															"_postman_previewlanguage": "text",
-															"header": [],
-															"cookie": [],
-															"responseTime": null,
-															"body": ""
-														}
-													]
-												}
-											],
-											"id": "ce6422e1-ed61-453d-be2e-c8fa9da82c0d"
-										},
-										{
-											"name": "Create Master Setting",
-											"item": [
-												{
-													"name": "Create master setting - successful",
-													"id": "e6095b68-94c4-459e-a690-83d0f50c2469",
-													"protocolProfileBehavior": {
-														"disableBodyPruning": true
-													},
-													"request": {
-														"method": "POST",
-														"header": [
-															{
-																"key": "Content-Type",
-																"value": "application/json"
-															}
-														],
-														"body": {
-															"mode": "raw",
-															"raw": "{\n  \"category_id\": \"user-preferences\",\n  \"name\": \"Enable Notifications\",\n  \"value_type\": \"boolean\",\n  \"description\": \"Determines if the user receives notifications.\",\n  \"default_value\": true,\n  \"minimum_value\": \"<number>\",\n  \"maximum_value\": \"<number>\",\n  \"custom_validation\": \"<string>\",\n  \"meta\": {\n    \"displayName\": \"Notifications\",\n    \"icon\": \"bell\"\n  }\n}",
-															"options": {
-																"raw": {
-																	"headerFamily": "json",
-																	"language": "json"
-																}
-															}
-														},
-														"url": "{{baseUrl}}/v1/settings/master"
-													},
-													"response": [
-														{
-															"id": "efcf0a66-5c94-49ac-84f7-3c72ab5c669c",
-															"name": "Untitled Response",
-															"originalRequest": {
-																"method": "POST",
-																"header": [
-																	{
-																		"key": "Content-Type",
-																		"value": "application/json"
-																	}
-																],
-																"body": {
-																	"mode": "raw",
-																	"raw": "{\n  \"category_id\": \"user-preferences\",\n  \"name\": \"Enable Notifications\",\n  \"value_type\": \"boolean\",\n  \"description\": \"Determines if the user receives notifications.\",\n  \"default_value\": true,\n  \"minimum_value\": \"<number>\",\n  \"maximum_value\": \"<number>\",\n  \"custom_validation\": \"<string>\",\n  \"meta\": {\n    \"displayName\": \"Notifications\",\n    \"icon\": \"bell\"\n  }\n}",
-																	"options": {
-																		"raw": {
-																			"headerFamily": "json",
-																			"language": "json"
-																		}
-																	}
-																},
-																"url": "{{baseUrl}}/v1/settings/master"
-															},
-															"status": "Created",
-															"code": 201,
-															"_postman_previewlanguage": "text",
-															"header": [],
-															"cookie": [],
-															"responseTime": null,
-															"body": ""
-														}
-													]
-												},
-												{
-													"name": "Create master setting - invalid category ID",
-													"id": "a33749e7-8b75-4612-9b14-282428f5408d",
-													"protocolProfileBehavior": {
-														"disableBodyPruning": true
-													},
-													"request": {
-														"method": "POST",
-														"header": [
-															{
-																"key": "Content-Type",
-																"value": "application/json"
-															}
-														],
-														"body": {
-															"mode": "raw",
-															"raw": "{\n  \"category_id\": \"user-preferences\",\n  \"name\": \"Enable Notifications\",\n  \"value_type\": \"boolean\",\n  \"description\": \"Determines if the user receives notifications.\",\n  \"default_value\": true,\n  \"minimum_value\": \"<number>\",\n  \"maximum_value\": \"<number>\",\n  \"custom_validation\": \"<string>\",\n  \"meta\": {\n    \"displayName\": \"Notifications\",\n    \"icon\": \"bell\"\n  }\n}",
-															"options": {
-																"raw": {
-																	"headerFamily": "json",
-																	"language": "json"
-																}
-															}
-														},
-														"url": "{{baseUrl}}/v1/settings/master"
-													},
-													"response": [
-														{
-															"id": "e64839aa-d5e8-46dd-9837-d6e28f4b4bd6",
-															"name": "Untitled Response",
-															"originalRequest": {
-																"method": "POST",
-																"header": [
-																	{
-																		"key": "Content-Type",
-																		"value": "application/json"
-																	}
-																],
-																"body": {
-																	"mode": "raw",
-																	"raw": "{\n  \"category_id\": \"user-preferences\",\n  \"name\": \"Enable Notifications\",\n  \"value_type\": \"boolean\",\n  \"description\": \"Determines if the user receives notifications.\",\n  \"default_value\": true,\n  \"minimum_value\": \"<number>\",\n  \"maximum_value\": \"<number>\",\n  \"custom_validation\": \"<string>\",\n  \"meta\": {\n    \"displayName\": \"Notifications\",\n    \"icon\": \"bell\"\n  }\n}",
-																	"options": {
-																		"raw": {
-																			"headerFamily": "json",
-																			"language": "json"
-																		}
-																	}
-																},
-																"url": "{{baseUrl}}/v1/settings/master"
-															},
-															"status": "Created",
-															"code": 201,
-															"_postman_previewlanguage": "text",
-															"header": [],
-															"cookie": [],
-															"responseTime": null,
-															"body": ""
-														}
-													]
-												},
-												{
-													"name": "Create master setting - no name field",
-													"id": "1459e1f0-fda9-4d4e-a621-33ba0c6170aa",
-													"protocolProfileBehavior": {
-														"disableBodyPruning": true
-													},
-													"request": {
-														"method": "POST",
-														"header": [
-															{
-																"key": "Content-Type",
-																"value": "application/json"
-															}
-														],
-														"body": {
-															"mode": "raw",
-															"raw": "{\n  \"category_id\": \"user-preferences\",\n  \"name\": \"Enable Notifications\",\n  \"value_type\": \"boolean\",\n  \"description\": \"Determines if the user receives notifications.\",\n  \"default_value\": true,\n  \"minimum_value\": \"<number>\",\n  \"maximum_value\": \"<number>\",\n  \"custom_validation\": \"<string>\",\n  \"meta\": {\n    \"displayName\": \"Notifications\",\n    \"icon\": \"bell\"\n  }\n}",
-															"options": {
-																"raw": {
-																	"headerFamily": "json",
-																	"language": "json"
-																}
-															}
-														},
-														"url": "{{baseUrl}}/v1/settings/master"
-													},
-													"response": [
-														{
-															"id": "8a570284-4bb0-4036-b0b4-72ed18914c4d",
-															"name": "Untitled Response",
-															"originalRequest": {
-																"method": "POST",
-																"header": [
-																	{
-																		"key": "Content-Type",
-																		"value": "application/json"
-																	}
-																],
-																"body": {
-																	"mode": "raw",
-																	"raw": "{\n  \"category_id\": \"user-preferences\",\n  \"name\": \"Enable Notifications\",\n  \"value_type\": \"boolean\",\n  \"description\": \"Determines if the user receives notifications.\",\n  \"default_value\": true,\n  \"minimum_value\": \"<number>\",\n  \"maximum_value\": \"<number>\",\n  \"custom_validation\": \"<string>\",\n  \"meta\": {\n    \"displayName\": \"Notifications\",\n    \"icon\": \"bell\"\n  }\n}",
-																	"options": {
-																		"raw": {
-																			"headerFamily": "json",
-																			"language": "json"
-																		}
-																	}
-																},
-																"url": "{{baseUrl}}/v1/settings/master"
-															},
-															"status": "Created",
-															"code": 201,
-															"_postman_previewlanguage": "text",
-															"header": [],
-															"cookie": [],
-															"responseTime": null,
-															"body": ""
-														}
-													]
-												},
-												{
-													"name": "Create master setting - no value type",
-													"id": "cf1d8b47-080b-41fc-9831-06dc218e1a8d",
-													"protocolProfileBehavior": {
-														"disableBodyPruning": true
-													},
-													"request": {
-														"method": "POST",
-														"header": [
-															{
-																"key": "Content-Type",
-																"value": "application/json"
-															}
-														],
-														"body": {
-															"mode": "raw",
-															"raw": "{\n  \"category_id\": \"user-preferences\",\n  \"name\": \"Enable Notifications\",\n  \"value_type\": \"boolean\",\n  \"description\": \"Determines if the user receives notifications.\",\n  \"default_value\": true,\n  \"minimum_value\": \"<number>\",\n  \"maximum_value\": \"<number>\",\n  \"custom_validation\": \"<string>\",\n  \"meta\": {\n    \"displayName\": \"Notifications\",\n    \"icon\": \"bell\"\n  }\n}",
-															"options": {
-																"raw": {
-																	"headerFamily": "json",
-																	"language": "json"
-																}
-															}
-														},
-														"url": "{{baseUrl}}/v1/settings/master"
-													},
-													"response": [
-														{
-															"id": "80cdba12-d1f6-4350-ad82-c1195d5d5c20",
-															"name": "Untitled Response",
-															"originalRequest": {
-																"method": "POST",
-																"header": [
-																	{
-																		"key": "Content-Type",
-																		"value": "application/json"
-																	}
-																],
-																"body": {
-																	"mode": "raw",
-																	"raw": "{\n  \"category_id\": \"user-preferences\",\n  \"name\": \"Enable Notifications\",\n  \"value_type\": \"boolean\",\n  \"description\": \"Determines if the user receives notifications.\",\n  \"default_value\": true,\n  \"minimum_value\": \"<number>\",\n  \"maximum_value\": \"<number>\",\n  \"custom_validation\": \"<string>\",\n  \"meta\": {\n    \"displayName\": \"Notifications\",\n    \"icon\": \"bell\"\n  }\n}",
-																	"options": {
-																		"raw": {
-																			"headerFamily": "json",
-																			"language": "json"
-																		}
-																	}
-																},
-																"url": "{{baseUrl}}/v1/settings/master"
-															},
-															"status": "Created",
-															"code": 201,
-															"_postman_previewlanguage": "text",
-															"header": [],
-															"cookie": [],
-															"responseTime": null,
-															"body": ""
-														}
-													]
-												},
-												{
-													"name": "Create master setting - no description",
-													"id": "dae4a48b-08e4-48dc-b409-542a52619de5",
-													"protocolProfileBehavior": {
-														"disableBodyPruning": true
-													},
-													"request": {
-														"method": "POST",
-														"header": [
-															{
-																"key": "Content-Type",
-																"value": "application/json"
-															}
-														],
-														"body": {
-															"mode": "raw",
-															"raw": "{\n  \"category_id\": \"user-preferences\",\n  \"name\": \"Enable Notifications\",\n  \"value_type\": \"boolean\",\n  \"description\": \"Determines if the user receives notifications.\",\n  \"default_value\": true,\n  \"minimum_value\": \"<number>\",\n  \"maximum_value\": \"<number>\",\n  \"custom_validation\": \"<string>\",\n  \"meta\": {\n    \"displayName\": \"Notifications\",\n    \"icon\": \"bell\"\n  }\n}",
-															"options": {
-																"raw": {
-																	"headerFamily": "json",
-																	"language": "json"
-																}
-															}
-														},
-														"url": "{{baseUrl}}/v1/settings/master"
-													},
-													"response": [
-														{
-															"id": "d942b2b2-e482-4c98-8a8d-e41c04db470d",
-															"name": "Untitled Response",
-															"originalRequest": {
-																"method": "POST",
-																"header": [
-																	{
-																		"key": "Content-Type",
-																		"value": "application/json"
-																	}
-																],
-																"body": {
-																	"mode": "raw",
-																	"raw": "{\n  \"category_id\": \"user-preferences\",\n  \"name\": \"Enable Notifications\",\n  \"value_type\": \"boolean\",\n  \"description\": \"Determines if the user receives notifications.\",\n  \"default_value\": true,\n  \"minimum_value\": \"<number>\",\n  \"maximum_value\": \"<number>\",\n  \"custom_validation\": \"<string>\",\n  \"meta\": {\n    \"displayName\": \"Notifications\",\n    \"icon\": \"bell\"\n  }\n}",
-																	"options": {
-																		"raw": {
-																			"headerFamily": "json",
-																			"language": "json"
-																		}
-																	}
-																},
-																"url": "{{baseUrl}}/v1/settings/master"
-															},
-															"status": "Created",
-															"code": 201,
-															"_postman_previewlanguage": "text",
-															"header": [],
-															"cookie": [],
-															"responseTime": null,
-															"body": ""
-														}
-													]
-												},
-												{
-													"name": "Create master setting - invalid minimum value",
-													"id": "b35433dd-1398-4d8d-84b1-9237e44a8460",
-													"protocolProfileBehavior": {
-														"disableBodyPruning": true
-													},
-													"request": {
-														"method": "POST",
-														"header": [
-															{
-																"key": "Content-Type",
-																"value": "application/json"
-															}
-														],
-														"body": {
-															"mode": "raw",
-															"raw": "{\n  \"category_id\": \"user-preferences\",\n  \"name\": \"Enable Notifications\",\n  \"value_type\": \"boolean\",\n  \"description\": \"Determines if the user receives notifications.\",\n  \"default_value\": true,\n  \"minimum_value\": \"<number>\",\n  \"maximum_value\": \"<number>\",\n  \"custom_validation\": \"<string>\",\n  \"meta\": {\n    \"displayName\": \"Notifications\",\n    \"icon\": \"bell\"\n  }\n}",
-															"options": {
-																"raw": {
-																	"headerFamily": "json",
-																	"language": "json"
-																}
-															}
-														},
-														"url": "{{baseUrl}}/v1/settings/master"
-													},
-													"response": [
-														{
-															"id": "fc97ee92-ba39-48b3-8151-ba591256d176",
-															"name": "Untitled Response",
-															"originalRequest": {
-																"method": "POST",
-																"header": [
-																	{
-																		"key": "Content-Type",
-																		"value": "application/json"
-																	}
-																],
-																"body": {
-																	"mode": "raw",
-																	"raw": "{\n  \"category_id\": \"user-preferences\",\n  \"name\": \"Enable Notifications\",\n  \"value_type\": \"boolean\",\n  \"description\": \"Determines if the user receives notifications.\",\n  \"default_value\": true,\n  \"minimum_value\": \"<number>\",\n  \"maximum_value\": \"<number>\",\n  \"custom_validation\": \"<string>\",\n  \"meta\": {\n    \"displayName\": \"Notifications\",\n    \"icon\": \"bell\"\n  }\n}",
-																	"options": {
-																		"raw": {
-																			"headerFamily": "json",
-																			"language": "json"
-																		}
-																	}
-																},
-																"url": "{{baseUrl}}/v1/settings/master"
-															},
-															"status": "Created",
-															"code": 201,
-															"_postman_previewlanguage": "text",
-															"header": [],
-															"cookie": [],
-															"responseTime": null,
-															"body": ""
-														}
-													]
-												},
-												{
-													"name": "Create master setting - invalid maximum value",
-													"id": "f9efbcd5-24cd-412a-8e30-2b65f6297d80",
-													"protocolProfileBehavior": {
-														"disableBodyPruning": true
-													},
-													"request": {
-														"method": "POST",
-														"header": [
-															{
-																"key": "Content-Type",
-																"value": "application/json"
-															}
-														],
-														"body": {
-															"mode": "raw",
-															"raw": "{\n  \"category_id\": \"user-preferences\",\n  \"name\": \"Enable Notifications\",\n  \"value_type\": \"boolean\",\n  \"description\": \"Determines if the user receives notifications.\",\n  \"default_value\": true,\n  \"minimum_value\": \"<number>\",\n  \"maximum_value\": \"<number>\",\n  \"custom_validation\": \"<string>\",\n  \"meta\": {\n    \"displayName\": \"Notifications\",\n    \"icon\": \"bell\"\n  }\n}",
-															"options": {
-																"raw": {
-																	"headerFamily": "json",
-																	"language": "json"
-																}
-															}
-														},
-														"url": "{{baseUrl}}/v1/settings/master"
-													},
-													"response": [
-														{
-															"id": "f66bf68c-bace-4b15-9891-427d107551b1",
-															"name": "Untitled Response",
-															"originalRequest": {
-																"method": "POST",
-																"header": [
-																	{
-																		"key": "Content-Type",
-																		"value": "application/json"
-																	}
-																],
-																"body": {
-																	"mode": "raw",
-																	"raw": "{\n  \"category_id\": \"user-preferences\",\n  \"name\": \"Enable Notifications\",\n  \"value_type\": \"boolean\",\n  \"description\": \"Determines if the user receives notifications.\",\n  \"default_value\": true,\n  \"minimum_value\": \"<number>\",\n  \"maximum_value\": \"<number>\",\n  \"custom_validation\": \"<string>\",\n  \"meta\": {\n    \"displayName\": \"Notifications\",\n    \"icon\": \"bell\"\n  }\n}",
-																	"options": {
-																		"raw": {
-																			"headerFamily": "json",
-																			"language": "json"
-																		}
-																	}
-																},
-																"url": "{{baseUrl}}/v1/settings/master"
-															},
-															"status": "Created",
-															"code": 201,
-															"_postman_previewlanguage": "text",
-															"header": [],
-															"cookie": [],
-															"responseTime": null,
-															"body": ""
-														}
-													]
-												},
-												{
-													"name": "Create master setting - maximum value less than minimum value",
-													"id": "a8eda2eb-7990-418a-bf85-2e364189fbbe",
-													"protocolProfileBehavior": {
-														"disableBodyPruning": true
-													},
-													"request": {
-														"method": "POST",
-														"header": [
-															{
-																"key": "Content-Type",
-																"value": "application/json"
-															}
-														],
-														"body": {
-															"mode": "raw",
-															"raw": "{\n  \"category_id\": \"user-preferences\",\n  \"name\": \"Enable Notifications\",\n  \"value_type\": \"boolean\",\n  \"description\": \"Determines if the user receives notifications.\",\n  \"default_value\": true,\n  \"minimum_value\": \"<number>\",\n  \"maximum_value\": \"<number>\",\n  \"custom_validation\": \"<string>\",\n  \"meta\": {\n    \"displayName\": \"Notifications\",\n    \"icon\": \"bell\"\n  }\n}",
-															"options": {
-																"raw": {
-																	"headerFamily": "json",
-																	"language": "json"
-																}
-															}
-														},
-														"url": "{{baseUrl}}/v1/settings/master"
-													},
-													"response": [
-														{
-															"id": "b50465ec-a31d-47bf-88cb-113ab57723fd",
-															"name": "Untitled Response",
-															"originalRequest": {
-																"method": "POST",
-																"header": [
-																	{
-																		"key": "Content-Type",
-																		"value": "application/json"
-																	}
-																],
-																"body": {
-																	"mode": "raw",
-																	"raw": "{\n  \"category_id\": \"user-preferences\",\n  \"name\": \"Enable Notifications\",\n  \"value_type\": \"boolean\",\n  \"description\": \"Determines if the user receives notifications.\",\n  \"default_value\": true,\n  \"minimum_value\": \"<number>\",\n  \"maximum_value\": \"<number>\",\n  \"custom_validation\": \"<string>\",\n  \"meta\": {\n    \"displayName\": \"Notifications\",\n    \"icon\": \"bell\"\n  }\n}",
-																	"options": {
-																		"raw": {
-																			"headerFamily": "json",
-																			"language": "json"
-																		}
-																	}
-																},
-																"url": "{{baseUrl}}/v1/settings/master"
-															},
-															"status": "Created",
-															"code": 201,
-															"_postman_previewlanguage": "text",
-															"header": [],
-															"cookie": [],
-															"responseTime": null,
-															"body": ""
-														}
-													]
-												},
-												{
-													"name": "Create master setting - empty minimum value",
-													"id": "ccc3d47a-7714-4af5-9513-b460baecd79b",
-													"protocolProfileBehavior": {
-														"disableBodyPruning": true
-													},
-													"request": {
-														"method": "POST",
-														"header": [
-															{
-																"key": "Content-Type",
-																"value": "application/json"
-															}
-														],
-														"body": {
-															"mode": "raw",
-															"raw": "{\n  \"category_id\": \"user-preferences\",\n  \"name\": \"Enable Notifications\",\n  \"value_type\": \"boolean\",\n  \"description\": \"Determines if the user receives notifications.\",\n  \"default_value\": true,\n  \"minimum_value\": \"<number>\",\n  \"maximum_value\": \"<number>\",\n  \"custom_validation\": \"<string>\",\n  \"meta\": {\n    \"displayName\": \"Notifications\",\n    \"icon\": \"bell\"\n  }\n}",
-															"options": {
-																"raw": {
-																	"headerFamily": "json",
-																	"language": "json"
-																}
-															}
-														},
-														"url": "{{baseUrl}}/v1/settings/master"
-													},
-													"response": [
-														{
-															"id": "72cfeb50-9a7e-4ad5-8b1b-886f85a250e1",
-															"name": "Untitled Response",
-															"originalRequest": {
-																"method": "POST",
-																"header": [
-																	{
-																		"key": "Content-Type",
-																		"value": "application/json"
-																	}
-																],
-																"body": {
-																	"mode": "raw",
-																	"raw": "{\n  \"category_id\": \"user-preferences\",\n  \"name\": \"Enable Notifications\",\n  \"value_type\": \"boolean\",\n  \"description\": \"Determines if the user receives notifications.\",\n  \"default_value\": true,\n  \"minimum_value\": \"<number>\",\n  \"maximum_value\": \"<number>\",\n  \"custom_validation\": \"<string>\",\n  \"meta\": {\n    \"displayName\": \"Notifications\",\n    \"icon\": \"bell\"\n  }\n}",
-																	"options": {
-																		"raw": {
-																			"headerFamily": "json",
-																			"language": "json"
-																		}
-																	}
-																},
-																"url": "{{baseUrl}}/v1/settings/master"
-															},
-															"status": "Created",
-															"code": 201,
-															"_postman_previewlanguage": "text",
-															"header": [],
-															"cookie": [],
-															"responseTime": null,
-															"body": ""
-														}
-													]
-												},
-												{
-													"name": "Create master setting - empty maximum value",
-													"id": "7e54308b-15ff-49fe-a31b-fad0956c8a61",
-													"protocolProfileBehavior": {
-														"disableBodyPruning": true
-													},
-													"request": {
-														"method": "POST",
-														"header": [
-															{
-																"key": "Content-Type",
-																"value": "application/json"
-															}
-														],
-														"body": {
-															"mode": "raw",
-															"raw": "{\n  \"category_id\": \"user-preferences\",\n  \"name\": \"Enable Notifications\",\n  \"value_type\": \"boolean\",\n  \"description\": \"Determines if the user receives notifications.\",\n  \"default_value\": true,\n  \"minimum_value\": \"<number>\",\n  \"maximum_value\": \"<number>\",\n  \"custom_validation\": \"<string>\",\n  \"meta\": {\n    \"displayName\": \"Notifications\",\n    \"icon\": \"bell\"\n  }\n}",
-															"options": {
-																"raw": {
-																	"headerFamily": "json",
-																	"language": "json"
-																}
-															}
-														},
-														"url": "{{baseUrl}}/v1/settings/master"
-													},
-													"response": [
-														{
-															"id": "9ad1566a-b6a8-49b7-b7a7-14075083487d",
-															"name": "Untitled Response",
-															"originalRequest": {
-																"method": "POST",
-																"header": [
-																	{
-																		"key": "Content-Type",
-																		"value": "application/json"
-																	}
-																],
-																"body": {
-																	"mode": "raw",
-																	"raw": "{\n  \"category_id\": \"user-preferences\",\n  \"name\": \"Enable Notifications\",\n  \"value_type\": \"boolean\",\n  \"description\": \"Determines if the user receives notifications.\",\n  \"default_value\": true,\n  \"minimum_value\": \"<number>\",\n  \"maximum_value\": \"<number>\",\n  \"custom_validation\": \"<string>\",\n  \"meta\": {\n    \"displayName\": \"Notifications\",\n    \"icon\": \"bell\"\n  }\n}",
-																	"options": {
-																		"raw": {
-																			"headerFamily": "json",
-																			"language": "json"
-																		}
-																	}
-																},
-																"url": "{{baseUrl}}/v1/settings/master"
-															},
-															"status": "Created",
-															"code": 201,
-															"_postman_previewlanguage": "text",
-															"header": [],
-															"cookie": [],
-															"responseTime": null,
-															"body": ""
-														}
-													]
-												},
-												{
-													"name": "Create master setting - empty meta fields",
-													"id": "a2f41ff1-a865-4128-b216-6cb5fa4515f7",
-													"protocolProfileBehavior": {
-														"disableBodyPruning": true
-													},
-													"request": {
-														"method": "POST",
-														"header": [
-															{
-																"key": "Content-Type",
-																"value": "application/json"
-															}
-														],
-														"body": {
-															"mode": "raw",
-															"raw": "{\n  \"category_id\": \"user-preferences\",\n  \"name\": \"Enable Notifications\",\n  \"value_type\": \"boolean\",\n  \"description\": \"Determines if the user receives notifications.\",\n  \"default_value\": true,\n  \"minimum_value\": \"<number>\",\n  \"maximum_value\": \"<number>\",\n  \"custom_validation\": \"<string>\",\n  \"meta\": {\n    \"displayName\": \"Notifications\",\n    \"icon\": \"bell\"\n  }\n}",
-															"options": {
-																"raw": {
-																	"headerFamily": "json",
-																	"language": "json"
-																}
-															}
-														},
-														"url": "{{baseUrl}}/v1/settings/master"
-													},
-													"response": [
-														{
-															"id": "46e465f7-b3b5-43f8-a99f-5a05b5add9eb",
-															"name": "Untitled Response",
-															"originalRequest": {
-																"method": "POST",
-																"header": [
-																	{
-																		"key": "Content-Type",
-																		"value": "application/json"
-																	}
-																],
-																"body": {
-																	"mode": "raw",
-																	"raw": "{\n  \"category_id\": \"user-preferences\",\n  \"name\": \"Enable Notifications\",\n  \"value_type\": \"boolean\",\n  \"description\": \"Determines if the user receives notifications.\",\n  \"default_value\": true,\n  \"minimum_value\": \"<number>\",\n  \"maximum_value\": \"<number>\",\n  \"custom_validation\": \"<string>\",\n  \"meta\": {\n    \"displayName\": \"Notifications\",\n    \"icon\": \"bell\"\n  }\n}",
-																	"options": {
-																		"raw": {
-																			"headerFamily": "json",
-																			"language": "json"
-																		}
-																	}
-																},
-																"url": "{{baseUrl}}/v1/settings/master"
-															},
-															"status": "Created",
-															"code": 201,
-															"_postman_previewlanguage": "text",
-															"header": [],
-															"cookie": [],
-															"responseTime": null,
-															"body": ""
-														}
-													]
-												},
-												{
-													"name": "Create master setting - empty custom validation",
-													"id": "66bcfa44-e8e2-4bc1-a2b7-fd2a4b401a6d",
-													"protocolProfileBehavior": {
-														"disableBodyPruning": true
-													},
-													"request": {
-														"method": "POST",
-														"header": [
-															{
-																"key": "Content-Type",
-																"value": "application/json"
-															}
-														],
-														"body": {
-															"mode": "raw",
-															"raw": "{\n  \"category_id\": \"user-preferences\",\n  \"name\": \"Enable Notifications\",\n  \"value_type\": \"boolean\",\n  \"description\": \"Determines if the user receives notifications.\",\n  \"default_value\": true,\n  \"minimum_value\": \"<number>\",\n  \"maximum_value\": \"<number>\",\n  \"custom_validation\": \"<string>\",\n  \"meta\": {\n    \"displayName\": \"Notifications\",\n    \"icon\": \"bell\"\n  }\n}",
-															"options": {
-																"raw": {
-																	"headerFamily": "json",
-																	"language": "json"
-																}
-															}
-														},
-														"url": "{{baseUrl}}/v1/settings/master"
-													},
-													"response": [
-														{
-															"id": "3bf0a957-6162-4bcb-855d-4a7426159a43",
-															"name": "Untitled Response",
-															"originalRequest": {
-																"method": "POST",
-																"header": [
-																	{
-																		"key": "Content-Type",
-																		"value": "application/json"
-																	}
-																],
-																"body": {
-																	"mode": "raw",
-																	"raw": "{\n  \"category_id\": \"user-preferences\",\n  \"name\": \"Enable Notifications\",\n  \"value_type\": \"boolean\",\n  \"description\": \"Determines if the user receives notifications.\",\n  \"default_value\": true,\n  \"minimum_value\": \"<number>\",\n  \"maximum_value\": \"<number>\",\n  \"custom_validation\": \"<string>\",\n  \"meta\": {\n    \"displayName\": \"Notifications\",\n    \"icon\": \"bell\"\n  }\n}",
-																	"options": {
-																		"raw": {
-																			"headerFamily": "json",
-																			"language": "json"
-																		}
-																	}
-																},
-																"url": "{{baseUrl}}/v1/settings/master"
-															},
-															"status": "Created",
-															"code": 201,
-															"_postman_previewlanguage": "text",
-															"header": [],
-															"cookie": [],
-															"responseTime": null,
-															"body": ""
-														}
-													]
-												}
-											],
-											"id": "c216e8c5-b6e6-46cc-b22d-878fce51d53d"
-										},
-										{
-											"name": "Retrieve master setting",
-											"item": [
-												{
-													"name": "Retrieve master setting - successful",
-													"id": "ebf9fb65-1b24-41e5-a7e6-1f18092eb556",
-													"protocolProfileBehavior": {
-														"disableBodyPruning": true
-													},
-													"request": {
-														"auth": {
-															"type": "bearer",
-															"bearer": {
-																"token": "{{Bearer_token}}"
-															}
-														},
-														"method": "GET",
-														"header": [],
-														"url": {
-															"raw": "{{baseUrl}}/v1/settings/master?page=1&limit=10",
-															"host": [
-																"{{baseUrl}}"
-															],
-															"path": [
-																"v1",
-																"settings",
-																"master"
-															],
-															"query": [
-																{
-																	"key": "page",
-																	"value": "1"
-																},
-																{
-																	"key": "limit",
-																	"value": "10"
-																}
-															]
-														}
-													},
-													"response": [
-														{
-															"id": "71b860a5-e4ca-415c-8368-c1a256f3448d",
-															"name": "Untitled Response",
-															"originalRequest": {
-																"method": "GET",
-																"header": [],
-																"url": {
-																	"raw": "{{baseUrl}}/v1/settings/master?page=1&limit=10",
-																	"host": [
-																		"{{baseUrl}}"
-																	],
-																	"path": [
-																		"v1",
-																		"settings",
-																		"master"
-																	],
-																	"query": [
-																		{
-																			"key": "page",
-																			"value": "1"
-																		},
-																		{
-																			"key": "limit",
-																			"value": "10"
-																		}
-																	]
-																}
-															},
-															"status": "OK",
-															"code": 200,
-															"_postman_previewlanguage": "text",
-															"header": [],
-															"cookie": [],
-															"responseTime": null,
-															"body": ""
-														}
-													]
-												}
-											],
-											"id": "bb1d0a79-489d-4fdb-a56f-74e30c39361c"
-										},
-										{
-											"name": "Retrieve master setting by ID",
-											"item": [
-												{
-													"name": "Retrieve master setting by ID - successful",
-													"id": "9deae2ca-54fc-4fb5-8984-06b8a5dcfede",
-													"protocolProfileBehavior": {
-														"disableBodyPruning": true
-													},
-													"request": {
-														"auth": {
-															"type": "bearer",
-															"bearer": {
-																"token": "{{Bearer_token}}"
-															}
-														},
-														"method": "GET",
-														"header": [],
-														"url": {
-															"raw": "{{baseUrl}}/v1/settings/master/:id",
-															"host": [
-																"{{baseUrl}}"
-															],
-															"path": [
-																"v1",
-																"settings",
-																"master",
-																":id"
-															],
-															"variable": [
-																{
-																	"key": "id",
-																	"value": "29",
-																	"description": "(Required) "
-																}
-															]
-														}
-													},
-													"response": [
-														{
-															"id": "6d4fd381-a335-4527-8245-f5469be0c6d5",
-															"name": "Untitled Response",
-															"originalRequest": {
-																"method": "GET",
-																"header": [],
-																"url": {
-																	"raw": "{{baseUrl}}/v1/settings/master/:id",
-																	"host": [
-																		"{{baseUrl}}"
-																	],
-																	"path": [
-																		"v1",
-																		"settings",
-																		"master",
-																		":id"
-																	],
-																	"variable": [
-																		{
-																			"key": "id"
-																		}
-																	]
-																}
-															},
-															"status": "OK",
-															"code": 200,
-															"_postman_previewlanguage": "text",
-															"header": [],
-															"cookie": [],
-															"responseTime": null,
-															"body": ""
-														}
-													]
-												},
-												{
-													"name": "Retrieve master setting by ID - ID does not exist",
-													"id": "942c6ce3-3b98-4cb5-8d93-c6364500f304",
-													"protocolProfileBehavior": {
-														"disableBodyPruning": true
-													},
-													"request": {
-														"auth": {
-															"type": "bearer",
-															"bearer": {
-																"token": "{{Bearer_token}}"
-															}
-														},
-														"method": "GET",
-														"header": [],
-														"url": {
-															"raw": "{{baseUrl}}/v1/settings/master/:id",
-															"host": [
-																"{{baseUrl}}"
-															],
-															"path": [
-																"v1",
-																"settings",
-																"master",
-																":id"
-															],
-															"variable": [
-																{
-																	"id": "1d6ce5c6-d580-412c-931a-9370c2130b39",
-																	"key": "id",
-																	"value": "1",
-																	"description": "(Required) "
-																}
-															]
-														}
-													},
-													"response": [
-														{
-															"id": "9b30a751-0227-440a-899e-95002bc40b3c",
-															"name": "Untitled Response",
-															"originalRequest": {
-																"method": "GET",
-																"header": [],
-																"url": {
-																	"raw": "{{baseUrl}}/v1/settings/master/:id",
-																	"host": [
-																		"{{baseUrl}}"
-																	],
-																	"path": [
-																		"v1",
-																		"settings",
-																		"master",
-																		":id"
-																	],
-																	"variable": [
-																		{
-																			"key": "id"
-																		}
-																	]
-																}
-															},
-															"status": "OK",
-															"code": 200,
-															"_postman_previewlanguage": "text",
-															"header": [],
-															"cookie": [],
-															"responseTime": null,
-															"body": ""
-														}
-													]
-												},
-												{
-													"name": "Retrieve master setting by ID - invalid ID",
-													"id": "74dba347-9dfa-4286-8f13-48b5792523ac",
-													"protocolProfileBehavior": {
-														"disableBodyPruning": true
-													},
-													"request": {
-														"auth": {
-															"type": "bearer",
-															"bearer": {
-																"token": "{{Bearer_token}}"
-															}
-														},
-														"method": "GET",
-														"header": [],
-														"url": {
-															"raw": "{{baseUrl}}/v1/settings/master/:id",
-															"host": [
-																"{{baseUrl}}"
-															],
-															"path": [
-																"v1",
-																"settings",
-																"master",
-																":id"
-															],
-															"variable": [
-																{
-																	"id": "1d6ce5c6-d580-412c-931a-9370c2130b39",
-																	"key": "id",
-																	"value": "1",
-																	"description": "(Required) "
-																}
-															]
-														}
-													},
-													"response": [
-														{
-															"id": "ab748b70-6751-4ba6-9ad0-7c2f698a8f23",
-															"name": "Untitled Response",
-															"originalRequest": {
-																"method": "GET",
-																"header": [],
-																"url": {
-																	"raw": "{{baseUrl}}/v1/settings/master/:id",
-																	"host": [
-																		"{{baseUrl}}"
-																	],
-																	"path": [
-																		"v1",
-																		"settings",
-																		"master",
-																		":id"
-																	],
-																	"variable": [
-																		{
-																			"key": "id"
-																		}
-																	]
-																}
-															},
-															"status": "OK",
-															"code": 200,
-															"_postman_previewlanguage": "text",
-															"header": [],
-															"cookie": [],
-															"responseTime": null,
-															"body": ""
-														}
-													]
-												}
-											],
-											"id": "41e19ad9-5003-46b2-a4b5-187dde51bae6"
-										}
-									],
-									"id": "eb1bef89-3cd5-40ed-b59c-478c52d27bbf"
-								},
-								{
-									"name": "Retrieve setting by ID",
-									"item": [
-										{
-											"name": "Retrieve setting by ID",
-											"id": "967c3761-ad3c-4866-a1ae-7d70afe4cb8b",
-											"protocolProfileBehavior": {
-												"disableBodyPruning": true
-											},
-											"request": {
-												"auth": {
-													"type": "bearer",
-													"bearer": {
-														"token": "{{Bearer_token}}"
-													}
-												},
-												"method": "GET",
-												"header": [],
-												"url": {
-													"raw": "{{baseUrl}}/v1/settings/master/:id",
-													"host": [
-														"{{baseUrl}}"
-													],
-													"path": [
-														"v1",
-														"settings",
-														"master",
-														":id"
-													],
-													"variable": [
-														{
-															"key": "id",
-															"value": "33"
-														}
-													]
-												}
-											},
-											"response": [
-												{
-													"id": "5a64f3d6-0724-48b3-88f3-2cf93403d465",
-													"name": "Untitled Response",
-													"originalRequest": {
-														"method": "GET",
-														"header": [],
-														"url": {
-															"raw": "{{baseUrl}}/v1/settings/:id",
-															"host": [
-																"{{baseUrl}}"
-															],
-															"path": [
-																"v1",
-																"settings",
-																":id"
-															],
-															"variable": [
-																{
-																	"key": "id"
-																}
-															]
-														}
-													},
-													"status": "OK",
-													"code": 200,
-													"_postman_previewlanguage": "text",
-													"header": [],
-													"cookie": [],
-													"responseTime": null,
-													"body": ""
-												}
-											]
-										},
-										{
-											"name": "Retrieve setting by ID - ID does not exist",
-											"id": "3871ddef-000b-40d3-a39e-283594873a1c",
-											"protocolProfileBehavior": {
-												"disableBodyPruning": true
-											},
-											"request": {
-												"method": "GET",
-												"header": [],
-												"url": {
-													"raw": "{{baseUrl}}/v1/settings/:id",
-													"host": [
-														"{{baseUrl}}"
-													],
-													"path": [
-														"v1",
-														"settings",
-														":id"
-													],
-													"variable": [
-														{
-															"id": "b5f37226-68be-4cc3-8294-f5e8b6f7d48d",
-															"key": "id",
-															"value": "<number>",
-															"description": "(Required) "
-														}
-													]
-												}
-											},
-											"response": [
-												{
-													"id": "474f6211-5cc6-4e3b-94bc-8ce7eca556d1",
-													"name": "Untitled Response",
-													"originalRequest": {
-														"method": "GET",
-														"header": [],
-														"url": {
-															"raw": "{{baseUrl}}/v1/settings/:id",
-															"host": [
-																"{{baseUrl}}"
-															],
-															"path": [
-																"v1",
-																"settings",
-																":id"
-															],
-															"variable": [
-																{
-																	"key": "id"
-																}
-															]
-														}
-													},
-													"status": "OK",
-													"code": 200,
-													"_postman_previewlanguage": "text",
-													"header": [],
-													"cookie": [],
-													"responseTime": null,
-													"body": ""
-												}
-											]
-										},
-										{
-											"name": "Retrieve setting by ID - invalid ID",
-											"id": "a56e9b2d-0bb5-4b95-8fda-20a46bb43e1f",
-											"protocolProfileBehavior": {
-												"disableBodyPruning": true
-											},
-											"request": {
-												"method": "GET",
-												"header": [],
-												"url": {
-													"raw": "{{baseUrl}}/v1/settings/:id",
-													"host": [
-														"{{baseUrl}}"
-													],
-													"path": [
-														"v1",
-														"settings",
-														":id"
-													],
-													"variable": [
-														{
-															"id": "b5f37226-68be-4cc3-8294-f5e8b6f7d48d",
-															"key": "id",
-															"value": "<number>",
-															"description": "(Required) "
-														}
-													]
-												}
-											},
-											"response": [
-												{
-													"id": "15fe7772-680b-4020-9209-d39f6ebab090",
-													"name": "Untitled Response",
-													"originalRequest": {
-														"method": "GET",
-														"header": [],
-														"url": {
-															"raw": "{{baseUrl}}/v1/settings/:id",
-															"host": [
-																"{{baseUrl}}"
-															],
-															"path": [
-																"v1",
-																"settings",
-																":id"
-															],
-															"variable": [
-																{
-																	"key": "id"
-																}
-															]
-														}
-													},
-													"status": "OK",
-													"code": 200,
-													"_postman_previewlanguage": "text",
-													"header": [],
-													"cookie": [],
-													"responseTime": null,
-													"body": ""
-												}
-											]
-										}
-									],
-									"id": "6167491b-8285-4144-a295-3055b54d3419"
-								},
-								{
-									"name": "Entity",
-									"item": [
-										{
-											"name": "Retrieve setting by entity ID",
-											"id": "3a2cba22-cb2f-4c4e-a00f-94383e18506d",
-											"protocolProfileBehavior": {
-												"disableBodyPruning": true
-											},
-											"request": {
-												"method": "GET",
-												"header": [],
-												"url": {
-													"raw": "{{baseUrl}}/v1/settings/entity/:type/:id",
-													"host": [
-														"{{baseUrl}}"
-													],
-													"path": [
-														"v1",
-														"settings",
-														"entity",
-														":type",
-														":id"
-													],
-													"variable": [
-														{
-															"id": "00ea2ad0-6a31-4948-925a-97c468cb8c46",
-															"key": "type",
-															"value": "<string>",
-															"description": "(Required) "
-														},
-														{
-															"id": "60e0fcdf-4674-4f59-aa2e-eeddbe397f36",
-															"key": "id",
-															"value": "<number>",
-															"description": "(Required) "
-														}
-													]
-												}
-											},
-											"response": [
-												{
-													"id": "4564b965-61e6-458d-8d2c-fc41eb2a98e4",
-													"name": "Untitled Response",
-													"originalRequest": {
-														"method": "GET",
-														"header": [],
-														"url": {
-															"raw": "{{baseUrl}}/v1/settings/entity/:type/:id",
-															"host": [
-																"{{baseUrl}}"
-															],
-															"path": [
-																"v1",
-																"settings",
-																"entity",
-																":type",
-																":id"
-															],
-															"variable": [
-																{
-																	"key": "type"
-																},
-																{
-																	"key": "id"
-																}
-															]
-														}
-													},
-													"status": "OK",
-													"code": 200,
-													"_postman_previewlanguage": "text",
-													"header": [],
-													"cookie": [],
-													"responseTime": null,
-													"body": ""
-												}
-											]
-										}
-									],
-									"id": "2d995424-ec61-46b6-8932-fda92b233e47"
-								},
-								{
-									"name": "Create Settings",
-									"item": [
-										{
-											"name": "Create Settings - successful",
-											"id": "c82ab2a3-63ad-4948-9cc5-4184145ff50d",
-											"protocolProfileBehavior": {
-												"disableBodyPruning": true
-											},
-											"request": {
-												"auth": {
-													"type": "bearer",
-													"bearer": {
-														"token": "{{Bearer_token}}"
-													}
-												},
-												"method": "POST",
-												"header": [
-													{
-														"key": "accept",
-														"value": "*/*"
-													},
-													{
-														"key": "Content-Type",
-														"value": "application/json"
-													}
-												],
-												"body": {
-													"mode": "raw",
-													"raw": "{\n  \"value\": \"{\\\"minLength\\\":9,\\\"minLowercase\\\":1,\\\"minUppercase\\\":1,\\\"minNumbers\\\":1,\\\"minSymbols\\\":2}\"\n}",
-													"options": {
-														"raw": {
-															"language": "json"
-														}
-													}
-												},
-												"url": "{{baseUrl}}/v1/settings/master/27/values"
-											},
-											"response": [
-												{
-													"id": "cc8b8f19-6a43-486c-bb34-a9c8b5e60e78",
-													"name": "Untitled Response",
-													"originalRequest": {
-														"method": "POST",
-														"header": [
-															{
-																"key": "Content-Type",
-																"value": "application/json"
-															}
-														],
-														"body": {
-															"mode": "raw",
-															"raw": "{\n  \"entity_type\": \"user\",\n  \"entity_id\": 1,\n  \"settings_master_id\": 1,\n  \"value\": true,\n  \"meta\": {\n    \"displayName\": \"User Notifications\",\n    \"icon\": \"bell\"\n  }\n}",
-															"options": {
-																"raw": {
-																	"headerFamily": "json",
-																	"language": "json"
-																}
-															}
-														},
-														"url": "{{baseUrl}}/v1/settings"
-													},
-													"status": "Created",
-													"code": 201,
-													"_postman_previewlanguage": "text",
-													"header": [],
-													"cookie": [],
-													"responseTime": null,
-													"body": ""
-												}
-											]
-										},
-										{
-											"name": "Create Settings - invalid entity type",
-											"id": "1dc49502-393e-437a-8a84-e4c0a4f8c288",
-											"protocolProfileBehavior": {
-												"disableBodyPruning": true
-											},
-											"request": {
-												"method": "POST",
-												"header": [
-													{
-														"key": "Content-Type",
-														"value": "application/json"
-													}
-												],
-												"body": {
-													"mode": "raw",
-													"raw": "{\n  \"entity_type\": \"user\",\n  \"entity_id\": 1,\n  \"settings_master_id\": 1,\n  \"value\": true,\n  \"meta\": {\n    \"displayName\": \"User Notifications\",\n    \"icon\": \"bell\"\n  }\n}",
-													"options": {
-														"raw": {
-															"headerFamily": "json",
-															"language": "json"
-														}
-													}
-												},
-												"url": "{{baseUrl}}/v1/settings"
-											},
-											"response": [
-												{
-													"id": "b62b71aa-a13d-4c24-bab2-2d8b37d6f40f",
-													"name": "Untitled Response",
-													"originalRequest": {
-														"method": "POST",
-														"header": [
-															{
-																"key": "Content-Type",
-																"value": "application/json"
-															}
-														],
-														"body": {
-															"mode": "raw",
-															"raw": "{\n  \"entity_type\": \"user\",\n  \"entity_id\": 1,\n  \"settings_master_id\": 1,\n  \"value\": true,\n  \"meta\": {\n    \"displayName\": \"User Notifications\",\n    \"icon\": \"bell\"\n  }\n}",
-															"options": {
-																"raw": {
-																	"headerFamily": "json",
-																	"language": "json"
-																}
-															}
-														},
-														"url": "{{baseUrl}}/v1/settings"
-													},
-													"status": "Created",
-													"code": 201,
-													"_postman_previewlanguage": "text",
-													"header": [],
-													"cookie": [],
-													"responseTime": null,
-													"body": ""
-												}
-											]
-										},
-										{
-											"name": "Create Settings - missing entity type",
-											"id": "5e7a6551-6257-4f32-84e1-033b60dcf7a5",
-											"protocolProfileBehavior": {
-												"disableBodyPruning": true
-											},
-											"request": {
-												"method": "POST",
-												"header": [
-													{
-														"key": "Content-Type",
-														"value": "application/json"
-													}
-												],
-												"body": {
-													"mode": "raw",
-													"raw": "{\n  \"entity_type\": \"user\",\n  \"entity_id\": 1,\n  \"settings_master_id\": 1,\n  \"value\": true,\n  \"meta\": {\n    \"displayName\": \"User Notifications\",\n    \"icon\": \"bell\"\n  }\n}",
-													"options": {
-														"raw": {
-															"headerFamily": "json",
-															"language": "json"
-														}
-													}
-												},
-												"url": "{{baseUrl}}/v1/settings"
-											},
-											"response": [
-												{
-													"id": "64a628b4-b6d3-4fa4-a82f-d8f3f83f0375",
-													"name": "Untitled Response",
-													"originalRequest": {
-														"method": "POST",
-														"header": [
-															{
-																"key": "Content-Type",
-																"value": "application/json"
-															}
-														],
-														"body": {
-															"mode": "raw",
-															"raw": "{\n  \"entity_type\": \"user\",\n  \"entity_id\": 1,\n  \"settings_master_id\": 1,\n  \"value\": true,\n  \"meta\": {\n    \"displayName\": \"User Notifications\",\n    \"icon\": \"bell\"\n  }\n}",
-															"options": {
-																"raw": {
-																	"headerFamily": "json",
-																	"language": "json"
-																}
-															}
-														},
-														"url": "{{baseUrl}}/v1/settings"
-													},
-													"status": "Created",
-													"code": 201,
-													"_postman_previewlanguage": "text",
-													"header": [],
-													"cookie": [],
-													"responseTime": null,
-													"body": ""
-												}
-											]
-										},
-										{
-											"name": "Create Settings - invalid entity ID",
-											"id": "0c1d6695-e78d-4f3c-879e-1f5279855c72",
-											"protocolProfileBehavior": {
-												"disableBodyPruning": true
-											},
-											"request": {
-												"method": "POST",
-												"header": [
-													{
-														"key": "Content-Type",
-														"value": "application/json"
-													}
-												],
-												"body": {
-													"mode": "raw",
-													"raw": "{\n  \"entity_type\": \"user\",\n  \"entity_id\": 1,\n  \"settings_master_id\": 1,\n  \"value\": true,\n  \"meta\": {\n    \"displayName\": \"User Notifications\",\n    \"icon\": \"bell\"\n  }\n}",
-													"options": {
-														"raw": {
-															"headerFamily": "json",
-															"language": "json"
-														}
-													}
-												},
-												"url": "{{baseUrl}}/v1/settings"
-											},
-											"response": [
-												{
-													"id": "7a845ac9-7926-4df1-a56f-539f5a356619",
-													"name": "Untitled Response",
-													"originalRequest": {
-														"method": "POST",
-														"header": [
-															{
-																"key": "Content-Type",
-																"value": "application/json"
-															}
-														],
-														"body": {
-															"mode": "raw",
-															"raw": "{\n  \"entity_type\": \"user\",\n  \"entity_id\": 1,\n  \"settings_master_id\": 1,\n  \"value\": true,\n  \"meta\": {\n    \"displayName\": \"User Notifications\",\n    \"icon\": \"bell\"\n  }\n}",
-															"options": {
-																"raw": {
-																	"headerFamily": "json",
-																	"language": "json"
-																}
-															}
-														},
-														"url": "{{baseUrl}}/v1/settings"
-													},
-													"status": "Created",
-													"code": 201,
-													"_postman_previewlanguage": "text",
-													"header": [],
-													"cookie": [],
-													"responseTime": null,
-													"body": ""
-												}
-											]
-										},
-										{
-											"name": "Create Settings - invalid master settings ID",
-											"id": "16cd8de2-8bb7-4a32-8a2a-11bc0d878cf6",
-											"protocolProfileBehavior": {
-												"disableBodyPruning": true
-											},
-											"request": {
-												"method": "POST",
-												"header": [
-													{
-														"key": "Content-Type",
-														"value": "application/json"
-													}
-												],
-												"body": {
-													"mode": "raw",
-													"raw": "{\n  \"entity_type\": \"user\",\n  \"entity_id\": 1,\n  \"settings_master_id\": 1,\n  \"value\": true,\n  \"meta\": {\n    \"displayName\": \"User Notifications\",\n    \"icon\": \"bell\"\n  }\n}",
-													"options": {
-														"raw": {
-															"headerFamily": "json",
-															"language": "json"
-														}
-													}
-												},
-												"url": "{{baseUrl}}/v1/settings"
-											},
-											"response": [
-												{
-													"id": "8ad28519-a688-4e29-a988-b43fd70b47a0",
-													"name": "Untitled Response",
-													"originalRequest": {
-														"method": "POST",
-														"header": [
-															{
-																"key": "Content-Type",
-																"value": "application/json"
-															}
-														],
-														"body": {
-															"mode": "raw",
-															"raw": "{\n  \"entity_type\": \"user\",\n  \"entity_id\": 1,\n  \"settings_master_id\": 1,\n  \"value\": true,\n  \"meta\": {\n    \"displayName\": \"User Notifications\",\n    \"icon\": \"bell\"\n  }\n}",
-															"options": {
-																"raw": {
-																	"headerFamily": "json",
-																	"language": "json"
-																}
-															}
-														},
-														"url": "{{baseUrl}}/v1/settings"
-													},
-													"status": "Created",
-													"code": 201,
-													"_postman_previewlanguage": "text",
-													"header": [],
-													"cookie": [],
-													"responseTime": null,
-													"body": ""
-												}
-											]
-										},
-										{
-											"name": "Create Settings - missing master settings ID",
-											"id": "53d06947-d0c0-4c93-9743-5f0af7c8e42a",
-											"protocolProfileBehavior": {
-												"disableBodyPruning": true
-											},
-											"request": {
-												"method": "POST",
-												"header": [
-													{
-														"key": "Content-Type",
-														"value": "application/json"
-													}
-												],
-												"body": {
-													"mode": "raw",
-													"raw": "{\n  \"entity_type\": \"user\",\n  \"entity_id\": 1,\n  \"settings_master_id\": 1,\n  \"value\": true,\n  \"meta\": {\n    \"displayName\": \"User Notifications\",\n    \"icon\": \"bell\"\n  }\n}",
-													"options": {
-														"raw": {
-															"headerFamily": "json",
-															"language": "json"
-														}
-													}
-												},
-												"url": "{{baseUrl}}/v1/settings"
-											},
-											"response": [
-												{
-													"id": "9aa0f132-e9bd-4790-ae1a-868f92751e60",
-													"name": "Untitled Response",
-													"originalRequest": {
-														"method": "POST",
-														"header": [
-															{
-																"key": "Content-Type",
-																"value": "application/json"
-															}
-														],
-														"body": {
-															"mode": "raw",
-															"raw": "{\n  \"entity_type\": \"user\",\n  \"entity_id\": 1,\n  \"settings_master_id\": 1,\n  \"value\": true,\n  \"meta\": {\n    \"displayName\": \"User Notifications\",\n    \"icon\": \"bell\"\n  }\n}",
-															"options": {
-																"raw": {
-																	"headerFamily": "json",
-																	"language": "json"
-																}
-															}
-														},
-														"url": "{{baseUrl}}/v1/settings"
-													},
-													"status": "Created",
-													"code": 201,
-													"_postman_previewlanguage": "text",
-													"header": [],
-													"cookie": [],
-													"responseTime": null,
-													"body": ""
-												}
-											]
-										},
-										{
-											"name": "Create Settings - invalid value",
-											"id": "5edc62c7-ecb8-4617-9c1d-c71818bd53bf",
-											"protocolProfileBehavior": {
-												"disableBodyPruning": true
-											},
-											"request": {
-												"method": "POST",
-												"header": [
-													{
-														"key": "Content-Type",
-														"value": "application/json"
-													}
-												],
-												"body": {
-													"mode": "raw",
-													"raw": "{\n  \"entity_type\": \"user\",\n  \"entity_id\": 1,\n  \"settings_master_id\": 1,\n  \"value\": true,\n  \"meta\": {\n    \"displayName\": \"User Notifications\",\n    \"icon\": \"bell\"\n  }\n}",
-													"options": {
-														"raw": {
-															"headerFamily": "json",
-															"language": "json"
-														}
-													}
-												},
-												"url": "{{baseUrl}}/v1/settings"
-											},
-											"response": [
-												{
-													"id": "67194fb5-1937-4394-8197-36ce56256bef",
-													"name": "Untitled Response",
-													"originalRequest": {
-														"method": "POST",
-														"header": [
-															{
-																"key": "Content-Type",
-																"value": "application/json"
-															}
-														],
-														"body": {
-															"mode": "raw",
-															"raw": "{\n  \"entity_type\": \"user\",\n  \"entity_id\": 1,\n  \"settings_master_id\": 1,\n  \"value\": true,\n  \"meta\": {\n    \"displayName\": \"User Notifications\",\n    \"icon\": \"bell\"\n  }\n}",
-															"options": {
-																"raw": {
-																	"headerFamily": "json",
-																	"language": "json"
-																}
-															}
-														},
-														"url": "{{baseUrl}}/v1/settings"
-													},
-													"status": "Created",
-													"code": 201,
-													"_postman_previewlanguage": "text",
-													"header": [],
-													"cookie": [],
-													"responseTime": null,
-													"body": ""
-												}
-											]
-										},
-										{
-											"name": "Create Settings - non-existing entity ID",
-											"id": "3c211989-0e1b-470f-b3f0-ffdfe55a08b1",
-											"protocolProfileBehavior": {
-												"disableBodyPruning": true
-											},
-											"request": {
-												"method": "POST",
-												"header": [
-													{
-														"key": "Content-Type",
-														"value": "application/json"
-													}
-												],
-												"body": {
-													"mode": "raw",
-													"raw": "{\n  \"entity_type\": \"user\",\n  \"entity_id\": 1,\n  \"settings_master_id\": 1,\n  \"value\": true,\n  \"meta\": {\n    \"displayName\": \"User Notifications\",\n    \"icon\": \"bell\"\n  }\n}",
-													"options": {
-														"raw": {
-															"headerFamily": "json",
-															"language": "json"
-														}
-													}
-												},
-												"url": "{{baseUrl}}/v1/settings"
-											},
-											"response": [
-												{
-													"id": "2e7e78fa-0193-40ba-b680-ecdb5294ac68",
-													"name": "Untitled Response",
-													"originalRequest": {
-														"method": "POST",
-														"header": [
-															{
-																"key": "Content-Type",
-																"value": "application/json"
-															}
-														],
-														"body": {
-															"mode": "raw",
-															"raw": "{\n  \"entity_type\": \"user\",\n  \"entity_id\": 1,\n  \"settings_master_id\": 1,\n  \"value\": true,\n  \"meta\": {\n    \"displayName\": \"User Notifications\",\n    \"icon\": \"bell\"\n  }\n}",
-															"options": {
-																"raw": {
-																	"headerFamily": "json",
-																	"language": "json"
-																}
-															}
-														},
-														"url": "{{baseUrl}}/v1/settings"
-													},
-													"status": "Created",
-													"code": 201,
-													"_postman_previewlanguage": "text",
-													"header": [],
-													"cookie": [],
-													"responseTime": null,
-													"body": ""
-												}
-											]
-										},
-										{
-											"name": "Create Settings - non-existing master settings ID",
-											"id": "0db72c3a-620b-4b77-a348-b7cbde4da222",
-											"protocolProfileBehavior": {
-												"disableBodyPruning": true
-											},
-											"request": {
-												"method": "POST",
-												"header": [
-													{
-														"key": "Content-Type",
-														"value": "application/json"
-													}
-												],
-												"body": {
-													"mode": "raw",
-													"raw": "{\n  \"entity_type\": \"user\",\n  \"entity_id\": 1,\n  \"settings_master_id\": 1,\n  \"value\": true,\n  \"meta\": {\n    \"displayName\": \"User Notifications\",\n    \"icon\": \"bell\"\n  }\n}",
-													"options": {
-														"raw": {
-															"headerFamily": "json",
-															"language": "json"
-														}
-													}
-												},
-												"url": "{{baseUrl}}/v1/settings"
-											},
-											"response": [
-												{
-													"id": "8e35975e-bbc5-4b57-95ef-ee1121605798",
-													"name": "Untitled Response",
-													"originalRequest": {
-														"method": "POST",
-														"header": [
-															{
-																"key": "Content-Type",
-																"value": "application/json"
-															}
-														],
-														"body": {
-															"mode": "raw",
-															"raw": "{\n  \"entity_type\": \"user\",\n  \"entity_id\": 1,\n  \"settings_master_id\": 1,\n  \"value\": true,\n  \"meta\": {\n    \"displayName\": \"User Notifications\",\n    \"icon\": \"bell\"\n  }\n}",
-															"options": {
-																"raw": {
-																	"headerFamily": "json",
-																	"language": "json"
-																}
-															}
-														},
-														"url": "{{baseUrl}}/v1/settings"
-													},
-													"status": "Created",
-													"code": 201,
-													"_postman_previewlanguage": "text",
-													"header": [],
-													"cookie": [],
-													"responseTime": null,
-													"body": ""
-												}
-											]
-										},
-										{
-											"name": "Create Settings - missing meta values",
-											"id": "5e2590b7-0e39-4ef9-926d-1e9055ad49b4",
-											"protocolProfileBehavior": {
-												"disableBodyPruning": true
-											},
-											"request": {
-												"method": "POST",
-												"header": [
-													{
-														"key": "Content-Type",
-														"value": "application/json"
-													}
-												],
-												"body": {
-													"mode": "raw",
-													"raw": "{\n  \"entity_type\": \"user\",\n  \"entity_id\": 1,\n  \"settings_master_id\": 1,\n  \"value\": true,\n  \"meta\": {\n    \"displayName\": \"User Notifications\",\n    \"icon\": \"bell\"\n  }\n}",
-													"options": {
-														"raw": {
-															"headerFamily": "json",
-															"language": "json"
-														}
-													}
-												},
-												"url": "{{baseUrl}}/v1/settings"
-											},
-											"response": [
-												{
-													"id": "9ba0b42b-803a-4e12-9176-49576e62e3bf",
-													"name": "Untitled Response",
-													"originalRequest": {
-														"method": "POST",
-														"header": [
-															{
-																"key": "Content-Type",
-																"value": "application/json"
-															}
-														],
-														"body": {
-															"mode": "raw",
-															"raw": "{\n  \"entity_type\": \"user\",\n  \"entity_id\": 1,\n  \"settings_master_id\": 1,\n  \"value\": true,\n  \"meta\": {\n    \"displayName\": \"User Notifications\",\n    \"icon\": \"bell\"\n  }\n}",
-															"options": {
-																"raw": {
-																	"headerFamily": "json",
-																	"language": "json"
-																}
-															}
-														},
-														"url": "{{baseUrl}}/v1/settings"
-													},
-													"status": "Created",
-													"code": 201,
-													"_postman_previewlanguage": "text",
-													"header": [],
-													"cookie": [],
-													"responseTime": null,
-													"body": ""
-												}
-											]
-										}
-									],
-									"id": "f3726df8-eccc-4d3d-9ec6-8fceee4f6ff1"
-								},
-								{
-									"name": "Retrieve Setting",
-									"item": [
-										{
-											"name": "Retrieve Settings",
-											"id": "4aed7cce-3c61-4bd3-969f-5f9feecaddad",
-											"protocolProfileBehavior": {
-												"disableBodyPruning": true
-											},
-											"request": {
-												"auth": {
-													"type": "bearer",
-													"bearer": {
-														"token": "{{Bearer_token}}"
-													}
-												},
-												"method": "GET",
-												"header": [],
-												"url": {
-													"raw": "{{baseUrl}}/v1/settings?page=1&limit=10",
-													"host": [
-														"{{baseUrl}}"
-													],
-													"path": [
-														"v1",
-														"settings"
-													],
-													"query": [
-														{
-															"key": "page",
-															"value": "1"
-														},
-														{
-															"key": "limit",
-															"value": "10"
-														}
-													]
-												}
-											},
-											"response": [
-												{
-													"id": "dadde662-bdc1-4de1-bfbc-f7823e25422e",
-													"name": "Untitled Response",
-													"originalRequest": {
-														"method": "GET",
-														"header": [],
-														"url": {
-															"raw": "{{baseUrl}}/v1/settings?page=1&limit=10",
-															"host": [
-																"{{baseUrl}}"
-															],
-															"path": [
-																"v1",
-																"settings"
-															],
-															"query": [
-																{
-																	"key": "page",
-																	"value": "1"
-																},
-																{
-																	"key": "limit",
-																	"value": "10"
-																}
-															]
-														}
-													},
-													"status": "OK",
-													"code": 200,
-													"_postman_previewlanguage": "text",
-													"header": [],
-													"cookie": [],
-													"responseTime": null,
-													"body": ""
-												}
-											]
-										}
-									],
-									"id": "2b6d2554-1b71-4916-b662-1c6076cac4fb"
-								},
-								{
-									"name": "Update Settings",
-									"item": [
-										{
-											"name": "Update Setting - successful",
-											"id": "a837e472-83b8-4527-a9d3-fbd0b4abb1f0",
-											"protocolProfileBehavior": {
-												"disableBodyPruning": true
-											},
-											"request": {
-												"method": "PATCH",
-												"header": [
-													{
-														"key": "Content-Type",
-														"value": "application/json"
-													}
-												],
-												"body": {
-													"mode": "raw",
-													"raw": "{\n  \"action\": \"delete\",\n  \"data\": {}\n}",
-													"options": {
-														"raw": {
-															"headerFamily": "json",
-															"language": "json"
-														}
-													}
-												},
-												"url": {
-													"raw": "{{baseUrl}}/v1/settings/:id",
-													"host": [
-														"{{baseUrl}}"
-													],
-													"path": [
-														"v1",
-														"settings",
-														":id"
-													],
-													"variable": [
-														{
-															"id": "b2e20551-a311-47a1-bffa-a379421ee358",
-															"key": "id",
-															"value": "<number>",
-															"description": "(Required) "
-														}
-													]
-												}
-											},
-											"response": [
-												{
-													"id": "3595028e-5525-4118-8abc-0c2a31ecb586",
-													"name": "Untitled Response",
-													"originalRequest": {
-														"method": "PATCH",
-														"header": [
-															{
-																"key": "Content-Type",
-																"value": "application/json"
-															}
-														],
-														"body": {
-															"mode": "raw",
-															"raw": "{\n  \"action\": \"delete\",\n  \"data\": {}\n}",
-															"options": {
-																"raw": {
-																	"headerFamily": "json",
-																	"language": "json"
-																}
-															}
-														},
-														"url": {
-															"raw": "{{baseUrl}}/v1/settings/:id",
-															"host": [
-																"{{baseUrl}}"
-															],
-															"path": [
-																"v1",
-																"settings",
-																":id"
-															],
-															"variable": [
-																{
-																	"key": "id"
-																}
-															]
-														}
-													},
-													"status": "OK",
-													"code": 200,
-													"_postman_previewlanguage": "text",
-													"header": [],
-													"cookie": [],
-													"responseTime": null,
-													"body": ""
-												}
-											]
-										},
-										{
-											"name": "Update Setting - empty action",
-											"id": "cce84fa3-940b-4f6e-affe-c1f41f183551",
-											"protocolProfileBehavior": {
-												"disableBodyPruning": true
-											},
-											"request": {
-												"method": "PATCH",
-												"header": [
-													{
-														"key": "Content-Type",
-														"value": "application/json"
-													}
-												],
-												"body": {
-													"mode": "raw",
-													"raw": "{\n  \"action\": \"delete\",\n  \"data\": {}\n}",
-													"options": {
-														"raw": {
-															"headerFamily": "json",
-															"language": "json"
-														}
-													}
-												},
-												"url": {
-													"raw": "{{baseUrl}}/v1/settings/:id",
-													"host": [
-														"{{baseUrl}}"
-													],
-													"path": [
-														"v1",
-														"settings",
-														":id"
-													],
-													"variable": [
-														{
-															"id": "b2e20551-a311-47a1-bffa-a379421ee358",
-															"key": "id",
-															"value": "<number>",
-															"description": "(Required) "
-														}
-													]
-												}
-											},
-											"response": [
-												{
-													"id": "b4ac7d61-c4a8-41c1-b5d9-aab64e17c69d",
-													"name": "Untitled Response",
-													"originalRequest": {
-														"method": "PATCH",
-														"header": [
-															{
-																"key": "Content-Type",
-																"value": "application/json"
-															}
-														],
-														"body": {
-															"mode": "raw",
-															"raw": "{\n  \"action\": \"delete\",\n  \"data\": {}\n}",
-															"options": {
-																"raw": {
-																	"headerFamily": "json",
-																	"language": "json"
-																}
-															}
-														},
-														"url": {
-															"raw": "{{baseUrl}}/v1/settings/:id",
-															"host": [
-																"{{baseUrl}}"
-															],
-															"path": [
-																"v1",
-																"settings",
-																":id"
-															],
-															"variable": [
-																{
-																	"key": "id"
-																}
-															]
-														}
-													},
-													"status": "OK",
-													"code": 200,
-													"_postman_previewlanguage": "text",
-													"header": [],
-													"cookie": [],
-													"responseTime": null,
-													"body": ""
-												}
-											]
-										},
-										{
-											"name": "Update Setting - empty description",
-											"id": "00d92fcc-f41a-42bd-b2e6-f4ffb7575ce8",
-											"protocolProfileBehavior": {
-												"disableBodyPruning": true
-											},
-											"request": {
-												"method": "PATCH",
-												"header": [
-													{
-														"key": "Content-Type",
-														"value": "application/json"
-													}
-												],
-												"body": {
-													"mode": "raw",
-													"raw": "{\n  \"action\": \"delete\",\n  \"data\": {}\n}",
-													"options": {
-														"raw": {
-															"headerFamily": "json",
-															"language": "json"
-														}
-													}
-												},
-												"url": {
-													"raw": "{{baseUrl}}/v1/settings/:id",
-													"host": [
-														"{{baseUrl}}"
-													],
-													"path": [
-														"v1",
-														"settings",
-														":id"
-													],
-													"variable": [
-														{
-															"id": "b2e20551-a311-47a1-bffa-a379421ee358",
-															"key": "id",
-															"value": "<number>",
-															"description": "(Required) "
-														}
-													]
-												}
-											},
-											"response": [
-												{
-													"id": "e406d7ad-bc6b-4efb-9233-76e903ead5a8",
-													"name": "Untitled Response",
-													"originalRequest": {
-														"method": "PATCH",
-														"header": [
-															{
-																"key": "Content-Type",
-																"value": "application/json"
-															}
-														],
-														"body": {
-															"mode": "raw",
-															"raw": "{\n  \"action\": \"delete\",\n  \"data\": {}\n}",
-															"options": {
-																"raw": {
-																	"headerFamily": "json",
-																	"language": "json"
-																}
-															}
-														},
-														"url": {
-															"raw": "{{baseUrl}}/v1/settings/:id",
-															"host": [
-																"{{baseUrl}}"
-															],
-															"path": [
-																"v1",
-																"settings",
-																":id"
-															],
-															"variable": [
-																{
-																	"key": "id"
-																}
-															]
-														}
-													},
-													"status": "OK",
-													"code": 200,
-													"_postman_previewlanguage": "text",
-													"header": [],
-													"cookie": [],
-													"responseTime": null,
-													"body": ""
-												}
-											]
-										}
-									],
-									"id": "3402d603-0f3e-4acb-b298-8e3ba0e8a56f"
-								},
-								{
-									"name": "Settings Category",
-									"item": [
-										{
-											"name": "get category",
-											"item": [
-												{
-													"name": "category",
-													"id": "224a6735-d89b-4c3c-8c14-8a1ef4ec06b9",
-													"protocolProfileBehavior": {
-														"disableBodyPruning": true
-													},
-													"request": {
-														"auth": {
-															"type": "bearer",
-															"bearer": {
-																"token": "{{Bearer_token}}"
-															}
-														},
-														"method": "GET",
-														"header": [
-															{
-																"key": "accept",
-																"value": "*/*"
-															}
-														],
-														"url": {
-															"raw": "{{baseUrl}}/v1/settings/master/categories/system-settings-category?page=1&limit=10",
-															"host": [
-																"{{baseUrl}}"
-															],
-															"path": [
-																"v1",
-																"settings",
-																"master",
-																"categories",
-																"system-settings-category"
-															],
-															"query": [
-																{
-																	"key": "page",
-																	"value": "1"
-																},
-																{
-																	"key": "limit",
-																	"value": "10"
-																}
-															]
-														}
-													},
-													"response": []
-												}
-											],
-											"id": "c0182343-4dc2-4513-94c8-93655c72bc89"
-										}
-									],
-									"id": "a71f03a6-01f2-4481-8988-be6ca4791cef"
-								},
-								{
-									"name": "Setting value",
-									"item": [
-										{
-											"name": "Fetch Settings value",
-											"item": [
-												{
-													"name": "value",
-													"id": "85f81f6d-a801-49df-8732-9ca87038cb3a",
-													"protocolProfileBehavior": {
-														"disableBodyPruning": true
-													},
-													"request": {
-														"auth": {
-															"type": "bearer",
-															"bearer": {
-																"token": "{{Bearer_token}}"
-															}
-														},
-														"method": "GET",
-														"header": [
-															{
-																"key": "accept",
-																"value": "*/*"
-															}
-														],
-														"url": {
-															"raw": "{{baseUrl}}/v1/settings/master/1/values?page=1&limit=10",
-															"host": [
-																"{{baseUrl}}"
-															],
-															"path": [
-																"v1",
-																"settings",
-																"master",
-																"1",
-																"values"
-															],
-															"query": [
-																{
-																	"key": "page",
-																	"value": "1"
-																},
-																{
-																	"key": "limit",
-																	"value": "10"
-																}
-															]
-														}
-													},
-													"response": []
-												}
-											],
-											"id": "517e40a3-8d33-44c0-bffa-acccfc329f45"
-										},
-										{
-											"name": "Fetch value by ID",
-											"item": [
-												{
-													"name": "value by id",
-													"id": "dfaefc91-49f1-43d1-9fb3-bb9aa797d709",
-													"protocolProfileBehavior": {
-														"disableBodyPruning": true
-													},
-													"request": {
-														"auth": {
-															"type": "bearer",
-															"bearer": {
-																"token": "{{Bearer_token}}"
-															}
-														},
-														"method": "GET",
-														"header": [
-															{
-																"key": "accept",
-																"value": "*/*"
-															}
-														],
-														"url": "https://staging-api.infopool.ng/v1/settings/master/1/values/4"
-													},
-													"response": []
-												}
-											],
-											"id": "be3c6b1f-701a-4e84-9384-d4fc908c78a0"
-										}
-									],
-									"id": "951cdd80-a7ad-40d6-8c6e-18aa2c553af7"
-								}
-							],
-							"id": "9c6f25cf-0a47-403f-acca-182027ce1c5f"
 						},
 						{
 							"name": "Users",
@@ -13423,8 +10166,8 @@
 															"    pm.response.to.have.status(201);",
 															"});",
 															"pm.test(\"Reponse body contains standard success fields\", function () {",
-															"    pm.expect(jsonData.status).to.eql(false);",
-															"    pm.expect(jsonData.message).to.eql('Cannot create organization without parent organization');",
+															"    pm.expect(jsonData.status).to.eql(true);",
+															"    pm.expect(jsonData.organization_type).to.not.be.null;",
 															"});",
 															"",
 															"pm.environment.set(\"test_organization_id\", jsonData.response.id)"
@@ -17737,9 +14480,8 @@
 													],
 													"variable": [
 														{
-															"id": "e4ba47a9-8128-4a41-bbb8-08e5742ea0f4",
 															"key": "organizationId",
-															"value": "<number>",
+															"value": "1",
 															"description": "(Required) "
 														}
 													]
@@ -21282,6 +18024,12 @@
 												"disableBodyPruning": true
 											},
 											"request": {
+												"auth": {
+													"type": "bearer",
+													"bearer": {
+														"token": "{{Bearer_token}}"
+													}
+												},
 												"method": "GET",
 												"header": [],
 												"url": {
@@ -21371,6 +18119,12 @@
 												"disableBodyPruning": true
 											},
 											"request": {
+												"auth": {
+													"type": "bearer",
+													"bearer": {
+														"token": "{{Bearer_token}}"
+													}
+												},
 												"method": "GET",
 												"header": [],
 												"url": {
@@ -21385,7 +18139,6 @@
 													],
 													"variable": [
 														{
-															"id": "92489187-ebe1-4938-98ca-46e19080d95a",
 															"key": "id",
 															"value": "{{permission_id}}",
 															"description": "(Required) "
@@ -22651,9 +19404,8 @@
 													"    pm.response.to.have.status(200);",
 													"});",
 													"pm.test(\"Reponse body contains standard success fields\", function () {",
-													"    pm.expect(jsonData.statusCode).to.eql(200);",
 													"    pm.expect(jsonData.status).to.eql(true);",
-													"    pm.expect(jsonData.message).to.eql('Logout successful');",
+													"    pm.expect(jsonData.response.message).to.eql('Logged out successfully');",
 													"});"
 												],
 												"type": "text/javascript",
@@ -22666,6 +19418,12 @@
 										"disableBodyPruning": true
 									},
 									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": {
+												"token": "{{Bearer_token}}"
+											}
+										},
 										"method": "DELETE",
 										"header": [],
 										"url": "{{baseUrl}}/v1/auth/session"
@@ -22705,7 +19463,7 @@
 													"pm.test(\"Reponse body contains standard Error fields\", function () {",
 													"    pm.expect(jsonData.statusCode).to.eql(401);",
 													"    pm.expect(jsonData.status).to.eql(false);",
-													"    pm.expect(jsonData.message).to.eql('No valid session found');",
+													"    pm.expect(jsonData.message).to.eql('Unauthorized');",
 													"});"
 												],
 												"type": "text/javascript",
