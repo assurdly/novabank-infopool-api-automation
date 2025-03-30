@@ -13122,7 +13122,7 @@
 											]
 										},
 										{
-											"name": "Fetch Customers Accounts Copy",
+											"name": "No Auth - Fetch Customers Accounts",
 											"event": [
 												{
 													"listen": "test",
@@ -13131,18 +13131,16 @@
 														"exec": [
 															"var jsonData = pm.response.json();",
 															"",
-															"pm.test(\"Status code is 200\", function () {",
-															"    pm.response.to.have.status(200);",
+															"pm.test(\"Status code is 401\", function () {",
+															"    pm.response.to.have.status(401);",
 															"});",
 															"",
-															"pm.test(\"Response body contains success fields\", function () {",
-															"    pm.expect(jsonData.status).to.eql(true);",
-															"    pm.expect(jsonData.response.data[0].account_id).to.not.be.null;",
-															"    pm.expect(jsonData.response.data[0].account_number).to.not.be.null;",
-															"    pm.expect(jsonData.response.data[0].scheme_code).to.not.be.null;",
-															"    pm.expect(jsonData.response.data[0].account_open_date).to.not.be.null;",
-															"    pm.expect(jsonData.response.data[0].ledger_balance).to.not.be.null;",
-															"});"
+															"pm.test(\"Reponse body contains standard error fields\", function () {",
+															"    pm.expect(jsonData.statusCode).to.eql(401);",
+															"    pm.expect(jsonData.status).to.eql(false);",
+															"   pm.expect(jsonData.message).to.eql('Unauthorized'); ",
+															"});",
+															""
 														],
 														"type": "text/javascript",
 														"packages": {}
@@ -13155,10 +13153,7 @@
 											},
 											"request": {
 												"auth": {
-													"type": "bearer",
-													"bearer": {
-														"token": "{{Bearer_token}}"
-													}
+													"type": "noauth"
 												},
 												"method": "GET",
 												"header": [],
@@ -13175,7 +13170,6 @@
 													],
 													"variable": [
 														{
-															"id": "dee0d643-80ce-42df-a998-55e289f3f225",
 															"key": "id",
 															"value": "4790"
 														}
@@ -13406,6 +13400,142 @@
 													"body": "{\n    \"status\": true,\n    \"response\": {\n        \"data\": [\n            {\n                \"channel_id\": \"corporate-internet-banking\",\n                \"name\": \"Corporate Internet Banking\",\n                \"last_login\": \"2000-12-31T23:00:00.000Z\",\n                \"profiles\": \"1\",\n                \"total_transaction_value\": 0\n            },\n            {\n                \"channel_id\": \"retail-internet-banking\",\n                \"name\": \"Retail Internet Banking\",\n                \"last_login\": null,\n                \"profiles\": 0,\n                \"total_transaction_value\": 0\n            },\n            {\n                \"channel_id\": \"retail-mobile-banking\",\n                \"name\": \"Retail Mobile Banking\",\n                \"last_login\": null,\n                \"profiles\": 0,\n                \"total_transaction_value\": 0\n            },\n            {\n                \"channel_id\": \"debit-cards\",\n                \"name\": \"Debit Cards\",\n                \"last_login\": null,\n                \"profiles\": 0,\n                \"total_transaction_value\": 0\n            },\n            {\n                \"channel_id\": \"pos-terminals\",\n                \"name\": \"POS Terminals\",\n                \"last_login\": null,\n                \"profiles\": 0,\n                \"total_transaction_value\": 0\n            },\n            {\n                \"channel_id\": \"atm-terminals\",\n                \"name\": \"ATM Terminals\",\n                \"last_login\": null,\n                \"profiles\": 0,\n                \"total_transaction_value\": 0\n            },\n            {\n                \"channel_id\": \"new-slug\",\n                \"name\": \"New def\",\n                \"last_login\": null,\n                \"profiles\": 0,\n                \"total_transaction_value\": 0\n            }\n        ],\n        \"total\": 7,\n        \"page\": 1,\n        \"limit\": 10,\n        \"totalPages\": 1\n    }\n}"
 												}
 											]
+										},
+										{
+											"name": "No Auth - Fetch Customers Channels",
+											"event": [
+												{
+													"listen": "test",
+													"script": {
+														"id": "563df387-59c6-4ac5-bdd2-6d6add5c4ac1",
+														"exec": [
+															"var jsonData = pm.response.json();",
+															"",
+															"pm.test(\"Status code is 401\", function () {",
+															"    pm.response.to.have.status(401);",
+															"});",
+															"",
+															"pm.test(\"Reponse body contains standard error fields\", function () {",
+															"    pm.expect(jsonData.statusCode).to.eql(401);",
+															"    pm.expect(jsonData.status).to.eql(false);",
+															"   pm.expect(jsonData.message).to.eql('Unauthorized'); ",
+															"});",
+															""
+														],
+														"type": "text/javascript",
+														"packages": {}
+													}
+												}
+											],
+											"id": "f706b3c7-6ff0-46df-82af-1f5232a274a9",
+											"protocolProfileBehavior": {
+												"disableBodyPruning": true
+											},
+											"request": {
+												"auth": {
+													"type": "noauth"
+												},
+												"method": "GET",
+												"header": [],
+												"url": {
+													"raw": "{{baseUrl}}/v1/customers/:id/channels",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"v1",
+														"customers",
+														":id",
+														"channels"
+													],
+													"variable": [
+														{
+															"key": "id",
+															"value": "4790"
+														}
+													]
+												}
+											},
+											"response": [
+												{
+													"id": "f9c3ee05-56fa-4478-b919-080f10b0d66a",
+													"name": "Fetch Customers Channels",
+													"originalRequest": {
+														"method": "GET",
+														"header": [],
+														"url": {
+															"raw": "{{baseUrl}}/v1/customers/:id/channels",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"v1",
+																"customers",
+																":id",
+																"channels"
+															],
+															"variable": [
+																{
+																	"key": "id",
+																	"value": "4790"
+																}
+															]
+														}
+													},
+													"status": "OK",
+													"code": 200,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "X-Powered-By",
+															"value": "Express"
+														},
+														{
+															"key": "Access-Control-Allow-Origin",
+															"value": "*"
+														},
+														{
+															"key": "X-RateLimit-Limit",
+															"value": "6"
+														},
+														{
+															"key": "X-RateLimit-Remaining",
+															"value": "5"
+														},
+														{
+															"key": "X-RateLimit-Reset",
+															"value": "2"
+														},
+														{
+															"key": "Content-Type",
+															"value": "application/json; charset=utf-8"
+														},
+														{
+															"key": "Content-Length",
+															"value": "944"
+														},
+														{
+															"key": "ETag",
+															"value": "W/\"3b0-WklI6okmulJkOIwCM0TcgblwZ1s\""
+														},
+														{
+															"key": "Date",
+															"value": "Tue, 04 Mar 2025 04:49:21 GMT"
+														},
+														{
+															"key": "Connection",
+															"value": "keep-alive"
+														},
+														{
+															"key": "Keep-Alive",
+															"value": "timeout=5"
+														}
+													],
+													"cookie": [],
+													"responseTime": null,
+													"body": "{\n    \"status\": true,\n    \"response\": {\n        \"data\": [\n            {\n                \"channel_id\": \"corporate-internet-banking\",\n                \"name\": \"Corporate Internet Banking\",\n                \"last_login\": \"2000-12-31T23:00:00.000Z\",\n                \"profiles\": \"1\",\n                \"total_transaction_value\": 0\n            },\n            {\n                \"channel_id\": \"retail-internet-banking\",\n                \"name\": \"Retail Internet Banking\",\n                \"last_login\": null,\n                \"profiles\": 0,\n                \"total_transaction_value\": 0\n            },\n            {\n                \"channel_id\": \"retail-mobile-banking\",\n                \"name\": \"Retail Mobile Banking\",\n                \"last_login\": null,\n                \"profiles\": 0,\n                \"total_transaction_value\": 0\n            },\n            {\n                \"channel_id\": \"debit-cards\",\n                \"name\": \"Debit Cards\",\n                \"last_login\": null,\n                \"profiles\": 0,\n                \"total_transaction_value\": 0\n            },\n            {\n                \"channel_id\": \"pos-terminals\",\n                \"name\": \"POS Terminals\",\n                \"last_login\": null,\n                \"profiles\": 0,\n                \"total_transaction_value\": 0\n            },\n            {\n                \"channel_id\": \"atm-terminals\",\n                \"name\": \"ATM Terminals\",\n                \"last_login\": null,\n                \"profiles\": 0,\n                \"total_transaction_value\": 0\n            },\n            {\n                \"channel_id\": \"new-slug\",\n                \"name\": \"New def\",\n                \"last_login\": null,\n                \"profiles\": 0,\n                \"total_transaction_value\": 0\n            }\n        ],\n        \"total\": 7,\n        \"page\": 1,\n        \"limit\": 10,\n        \"totalPages\": 1\n    }\n}"
+												}
+											]
 										}
 									],
 									"id": "8a3e1f49-c632-4be5-8d8e-96c32a8918b3"
@@ -13549,6 +13679,98 @@
 											"response": [
 												{
 													"id": "68a54a06-8caa-4ffb-bda3-e2bc833af3cb",
+													"name": "Untitled Response",
+													"originalRequest": {
+														"method": "GET",
+														"header": [],
+														"url": {
+															"raw": "{{baseUrl}}/v1/definitions/:id",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"v1",
+																"definitions",
+																":id"
+															],
+															"variable": [
+																{
+																	"key": "id"
+																}
+															]
+														}
+													},
+													"status": "OK",
+													"code": 200,
+													"_postman_previewlanguage": "text",
+													"header": [],
+													"cookie": [],
+													"responseTime": null,
+													"body": ""
+												}
+											]
+										},
+										{
+											"name": "No Auth - Get all definitions",
+											"event": [
+												{
+													"listen": "test",
+													"script": {
+														"id": "25b7b361-bff2-4aeb-a919-4893a18bbb41",
+														"exec": [
+															"var jsonData = pm.response.json();",
+															"",
+															"pm.test(\"Status code is 200\", function () {",
+															"    pm.response.to.have.status(200);",
+															"});",
+															"",
+															"pm.test(\"Reponse body contains success fields\", function () {",
+															"    pm.expect(jsonData.status).to.eql(true);",
+															"    pm.expect(jsonData.response.slug).to.not.be.oneOf([null, \"\"]);",
+															"    pm.expect(jsonData.response.name).to.not.be.oneOf([null, \"\"]);",
+															"    pm.expect(jsonData.response.parent).to.not.be.oneOf([null, \"\"]);",
+															"});",
+															""
+														],
+														"type": "text/javascript",
+														"packages": {}
+													}
+												}
+											],
+											"id": "6a67234e-1332-4d49-a77d-c401405367bb",
+											"protocolProfileBehavior": {
+												"disableBodyPruning": true
+											},
+											"request": {
+												"auth": {
+													"type": "bearer",
+													"bearer": {
+														"token": "{{Bearer_token}}"
+													}
+												},
+												"method": "GET",
+												"header": [],
+												"url": {
+													"raw": "{{baseUrl}}/v1/definitions",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"v1",
+														"definitions"
+													],
+													"query": [
+														{
+															"key": "search",
+															"value": "organization_type",
+															"disabled": true
+														}
+													]
+												}
+											},
+											"response": [
+												{
+													"id": "17574f3d-f9b8-4319-8534-38b2a830a602",
 													"name": "Untitled Response",
 													"originalRequest": {
 														"method": "GET",
@@ -24435,36 +24657,6 @@
 								}
 							],
 							"id": "8503017a-51b8-4e8c-bbf8-ac021502b212"
-						},
-						{
-							"name": "Health",
-							"id": "9e7f384b-1e37-40fc-a1a4-6f518dc783ae",
-							"protocolProfileBehavior": {
-								"disableBodyPruning": true
-							},
-							"request": {
-								"method": "GET",
-								"header": [],
-								"url": "{{baseUrl}}/v1"
-							},
-							"response": [
-								{
-									"id": "0d7af5cd-08c3-44b2-be46-2dba542adffd",
-									"name": "Untitled Response",
-									"originalRequest": {
-										"method": "GET",
-										"header": [],
-										"url": "{{baseUrl}}/v1"
-									},
-									"status": "OK",
-									"code": 200,
-									"_postman_previewlanguage": "text",
-									"header": [],
-									"cookie": [],
-									"responseTime": null,
-									"body": ""
-								}
-							]
 						}
 					],
 					"id": "6972b82a-1813-47b4-af99-c7cef7b04124"
