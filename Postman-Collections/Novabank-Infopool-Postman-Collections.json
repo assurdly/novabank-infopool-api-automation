@@ -1368,14 +1368,14 @@
 																"exec": [
 																	"var jsonData = pm.response.json();",
 																	"",
-																	"pm.test(\"Status code is 400\", function () {",
-																	"    pm.response.to.have.status(400);",
+																	"pm.test(\"Status code is 401\", function () {",
+																	"    pm.response.to.have.status(401);",
 																	"});",
 																	"",
 																	"pm.test(\"Reponse body contains standard error fields\", function () {",
-																	"    pm.expect(jsonData.statusCode).to.eql(400);",
+																	"    pm.expect(jsonData.statusCode).to.eql(401);",
 																	"    pm.expect(jsonData.status).to.eql(false);",
-																	"   pm.expect(jsonData.message[1]).to.eql('delivery_channel should not be empty'); ",
+																	"   pm.expect(jsonData.message).to.eql('Unauthorized'); ",
 																	"});",
 																	""
 																],
@@ -1390,7 +1390,10 @@
 													},
 													"request": {
 														"auth": {
-															"type": "noauth"
+															"type": "bearer",
+															"bearer": {
+																"token": "swerdtyuikolpsssssswwswdwdd"
+															}
 														},
 														"method": "POST",
 														"header": [
@@ -1405,7 +1408,7 @@
 														],
 														"body": {
 															"mode": "raw",
-															"raw": "{\n  \"operation\": \"FORGOT_PASSWORD\",\n  \"delivery_channel\": \"\",\n  \"email\": \"qa@yopmail.com\"\n//   \"phone\": \"\"\n}",
+															"raw": "{\n  \"operation\": \"FORGOT_PASSWORD\",\n  \"delivery_channel\": \"EMAIL\",\n  \"email\": \"qa@yopmail.com\"\n//   \"phone\": \"\"\n}",
 															"options": {
 																"raw": {
 																	"headerFamily": "json",
