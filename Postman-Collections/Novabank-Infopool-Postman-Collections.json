@@ -5919,18 +5919,15 @@
 																"exec": [
 																	"var jsonData = pm.response.json();",
 																	"",
-																	"pm.test(\"Status code is 200\", function () {",
-																	"    pm.response.to.have.status(200);",
+																	"pm.test(\"Status code is 404\", function () {",
+																	"    pm.response.to.have.status(404);",
 																	"});",
-																	"",
-																	"pm.test(\"Response body contains success fields\", function () {",
-																	"    pm.expect(jsonData.status).to.eql(true);",
-																	"    pm.expect(jsonData.response.issue_category_id).to.not.be.null;",
-																	"    pm.expect(jsonData.response.issue_responsibility).to.not.be.null;",
-																	"    pm.expect(jsonData.response.source_channel).to.not.be.null;",
-																	"    pm.expect(jsonData.response.issue).to.not.be.null;",
-																	"});",
-																	"pm.environment.set(\"attachment_id\", jsonData.response.attachments[0].id);"
+																	"pm.test(\"Reponse body contains standard error fields\", function () {",
+																	"    pm.expect(jsonData.statusCode).to.eql(404);",
+																	"    pm.expect(jsonData.path).is.not.null;",
+																	"    pm.expect(jsonData.status).to.eql(false);",
+																	"   pm.expect(jsonData.message).to.eql('Issue not found'); ",
+																	"});"
 																],
 																"type": "text/javascript",
 																"packages": {}
@@ -5973,14 +5970,12 @@
 															],
 															"variable": [
 																{
-																	"id": "259961bd-e041-4a57-b569-698cf1a6c9f5",
 																	"key": "customerId",
 																	"value": "22039"
 																},
 																{
-																	"id": "111f8599-1727-43f7-9340-9c339a02227d",
 																	"key": "id",
-																	"value": "{{issue_id}}"
+																	"value": "0"
 																}
 															]
 														}
@@ -6599,6 +6594,892 @@
 														},
 														{
 															"id": "69ee6cce-f996-4219-8afb-a70eb315a70c",
+															"name": "Issue Reopened",
+															"originalRequest": {
+																"method": "PATCH",
+																"header": [],
+																"body": {
+																	"mode": "raw",
+																	"raw": "{\n  \"description\": \"This issue occurs when user tries to submit a form with missing fields.\",\n  \"status\": \"OPEN\",\n  \"priority\": \"HIGH\",\n  \"assigned_to\": 2\n}",
+																	"options": {
+																		"raw": {
+																			"language": "json"
+																		}
+																	}
+																},
+																"url": {
+																	"raw": "{{baseUrl}}/v1/customers/:customerId/issues/:id",
+																	"host": [
+																		"{{baseUrl}}"
+																	],
+																	"path": [
+																		"v1",
+																		"customers",
+																		":customerId",
+																		"issues",
+																		":id"
+																	],
+																	"variable": [
+																		{
+																			"key": "customerId",
+																			"value": ""
+																		},
+																		{
+																			"key": "id",
+																			"value": "6"
+																		}
+																	]
+																}
+															},
+															"status": "OK",
+															"code": 200,
+															"_postman_previewlanguage": "json",
+															"header": [
+																{
+																	"key": "X-Powered-By",
+																	"value": "Express"
+																},
+																{
+																	"key": "Access-Control-Allow-Origin",
+																	"value": "*"
+																},
+																{
+																	"key": "X-RateLimit-Limit",
+																	"value": "10"
+																},
+																{
+																	"key": "X-RateLimit-Remaining",
+																	"value": "5"
+																},
+																{
+																	"key": "X-RateLimit-Reset",
+																	"value": "38"
+																},
+																{
+																	"key": "Content-Type",
+																	"value": "application/json; charset=utf-8"
+																},
+																{
+																	"key": "Content-Length",
+																	"value": "43"
+																},
+																{
+																	"key": "ETag",
+																	"value": "W/\"2b-iZk1I2TH7t1WHafHq1fZwM3EuJs\""
+																},
+																{
+																	"key": "Date",
+																	"value": "Tue, 28 Jan 2025 08:49:22 GMT"
+																},
+																{
+																	"key": "Connection",
+																	"value": "keep-alive"
+																},
+																{
+																	"key": "Keep-Alive",
+																	"value": "timeout=5"
+																}
+															],
+															"cookie": [],
+															"responseTime": null,
+															"body": "{\n    \"status\": true,\n    \"response\": {\n        \"updated\": true\n    }\n}"
+														}
+													]
+												},
+												{
+													"name": "Update Issue Copy",
+													"event": [
+														{
+															"listen": "test",
+															"script": {
+																"id": "6f11916f-24b3-4af6-9605-9bcad4d54938",
+																"exec": [
+																	"var jsonData = pm.response.json();",
+																	"",
+																	"pm.test(\"Status code is 200\", function () {",
+																	"    pm.response.to.have.status(200);",
+																	"});",
+																	"",
+																	"pm.test(\"Response body contains success fields\", function () {",
+																	"    pm.expect(jsonData.status).to.eql(true);",
+																	"    pm.expect(jsonData.response.updated).to.eql(true);",
+																	"});"
+																],
+																"type": "text/javascript",
+																"packages": {}
+															}
+														}
+													],
+													"id": "dd610afe-0939-4133-92ba-816b8554183b",
+													"protocolProfileBehavior": {
+														"disableBodyPruning": true
+													},
+													"request": {
+														"auth": {
+															"type": "bearer",
+															"bearer": {
+																"token": "{{Bearer_token}}"
+															}
+														},
+														"method": "PATCH",
+														"header": [],
+														"body": {
+															"mode": "raw",
+															"raw": "{\n  \"description\": \"This issue occurs when user tries to submit a form with missing fields.\",\n  \"status\": \"REPORTED\",\n  \"priority\": \"HIGH\",\n  \"assigned_to\": 2\n}",
+															"options": {
+																"raw": {
+																	"language": "json"
+																}
+															}
+														},
+														"url": {
+															"raw": "{{baseUrl}}/v1/customers/:customerId/issues/:id",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"v1",
+																"customers",
+																":customerId",
+																"issues",
+																":id"
+															],
+															"variable": [
+																{
+																	"id": "c3a339db-0f9c-44e8-a136-7ed6ef915b35",
+																	"key": "customerId",
+																	"value": "22039"
+																},
+																{
+																	"id": "4167bf3a-d7f5-49ee-910c-f7e9a8a7241f",
+																	"key": "id",
+																	"value": "{{issue_id}}"
+																}
+															]
+														}
+													},
+													"response": [
+														{
+															"id": "654eab55-1211-4d21-bd5a-37ae2e984059",
+															"name": "Resolved Issue",
+															"originalRequest": {
+																"method": "PATCH",
+																"header": [],
+																"body": {
+																	"mode": "raw",
+																	"raw": "{\n  \"description\": \"This issue occurs when user tries to submit a form with missing fields.\",\n  \"status\": \"RESOLVED\",\n  \"priority\": \"HIGH\",\n  \"assigned_to\": 2,\n  \"resolution_notes\": \"Performed initial troubleshooting steps. Further analysis required.\",\n  \"resolved_by\": 2\n}",
+																	"options": {
+																		"raw": {
+																			"language": "json"
+																		}
+																	}
+																},
+																"url": {
+																	"raw": "{{baseUrl}}/v1/customers/:customerId/issues/:id",
+																	"host": [
+																		"{{baseUrl}}"
+																	],
+																	"path": [
+																		"v1",
+																		"customers",
+																		":customerId",
+																		"issues",
+																		":id"
+																	],
+																	"variable": [
+																		{
+																			"key": "customerId",
+																			"value": ""
+																		},
+																		{
+																			"key": "id",
+																			"value": "6"
+																		}
+																	]
+																}
+															},
+															"status": "OK",
+															"code": 200,
+															"_postman_previewlanguage": "json",
+															"header": [
+																{
+																	"key": "X-Powered-By",
+																	"value": "Express"
+																},
+																{
+																	"key": "Access-Control-Allow-Origin",
+																	"value": "*"
+																},
+																{
+																	"key": "X-RateLimit-Limit",
+																	"value": "10"
+																},
+																{
+																	"key": "X-RateLimit-Remaining",
+																	"value": "9"
+																},
+																{
+																	"key": "X-RateLimit-Reset",
+																	"value": "60"
+																},
+																{
+																	"key": "Content-Type",
+																	"value": "application/json; charset=utf-8"
+																},
+																{
+																	"key": "Content-Length",
+																	"value": "43"
+																},
+																{
+																	"key": "ETag",
+																	"value": "W/\"2b-iZk1I2TH7t1WHafHq1fZwM3EuJs\""
+																},
+																{
+																	"key": "Date",
+																	"value": "Tue, 28 Jan 2025 08:27:31 GMT"
+																},
+																{
+																	"key": "Connection",
+																	"value": "keep-alive"
+																},
+																{
+																	"key": "Keep-Alive",
+																	"value": "timeout=5"
+																}
+															],
+															"cookie": [],
+															"responseTime": null,
+															"body": "{\n    \"status\": true,\n    \"response\": {\n        \"updated\": true\n    }\n}"
+														},
+														{
+															"id": "73e237b0-e00c-4aca-8d8a-791b66cbd438",
+															"name": "Issue In Progress",
+															"originalRequest": {
+																"method": "PATCH",
+																"header": [],
+																"body": {
+																	"mode": "raw",
+																	"raw": "{\n  \"description\": \"This issue occurs when user tries to submit a form with missing fields.\",\n  \"status\": \"IN_PROGRESS\",\n  \"priority\": \"HIGH\",\n  \"assigned_to\": 2\n}",
+																	"options": {
+																		"raw": {
+																			"language": "json"
+																		}
+																	}
+																},
+																"url": {
+																	"raw": "{{baseUrl}}/v1/customers/:customerId/issues/:id",
+																	"host": [
+																		"{{baseUrl}}"
+																	],
+																	"path": [
+																		"v1",
+																		"customers",
+																		":customerId",
+																		"issues",
+																		":id"
+																	],
+																	"variable": [
+																		{
+																			"key": "customerId",
+																			"value": ""
+																		},
+																		{
+																			"key": "id",
+																			"value": "6"
+																		}
+																	]
+																}
+															},
+															"status": "OK",
+															"code": 200,
+															"_postman_previewlanguage": "json",
+															"header": [
+																{
+																	"key": "X-Powered-By",
+																	"value": "Express"
+																},
+																{
+																	"key": "Access-Control-Allow-Origin",
+																	"value": "*"
+																},
+																{
+																	"key": "X-RateLimit-Limit",
+																	"value": "10"
+																},
+																{
+																	"key": "X-RateLimit-Remaining",
+																	"value": "1"
+																},
+																{
+																	"key": "X-RateLimit-Reset",
+																	"value": "60"
+																},
+																{
+																	"key": "Content-Type",
+																	"value": "application/json; charset=utf-8"
+																},
+																{
+																	"key": "Content-Length",
+																	"value": "43"
+																},
+																{
+																	"key": "ETag",
+																	"value": "W/\"2b-iZk1I2TH7t1WHafHq1fZwM3EuJs\""
+																},
+																{
+																	"key": "Date",
+																	"value": "Tue, 28 Jan 2025 08:47:57 GMT"
+																},
+																{
+																	"key": "Connection",
+																	"value": "keep-alive"
+																},
+																{
+																	"key": "Keep-Alive",
+																	"value": "timeout=5"
+																}
+															],
+															"cookie": [],
+															"responseTime": null,
+															"body": "{\n    \"status\": true,\n    \"response\": {\n        \"updated\": true\n    }\n}"
+														},
+														{
+															"id": "57133412-6416-4a2d-8b79-ae16719f6afd",
+															"name": "Issue Cancelled",
+															"originalRequest": {
+																"method": "PATCH",
+																"header": [],
+																"body": {
+																	"mode": "raw",
+																	"raw": "{\n  \"description\": \"This issue occurs when user tries to submit a form with missing fields.\",\n  \"status\": \"CLOSED\",\n  \"priority\": \"HIGH\",\n  \"assigned_to\": 2,\n  \"cancellation_reason\": \"me\"\n}",
+																	"options": {
+																		"raw": {
+																			"language": "json"
+																		}
+																	}
+																},
+																"url": {
+																	"raw": "{{baseUrl}}/v1/customers/:customerId/issues/:id",
+																	"host": [
+																		"{{baseUrl}}"
+																	],
+																	"path": [
+																		"v1",
+																		"customers",
+																		":customerId",
+																		"issues",
+																		":id"
+																	],
+																	"variable": [
+																		{
+																			"key": "customerId",
+																			"value": ""
+																		},
+																		{
+																			"key": "id",
+																			"value": "6"
+																		}
+																	]
+																}
+															},
+															"status": "OK",
+															"code": 200,
+															"_postman_previewlanguage": "json",
+															"header": [
+																{
+																	"key": "X-Powered-By",
+																	"value": "Express"
+																},
+																{
+																	"key": "Access-Control-Allow-Origin",
+																	"value": "*"
+																},
+																{
+																	"key": "X-RateLimit-Limit",
+																	"value": "10"
+																},
+																{
+																	"key": "X-RateLimit-Remaining",
+																	"value": "6"
+																},
+																{
+																	"key": "X-RateLimit-Reset",
+																	"value": "60"
+																},
+																{
+																	"key": "Content-Type",
+																	"value": "application/json; charset=utf-8"
+																},
+																{
+																	"key": "Content-Length",
+																	"value": "43"
+																},
+																{
+																	"key": "ETag",
+																	"value": "W/\"2b-iZk1I2TH7t1WHafHq1fZwM3EuJs\""
+																},
+																{
+																	"key": "Date",
+																	"value": "Tue, 28 Jan 2025 08:48:59 GMT"
+																},
+																{
+																	"key": "Connection",
+																	"value": "keep-alive"
+																},
+																{
+																	"key": "Keep-Alive",
+																	"value": "timeout=5"
+																}
+															],
+															"cookie": [],
+															"responseTime": null,
+															"body": "{\n    \"status\": true,\n    \"response\": {\n        \"updated\": true\n    }\n}"
+														},
+														{
+															"id": "3a16c17d-722b-4f73-b2f9-9d99a5cd2cfa",
+															"name": "Issue Reopened",
+															"originalRequest": {
+																"method": "PATCH",
+																"header": [],
+																"body": {
+																	"mode": "raw",
+																	"raw": "{\n  \"description\": \"This issue occurs when user tries to submit a form with missing fields.\",\n  \"status\": \"OPEN\",\n  \"priority\": \"HIGH\",\n  \"assigned_to\": 2\n}",
+																	"options": {
+																		"raw": {
+																			"language": "json"
+																		}
+																	}
+																},
+																"url": {
+																	"raw": "{{baseUrl}}/v1/customers/:customerId/issues/:id",
+																	"host": [
+																		"{{baseUrl}}"
+																	],
+																	"path": [
+																		"v1",
+																		"customers",
+																		":customerId",
+																		"issues",
+																		":id"
+																	],
+																	"variable": [
+																		{
+																			"key": "customerId",
+																			"value": ""
+																		},
+																		{
+																			"key": "id",
+																			"value": "6"
+																		}
+																	]
+																}
+															},
+															"status": "OK",
+															"code": 200,
+															"_postman_previewlanguage": "json",
+															"header": [
+																{
+																	"key": "X-Powered-By",
+																	"value": "Express"
+																},
+																{
+																	"key": "Access-Control-Allow-Origin",
+																	"value": "*"
+																},
+																{
+																	"key": "X-RateLimit-Limit",
+																	"value": "10"
+																},
+																{
+																	"key": "X-RateLimit-Remaining",
+																	"value": "5"
+																},
+																{
+																	"key": "X-RateLimit-Reset",
+																	"value": "38"
+																},
+																{
+																	"key": "Content-Type",
+																	"value": "application/json; charset=utf-8"
+																},
+																{
+																	"key": "Content-Length",
+																	"value": "43"
+																},
+																{
+																	"key": "ETag",
+																	"value": "W/\"2b-iZk1I2TH7t1WHafHq1fZwM3EuJs\""
+																},
+																{
+																	"key": "Date",
+																	"value": "Tue, 28 Jan 2025 08:49:22 GMT"
+																},
+																{
+																	"key": "Connection",
+																	"value": "keep-alive"
+																},
+																{
+																	"key": "Keep-Alive",
+																	"value": "timeout=5"
+																}
+															],
+															"cookie": [],
+															"responseTime": null,
+															"body": "{\n    \"status\": true,\n    \"response\": {\n        \"updated\": true\n    }\n}"
+														}
+													]
+												},
+												{
+													"name": "Invalid Id - Update Issue",
+													"event": [
+														{
+															"listen": "test",
+															"script": {
+																"id": "6f11916f-24b3-4af6-9605-9bcad4d54938",
+																"exec": [
+																	"var jsonData = pm.response.json();",
+																	"",
+																	"pm.test(\"Status code is 200\", function () {",
+																	"    pm.response.to.have.status(200);",
+																	"});",
+																	"",
+																	"pm.test(\"Response body contains success fields\", function () {",
+																	"    pm.expect(jsonData.status).to.eql(true);",
+																	"    pm.expect(jsonData.response.updated).to.eql(true);",
+																	"});"
+																],
+																"type": "text/javascript",
+																"packages": {}
+															}
+														}
+													],
+													"id": "cd6e8427-c8b1-42a0-b27a-04948531af02",
+													"protocolProfileBehavior": {
+														"disableBodyPruning": true
+													},
+													"request": {
+														"auth": {
+															"type": "bearer",
+															"bearer": {
+																"token": "{{Bearer_token}}"
+															}
+														},
+														"method": "PATCH",
+														"header": [],
+														"body": {
+															"mode": "raw",
+															"raw": "{\n  \"description\": \"This issue occurs when user tries to submit a form with missing fields.\",\n  \"status\": \"REPORTED\",\n  \"priority\": \"HIGH\",\n  \"assigned_to\": 2\n}",
+															"options": {
+																"raw": {
+																	"language": "json"
+																}
+															}
+														},
+														"url": {
+															"raw": "{{baseUrl}}/v1/customers/:customerId/issues/:id",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"v1",
+																"customers",
+																":customerId",
+																"issues",
+																":id"
+															],
+															"variable": [
+																{
+																	"id": "c4611fdc-3988-405e-be5d-9a900088cbb6",
+																	"key": "customerId",
+																	"value": "22039"
+																},
+																{
+																	"id": "476973a7-98bd-4162-a814-99c33b948902",
+																	"key": "id",
+																	"value": "{{issue_id}}"
+																}
+															]
+														}
+													},
+													"response": [
+														{
+															"id": "e07d62db-13e0-4ec3-905d-58918ddb620c",
+															"name": "Resolved Issue",
+															"originalRequest": {
+																"method": "PATCH",
+																"header": [],
+																"body": {
+																	"mode": "raw",
+																	"raw": "{\n  \"description\": \"This issue occurs when user tries to submit a form with missing fields.\",\n  \"status\": \"RESOLVED\",\n  \"priority\": \"HIGH\",\n  \"assigned_to\": 2,\n  \"resolution_notes\": \"Performed initial troubleshooting steps. Further analysis required.\",\n  \"resolved_by\": 2\n}",
+																	"options": {
+																		"raw": {
+																			"language": "json"
+																		}
+																	}
+																},
+																"url": {
+																	"raw": "{{baseUrl}}/v1/customers/:customerId/issues/:id",
+																	"host": [
+																		"{{baseUrl}}"
+																	],
+																	"path": [
+																		"v1",
+																		"customers",
+																		":customerId",
+																		"issues",
+																		":id"
+																	],
+																	"variable": [
+																		{
+																			"key": "customerId",
+																			"value": ""
+																		},
+																		{
+																			"key": "id",
+																			"value": "6"
+																		}
+																	]
+																}
+															},
+															"status": "OK",
+															"code": 200,
+															"_postman_previewlanguage": "json",
+															"header": [
+																{
+																	"key": "X-Powered-By",
+																	"value": "Express"
+																},
+																{
+																	"key": "Access-Control-Allow-Origin",
+																	"value": "*"
+																},
+																{
+																	"key": "X-RateLimit-Limit",
+																	"value": "10"
+																},
+																{
+																	"key": "X-RateLimit-Remaining",
+																	"value": "9"
+																},
+																{
+																	"key": "X-RateLimit-Reset",
+																	"value": "60"
+																},
+																{
+																	"key": "Content-Type",
+																	"value": "application/json; charset=utf-8"
+																},
+																{
+																	"key": "Content-Length",
+																	"value": "43"
+																},
+																{
+																	"key": "ETag",
+																	"value": "W/\"2b-iZk1I2TH7t1WHafHq1fZwM3EuJs\""
+																},
+																{
+																	"key": "Date",
+																	"value": "Tue, 28 Jan 2025 08:27:31 GMT"
+																},
+																{
+																	"key": "Connection",
+																	"value": "keep-alive"
+																},
+																{
+																	"key": "Keep-Alive",
+																	"value": "timeout=5"
+																}
+															],
+															"cookie": [],
+															"responseTime": null,
+															"body": "{\n    \"status\": true,\n    \"response\": {\n        \"updated\": true\n    }\n}"
+														},
+														{
+															"id": "c13f1c0a-8442-42f8-ad61-939535c61c8d",
+															"name": "Issue In Progress",
+															"originalRequest": {
+																"method": "PATCH",
+																"header": [],
+																"body": {
+																	"mode": "raw",
+																	"raw": "{\n  \"description\": \"This issue occurs when user tries to submit a form with missing fields.\",\n  \"status\": \"IN_PROGRESS\",\n  \"priority\": \"HIGH\",\n  \"assigned_to\": 2\n}",
+																	"options": {
+																		"raw": {
+																			"language": "json"
+																		}
+																	}
+																},
+																"url": {
+																	"raw": "{{baseUrl}}/v1/customers/:customerId/issues/:id",
+																	"host": [
+																		"{{baseUrl}}"
+																	],
+																	"path": [
+																		"v1",
+																		"customers",
+																		":customerId",
+																		"issues",
+																		":id"
+																	],
+																	"variable": [
+																		{
+																			"key": "customerId",
+																			"value": ""
+																		},
+																		{
+																			"key": "id",
+																			"value": "6"
+																		}
+																	]
+																}
+															},
+															"status": "OK",
+															"code": 200,
+															"_postman_previewlanguage": "json",
+															"header": [
+																{
+																	"key": "X-Powered-By",
+																	"value": "Express"
+																},
+																{
+																	"key": "Access-Control-Allow-Origin",
+																	"value": "*"
+																},
+																{
+																	"key": "X-RateLimit-Limit",
+																	"value": "10"
+																},
+																{
+																	"key": "X-RateLimit-Remaining",
+																	"value": "1"
+																},
+																{
+																	"key": "X-RateLimit-Reset",
+																	"value": "60"
+																},
+																{
+																	"key": "Content-Type",
+																	"value": "application/json; charset=utf-8"
+																},
+																{
+																	"key": "Content-Length",
+																	"value": "43"
+																},
+																{
+																	"key": "ETag",
+																	"value": "W/\"2b-iZk1I2TH7t1WHafHq1fZwM3EuJs\""
+																},
+																{
+																	"key": "Date",
+																	"value": "Tue, 28 Jan 2025 08:47:57 GMT"
+																},
+																{
+																	"key": "Connection",
+																	"value": "keep-alive"
+																},
+																{
+																	"key": "Keep-Alive",
+																	"value": "timeout=5"
+																}
+															],
+															"cookie": [],
+															"responseTime": null,
+															"body": "{\n    \"status\": true,\n    \"response\": {\n        \"updated\": true\n    }\n}"
+														},
+														{
+															"id": "17832485-e015-49d8-9b28-e468081c254b",
+															"name": "Issue Cancelled",
+															"originalRequest": {
+																"method": "PATCH",
+																"header": [],
+																"body": {
+																	"mode": "raw",
+																	"raw": "{\n  \"description\": \"This issue occurs when user tries to submit a form with missing fields.\",\n  \"status\": \"CLOSED\",\n  \"priority\": \"HIGH\",\n  \"assigned_to\": 2,\n  \"cancellation_reason\": \"me\"\n}",
+																	"options": {
+																		"raw": {
+																			"language": "json"
+																		}
+																	}
+																},
+																"url": {
+																	"raw": "{{baseUrl}}/v1/customers/:customerId/issues/:id",
+																	"host": [
+																		"{{baseUrl}}"
+																	],
+																	"path": [
+																		"v1",
+																		"customers",
+																		":customerId",
+																		"issues",
+																		":id"
+																	],
+																	"variable": [
+																		{
+																			"key": "customerId",
+																			"value": ""
+																		},
+																		{
+																			"key": "id",
+																			"value": "6"
+																		}
+																	]
+																}
+															},
+															"status": "OK",
+															"code": 200,
+															"_postman_previewlanguage": "json",
+															"header": [
+																{
+																	"key": "X-Powered-By",
+																	"value": "Express"
+																},
+																{
+																	"key": "Access-Control-Allow-Origin",
+																	"value": "*"
+																},
+																{
+																	"key": "X-RateLimit-Limit",
+																	"value": "10"
+																},
+																{
+																	"key": "X-RateLimit-Remaining",
+																	"value": "6"
+																},
+																{
+																	"key": "X-RateLimit-Reset",
+																	"value": "60"
+																},
+																{
+																	"key": "Content-Type",
+																	"value": "application/json; charset=utf-8"
+																},
+																{
+																	"key": "Content-Length",
+																	"value": "43"
+																},
+																{
+																	"key": "ETag",
+																	"value": "W/\"2b-iZk1I2TH7t1WHafHq1fZwM3EuJs\""
+																},
+																{
+																	"key": "Date",
+																	"value": "Tue, 28 Jan 2025 08:48:59 GMT"
+																},
+																{
+																	"key": "Connection",
+																	"value": "keep-alive"
+																},
+																{
+																	"key": "Keep-Alive",
+																	"value": "timeout=5"
+																}
+															],
+															"cookie": [],
+															"responseTime": null,
+															"body": "{\n    \"status\": true,\n    \"response\": {\n        \"updated\": true\n    }\n}"
+														},
+														{
+															"id": "d2c1ceb0-cb30-4531-9ed6-aa18a232cf1c",
 															"name": "Issue Reopened",
 															"originalRequest": {
 																"method": "PATCH",
