@@ -753,6 +753,158 @@
 															"body": "{\n  \"status\": false,\n  \"statusCode\": 401,\n  \"timestamp\": \"<date>\",\n  \"path\": \"/v1/path/guarded\",\n  \"message\": \"Unauthorized\"\n}"
 														}
 													]
+												},
+												{
+													"name": "Get Email or SMS OTP Copy",
+													"event": [
+														{
+															"listen": "test",
+															"script": {
+																"id": "74a4af24-d8f8-46cd-8ebc-e3630ce0950e",
+																"exec": [
+																	"var jsonData = pm.response.json();",
+																	"",
+																	"pm.test(\"Status code is 201\", function () {",
+																	"    pm.response.to.have.status(201);",
+																	"    pm.expect(jsonData.status).to.eql(true);",
+																	"});",
+																	"pm.test(\"Reponse body contains success fields\", function () {",
+																	"    pm.expect(jsonData.status).to.eql(true);",
+																	"    pm.expect(jsonData.response.message).to.eql(\"OTP sent via email\");",
+																	"});"
+																],
+																"type": "text/javascript",
+																"packages": {}
+															}
+														}
+													],
+													"id": "995b768e-c05d-4987-b399-4ab037012135",
+													"protocolProfileBehavior": {
+														"disableBodyPruning": true
+													},
+													"request": {
+														"auth": {
+															"type": "bearer",
+															"bearer": {
+																"token": "{{Bearer_token}}"
+															}
+														},
+														"method": "POST",
+														"header": [
+															{
+																"key": "Content-Type",
+																"value": "application/json"
+															},
+															{
+																"key": "Accept",
+																"value": "application/json"
+															}
+														],
+														"body": {
+															"mode": "raw",
+															"raw": "{\n  \"operation\": \"FORGOT_PASSWORD\",\n  \"delivery_channel\": \"EMAIL\",\n  \"email\": \"qa@yopmail.com\"\n//   \"phone\": \"\"\n}",
+															"options": {
+																"raw": {
+																	"headerFamily": "json",
+																	"language": "json"
+																}
+															}
+														},
+														"url": "{{baseUrl}}/v1/auth/mfa/request",
+														"description": "Get Email or SMS OTP. For OTP, you need to provide either `email` or `phone` if you are not logged in.\n    `operation` can be one of: \n- LOGIN\n- FORGOT_PASSWORD\n- CREATE_ROLE\n- UPDATE_ROLE\n- DELETE_ROLE"
+													},
+													"response": [
+														{
+															"id": "e982edfc-d039-48d3-b2bd-de66e262e28f",
+															"name": "Untitled Response",
+															"originalRequest": {
+																"method": "POST",
+																"header": [
+																	{
+																		"key": "Content-Type",
+																		"value": "application/json"
+																	},
+																	{
+																		"key": "Accept",
+																		"value": "application/json"
+																	},
+																	{
+																		"description": "Added as a part of security scheme: bearer",
+																		"key": "Authorization",
+																		"value": "Bearer <token>"
+																	}
+																],
+																"body": {
+																	"mode": "raw",
+																	"raw": "{\n  \"operation\": \"<string>\",\n  \"delivery_channel\": \"SMS\",\n  \"email\": \"<string>\",\n  \"phone\": \"<string>\"\n}",
+																	"options": {
+																		"raw": {
+																			"headerFamily": "json",
+																			"language": "json"
+																		}
+																	}
+																},
+																"url": "{{baseUrl}}/v1/auth/mfa/request"
+															},
+															"status": "Created",
+															"code": 201,
+															"_postman_previewlanguage": "json",
+															"header": [
+																{
+																	"key": "Content-Type",
+																	"value": "application/json"
+																}
+															],
+															"cookie": [],
+															"responseTime": null,
+															"body": "{\n  \"status\": \"<boolean>\",\n  \"response\": {\n    \"operation\": \"<string>\",\n    \"delivery_channel\": \"SMS\",\n    \"email\": \"<string>\",\n    \"phone\": \"<string>\"\n  }\n}"
+														},
+														{
+															"id": "230e8fcb-9217-4740-956a-100d33e1b618",
+															"name": "Untitled Response",
+															"originalRequest": {
+																"method": "POST",
+																"header": [
+																	{
+																		"key": "Content-Type",
+																		"value": "application/json"
+																	},
+																	{
+																		"key": "Accept",
+																		"value": "application/json"
+																	},
+																	{
+																		"description": "Added as a part of security scheme: bearer",
+																		"key": "Authorization",
+																		"value": "Bearer <token>"
+																	}
+																],
+																"body": {
+																	"mode": "raw",
+																	"raw": "{\n  \"operation\": \"<string>\",\n  \"delivery_channel\": \"SMS\",\n  \"email\": \"<string>\",\n  \"phone\": \"<string>\"\n}",
+																	"options": {
+																		"raw": {
+																			"headerFamily": "json",
+																			"language": "json"
+																		}
+																	}
+																},
+																"url": "{{baseUrl}}/v1/auth/mfa/request"
+															},
+															"status": "Unauthorized",
+															"code": 401,
+															"_postman_previewlanguage": "json",
+															"header": [
+																{
+																	"key": "Content-Type",
+																	"value": "application/json"
+																}
+															],
+															"cookie": [],
+															"responseTime": null,
+															"body": "{\n  \"status\": false,\n  \"statusCode\": 401,\n  \"timestamp\": \"<date>\",\n  \"path\": \"/v1/path/guarded\",\n  \"message\": \"Unauthorized\"\n}"
+														}
+													]
 												}
 											],
 											"id": "433d5bae-d7dc-444e-94bb-1f6458d19459"
