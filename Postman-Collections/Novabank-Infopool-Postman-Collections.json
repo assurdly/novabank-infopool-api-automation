@@ -421,7 +421,7 @@
 													"response": []
 												},
 												{
-													"name": "No Email - Forgot Password",
+													"name": "No email - Forgot Password",
 													"event": [
 														{
 															"listen": "test",
@@ -479,7 +479,7 @@
 													"response": []
 												},
 												{
-													"name": "Forgot password - user does not exist",
+													"name": "User does not exist - Forgot Password",
 													"event": [
 														{
 															"listen": "test",
@@ -533,7 +533,7 @@
 													"response": []
 												},
 												{
-													"name": "Forgot password - invalid email format",
+													"name": "Invalid email format - Forgot password",
 													"event": [
 														{
 															"listen": "test",
