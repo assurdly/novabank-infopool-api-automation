@@ -8437,7 +8437,7 @@
 													]
 												},
 												{
-													"name": "Delete Attachment from Issue invalid attachment id",
+													"name": "Invalid attachment id - Delete Attachment from Issue",
 													"event": [
 														{
 															"listen": "test",
@@ -8516,6 +8516,181 @@
 													"response": [
 														{
 															"id": "767075d2-8825-4a58-81d8-7d125761ceb9",
+															"name": "Delete Attachment from Issue",
+															"originalRequest": {
+																"method": "DELETE",
+																"header": [],
+																"body": {
+																	"mode": "raw",
+																	"raw": "{}",
+																	"options": {
+																		"raw": {
+																			"language": "json"
+																		}
+																	}
+																},
+																"url": {
+																	"raw": "{{baseUrl}}/v1/customers/:customerId/issues/:id/attachments/:attachmentId",
+																	"host": [
+																		"{{baseUrl}}"
+																	],
+																	"path": [
+																		"v1",
+																		"customers",
+																		":customerId",
+																		"issues",
+																		":id",
+																		"attachments",
+																		":attachmentId"
+																	],
+																	"variable": [
+																		{
+																			"key": "customerId",
+																			"value": ""
+																		},
+																		{
+																			"key": "id",
+																			"value": "6"
+																		},
+																		{
+																			"key": "attachmentId",
+																			"value": "f9df4fd9-db02-42ad-bd97-5bd69f8a1629"
+																		}
+																	]
+																}
+															},
+															"status": "OK",
+															"code": 200,
+															"_postman_previewlanguage": "json",
+															"header": [
+																{
+																	"key": "X-Powered-By",
+																	"value": "Express"
+																},
+																{
+																	"key": "Access-Control-Allow-Origin",
+																	"value": "*"
+																},
+																{
+																	"key": "X-RateLimit-Limit",
+																	"value": "10"
+																},
+																{
+																	"key": "X-RateLimit-Remaining",
+																	"value": "8"
+																},
+																{
+																	"key": "X-RateLimit-Reset",
+																	"value": "56"
+																},
+																{
+																	"key": "Content-Type",
+																	"value": "application/json; charset=utf-8"
+																},
+																{
+																	"key": "Content-Length",
+																	"value": "43"
+																},
+																{
+																	"key": "ETag",
+																	"value": "W/\"2b-epwLVhHA/bzK85hjJiGnLUgTOWs\""
+																},
+																{
+																	"key": "Date",
+																	"value": "Tue, 28 Jan 2025 10:57:39 GMT"
+																},
+																{
+																	"key": "Connection",
+																	"value": "keep-alive"
+																},
+																{
+																	"key": "Keep-Alive",
+																	"value": "timeout=5"
+																}
+															],
+															"cookie": [],
+															"responseTime": null,
+															"body": "{\n    \"status\": true,\n    \"response\": {\n        \"deleted\": true\n    }\n}"
+														}
+													]
+												},
+												{
+													"name": "No auth - Delete Attachment from Issue",
+													"event": [
+														{
+															"listen": "test",
+															"script": {
+																"id": "b08018e2-a238-41d2-b77d-55142f76985b",
+																"exec": [
+																	"var jsonData = pm.response.json();",
+																	"",
+																	"pm.test(\"Status code is 401\", function () {",
+																	"    pm.response.to.have.status(401);",
+																	"});",
+																	"",
+																	"pm.test(\"Reponse body contains standard error fields\", function () {",
+																	"    pm.expect(jsonData.statusCode).to.eql(401);",
+																	"    pm.expect(jsonData.status).to.eql(false);",
+																	"   pm.expect(jsonData.message).to.eql('Unauthorized'); ",
+																	"});"
+																],
+																"type": "text/javascript",
+																"packages": {}
+															}
+														}
+													],
+													"id": "a5d360bb-2cf3-49b4-a958-36b1ba3b7328",
+													"protocolProfileBehavior": {
+														"disableBodyPruning": true
+													},
+													"request": {
+														"auth": {
+															"type": "noauth"
+														},
+														"method": "DELETE",
+														"header": [],
+														"body": {
+															"mode": "raw",
+															"raw": "",
+															"options": {
+																"raw": {
+																	"language": "json"
+																}
+															}
+														},
+														"url": {
+															"raw": "{{baseUrl}}/v1/customers/:customerId/issues/:id/attachments/:attachmentId",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"v1",
+																"customers",
+																":customerId",
+																"issues",
+																":id",
+																"attachments",
+																":attachmentId"
+															],
+															"variable": [
+																{
+																	"key": "customerId",
+																	"value": ""
+																},
+																{
+																	"key": "id",
+																	"value": "{{issue_id}}"
+																},
+																{
+																	"key": "attachmentId",
+																	"value": "dfgtyhujiko"
+																}
+															]
+														}
+													},
+													"response": [
+														{
+															"id": "a79ee017-8812-49e4-ace7-1d63a1a52400",
 															"name": "Delete Attachment from Issue",
 															"originalRequest": {
 																"method": "DELETE",
@@ -8696,6 +8871,164 @@
 													"response": [
 														{
 															"id": "fe082f37-d42c-4161-90ca-341c75c53047",
+															"name": "Add Comment to Customer",
+															"originalRequest": {
+																"method": "POST",
+																"header": [],
+																"body": {
+																	"mode": "raw",
+																	"raw": "{\n    \"comment\": \"heyy\"\n}",
+																	"options": {
+																		"raw": {
+																			"language": "json"
+																		}
+																	}
+																},
+																"url": {
+																	"raw": "{{baseUrl}}/v1/customers/:id/comments",
+																	"host": [
+																		"{{baseUrl}}"
+																	],
+																	"path": [
+																		"v1",
+																		"customers",
+																		":id",
+																		"comments"
+																	],
+																	"variable": [
+																		{
+																			"key": "id",
+																			"value": "4790"
+																		}
+																	]
+																}
+															},
+															"status": "Created",
+															"code": 201,
+															"_postman_previewlanguage": "json",
+															"header": [
+																{
+																	"key": "X-Powered-By",
+																	"value": "Express"
+																},
+																{
+																	"key": "Access-Control-Allow-Origin",
+																	"value": "*"
+																},
+																{
+																	"key": "X-RateLimit-Limit",
+																	"value": "10"
+																},
+																{
+																	"key": "X-RateLimit-Remaining",
+																	"value": "9"
+																},
+																{
+																	"key": "X-RateLimit-Reset",
+																	"value": "60"
+																},
+																{
+																	"key": "Content-Type",
+																	"value": "application/json; charset=utf-8"
+																},
+																{
+																	"key": "Content-Length",
+																	"value": "261"
+																},
+																{
+																	"key": "ETag",
+																	"value": "W/\"105-CTZdaHoBtAW/wDPgQsVAJbqXQZA\""
+																},
+																{
+																	"key": "Date",
+																	"value": "Tue, 28 Jan 2025 11:23:49 GMT"
+																},
+																{
+																	"key": "Connection",
+																	"value": "keep-alive"
+																},
+																{
+																	"key": "Keep-Alive",
+																	"value": "timeout=5"
+																}
+															],
+															"cookie": [],
+															"responseTime": null,
+															"body": "{\n    \"status\": true,\n    \"response\": {\n        \"created_by\": \"0\",\n        \"customer_id\": \"4790\",\n        \"comment\": \"heyy\",\n        \"modified_by\": null,\n        \"deleted_by\": null,\n        \"issue_id\": null,\n        \"edited_on\": null,\n        \"created_on\": \"2025-01-28T11:23:49.000Z\",\n        \"modified_on\": \"2025-01-28T11:23:49.000Z\",\n        \"deleted_on\": null,\n        \"id\": \"4\"\n    }\n}"
+														}
+													]
+												},
+												{
+													"name": "Add Comment to Customer Copy",
+													"event": [
+														{
+															"listen": "test",
+															"script": {
+																"id": "58f9dd24-3007-4384-9da4-e9f554b07d97",
+																"exec": [
+																	"var jsonData = pm.response.json();",
+																	"",
+																	"pm.test(\"Status code is 201\", function () {",
+																	"    pm.response.to.have.status(201);",
+																	"});",
+																	"",
+																	"pm.test(\"Response body contains success fields\", function () {",
+																	"    pm.expect(jsonData.status).to.eql(true);",
+																	"    pm.expect(jsonData.response.created_by).to.not.be.null;",
+																	"    pm.expect(jsonData.response.created_on).to.not.be.null;",
+																	"    pm.expect(jsonData.response.comment).to.not.be.null;",
+																	"});"
+																],
+																"type": "text/javascript",
+																"packages": {}
+															}
+														}
+													],
+													"id": "030612be-9b66-474f-9390-6c0452c528ea",
+													"protocolProfileBehavior": {
+														"disableBodyPruning": true
+													},
+													"request": {
+														"auth": {
+															"type": "bearer",
+															"bearer": {
+																"token": "{{Bearer_token}}"
+															}
+														},
+														"method": "POST",
+														"header": [],
+														"body": {
+															"mode": "raw",
+															"raw": "{\n    \"comment\": \"heyy\"\n}",
+															"options": {
+																"raw": {
+																	"language": "json"
+																}
+															}
+														},
+														"url": {
+															"raw": "{{baseUrl}}/v1/customers/:id/comments",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"v1",
+																"customers",
+																":id",
+																"comments"
+															],
+															"variable": [
+																{
+																	"id": "00c69299-28de-4bbe-85c1-f4062c36d027",
+																	"key": "id",
+																	"value": "4790"
+																}
+															]
+														}
+													},
+													"response": [
+														{
+															"id": "3667889b-ea17-4bb4-aa94-2c0e1d1a9a7d",
 															"name": "Add Comment to Customer",
 															"originalRequest": {
 																"method": "POST",
