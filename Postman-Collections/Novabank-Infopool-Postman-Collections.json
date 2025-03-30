@@ -2312,7 +2312,7 @@
 											]
 										},
 										{
-											"name": "Change password - empty new password",
+											"name": "Empty new password - Change password",
 											"event": [
 												{
 													"listen": "test",
@@ -2471,6 +2471,63 @@
 											]
 										},
 										{
+											"name": "Get profile - No Auth",
+											"event": [
+												{
+													"listen": "test",
+													"script": {
+														"id": "71546e60-18bb-49ab-b4b7-b313cca2db77",
+														"exec": [
+															"var jsonData = pm.response.json();",
+															"",
+															"pm.test(\"Status code is 401\", function () {",
+															"    pm.response.to.have.status(401);",
+															"});",
+															"",
+															"pm.test(\"Reponse body contains standard error fields\", function () {",
+															"    pm.expect(jsonData.statusCode).to.eql(401);",
+															"    pm.expect(jsonData.status).to.eql(false);",
+															"   pm.expect(jsonData.message).to.eql('Unauthorized'); ",
+															"});",
+															""
+														],
+														"type": "text/javascript",
+														"packages": {}
+													}
+												}
+											],
+											"id": "ad218e9f-9f2d-48b9-9fd7-fd90a031836f",
+											"protocolProfileBehavior": {
+												"disableBodyPruning": true
+											},
+											"request": {
+												"auth": {
+													"type": "noauth"
+												},
+												"method": "GET",
+												"header": [],
+												"url": "{{baseUrl}}/v1/profile"
+											},
+											"response": [
+												{
+													"id": "a938437e-8812-4800-a66f-cafb4a82dff2",
+													"name": "Untitled Response",
+													"originalRequest": {
+														"method": "GET",
+														"header": [],
+														"url": "{{baseUrl}}/v1/profile"
+													},
+													"status": "OK",
+													"code": 200,
+													"_postman_previewlanguage": "text",
+													"header": [],
+													"cookie": [],
+													"responseTime": null,
+													"body": ""
+												}
+											]
+										},
+										{
 											"name": "Get profile - user not logged in",
 											"event": [
 												{
@@ -2570,6 +2627,64 @@
 													"bearer": {
 														"token": "{{Bearer_token}}"
 													}
+												},
+												"method": "PATCH",
+												"header": [
+													{
+														"key": "accept",
+														"value": "*/*"
+													},
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"phone\": \"08000000001\"\n}",
+													"options": {
+														"raw": {
+															"language": "json"
+														}
+													}
+												},
+												"url": "{{baseUrl}}/v1/profile"
+											},
+											"response": []
+										},
+										{
+											"name": "Update profile - no auth",
+											"event": [
+												{
+													"listen": "test",
+													"script": {
+														"id": "1b1a23e4-289f-4ec4-aee0-4b8919c54473",
+														"exec": [
+															"var jsonData = pm.response.json();",
+															"",
+															"pm.test(\"Status code is 401\", function () {",
+															"    pm.response.to.have.status(401);",
+															"});",
+															"",
+															"pm.test(\"Reponse body contains standard error fields\", function () {",
+															"    pm.expect(jsonData.statusCode).to.eql(401);",
+															"    pm.expect(jsonData.status).to.eql(false);",
+															"   pm.expect(jsonData.message).to.eql('Unauthorized'); ",
+															"});",
+															""
+														],
+														"type": "text/javascript",
+														"packages": {}
+													}
+												}
+											],
+											"id": "afcc3526-fc06-4950-ab0c-0b3d621d24a4",
+											"protocolProfileBehavior": {
+												"disableBodyPruning": true
+											},
+											"request": {
+												"auth": {
+													"type": "noauth"
 												},
 												"method": "PATCH",
 												"header": [
@@ -2828,6 +2943,165 @@
 												},
 												{
 													"id": "186c407c-034e-4025-8bb9-69f534366090",
+													"name": "Untitled Response",
+													"originalRequest": {
+														"method": "PATCH",
+														"header": [
+															{
+																"key": "Content-Type",
+																"value": "multipart/form-data"
+															},
+															{
+																"key": "Accept",
+																"value": "application/json"
+															},
+															{
+																"description": "Added as a part of security scheme: bearer",
+																"key": "Authorization",
+																"value": "Bearer <token>"
+															}
+														],
+														"body": {
+															"mode": "formdata",
+															"formdata": [
+																{
+																	"key": "phone",
+																	"value": "<string>",
+																	"type": "text"
+																},
+																{
+																	"key": "picture",
+																	"value": "<binary>",
+																	"type": "text"
+																}
+															]
+														},
+														"url": "{{baseUrl}}/v1/profile"
+													},
+													"status": "Unauthorized",
+													"code": 401,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "application/json"
+														}
+													],
+													"cookie": [],
+													"responseTime": null,
+													"body": "{\n  \"status\": false,\n  \"statusCode\": 401,\n  \"timestamp\": \"<date>\",\n  \"path\": \"/v1/path/guarded\",\n  \"message\": \"Unauthorized\"\n}"
+												}
+											]
+										},
+										{
+											"name": "Update profile Copy",
+											"event": [
+												{
+													"listen": "test",
+													"script": {
+														"id": "743a100b-a8cb-4f40-a36c-d335a0de1438",
+														"exec": [
+															"var jsonData = pm.response.json();",
+															"",
+															"pm.test(\"Status code is 200\", function () {",
+															"    pm.response.to.have.status(200);",
+															"});",
+															"",
+															"pm.test(\"Reponse body contains success fields\", function () {",
+															"    pm.expect(jsonData.status).to.eql(true);",
+															"    pm.expect(jsonData.response).to.not.equal(\"\");",
+															"    ",
+															"});"
+														],
+														"type": "text/javascript",
+														"packages": {}
+													}
+												}
+											],
+											"id": "2a89d10a-0dd2-4179-8cf1-6ef83fde7700",
+											"protocolProfileBehavior": {
+												"disableBodyPruning": true
+											},
+											"request": {
+												"auth": {
+													"type": "bearer",
+													"bearer": {
+														"token": "{{Bearer_token}}"
+													}
+												},
+												"method": "PATCH",
+												"header": [
+													{
+														"key": "accept",
+														"value": "*/*"
+													}
+												],
+												"body": {
+													"mode": "formdata",
+													"formdata": [
+														{
+															"type": "file",
+															"contentType": "image/png",
+															"key": "photo",
+															"src": "L-TzQBlXl/Screen Shot 2025-02-20 at 3.16.03 PM.png"
+														}
+													]
+												},
+												"url": "{{baseUrl}}/v1/profile/photo"
+											},
+											"response": [
+												{
+													"id": "89093c7e-3eb7-4cec-a6c1-d3b5caa7fd24",
+													"name": "Untitled Response",
+													"originalRequest": {
+														"method": "PATCH",
+														"header": [
+															{
+																"key": "Content-Type",
+																"value": "multipart/form-data"
+															},
+															{
+																"key": "Accept",
+																"value": "application/json"
+															},
+															{
+																"description": "Added as a part of security scheme: bearer",
+																"key": "Authorization",
+																"value": "Bearer <token>"
+															}
+														],
+														"body": {
+															"mode": "formdata",
+															"formdata": [
+																{
+																	"key": "phone",
+																	"value": "<string>",
+																	"type": "text"
+																},
+																{
+																	"key": "picture",
+																	"value": "<binary>",
+																	"type": "text"
+																}
+															]
+														},
+														"url": "{{baseUrl}}/v1/profile"
+													},
+													"status": "Bad Request",
+													"code": 400,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "application/json"
+														}
+													],
+													"cookie": [],
+													"responseTime": null,
+													"body": "{\n  \"statusCode\": \"<number>\",\n  \"timestamp\": \"<date>\",\n  \"path\": \"<string>\",\n  \"method\": \"<string>\",\n  \"error\": \"<string>\",\n  \"message\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}"
+												},
+												{
+													"id": "6793ada1-fc56-4d8e-9ed9-ae0dc031724a",
 													"name": "Untitled Response",
 													"originalRequest": {
 														"method": "PATCH",
