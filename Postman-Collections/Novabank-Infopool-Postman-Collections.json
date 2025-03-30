@@ -7742,7 +7742,7 @@
 													]
 												},
 												{
-													"name": "Add Comment to Issue Copy",
+													"name": "No Auth - Add Comment to Issue",
 													"event": [
 														{
 															"listen": "test",
@@ -7751,14 +7751,14 @@
 																"exec": [
 																	"var jsonData = pm.response.json();",
 																	"",
-																	"pm.test(\"Status code is 201\", function () {",
-																	"    pm.response.to.have.status(201);",
+																	"pm.test(\"Status code is 401\", function () {",
+																	"    pm.response.to.have.status(401);",
 																	"});",
 																	"",
-																	"pm.test(\"Response body contains success fields\", function () {",
-																	"    pm.expect(jsonData.status).to.eql(true);",
-																	"    pm.expect(jsonData.response.created_by).to.not.be.null;",
-																	"    pm.expect(jsonData.response.comment).to.not.be.null;",
+																	"pm.test(\"Reponse body contains standard error fields\", function () {",
+																	"    pm.expect(jsonData.statusCode).to.eql(401);",
+																	"    pm.expect(jsonData.status).to.eql(false);",
+																	"   pm.expect(jsonData.message).to.eql('Unauthorized'); ",
 																	"});"
 																],
 																"type": "text/javascript",
@@ -7772,10 +7772,7 @@
 													},
 													"request": {
 														"auth": {
-															"type": "bearer",
-															"bearer": {
-																"token": "{{Bearer_token}}"
-															}
+															"type": "noauth"
 														},
 														"method": "POST",
 														"header": [],
@@ -7803,12 +7800,10 @@
 															],
 															"variable": [
 																{
-																	"id": "be90df30-792d-41ed-af9d-2d4ce39b7634",
 																	"key": "customerId",
 																	"value": "22039"
 																},
 																{
-																	"id": "e573880d-4398-4f8f-81b9-05921ad7f6af",
 																	"key": "id",
 																	"value": "{{issue_id}}"
 																}
