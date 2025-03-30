@@ -6687,7 +6687,7 @@
 													]
 												},
 												{
-													"name": "Update Issue Copy",
+													"name": "No Auth - Update Issue",
 													"event": [
 														{
 															"listen": "test",
@@ -6696,13 +6696,14 @@
 																"exec": [
 																	"var jsonData = pm.response.json();",
 																	"",
-																	"pm.test(\"Status code is 200\", function () {",
-																	"    pm.response.to.have.status(200);",
+																	"pm.test(\"Status code is 401\", function () {",
+																	"    pm.response.to.have.status(401);",
 																	"});",
 																	"",
-																	"pm.test(\"Response body contains success fields\", function () {",
-																	"    pm.expect(jsonData.status).to.eql(true);",
-																	"    pm.expect(jsonData.response.updated).to.eql(true);",
+																	"pm.test(\"Reponse body contains standard error fields\", function () {",
+																	"    pm.expect(jsonData.statusCode).to.eql(401);",
+																	"    pm.expect(jsonData.status).to.eql(false);",
+																	"   pm.expect(jsonData.message).to.eql('Unauthorized'); ",
 																	"});"
 																],
 																"type": "text/javascript",
@@ -6716,10 +6717,7 @@
 													},
 													"request": {
 														"auth": {
-															"type": "bearer",
-															"bearer": {
-																"token": "{{Bearer_token}}"
-															}
+															"type": "noauth"
 														},
 														"method": "PATCH",
 														"header": [],
@@ -6746,12 +6744,10 @@
 															],
 															"variable": [
 																{
-																	"id": "c3a339db-0f9c-44e8-a136-7ed6ef915b35",
 																	"key": "customerId",
 																	"value": "22039"
 																},
 																{
-																	"id": "4167bf3a-d7f5-49ee-910c-f7e9a8a7241f",
 																	"key": "id",
 																	"value": "{{issue_id}}"
 																}
@@ -7139,13 +7135,14 @@
 																"exec": [
 																	"var jsonData = pm.response.json();",
 																	"",
-																	"pm.test(\"Status code is 200\", function () {",
-																	"    pm.response.to.have.status(200);",
+																	"pm.test(\"Status code is 404\", function () {",
+																	"    pm.response.to.have.status(404);",
 																	"});",
-																	"",
-																	"pm.test(\"Response body contains success fields\", function () {",
-																	"    pm.expect(jsonData.status).to.eql(true);",
-																	"    pm.expect(jsonData.response.updated).to.eql(true);",
+																	"pm.test(\"Reponse body contains standard error fields\", function () {",
+																	"    pm.expect(jsonData.statusCode).to.eql(404);",
+																	"    pm.expect(jsonData.path).is.not.null;",
+																	"    pm.expect(jsonData.status).to.eql(false);",
+																	"   pm.expect(jsonData.message).to.eql('Issue not found'); ",
 																	"});"
 																],
 																"type": "text/javascript",
@@ -7189,14 +7186,12 @@
 															],
 															"variable": [
 																{
-																	"id": "c4611fdc-3988-405e-be5d-9a900088cbb6",
 																	"key": "customerId",
 																	"value": "22039"
 																},
 																{
-																	"id": "476973a7-98bd-4162-a814-99c33b948902",
 																	"key": "id",
-																	"value": "{{issue_id}}"
+																	"value": "0"
 																}
 															]
 														}
@@ -7653,6 +7648,176 @@
 													"response": [
 														{
 															"id": "a8aa3222-e1f7-4a77-92a8-7f525cbfe3eb",
+															"name": "Add Comment to Issue",
+															"originalRequest": {
+																"method": "POST",
+																"header": [],
+																"body": {
+																	"mode": "raw",
+																	"raw": "{\n  \"comment\": \"hi\"\n}",
+																	"options": {
+																		"raw": {
+																			"language": "json"
+																		}
+																	}
+																},
+																"url": {
+																	"raw": "{{baseUrl}}/v1/customers/:customerId/issues/:id/comments",
+																	"host": [
+																		"{{baseUrl}}"
+																	],
+																	"path": [
+																		"v1",
+																		"customers",
+																		":customerId",
+																		"issues",
+																		":id",
+																		"comments"
+																	],
+																	"variable": [
+																		{
+																			"key": "customerId",
+																			"value": ""
+																		},
+																		{
+																			"key": "id",
+																			"value": "6"
+																		}
+																	]
+																}
+															},
+															"status": "Created",
+															"code": 201,
+															"_postman_previewlanguage": "json",
+															"header": [
+																{
+																	"key": "X-Powered-By",
+																	"value": "Express"
+																},
+																{
+																	"key": "Access-Control-Allow-Origin",
+																	"value": "*"
+																},
+																{
+																	"key": "X-RateLimit-Limit",
+																	"value": "10"
+																},
+																{
+																	"key": "X-RateLimit-Remaining",
+																	"value": "9"
+																},
+																{
+																	"key": "X-RateLimit-Reset",
+																	"value": "60"
+																},
+																{
+																	"key": "Content-Type",
+																	"value": "application/json; charset=utf-8"
+																},
+																{
+																	"key": "Content-Length",
+																	"value": "258"
+																},
+																{
+																	"key": "ETag",
+																	"value": "W/\"102-dzibvaGhO63Y8GNEP90mVbsG4uo\""
+																},
+																{
+																	"key": "Date",
+																	"value": "Tue, 28 Jan 2025 09:18:59 GMT"
+																},
+																{
+																	"key": "Connection",
+																	"value": "keep-alive"
+																},
+																{
+																	"key": "Keep-Alive",
+																	"value": "timeout=5"
+																}
+															],
+															"cookie": [],
+															"responseTime": null,
+															"body": "{\n    \"status\": true,\n    \"response\": {\n        \"created_by\": \"2\",\n        \"customer_id\": \"4790\",\n        \"issue_id\": \"6\",\n        \"comment\": \"hi\",\n        \"modified_by\": null,\n        \"deleted_by\": null,\n        \"edited_on\": null,\n        \"created_on\": \"2025-01-28T09:18:58.000Z\",\n        \"modified_on\": \"2025-01-28T09:18:58.000Z\",\n        \"deleted_on\": null,\n        \"id\": \"1\"\n    }\n}"
+														}
+													]
+												},
+												{
+													"name": "Add Comment to Issue Copy",
+													"event": [
+														{
+															"listen": "test",
+															"script": {
+																"id": "de5419d7-33a4-49f4-83cb-431f494f50da",
+																"exec": [
+																	"var jsonData = pm.response.json();",
+																	"",
+																	"pm.test(\"Status code is 201\", function () {",
+																	"    pm.response.to.have.status(201);",
+																	"});",
+																	"",
+																	"pm.test(\"Response body contains success fields\", function () {",
+																	"    pm.expect(jsonData.status).to.eql(true);",
+																	"    pm.expect(jsonData.response.created_by).to.not.be.null;",
+																	"    pm.expect(jsonData.response.comment).to.not.be.null;",
+																	"});"
+																],
+																"type": "text/javascript",
+																"packages": {}
+															}
+														}
+													],
+													"id": "00cd9826-a7b3-4277-8fc6-9f0f075a1439",
+													"protocolProfileBehavior": {
+														"disableBodyPruning": true
+													},
+													"request": {
+														"auth": {
+															"type": "bearer",
+															"bearer": {
+																"token": "{{Bearer_token}}"
+															}
+														},
+														"method": "POST",
+														"header": [],
+														"body": {
+															"mode": "raw",
+															"raw": "{\n  \"comment\": \"HEY\"\n}",
+															"options": {
+																"raw": {
+																	"language": "json"
+																}
+															}
+														},
+														"url": {
+															"raw": "{{baseUrl}}/v1/customers/:customerId/issues/:id/comments",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"v1",
+																"customers",
+																":customerId",
+																"issues",
+																":id",
+																"comments"
+															],
+															"variable": [
+																{
+																	"id": "be90df30-792d-41ed-af9d-2d4ce39b7634",
+																	"key": "customerId",
+																	"value": "22039"
+																},
+																{
+																	"id": "e573880d-4398-4f8f-81b9-05921ad7f6af",
+																	"key": "id",
+																	"value": "{{issue_id}}"
+																}
+															]
+														}
+													},
+													"response": [
+														{
+															"id": "7f0868b8-6c5c-408a-9147-73e2d1614711",
 															"name": "Add Comment to Issue",
 															"originalRequest": {
 																"method": "POST",
