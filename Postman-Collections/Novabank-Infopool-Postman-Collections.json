@@ -9422,15 +9422,16 @@
 																"exec": [
 																	"var jsonData = pm.response.json();",
 																	"",
-																	"pm.test(\"Status code is 404\", function () {",
-																	"    pm.response.to.have.status(404);",
+																	"pm.test(\"Status code is 401\", function () {",
+																	"    pm.response.to.have.status(401);",
 																	"});",
+																	"",
 																	"pm.test(\"Reponse body contains standard error fields\", function () {",
-																	"    pm.expect(jsonData.statusCode).to.eql(404);",
-																	"    pm.expect(jsonData.path).is.not.null;",
+																	"    pm.expect(jsonData.statusCode).to.eql(401);",
 																	"    pm.expect(jsonData.status).to.eql(false);",
-																	"   pm.expect(jsonData.message).to.eql('Issue not found'); ",
-																	"});"
+																	"   pm.expect(jsonData.message).to.eql('Unauthorized'); ",
+																	"});",
+																	""
 																],
 																"type": "text/javascript",
 																"packages": {}
@@ -9443,10 +9444,7 @@
 													},
 													"request": {
 														"auth": {
-															"type": "bearer",
-															"bearer": {
-																"token": "{{Bearer_token}}"
-															}
+															"type": "noauth"
 														},
 														"method": "GET",
 														"header": [],
@@ -9720,6 +9718,336 @@
 															"body": "{\n    \"status\": true,\n    \"response\": {\n        \"updated\": true\n    }\n}"
 														}
 													]
+												},
+												{
+													"name": "Update Customer Comment Copy",
+													"event": [
+														{
+															"listen": "test",
+															"script": {
+																"id": "746d13bc-d67f-4d19-8817-db59e7857b8b",
+																"exec": [
+																	"var jsonData = pm.response.json();",
+																	"",
+																	"pm.test(\"Status code is 401\", function () {",
+																	"    pm.response.to.have.status(401);",
+																	"});",
+																	"",
+																	"pm.test(\"Reponse body contains standard error fields\", function () {",
+																	"    pm.expect(jsonData.statusCode).to.eql(401);",
+																	"    pm.expect(jsonData.status).to.eql(false);",
+																	"   pm.expect(jsonData.message).to.eql('Unauthorized'); ",
+																	"});",
+																	""
+																],
+																"type": "text/javascript",
+																"packages": {}
+															}
+														}
+													],
+													"id": "116c8571-99cd-4fb1-acfe-cb9e00531053",
+													"protocolProfileBehavior": {
+														"disableBodyPruning": true
+													},
+													"request": {
+														"auth": {
+															"type": "noauth"
+														},
+														"method": "PATCH",
+														"header": [],
+														"body": {
+															"mode": "raw",
+															"raw": "{\n    \"comment\": \"hey favorite\"\n}",
+															"options": {
+																"raw": {
+																	"language": "json"
+																}
+															}
+														},
+														"url": {
+															"raw": "{{baseUrl}}/v1/customers/:id/comments/:commentId",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"v1",
+																"customers",
+																":id",
+																"comments",
+																":commentId"
+															],
+															"variable": [
+																{
+																	"key": "id",
+																	"value": "4790"
+																},
+																{
+																	"key": "commentId",
+																	"value": "{{comment_id}}"
+																}
+															]
+														}
+													},
+													"response": [
+														{
+															"id": "71db330c-00b0-47cb-9aa3-651e30291996",
+															"name": "Update Customer Comment",
+															"originalRequest": {
+																"method": "PATCH",
+																"header": [],
+																"body": {
+																	"mode": "raw",
+																	"raw": "{\n    \"comment\": \"heyyyyyyyyyyyyy\"\n}",
+																	"options": {
+																		"raw": {
+																			"language": "json"
+																		}
+																	}
+																},
+																"url": {
+																	"raw": "{{baseUrl}}/v1/customers/:id/comments/:commentId",
+																	"host": [
+																		"{{baseUrl}}"
+																	],
+																	"path": [
+																		"v1",
+																		"customers",
+																		":id",
+																		"comments",
+																		":commentId"
+																	],
+																	"variable": [
+																		{
+																			"key": "id",
+																			"value": "4790"
+																		},
+																		{
+																			"key": "commentId",
+																			"value": "4"
+																		}
+																	]
+																}
+															},
+															"status": "OK",
+															"code": 200,
+															"_postman_previewlanguage": "json",
+															"header": [
+																{
+																	"key": "X-Powered-By",
+																	"value": "Express"
+																},
+																{
+																	"key": "Access-Control-Allow-Origin",
+																	"value": "*"
+																},
+																{
+																	"key": "X-RateLimit-Limit",
+																	"value": "10"
+																},
+																{
+																	"key": "X-RateLimit-Remaining",
+																	"value": "9"
+																},
+																{
+																	"key": "X-RateLimit-Reset",
+																	"value": "60"
+																},
+																{
+																	"key": "Content-Type",
+																	"value": "application/json; charset=utf-8"
+																},
+																{
+																	"key": "Content-Length",
+																	"value": "43"
+																},
+																{
+																	"key": "ETag",
+																	"value": "W/\"2b-iZk1I2TH7t1WHafHq1fZwM3EuJs\""
+																},
+																{
+																	"key": "Date",
+																	"value": "Tue, 28 Jan 2025 11:24:42 GMT"
+																},
+																{
+																	"key": "Connection",
+																	"value": "keep-alive"
+																},
+																{
+																	"key": "Keep-Alive",
+																	"value": "timeout=5"
+																}
+															],
+															"cookie": [],
+															"responseTime": null,
+															"body": "{\n    \"status\": true,\n    \"response\": {\n        \"updated\": true\n    }\n}"
+														}
+													]
+												},
+												{
+													"name": "Invalid ID - Update Customer Comment",
+													"event": [
+														{
+															"listen": "test",
+															"script": {
+																"id": "746d13bc-d67f-4d19-8817-db59e7857b8b",
+																"exec": [
+																	"var jsonData = pm.response.json();",
+																	"",
+																	"pm.test(\"Status code is 404\", function () {",
+																	"    pm.response.to.have.status(404);",
+																	"});",
+																	"pm.test(\"Reponse body contains standard error fields\", function () {",
+																	"    pm.expect(jsonData.statusCode).to.eql(404);",
+																	"    pm.expect(jsonData.path).is.not.null;",
+																	"    pm.expect(jsonData.status).to.eql(false);",
+																	"   pm.expect(jsonData.message).to.eql('Comment not found'); ",
+																	"});"
+																],
+																"type": "text/javascript",
+																"packages": {}
+															}
+														}
+													],
+													"id": "7296fc99-c7dc-4f93-99c2-309a6a1f2c6b",
+													"protocolProfileBehavior": {
+														"disableBodyPruning": true
+													},
+													"request": {
+														"auth": {
+															"type": "bearer",
+															"bearer": {
+																"token": "{{Bearer_token}}"
+															}
+														},
+														"method": "PATCH",
+														"header": [],
+														"body": {
+															"mode": "raw",
+															"raw": "{\n    \"comment\": \"hey favorite\"\n}",
+															"options": {
+																"raw": {
+																	"language": "json"
+																}
+															}
+														},
+														"url": {
+															"raw": "{{baseUrl}}/v1/customers/:id/comments/:commentId",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"v1",
+																"customers",
+																":id",
+																"comments",
+																":commentId"
+															],
+															"variable": [
+																{
+																	"key": "id",
+																	"value": "4790"
+																},
+																{
+																	"key": "commentId",
+																	"value": "0"
+																}
+															]
+														}
+													},
+													"response": [
+														{
+															"id": "5e6e3b34-17c3-4a29-bd70-1b88ea4d3ca0",
+															"name": "Update Customer Comment",
+															"originalRequest": {
+																"method": "PATCH",
+																"header": [],
+																"body": {
+																	"mode": "raw",
+																	"raw": "{\n    \"comment\": \"heyyyyyyyyyyyyy\"\n}",
+																	"options": {
+																		"raw": {
+																			"language": "json"
+																		}
+																	}
+																},
+																"url": {
+																	"raw": "{{baseUrl}}/v1/customers/:id/comments/:commentId",
+																	"host": [
+																		"{{baseUrl}}"
+																	],
+																	"path": [
+																		"v1",
+																		"customers",
+																		":id",
+																		"comments",
+																		":commentId"
+																	],
+																	"variable": [
+																		{
+																			"key": "id",
+																			"value": "4790"
+																		},
+																		{
+																			"key": "commentId",
+																			"value": "4"
+																		}
+																	]
+																}
+															},
+															"status": "OK",
+															"code": 200,
+															"_postman_previewlanguage": "json",
+															"header": [
+																{
+																	"key": "X-Powered-By",
+																	"value": "Express"
+																},
+																{
+																	"key": "Access-Control-Allow-Origin",
+																	"value": "*"
+																},
+																{
+																	"key": "X-RateLimit-Limit",
+																	"value": "10"
+																},
+																{
+																	"key": "X-RateLimit-Remaining",
+																	"value": "9"
+																},
+																{
+																	"key": "X-RateLimit-Reset",
+																	"value": "60"
+																},
+																{
+																	"key": "Content-Type",
+																	"value": "application/json; charset=utf-8"
+																},
+																{
+																	"key": "Content-Length",
+																	"value": "43"
+																},
+																{
+																	"key": "ETag",
+																	"value": "W/\"2b-iZk1I2TH7t1WHafHq1fZwM3EuJs\""
+																},
+																{
+																	"key": "Date",
+																	"value": "Tue, 28 Jan 2025 11:24:42 GMT"
+																},
+																{
+																	"key": "Connection",
+																	"value": "keep-alive"
+																},
+																{
+																	"key": "Keep-Alive",
+																	"value": "timeout=5"
+																}
+															],
+															"cookie": [],
+															"responseTime": null,
+															"body": "{\n    \"status\": true,\n    \"response\": {\n        \"updated\": true\n    }\n}"
+														}
+													]
 												}
 											],
 											"id": "b08840f0-a5d7-411a-912f-08c9e402888a"
@@ -9791,6 +10119,303 @@
 													"response": [
 														{
 															"id": "3e6b8bb2-c921-43ea-b089-27f3319207a4",
+															"name": "Delete Customer Comment",
+															"originalRequest": {
+																"method": "DELETE",
+																"header": [],
+																"url": {
+																	"raw": "{{baseUrl}}/v1/customers/:id/comments/:commentId",
+																	"host": [
+																		"{{baseUrl}}"
+																	],
+																	"path": [
+																		"v1",
+																		"customers",
+																		":id",
+																		"comments",
+																		":commentId"
+																	],
+																	"variable": [
+																		{
+																			"key": "id",
+																			"value": "4790"
+																		},
+																		{
+																			"key": "commentId",
+																			"value": "4"
+																		}
+																	]
+																}
+															},
+															"status": "OK",
+															"code": 200,
+															"_postman_previewlanguage": "json",
+															"header": [
+																{
+																	"key": "X-Powered-By",
+																	"value": "Express"
+																},
+																{
+																	"key": "Access-Control-Allow-Origin",
+																	"value": "*"
+																},
+																{
+																	"key": "X-RateLimit-Limit",
+																	"value": "10"
+																},
+																{
+																	"key": "X-RateLimit-Remaining",
+																	"value": "7"
+																},
+																{
+																	"key": "X-RateLimit-Reset",
+																	"value": "52"
+																},
+																{
+																	"key": "Content-Type",
+																	"value": "application/json; charset=utf-8"
+																},
+																{
+																	"key": "Content-Length",
+																	"value": "43"
+																},
+																{
+																	"key": "ETag",
+																	"value": "W/\"2b-epwLVhHA/bzK85hjJiGnLUgTOWs\""
+																},
+																{
+																	"key": "Date",
+																	"value": "Tue, 28 Jan 2025 11:25:26 GMT"
+																},
+																{
+																	"key": "Connection",
+																	"value": "keep-alive"
+																},
+																{
+																	"key": "Keep-Alive",
+																	"value": "timeout=5"
+																}
+															],
+															"cookie": [],
+															"responseTime": null,
+															"body": "{\n    \"status\": true,\n    \"response\": {\n        \"deleted\": true\n    }\n}"
+														}
+													]
+												},
+												{
+													"name": "Delete Customer Comment Copy",
+													"event": [
+														{
+															"listen": "test",
+															"script": {
+																"id": "155da07c-0de7-4b3a-95c3-7d565d43562c",
+																"exec": [
+																	"var jsonData = pm.response.json();",
+																	"",
+																	"pm.test(\"Status code is 404\", function () {",
+																	"    pm.response.to.have.status(404);",
+																	"});",
+																	"pm.test(\"Reponse body contains standard error fields\", function () {",
+																	"    pm.expect(jsonData.statusCode).to.eql(404);",
+																	"    pm.expect(jsonData.path).is.not.null;",
+																	"    pm.expect(jsonData.status).to.eql(false);",
+																	"   pm.expect(jsonData.message).to.eql('Comment not found'); ",
+																	"});"
+																],
+																"type": "text/javascript",
+																"packages": {}
+															}
+														}
+													],
+													"id": "444733b0-b5c9-4915-878f-f27ece8d9ee7",
+													"protocolProfileBehavior": {
+														"disableBodyPruning": true
+													},
+													"request": {
+														"auth": {
+															"type": "bearer",
+															"bearer": {
+																"token": "{{Bearer_token}}"
+															}
+														},
+														"method": "DELETE",
+														"header": [],
+														"url": {
+															"raw": "{{baseUrl}}/v1/customers/:id/comments/:commentId",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"v1",
+																"customers",
+																":id",
+																"comments",
+																":commentId"
+															],
+															"variable": [
+																{
+																	"key": "id",
+																	"value": "4790"
+																},
+																{
+																	"key": "commentId",
+																	"value": "0"
+																}
+															]
+														}
+													},
+													"response": [
+														{
+															"id": "00d482fa-ec58-4182-a5e2-6c057df1d43e",
+															"name": "Delete Customer Comment",
+															"originalRequest": {
+																"method": "DELETE",
+																"header": [],
+																"url": {
+																	"raw": "{{baseUrl}}/v1/customers/:id/comments/:commentId",
+																	"host": [
+																		"{{baseUrl}}"
+																	],
+																	"path": [
+																		"v1",
+																		"customers",
+																		":id",
+																		"comments",
+																		":commentId"
+																	],
+																	"variable": [
+																		{
+																			"key": "id",
+																			"value": "4790"
+																		},
+																		{
+																			"key": "commentId",
+																			"value": "4"
+																		}
+																	]
+																}
+															},
+															"status": "OK",
+															"code": 200,
+															"_postman_previewlanguage": "json",
+															"header": [
+																{
+																	"key": "X-Powered-By",
+																	"value": "Express"
+																},
+																{
+																	"key": "Access-Control-Allow-Origin",
+																	"value": "*"
+																},
+																{
+																	"key": "X-RateLimit-Limit",
+																	"value": "10"
+																},
+																{
+																	"key": "X-RateLimit-Remaining",
+																	"value": "7"
+																},
+																{
+																	"key": "X-RateLimit-Reset",
+																	"value": "52"
+																},
+																{
+																	"key": "Content-Type",
+																	"value": "application/json; charset=utf-8"
+																},
+																{
+																	"key": "Content-Length",
+																	"value": "43"
+																},
+																{
+																	"key": "ETag",
+																	"value": "W/\"2b-epwLVhHA/bzK85hjJiGnLUgTOWs\""
+																},
+																{
+																	"key": "Date",
+																	"value": "Tue, 28 Jan 2025 11:25:26 GMT"
+																},
+																{
+																	"key": "Connection",
+																	"value": "keep-alive"
+																},
+																{
+																	"key": "Keep-Alive",
+																	"value": "timeout=5"
+																}
+															],
+															"cookie": [],
+															"responseTime": null,
+															"body": "{\n    \"status\": true,\n    \"response\": {\n        \"deleted\": true\n    }\n}"
+														}
+													]
+												},
+												{
+													"name": "Invalid ID - Delete Customer Comment",
+													"event": [
+														{
+															"listen": "test",
+															"script": {
+																"id": "155da07c-0de7-4b3a-95c3-7d565d43562c",
+																"exec": [
+																	"var jsonData = pm.response.json();",
+																	"",
+																	"pm.test(\"Status code is 200\", function () {",
+																	"    pm.response.to.have.status(200);",
+																	"});",
+																	"",
+																	"pm.test(\"Response body contains success fields\", function () {",
+																	"    pm.expect(jsonData.status).to.eql(true);",
+																	"    pm.expect(jsonData.response.deleted).to.eql(true);",
+																	"});"
+																],
+																"type": "text/javascript",
+																"packages": {}
+															}
+														}
+													],
+													"id": "68b16fc6-59ce-4caa-bfc2-30dd1bb1cc93",
+													"protocolProfileBehavior": {
+														"disableBodyPruning": true
+													},
+													"request": {
+														"auth": {
+															"type": "bearer",
+															"bearer": {
+																"token": "{{Bearer_token}}"
+															}
+														},
+														"method": "DELETE",
+														"header": [],
+														"url": {
+															"raw": "{{baseUrl}}/v1/customers/:id/comments/:commentId",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"v1",
+																"customers",
+																":id",
+																"comments",
+																":commentId"
+															],
+															"variable": [
+																{
+																	"id": "a25af808-3767-4b06-a818-2e9c7dd7991e",
+																	"key": "id",
+																	"value": "4790"
+																},
+																{
+																	"id": "3e2fc0e8-5065-49df-890c-5ea5f4c61d91",
+																	"key": "commentId",
+																	"value": "{{comment_id}}"
+																}
+															]
+														}
+													},
+													"response": [
+														{
+															"id": "be967c28-543e-45f9-bcbf-eaa810f7d4b1",
 															"name": "Delete Customer Comment",
 															"originalRequest": {
 																"method": "DELETE",
