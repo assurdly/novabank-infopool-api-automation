@@ -10203,7 +10203,7 @@
 													]
 												},
 												{
-													"name": "Delete Customer Comment Copy",
+													"name": "Invalid ID - Delete Customer Comment",
 													"event": [
 														{
 															"listen": "test",
@@ -10351,7 +10351,7 @@
 													]
 												},
 												{
-													"name": "Invalid ID - Delete Customer Comment",
+													"name": "No Auth - Delete Customer Comment",
 													"event": [
 														{
 															"listen": "test",
@@ -10360,14 +10360,16 @@
 																"exec": [
 																	"var jsonData = pm.response.json();",
 																	"",
-																	"pm.test(\"Status code is 200\", function () {",
-																	"    pm.response.to.have.status(200);",
+																	"pm.test(\"Status code is 401\", function () {",
+																	"    pm.response.to.have.status(401);",
 																	"});",
 																	"",
-																	"pm.test(\"Response body contains success fields\", function () {",
-																	"    pm.expect(jsonData.status).to.eql(true);",
-																	"    pm.expect(jsonData.response.deleted).to.eql(true);",
-																	"});"
+																	"pm.test(\"Reponse body contains standard error fields\", function () {",
+																	"    pm.expect(jsonData.statusCode).to.eql(401);",
+																	"    pm.expect(jsonData.status).to.eql(false);",
+																	"   pm.expect(jsonData.message).to.eql('Unauthorized'); ",
+																	"});",
+																	""
 																],
 																"type": "text/javascript",
 																"packages": {}
@@ -10380,10 +10382,7 @@
 													},
 													"request": {
 														"auth": {
-															"type": "bearer",
-															"bearer": {
-																"token": "{{Bearer_token}}"
-															}
+															"type": "noauth"
 														},
 														"method": "DELETE",
 														"header": [],
@@ -10401,12 +10400,10 @@
 															],
 															"variable": [
 																{
-																	"id": "a25af808-3767-4b06-a818-2e9c7dd7991e",
 																	"key": "id",
 																	"value": "4790"
 																},
 																{
-																	"id": "3e2fc0e8-5065-49df-890c-5ea5f4c61d91",
 																	"key": "commentId",
 																	"value": "{{comment_id}}"
 																}
@@ -10651,7 +10648,7 @@
 													]
 												},
 												{
-													"name": "Search Customers - No Auth",
+													"name": "No Auth - Search Customers",
 													"event": [
 														{
 															"listen": "test",
@@ -10784,7 +10781,7 @@
 													]
 												},
 												{
-													"name": "Search Customers - invalid name",
+													"name": "Invalid name - Search Customers",
 													"event": [
 														{
 															"listen": "test",
@@ -11065,7 +11062,141 @@
 													]
 												},
 												{
-													"name": "Search Customers - invalid user phone number",
+													"name": "No Auth - Search Customers",
+													"event": [
+														{
+															"listen": "test",
+															"script": {
+																"id": "e89e67ed-f80c-4379-a4ae-de99ca11f4d7",
+																"exec": [
+																	"var jsonData = pm.response.json();",
+																	"",
+																	"pm.test(\"Status code is 401\", function () {",
+																	"    pm.response.to.have.status(401);",
+																	"});",
+																	"",
+																	"pm.test(\"Reponse body contains standard error fields\", function () {",
+																	"    pm.expect(jsonData.statusCode).to.eql(401);",
+																	"    pm.expect(jsonData.status).to.eql(false);",
+																	"   pm.expect(jsonData.message).to.eql('Unauthorized'); ",
+																	"});",
+																	""
+																],
+																"type": "text/javascript",
+																"packages": {}
+															}
+														}
+													],
+													"id": "eaf75036-cfaa-4c2a-8f75-dbe0faa78600",
+													"protocolProfileBehavior": {
+														"disableBodyPruning": true
+													},
+													"request": {
+														"auth": {
+															"type": "noauth"
+														},
+														"method": "GET",
+														"header": [],
+														"url": {
+															"raw": "{{baseUrl}}/v1/customers/search?q=09055785081",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"v1",
+																"customers",
+																"search"
+															],
+															"query": [
+																{
+																	"key": "q",
+																	"value": "09055785081"
+																}
+															]
+														}
+													},
+													"response": [
+														{
+															"id": "2ddbbe0f-00bc-4a7b-ae46-8317f7630b0f",
+															"name": "Search Customers",
+															"originalRequest": {
+																"method": "GET",
+																"header": [],
+																"url": {
+																	"raw": "{{baseUrl}}/v1/customers/search?q=sunrise",
+																	"host": [
+																		"{{baseUrl}}"
+																	],
+																	"path": [
+																		"v1",
+																		"customers",
+																		"search"
+																	],
+																	"query": [
+																		{
+																			"key": "q",
+																			"value": "sunrise"
+																		}
+																	]
+																}
+															},
+															"status": "OK",
+															"code": 200,
+															"_postman_previewlanguage": "json",
+															"header": [
+																{
+																	"key": "X-Powered-By",
+																	"value": "Express"
+																},
+																{
+																	"key": "Access-Control-Allow-Origin",
+																	"value": "*"
+																},
+																{
+																	"key": "X-RateLimit-Limit",
+																	"value": "10"
+																},
+																{
+																	"key": "X-RateLimit-Remaining",
+																	"value": "9"
+																},
+																{
+																	"key": "X-RateLimit-Reset",
+																	"value": "60"
+																},
+																{
+																	"key": "Content-Type",
+																	"value": "application/json; charset=utf-8"
+																},
+																{
+																	"key": "Content-Length",
+																	"value": "615"
+																},
+																{
+																	"key": "ETag",
+																	"value": "W/\"267-eMnk/d5f334VTWWqMlSA0BM4mO4\""
+																},
+																{
+																	"key": "Date",
+																	"value": "Mon, 27 Jan 2025 05:55:25 GMT"
+																},
+																{
+																	"key": "Connection",
+																	"value": "keep-alive"
+																},
+																{
+																	"key": "Keep-Alive",
+																	"value": "timeout=5"
+																}
+															],
+															"cookie": [],
+															"responseTime": null,
+															"body": "{\n    \"status\": true,\n    \"response\": {\n        \"data\": [\n            {\n                \"account_id\": \"NB5007846\",\n                \"account_numbers\": [],\n                \"bvn\": \"\",\n                \"customer_id\": \"4790\",\n                \"customer_name\": \"SUNRISE PRODUCTS LIMITED\",\n                \"email\": \"\",\n                \"first_name\": \"\",\n                \"id\": \"SS7831881_NB5007846\",\n                \"last_name\": \"\",\n                \"phone\": \"\",\n                \"session_id\": \"\",\n                \"tran_date\": \"1970-01-01T00:00:20.058Z\",\n                \"tran_id\": \"SS7831881\",\n                \"tran_type\": \"T\",\n                \"type\": \"transaction\"\n            },\n            {\n                \"customer_id\": \"4790\",\n                \"customer_name\": \"SUNRISE PRODUCTS LIMITED\",\n                \"email\": \"NOEMAIL@NOVA.COM\",\n                \"first_name\": \"\",\n                \"id\": \"4790\",\n                \"last_name\": \"\",\n                \"middle_name\": \"\",\n                \"phone\": \"2348024707794\",\n                \"primary_sol_id\": \"001\",\n                \"type\": \"customer\"\n            }\n        ],\n        \"total\": 2,\n        \"page\": 1,\n        \"limit\": 10,\n        \"totalPages\": 1\n    }\n}"
+														}
+													]
+												},
+												{
+													"name": "Invalid user phone number - Search Customers",
 													"event": [
 														{
 															"listen": "test",
