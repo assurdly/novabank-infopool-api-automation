@@ -3860,7 +3860,7 @@
 									"name": "Validate invitation",
 									"item": [
 										{
-											"name": "Validate user invitation token",
+											"name": "Invalid token - Validate user invitation token",
 											"event": [
 												{
 													"listen": "test",
@@ -3912,6 +3912,91 @@
 											"response": [
 												{
 													"id": "950d01a8-16b8-436a-a137-6dc32474c612",
+													"name": "Untitled Response",
+													"originalRequest": {
+														"method": "GET",
+														"header": [],
+														"url": {
+															"raw": "{{baseUrl}}/v1/onboarding/:token",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"v1",
+																"onboarding",
+																":token"
+															],
+															"variable": [
+																{
+																	"key": "token"
+																}
+															]
+														}
+													},
+													"status": "OK",
+													"code": 200,
+													"_postman_previewlanguage": "text",
+													"header": [],
+													"cookie": [],
+													"responseTime": null,
+													"body": ""
+												}
+											]
+										},
+										{
+											"name": "Invalid token - Validate user invitation token Copy",
+											"event": [
+												{
+													"listen": "test",
+													"script": {
+														"id": "b1527f0e-333e-4b51-a306-e69a88c03453",
+														"exec": [
+															"var jsonData = pm.response.json();",
+															"",
+															"pm.test(\"Status code is 400\", function () {",
+															"    pm.response.to.have.status(400);",
+															"});",
+															"pm.test(\"Reponse body contains standard Error fields\", function () {",
+															"    pm.expect(jsonData.statusCode).to.eql(400);",
+															"    pm.expect(jsonData.status).to.eql(false);",
+															"    pm.expect(jsonData.message).to.eql(\"Invalid user invitation token\");",
+															"});"
+														],
+														"type": "text/javascript",
+														"packages": {}
+													}
+												}
+											],
+											"id": "c2c51065-95e5-4eb2-9ec6-425366f89ec4",
+											"protocolProfileBehavior": {
+												"disableBodyPruning": true
+											},
+											"request": {
+												"method": "GET",
+												"header": [],
+												"url": {
+													"raw": "{{baseUrl}}/v1/onboarding/:token",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"v1",
+														"onboarding",
+														":token"
+													],
+													"variable": [
+														{
+															"id": "038efae6-bd78-4588-8d06-65866f7c56a4",
+															"key": "token",
+															"value": "9eabc9358b32c5a86ba1bdc7e762e24ff2c43f9ad420f0967439b4c5c8201b90",
+															"description": "(Required) "
+														}
+													]
+												}
+											},
+											"response": [
+												{
+													"id": "840385be-76cb-4eee-8254-ddb027d9920e",
 													"name": "Untitled Response",
 													"originalRequest": {
 														"method": "GET",
