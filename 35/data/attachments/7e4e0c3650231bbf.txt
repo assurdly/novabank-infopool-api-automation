@@ -1,0 +1,11 @@
+var jsonData = pm.response.json();
+
+pm.test("Status code is 200", function () {
+    pm.response.to.have.status(200);
+});
+
+pm.test("Response body contains success fields", function () {
+    pm.expect(jsonData.status).to.eql(true);
+    pm.expect(jsonData.response.account).to.not.eql(null);
+    pm.expect(jsonData.response.transaction).to.not.eql(null);
+});

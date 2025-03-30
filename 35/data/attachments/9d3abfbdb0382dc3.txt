@@ -1,0 +1,1 @@
+{"status":false,"statusCode":400,"timestamp":"2025-03-30T20:25:13.655Z","path":"/v1/profile","message":["phone number must be a valid Nigerian number"]}

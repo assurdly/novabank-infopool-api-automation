@@ -1,6 +1,0 @@
-{
-  "authentication_type": "",
-  "first_name": "Favour",
-  "last_name": "Elijah",
-  "password": "@passwordA1"
-}
