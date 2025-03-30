@@ -9413,7 +9413,7 @@
 													]
 												},
 												{
-													"name": "Fetch Customer Comments Copy",
+													"name": "No Auth - Fetch Customer Comments",
 													"event": [
 														{
 															"listen": "test",
@@ -9422,16 +9422,15 @@
 																"exec": [
 																	"var jsonData = pm.response.json();",
 																	"",
-																	"pm.test(\"Status code is 200\", function () {",
-																	"    pm.response.to.have.status(200);",
+																	"pm.test(\"Status code is 404\", function () {",
+																	"    pm.response.to.have.status(404);",
 																	"});",
-																	"",
-																	"pm.test(\"Reponse body contains success fields\", function () {",
-																	"    pm.expect(jsonData.status).to.eql(true);",
-																	"    pm.expect(jsonData.response.data[0].comment).is.not.null;",
-																	"    pm.expect(jsonData.response.data[0].created).is.not.null;",
-																	"});",
-																	"pm.environment.set(\"comment_id\", jsonData.response.data[0].id);"
+																	"pm.test(\"Reponse body contains standard error fields\", function () {",
+																	"    pm.expect(jsonData.statusCode).to.eql(404);",
+																	"    pm.expect(jsonData.path).is.not.null;",
+																	"    pm.expect(jsonData.status).to.eql(false);",
+																	"   pm.expect(jsonData.message).to.eql('Issue not found'); ",
+																	"});"
 																],
 																"type": "text/javascript",
 																"packages": {}
@@ -9464,9 +9463,8 @@
 															],
 															"variable": [
 																{
-																	"id": "956f291d-96fb-4f4a-9e72-35ec944aea9e",
 																	"key": "id",
-																	"value": "4790"
+																	"value": "0"
 																}
 															]
 														}
