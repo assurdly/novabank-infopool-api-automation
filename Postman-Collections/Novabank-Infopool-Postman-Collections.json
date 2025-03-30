@@ -3781,21 +3781,14 @@
 														"exec": [
 															"var jsonData = pm.response.json();",
 															"",
-															"pm.test(\"Status code is 200\", function () {",
-															"    pm.response.to.have.status(200);",
-															"    pm.expect(jsonData.status).to.eql(true);",
+															"pm.test(\"Status code is 401\", function () {",
+															"    pm.response.to.have.status(401);",
 															"});",
 															"",
-															"pm.test(\"Activities are returned\", function () {",
-															"    pm.expect(jsonData.response.data[0].created_on).to.not.equal(\"\");",
-															"    pm.expect(jsonData.response.data[0].created_by).to.not.equal(\"\");",
-															"    pm.expect(jsonData.response.data[0].modified_on).to.not.equal(\"\");",
-															"    pm.expect(jsonData.response.data[0].event_id).to.not.equal(\"\");",
-															"    pm.expect(jsonData.response.data[0].id).to.not.equal(\"\");",
-															"    pm.expect(jsonData.response.data[0].entity_type).to.not.equal(\"\");",
-															"    pm.expect(jsonData.response.data[0].description).to.not.equal(\"\");",
-															"    pm.expect(jsonData.response.data[0].ip_address).to.not.equal(\"\");",
-															"     pm.expect(jsonData.response.data[0].location).to.not.equal(\"\");",
+															"pm.test(\"Reponse body contains standard error fields\", function () {",
+															"    pm.expect(jsonData.statusCode).to.eql(401);",
+															"    pm.expect(jsonData.status).to.eql(false);",
+															"   pm.expect(jsonData.message).to.eql('Unauthorized'); ",
 															"});",
 															""
 														],
@@ -3810,10 +3803,7 @@
 											},
 											"request": {
 												"auth": {
-													"type": "bearer",
-													"bearer": {
-														"token": "{{Bearer_token}}"
-													}
+													"type": "noauth"
 												},
 												"method": "GET",
 												"header": [
@@ -3850,8 +3840,7 @@
 														},
 														{
 															"key": "user",
-															"value": "4",
-															"type": "text"
+															"value": "4"
 														}
 													]
 												}
