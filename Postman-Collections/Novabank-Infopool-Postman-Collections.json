@@ -3942,91 +3942,6 @@
 													"body": ""
 												}
 											]
-										},
-										{
-											"name": "Invalid token - Validate user invitation token Copy",
-											"event": [
-												{
-													"listen": "test",
-													"script": {
-														"id": "b1527f0e-333e-4b51-a306-e69a88c03453",
-														"exec": [
-															"var jsonData = pm.response.json();",
-															"",
-															"pm.test(\"Status code is 400\", function () {",
-															"    pm.response.to.have.status(400);",
-															"});",
-															"pm.test(\"Reponse body contains standard Error fields\", function () {",
-															"    pm.expect(jsonData.statusCode).to.eql(400);",
-															"    pm.expect(jsonData.status).to.eql(false);",
-															"    pm.expect(jsonData.message).to.eql(\"Invalid user invitation token\");",
-															"});"
-														],
-														"type": "text/javascript",
-														"packages": {}
-													}
-												}
-											],
-											"id": "c2c51065-95e5-4eb2-9ec6-425366f89ec4",
-											"protocolProfileBehavior": {
-												"disableBodyPruning": true
-											},
-											"request": {
-												"method": "GET",
-												"header": [],
-												"url": {
-													"raw": "{{baseUrl}}/v1/onboarding/:token",
-													"host": [
-														"{{baseUrl}}"
-													],
-													"path": [
-														"v1",
-														"onboarding",
-														":token"
-													],
-													"variable": [
-														{
-															"id": "038efae6-bd78-4588-8d06-65866f7c56a4",
-															"key": "token",
-															"value": "9eabc9358b32c5a86ba1bdc7e762e24ff2c43f9ad420f0967439b4c5c8201b90",
-															"description": "(Required) "
-														}
-													]
-												}
-											},
-											"response": [
-												{
-													"id": "840385be-76cb-4eee-8254-ddb027d9920e",
-													"name": "Untitled Response",
-													"originalRequest": {
-														"method": "GET",
-														"header": [],
-														"url": {
-															"raw": "{{baseUrl}}/v1/onboarding/:token",
-															"host": [
-																"{{baseUrl}}"
-															],
-															"path": [
-																"v1",
-																"onboarding",
-																":token"
-															],
-															"variable": [
-																{
-																	"key": "token"
-																}
-															]
-														}
-													},
-													"status": "OK",
-													"code": 200,
-													"_postman_previewlanguage": "text",
-													"header": [],
-													"cookie": [],
-													"responseTime": null,
-													"body": ""
-												}
-											]
 										}
 									],
 									"id": "63dc0bcd-f2fe-493f-b4d7-bdbe2075abbe"
@@ -4148,7 +4063,121 @@
 											]
 										},
 										{
-											"name": "Send user invitation token - invalid authentication",
+											"name": "No auth - Send user invitation token",
+											"event": [
+												{
+													"listen": "test",
+													"script": {
+														"id": "2d557b44-ea02-41e1-ba85-8849915497b4",
+														"exec": [
+															"var jsonData = pm.response.json();",
+															"",
+															"pm.test(\"Status code is 400\", function () {",
+															"    pm.response.to.have.status(400);",
+															"});",
+															"pm.test(\"Reponse body contains standard Error fields\", function () {",
+															"    pm.expect(jsonData.statusCode).to.eql(400);",
+															"    pm.expect(jsonData.status).to.eql(false);",
+															"    pm.expect(jsonData.message).to.eql('This invitation has expired or is invalid. Please contact your administrator for more details.');",
+															"});"
+														],
+														"type": "text/javascript",
+														"packages": {}
+													}
+												}
+											],
+											"id": "29d598e9-aefd-4850-8da3-5b2b8736c056",
+											"protocolProfileBehavior": {
+												"disableBodyPruning": true
+											},
+											"request": {
+												"method": "POST",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"authentication_type\": \"password\",\n  \"first_name\": \"Udeme\",\n  \"last_name\": \"tester\",\n  \"password\": \"@passwordA1\",\n  \"device_type\": \"@passwordA1\",\n  \"device_name\": \"iPhone 13\",\n  \"location\": \"Lagos\"\n}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/v1/onboarding/:id",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"v1",
+														"onboarding",
+														":id"
+													],
+													"variable": [
+														{
+															"id": "696fb2c9-10c9-46bc-a681-684174d7e834",
+															"key": "id",
+															"value": "9eabc9358b32c5a86ba1bdc7e762e24ff2c43f9ad420f0967439b4c5c8201b90"
+														}
+													]
+												}
+											},
+											"response": [
+												{
+													"id": "eb947aa6-f32e-4593-aea5-983ea85c646f",
+													"name": "Untitled Response",
+													"originalRequest": {
+														"method": "POST",
+														"header": [
+															{
+																"key": "Content-Type",
+																"value": "application/json"
+															}
+														],
+														"body": {
+															"mode": "raw",
+															"raw": "{\n  \"authentication_type\": \"password\",\n  \"first_name\": \"John\",\n  \"last_name\": \"Doe\",\n  \"password\": \"Password1@\"\n}",
+															"options": {
+																"raw": {
+																	"headerFamily": "json",
+																	"language": "json"
+																}
+															}
+														},
+														"url": {
+															"raw": "{{baseUrl}}/v1/onboarding/:token",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"v1",
+																"onboarding",
+																":token"
+															],
+															"variable": [
+																{
+																	"key": "token"
+																}
+															]
+														}
+													},
+													"status": "Created",
+													"code": 201,
+													"_postman_previewlanguage": "text",
+													"header": [],
+													"cookie": [],
+													"responseTime": null,
+													"body": ""
+												}
+											]
+										},
+										{
+											"name": "Invalid authentication - Send user invitation token",
 											"event": [
 												{
 													"listen": "test",
@@ -4261,7 +4290,7 @@
 											]
 										},
 										{
-											"name": "Send user invitation token - empty authentication type",
+											"name": "Empty authentication type - Send user invitation token",
 											"event": [
 												{
 													"listen": "test",
@@ -4374,7 +4403,7 @@
 											]
 										},
 										{
-											"name": "Send user invitation token - empty first name",
+											"name": "Empty first name - Send user invitation token",
 											"event": [
 												{
 													"listen": "test",
@@ -4487,7 +4516,7 @@
 											]
 										},
 										{
-											"name": "Send user invitation token - empty last name",
+											"name": "Empty last name - Send user invitation token",
 											"event": [
 												{
 													"listen": "test",
@@ -4600,7 +4629,7 @@
 											]
 										},
 										{
-											"name": "Send user invitation token - empty password",
+											"name": "Empty password - Send user invitation token",
 											"event": [
 												{
 													"listen": "test",
