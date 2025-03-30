@@ -755,7 +755,7 @@
 													]
 												},
 												{
-													"name": "Get Email or SMS OTP Copy",
+													"name": "Get Email or SMS OTP - Empty Operation",
 													"event": [
 														{
 															"listen": "test",
@@ -764,14 +764,16 @@
 																"exec": [
 																	"var jsonData = pm.response.json();",
 																	"",
-																	"pm.test(\"Status code is 201\", function () {",
-																	"    pm.response.to.have.status(201);",
-																	"    pm.expect(jsonData.status).to.eql(true);",
+																	"pm.test(\"Status code is 400\", function () {",
+																	"    pm.response.to.have.status(400);",
 																	"});",
-																	"pm.test(\"Reponse body contains success fields\", function () {",
-																	"    pm.expect(jsonData.status).to.eql(true);",
-																	"    pm.expect(jsonData.response.message).to.eql(\"OTP sent via email\");",
-																	"});"
+																	"",
+																	"pm.test(\"Reponse body contains standard error fields\", function () {",
+																	"    pm.expect(jsonData.statusCode).to.eql(400);",
+																	"    pm.expect(jsonData.status).to.eql(false);",
+																	"   pm.expect(jsonData.message[0]).to.eql('operation should not be empty'); ",
+																	"});",
+																	""
 																],
 																"type": "text/javascript",
 																"packages": {}
@@ -784,10 +786,7 @@
 													},
 													"request": {
 														"auth": {
-															"type": "bearer",
-															"bearer": {
-																"token": "{{Bearer_token}}"
-															}
+															"type": "noauth"
 														},
 														"method": "POST",
 														"header": [
@@ -802,7 +801,7 @@
 														],
 														"body": {
 															"mode": "raw",
-															"raw": "{\n  \"operation\": \"FORGOT_PASSWORD\",\n  \"delivery_channel\": \"EMAIL\",\n  \"email\": \"qa@yopmail.com\"\n//   \"phone\": \"\"\n}",
+															"raw": "{\n  \"operation\": \"\",\n  \"delivery_channel\": \"EMAIL\",\n  \"email\": \"qa@yopmail.com\"\n//   \"phone\": \"\"\n}",
 															"options": {
 																"raw": {
 																	"headerFamily": "json",
