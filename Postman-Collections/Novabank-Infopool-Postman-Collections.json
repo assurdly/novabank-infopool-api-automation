@@ -1519,7 +1519,7 @@
 											"name": "verify",
 											"item": [
 												{
-													"name": "Verify MFA code, MFA backup code, Email or SMS OTP",
+													"name": "Invalid OTP - Verify MFA code, MFA backup code, Email or SMS OTP",
 													"event": [
 														{
 															"listen": "test",
