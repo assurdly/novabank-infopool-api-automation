@@ -2994,7 +2994,7 @@
 											]
 										},
 										{
-											"name": "Update profile Copy",
+											"name": "Update profile - No Auth",
 											"event": [
 												{
 													"listen": "test",
@@ -3003,15 +3003,16 @@
 														"exec": [
 															"var jsonData = pm.response.json();",
 															"",
-															"pm.test(\"Status code is 200\", function () {",
-															"    pm.response.to.have.status(200);",
+															"pm.test(\"Status code is 401\", function () {",
+															"    pm.response.to.have.status(401);",
 															"});",
 															"",
-															"pm.test(\"Reponse body contains success fields\", function () {",
-															"    pm.expect(jsonData.status).to.eql(true);",
-															"    pm.expect(jsonData.response).to.not.equal(\"\");",
-															"    ",
-															"});"
+															"pm.test(\"Reponse body contains standard error fields\", function () {",
+															"    pm.expect(jsonData.statusCode).to.eql(401);",
+															"    pm.expect(jsonData.status).to.eql(false);",
+															"   pm.expect(jsonData.message).to.eql('Unauthorized'); ",
+															"});",
+															""
 														],
 														"type": "text/javascript",
 														"packages": {}
@@ -3024,10 +3025,7 @@
 											},
 											"request": {
 												"auth": {
-													"type": "bearer",
-													"bearer": {
-														"token": "{{Bearer_token}}"
-													}
+													"type": "noauth"
 												},
 												"method": "PATCH",
 												"header": [
@@ -3393,6 +3391,78 @@
 											"response": []
 										},
 										{
+											"name": "Get events - no auth",
+											"event": [
+												{
+													"listen": "test",
+													"script": {
+														"id": "7a239a69-6b0b-4eb7-ae38-ce08b881bf84",
+														"exec": [
+															"var jsonData = pm.response.json();",
+															"",
+															"pm.test(\"Status code is 401\", function () {",
+															"    pm.response.to.have.status(401);",
+															"});",
+															"",
+															"pm.test(\"Reponse body contains standard error fields\", function () {",
+															"    pm.expect(jsonData.statusCode).to.eql(401);",
+															"    pm.expect(jsonData.status).to.eql(false);",
+															"   pm.expect(jsonData.message).to.eql('Unauthorized'); ",
+															"});",
+															""
+														],
+														"type": "text/javascript",
+														"packages": {}
+													}
+												}
+											],
+											"id": "576840e3-f7cf-44e0-992d-d6546d88afa5",
+											"protocolProfileBehavior": {
+												"disableBodyPruning": true
+											},
+											"request": {
+												"auth": {
+													"type": "noauth"
+												},
+												"method": "GET",
+												"header": [
+													{
+														"key": "accept",
+														"value": "application/json"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/v1/events?page=1&limit=10&date_start=2025-01-26&date_end=2025-02-07",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"v1",
+														"events"
+													],
+													"query": [
+														{
+															"key": "page",
+															"value": "1"
+														},
+														{
+															"key": "limit",
+															"value": "10"
+														},
+														{
+															"key": "date_start",
+															"value": "2025-01-26"
+														},
+														{
+															"key": "date_end",
+															"value": "2025-02-07"
+														}
+													]
+												}
+											},
+											"response": []
+										},
+										{
 											"name": "Get events - invalid start date",
 											"event": [
 												{
@@ -3648,6 +3718,93 @@
 												}
 											],
 											"id": "4c0da654-b985-42ff-81f2-4fc0578f4509",
+											"protocolProfileBehavior": {
+												"disableBodyPruning": true
+											},
+											"request": {
+												"auth": {
+													"type": "bearer",
+													"bearer": {
+														"token": "{{Bearer_token}}"
+													}
+												},
+												"method": "GET",
+												"header": [
+													{
+														"key": "accept",
+														"value": "application/json"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/v1/audit-trails?page=1&limit=10&date_start=2025-02-24&date_end=2025-02-26&user=4",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"v1",
+														"audit-trails"
+													],
+													"query": [
+														{
+															"key": "page",
+															"value": "1"
+														},
+														{
+															"key": "limit",
+															"value": "10"
+														},
+														{
+															"key": "date_start",
+															"value": "2025-02-24"
+														},
+														{
+															"key": "date_end",
+															"value": "2025-02-26"
+														},
+														{
+															"key": "user",
+															"value": "4",
+															"type": "text"
+														}
+													]
+												}
+											},
+											"response": []
+										},
+										{
+											"name": "audit trail - No Auth",
+											"event": [
+												{
+													"listen": "test",
+													"script": {
+														"id": "4cbbeb46-b8df-4a09-adb4-e97c6b12de6f",
+														"exec": [
+															"var jsonData = pm.response.json();",
+															"",
+															"pm.test(\"Status code is 200\", function () {",
+															"    pm.response.to.have.status(200);",
+															"    pm.expect(jsonData.status).to.eql(true);",
+															"});",
+															"",
+															"pm.test(\"Activities are returned\", function () {",
+															"    pm.expect(jsonData.response.data[0].created_on).to.not.equal(\"\");",
+															"    pm.expect(jsonData.response.data[0].created_by).to.not.equal(\"\");",
+															"    pm.expect(jsonData.response.data[0].modified_on).to.not.equal(\"\");",
+															"    pm.expect(jsonData.response.data[0].event_id).to.not.equal(\"\");",
+															"    pm.expect(jsonData.response.data[0].id).to.not.equal(\"\");",
+															"    pm.expect(jsonData.response.data[0].entity_type).to.not.equal(\"\");",
+															"    pm.expect(jsonData.response.data[0].description).to.not.equal(\"\");",
+															"    pm.expect(jsonData.response.data[0].ip_address).to.not.equal(\"\");",
+															"     pm.expect(jsonData.response.data[0].location).to.not.equal(\"\");",
+															"});",
+															""
+														],
+														"type": "text/javascript",
+														"packages": {}
+													}
+												}
+											],
+											"id": "4ef64852-ac8a-45cd-8914-8fd0d6fb3a21",
 											"protocolProfileBehavior": {
 												"disableBodyPruning": true
 											},
