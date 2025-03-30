@@ -1954,7 +1954,7 @@
 											]
 										},
 										{
-											"name": "Change password - No Auth",
+											"name": "No Auth - Change password",
 											"event": [
 												{
 													"listen": "test",
@@ -2043,7 +2043,7 @@
 											]
 										},
 										{
-											"name": "Change password - invalid current password",
+											"name": "Invalid current password - Change password",
 											"event": [
 												{
 													"listen": "test",
@@ -2132,7 +2132,7 @@
 											]
 										},
 										{
-											"name": "Change password - weak password",
+											"name": "Weak password - Change password",
 											"event": [
 												{
 													"listen": "test",
@@ -2222,7 +2222,7 @@
 											]
 										},
 										{
-											"name": "Change password - empty current password",
+											"name": "Empty current password - Change password",
 											"event": [
 												{
 													"listen": "test",
@@ -2370,96 +2370,6 @@
 											"response": [
 												{
 													"id": "38088e0d-31b5-4bfa-9d0b-cce4fe01001c",
-													"name": "Untitled Response",
-													"originalRequest": {
-														"method": "PATCH",
-														"header": [
-															{
-																"key": "Content-Type",
-																"value": "application/json"
-															}
-														],
-														"body": {
-															"mode": "raw",
-															"raw": "{\n  \"current_password\": \"Password1@\",\n  \"new_password\": \"NewPassword99#\"\n}",
-															"options": {
-																"raw": {
-																	"headerFamily": "json",
-																	"language": "json"
-																}
-															}
-														},
-														"url": "{{baseUrl}}/v1/profile/password"
-													},
-													"status": "OK",
-													"code": 200,
-													"_postman_previewlanguage": "text",
-													"header": [],
-													"cookie": [],
-													"responseTime": null,
-													"body": ""
-												}
-											]
-										},
-										{
-											"name": "Change password - No Auth",
-											"event": [
-												{
-													"listen": "test",
-													"script": {
-														"id": "f3a04596-cb1f-42d7-8f7f-4f49acdaf83e",
-														"exec": [
-															"var jsonData = pm.response.json();",
-															"",
-															"pm.test(\"Status code is 400\", function () {",
-															"    pm.response.to.have.status(400);",
-															"});",
-															"pm.test(\"Reponse body contains standard error fields\", function () {",
-															"    pm.expect(jsonData.statusCode).to.eql(400);",
-															"    pm.expect(jsonData.path).is.not.null;",
-															"    pm.expect(jsonData.status).to.eql(false);",
-															"   pm.expect(jsonData.message[0]).to.eql('new_password should not be empty'); ",
-															"});",
-															""
-														],
-														"type": "text/javascript",
-														"packages": {}
-													}
-												}
-											],
-											"id": "0956867f-1821-46ed-8345-b50328701429",
-											"protocolProfileBehavior": {
-												"disableBodyPruning": true
-											},
-											"request": {
-												"auth": {
-													"type": "bearer",
-													"bearer": {
-														"token": "{{Bearer_token}}"
-													}
-												},
-												"method": "PATCH",
-												"header": [
-													{
-														"key": "Content-Type",
-														"value": "application/json"
-													}
-												],
-												"body": {
-													"mode": "raw",
-													"raw": "{\n  \"current_password\": \"@passwordA1\",\n  \"new_password\": \"\"\n}",
-													"options": {
-														"raw": {
-															"headerFamily": "json",
-															"language": "json"
-														}
-													}
-												},
-												"url": "{{baseUrl}}/v1/profile/password"
-											},
-											"response": [
-												{
-													"id": "31ba59e5-3eb5-40f8-9317-a9ba3c777786",
 													"name": "Untitled Response",
 													"originalRequest": {
 														"method": "PATCH",
