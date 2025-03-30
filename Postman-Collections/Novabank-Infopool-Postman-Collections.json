@@ -13893,7 +13893,7 @@
 											]
 										},
 										{
-											"name": "Get single definition - invalid ID",
+											"name": "Invalid ID - Get single definition",
 											"event": [
 												{
 													"listen": "test",
@@ -13984,7 +13984,7 @@
 											]
 										},
 										{
-											"name": "Get single definition - ID does not exist",
+											"name": "ID does not exist - Get single definition",
 											"event": [
 												{
 													"listen": "test",
