@@ -1224,7 +1224,7 @@
 																	"pm.test(\"Reponse body contains standard error fields\", function () {",
 																	"    pm.expect(jsonData.statusCode).to.eql(400);",
 																	"    pm.expect(jsonData.status).to.eql(false);",
-																	"   pm.expect(jsonData.message[0]).to.eql('delivery_channel must be one of the following values: SMS, EMAIL, PUSH'); ",
+																	"   pm.expect(jsonData.message[1]).to.eql('delivery_channel should not be empty'); ",
 																	"});",
 																	""
 																],
@@ -1313,6 +1313,157 @@
 														},
 														{
 															"id": "d88bb22a-d4f0-4e81-8bdb-a8e3fa683305",
+															"name": "Untitled Response",
+															"originalRequest": {
+																"method": "POST",
+																"header": [
+																	{
+																		"key": "Content-Type",
+																		"value": "application/json"
+																	},
+																	{
+																		"key": "Accept",
+																		"value": "application/json"
+																	},
+																	{
+																		"description": "Added as a part of security scheme: bearer",
+																		"key": "Authorization",
+																		"value": "Bearer <token>"
+																	}
+																],
+																"body": {
+																	"mode": "raw",
+																	"raw": "{\n  \"operation\": \"<string>\",\n  \"delivery_channel\": \"SMS\",\n  \"email\": \"<string>\",\n  \"phone\": \"<string>\"\n}",
+																	"options": {
+																		"raw": {
+																			"headerFamily": "json",
+																			"language": "json"
+																		}
+																	}
+																},
+																"url": "{{baseUrl}}/v1/auth/mfa/request"
+															},
+															"status": "Unauthorized",
+															"code": 401,
+															"_postman_previewlanguage": "json",
+															"header": [
+																{
+																	"key": "Content-Type",
+																	"value": "application/json"
+																}
+															],
+															"cookie": [],
+															"responseTime": null,
+															"body": "{\n  \"status\": false,\n  \"statusCode\": 401,\n  \"timestamp\": \"<date>\",\n  \"path\": \"/v1/path/guarded\",\n  \"message\": \"Unauthorized\"\n}"
+														}
+													]
+												},
+												{
+													"name": "Invalid Auth - Empty Channel - Get Email or SMS OTP",
+													"event": [
+														{
+															"listen": "test",
+															"script": {
+																"id": "74a4af24-d8f8-46cd-8ebc-e3630ce0950e",
+																"exec": [
+																	"var jsonData = pm.response.json();",
+																	"",
+																	"pm.test(\"Status code is 400\", function () {",
+																	"    pm.response.to.have.status(400);",
+																	"});",
+																	"",
+																	"pm.test(\"Reponse body contains standard error fields\", function () {",
+																	"    pm.expect(jsonData.statusCode).to.eql(400);",
+																	"    pm.expect(jsonData.status).to.eql(false);",
+																	"   pm.expect(jsonData.message[1]).to.eql('delivery_channel should not be empty'); ",
+																	"});",
+																	""
+																],
+																"type": "text/javascript",
+																"packages": {}
+															}
+														}
+													],
+													"id": "05a8060d-1442-4327-ba9b-56a62f5b9f22",
+													"protocolProfileBehavior": {
+														"disableBodyPruning": true
+													},
+													"request": {
+														"auth": {
+															"type": "noauth"
+														},
+														"method": "POST",
+														"header": [
+															{
+																"key": "Content-Type",
+																"value": "application/json"
+															},
+															{
+																"key": "Accept",
+																"value": "application/json"
+															}
+														],
+														"body": {
+															"mode": "raw",
+															"raw": "{\n  \"operation\": \"FORGOT_PASSWORD\",\n  \"delivery_channel\": \"\",\n  \"email\": \"qa@yopmail.com\"\n//   \"phone\": \"\"\n}",
+															"options": {
+																"raw": {
+																	"headerFamily": "json",
+																	"language": "json"
+																}
+															}
+														},
+														"url": "{{baseUrl}}/v1/auth/mfa/request",
+														"description": "Get Email or SMS OTP. For OTP, you need to provide either `email` or `phone` if you are not logged in.\n    `operation` can be one of: \n- LOGIN\n- FORGOT_PASSWORD\n- CREATE_ROLE\n- UPDATE_ROLE\n- DELETE_ROLE"
+													},
+													"response": [
+														{
+															"id": "d9042fab-7cb0-4328-bdfa-f43a8d468a2b",
+															"name": "Untitled Response",
+															"originalRequest": {
+																"method": "POST",
+																"header": [
+																	{
+																		"key": "Content-Type",
+																		"value": "application/json"
+																	},
+																	{
+																		"key": "Accept",
+																		"value": "application/json"
+																	},
+																	{
+																		"description": "Added as a part of security scheme: bearer",
+																		"key": "Authorization",
+																		"value": "Bearer <token>"
+																	}
+																],
+																"body": {
+																	"mode": "raw",
+																	"raw": "{\n  \"operation\": \"<string>\",\n  \"delivery_channel\": \"SMS\",\n  \"email\": \"<string>\",\n  \"phone\": \"<string>\"\n}",
+																	"options": {
+																		"raw": {
+																			"headerFamily": "json",
+																			"language": "json"
+																		}
+																	}
+																},
+																"url": "{{baseUrl}}/v1/auth/mfa/request"
+															},
+															"status": "Created",
+															"code": 201,
+															"_postman_previewlanguage": "json",
+															"header": [
+																{
+																	"key": "Content-Type",
+																	"value": "application/json"
+																}
+															],
+															"cookie": [],
+															"responseTime": null,
+															"body": "{\n  \"status\": \"<boolean>\",\n  \"response\": {\n    \"operation\": \"<string>\",\n    \"delivery_channel\": \"SMS\",\n    \"email\": \"<string>\",\n    \"phone\": \"<string>\"\n  }\n}"
+														},
+														{
+															"id": "6fe913b7-3b98-4109-b901-6c0e19f07ba9",
 															"name": "Untitled Response",
 															"originalRequest": {
 																"method": "POST",
