@@ -5910,6 +5910,177 @@
 													]
 												},
 												{
+													"name": "Invalid ID -Get Issue by ID",
+													"event": [
+														{
+															"listen": "test",
+															"script": {
+																"id": "59922b04-0bce-472d-96ef-8cab3c41f2c5",
+																"exec": [
+																	"var jsonData = pm.response.json();",
+																	"",
+																	"pm.test(\"Status code is 200\", function () {",
+																	"    pm.response.to.have.status(200);",
+																	"});",
+																	"",
+																	"pm.test(\"Response body contains success fields\", function () {",
+																	"    pm.expect(jsonData.status).to.eql(true);",
+																	"    pm.expect(jsonData.response.issue_category_id).to.not.be.null;",
+																	"    pm.expect(jsonData.response.issue_responsibility).to.not.be.null;",
+																	"    pm.expect(jsonData.response.source_channel).to.not.be.null;",
+																	"    pm.expect(jsonData.response.issue).to.not.be.null;",
+																	"});",
+																	"pm.environment.set(\"attachment_id\", jsonData.response.attachments[0].id);"
+																],
+																"type": "text/javascript",
+																"packages": {}
+															}
+														}
+													],
+													"id": "6bfdde58-600a-4c6f-9bce-44a2524a18f3",
+													"protocolProfileBehavior": {
+														"disableBodyPruning": true
+													},
+													"request": {
+														"auth": {
+															"type": "bearer",
+															"bearer": {
+																"token": "{{Bearer_token}}"
+															}
+														},
+														"method": "GET",
+														"header": [],
+														"body": {
+															"mode": "raw",
+															"raw": "{\n  \"issue_category_id\": 1,\n  \"issue_responsibility\": \"CUSTOMER_SERVICE\",\n  \"source_channel\": \"BRANCH\",\n  \"customer_id\": \"4790\",\n  \"account_number\": \"1234567890\",\n  \"customer_name\": \"John Doe\",\n  \"account_name\": \"SAVINGS ACCOUNT\",\n  \"issue\": \"Unable to access internet banking\",\n  \"description\": \"Customer reported inability to log into internet banking after recent password change. Multiple failed attempts recorded.\",\n  \"recipient_team\": \"DIGITAL_BANKING_SUPPORT\",\n  \"cc_recipient\": \"branch.manager@bank.com\",\n  \"status\": \"OPEN\",\n  \"priority\": \"HIGH\",\n  \"meta\": {\n    \"browser\": \"Chrome 120.0\",\n    \"device\": \"Desktop\",\n    \"lastLoginAttempt\": \"2024-01-27T12:30:00Z\",\n    \"failedAttempts\": 3,\n    \"errorCode\": \"AUTH_003\"\n  },\n  \"attachments\": [\n    {\n      \"id\": \"att_01HN4V8K9X\",\n      \"name\": \"error_screenshot.png\",\n      \"url\": \"https://storage.bank.com/issues/error_screenshot.png\",\n      \"type\": \"image/png\",\n      \"size\": 245678,\n      \"uploaded_on\": \"2024-01-27T12:35:00Z\"\n    }\n  ],\n  \"assigned_to\": \"user_01HN4V8K9X\",\n  \"resolution_notes\": null,\n  \"resolved_on\": null\n}",
+															"options": {
+																"raw": {
+																	"language": "json"
+																}
+															}
+														},
+														"url": {
+															"raw": "{{baseUrl}}/v1/customers/:customerId/issues/:id",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"v1",
+																"customers",
+																":customerId",
+																"issues",
+																":id"
+															],
+															"variable": [
+																{
+																	"id": "259961bd-e041-4a57-b569-698cf1a6c9f5",
+																	"key": "customerId",
+																	"value": "22039"
+																},
+																{
+																	"id": "111f8599-1727-43f7-9340-9c339a02227d",
+																	"key": "id",
+																	"value": "{{issue_id}}"
+																}
+															]
+														}
+													},
+													"response": [
+														{
+															"id": "13e0bd37-0448-4f6a-84eb-02f0ab41c467",
+															"name": "Get Issue by ID",
+															"originalRequest": {
+																"method": "GET",
+																"header": [],
+																"body": {
+																	"mode": "raw",
+																	"raw": "{\n  \"issue_category_id\": 1,\n  \"issue_responsibility\": \"CUSTOMER_SERVICE\",\n  \"source_channel\": \"BRANCH\",\n  \"customer_id\": \"4790\",\n  \"account_number\": \"1234567890\",\n  \"customer_name\": \"John Doe\",\n  \"account_name\": \"SAVINGS ACCOUNT\",\n  \"issue\": \"Unable to access internet banking\",\n  \"description\": \"Customer reported inability to log into internet banking after recent password change. Multiple failed attempts recorded.\",\n  \"recipient_team\": \"DIGITAL_BANKING_SUPPORT\",\n  \"cc_recipient\": \"branch.manager@bank.com\",\n  \"status\": \"OPEN\",\n  \"priority\": \"HIGH\",\n  \"meta\": {\n    \"browser\": \"Chrome 120.0\",\n    \"device\": \"Desktop\",\n    \"lastLoginAttempt\": \"2024-01-27T12:30:00Z\",\n    \"failedAttempts\": 3,\n    \"errorCode\": \"AUTH_003\"\n  },\n  \"attachments\": [\n    {\n      \"id\": \"att_01HN4V8K9X\",\n      \"name\": \"error_screenshot.png\",\n      \"url\": \"https://storage.bank.com/issues/error_screenshot.png\",\n      \"type\": \"image/png\",\n      \"size\": 245678,\n      \"uploaded_on\": \"2024-01-27T12:35:00Z\"\n    }\n  ],\n  \"assigned_to\": \"user_01HN4V8K9X\",\n  \"resolution_notes\": null,\n  \"resolved_on\": null\n}",
+																	"options": {
+																		"raw": {
+																			"language": "json"
+																		}
+																	}
+																},
+																"url": {
+																	"raw": "{{baseUrl}}/v1/customers/:customerId/issues/:id",
+																	"host": [
+																		"{{baseUrl}}"
+																	],
+																	"path": [
+																		"v1",
+																		"customers",
+																		":customerId",
+																		"issues",
+																		":id"
+																	],
+																	"variable": [
+																		{
+																			"key": "customerId",
+																			"value": ""
+																		},
+																		{
+																			"key": "id",
+																			"value": "6"
+																		}
+																	]
+																}
+															},
+															"status": "OK",
+															"code": 200,
+															"_postman_previewlanguage": "json",
+															"header": [
+																{
+																	"key": "X-Powered-By",
+																	"value": "Express"
+																},
+																{
+																	"key": "Access-Control-Allow-Origin",
+																	"value": "*"
+																},
+																{
+																	"key": "X-RateLimit-Limit",
+																	"value": "10"
+																},
+																{
+																	"key": "X-RateLimit-Remaining",
+																	"value": "9"
+																},
+																{
+																	"key": "X-RateLimit-Reset",
+																	"value": "60"
+																},
+																{
+																	"key": "Content-Type",
+																	"value": "application/json; charset=utf-8"
+																},
+																{
+																	"key": "Content-Length",
+																	"value": "1326"
+																},
+																{
+																	"key": "ETag",
+																	"value": "W/\"52e-WSToxGhvasGxZKP70U13SSur8kk\""
+																},
+																{
+																	"key": "Date",
+																	"value": "Tue, 28 Jan 2025 07:28:28 GMT"
+																},
+																{
+																	"key": "Connection",
+																	"value": "keep-alive"
+																},
+																{
+																	"key": "Keep-Alive",
+																	"value": "timeout=5"
+																}
+															],
+															"cookie": [],
+															"responseTime": null,
+															"body": "{\n    \"status\": true,\n    \"response\": {\n        \"created_on\": \"2025-01-28T07:09:25.000Z\",\n        \"created_by\": null,\n        \"modified_on\": \"2025-01-28T07:09:25.000Z\",\n        \"modified_by\": null,\n        \"deleted_on\": null,\n        \"deleted_by\": null,\n        \"id\": 6,\n        \"issue_category_id\": 1963,\n        \"issue_responsibility\": \"CUSTOMER_SERVICE\",\n        \"source_channel\": \"BRANCH\",\n        \"customer_id\": \"4790\",\n        \"account_number\": \"6001020113\",\n        \"customer_name\": \"SUNRISE PRODUCTS LIMITED\",\n        \"account_name\": \"SUNRISE PRODUCTS LIMITED\",\n        \"issue\": \"Unable to access internet banking\",\n        \"description\": \"Customer reported inability to log into internet banking after recent password change. Multiple failed attempts recorded.\",\n        \"recipient_team\": \"DIGITAL_BANKING_SUPPORT\",\n        \"cc_recipient\": \"branch.manager@bank.com\",\n        \"status\": \"OPEN\",\n        \"priority\": \"HIGH\",\n        \"meta\": \"{\\\"browser\\\":\\\"Chrome 120.0\\\",\\\"device\\\":\\\"Desktop\\\",\\\"lastLoginAttempt\\\":\\\"2024-01-27T12:30:00Z\\\",\\\"failedAttempts\\\":3,\\\"errorCode\\\":\\\"AUTH_003\\\"}\",\n        \"assigned_to\": \"2\",\n        \"resolution_notes\": null,\n        \"resolved_on\": null,\n        \"attachments\": [\n            {\n                \"id\": \"f9df4fd9-db02-42ad-bd97-5bd69f8a1629\",\n                \"url\": \"https://storage.bank.com/issues/error_screenshot.png\",\n                \"name\": \"error_screenshot.png\",\n                \"size\": 245678,\n                \"type\": \"image/png\",\n                \"uploaded_on\": \"2025-01-28T07:09:25.284Z\"\n            }\n        ],\n        \"cancelled_by\": null,\n        \"comments\": [],\n        \"comments_count\": 0,\n        \"last_updated\": \"2025-01-28T07:09:25.000Z\",\n        \"days_open\": 0,\n        \"assignment_status\": \"ASSIGNED\",\n        \"has_attachments\": true\n    }\n}"
+														}
+													]
+												},
+												{
 													"name": "No Auth - Get Issue by ID",
 													"event": [
 														{
