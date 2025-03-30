@@ -8085,6 +8085,173 @@
 															"body": "{\n    \"status\": true,\n    \"response\": {\n        \"created_on\": \"2025-01-28T07:09:25.000Z\",\n        \"created_by\": null,\n        \"modified_on\": \"2025-01-28T10:47:46.000Z\",\n        \"modified_by\": null,\n        \"deleted_on\": null,\n        \"deleted_by\": null,\n        \"id\": 6,\n        \"issue_category_id\": 1963,\n        \"issue_responsibility\": \"CUSTOMER_SERVICE\",\n        \"source_channel\": \"BRANCH\",\n        \"customer_id\": \"4790\",\n        \"account_number\": \"6001020113\",\n        \"customer_name\": \"SUNRISE PRODUCTS LIMITED\",\n        \"account_name\": \"SUNRISE PRODUCTS LIMITED\",\n        \"issue\": \"Unable to access internet banking\",\n        \"description\": \"This issue occurs when user tries to submit a form with missing fields.\",\n        \"recipient_team\": \"DIGITAL_BANKING_SUPPORT\",\n        \"cc_recipient\": \"branch.manager@bank.com\",\n        \"status\": \"OPEN\",\n        \"priority\": \"HIGH\",\n        \"meta\": \"{\\\"browser\\\":\\\"Chrome 120.0\\\",\\\"device\\\":\\\"Desktop\\\",\\\"lastLoginAttempt\\\":\\\"2024-01-27T12:30:00Z\\\",\\\"failedAttempts\\\":3,\\\"errorCode\\\":\\\"AUTH_003\\\"}\",\n        \"assigned_to\": \"2\",\n        \"resolution_notes\": null,\n        \"resolved_on\": null,\n        \"resolved_by\": null,\n        \"cancellation_reason\": null,\n        \"cancelled_by\": null,\n        \"attachments\": [\n            {\n                \"id\": \"f9df4fd9-db02-42ad-bd97-5bd69f8a1629\",\n                \"url\": \"https://storage.bank.com/issues/error_screenshot.png\",\n                \"name\": \"error_screenshot.png\",\n                \"size\": 245678,\n                \"type\": \"image/png\",\n                \"uploaded_on\": \"2025-01-28T07:09:25.284Z\"\n            },\n            {\n                \"id\": \"b8233d3c-e0c6-43fc-a2ee-0719a205bed9\",\n                \"url\": \"uploads/issues/6_7987ba56-431e-4456-8a3e-146189ea2577.png\",\n                \"name\": \"banani-ui.png\",\n                \"size\": 134709,\n                \"type\": \"image/png\",\n                \"uploaded_on\": \"2025-01-28T10:47:46.559Z\"\n            }\n        ],\n        \"comments\": [\n            {\n                \"created_on\": \"2025-01-28T09:18:58.000Z\",\n                \"created_by\": \"2\",\n                \"modified_on\": \"2025-01-28T09:25:33.000Z\",\n                \"modified_by\": null,\n                \"deleted_on\": null,\n                \"deleted_by\": null,\n                \"id\": \"1\",\n                \"customer_id\": \"4790\",\n                \"issue_id\": 6,\n                \"comment_type\": \"CUSTOMER\",\n                \"comment\": \"hi\",\n                \"edited_on\": \"2025-01-28T09:25:33.000Z\"\n            }\n        ],\n        \"assigned_to_user\": {\n            \"created_on\": \"2025-01-16T19:02:15.000Z\",\n            \"created_by\": \"1\",\n            \"modified_on\": \"2025-01-16T19:02:15.000Z\",\n            \"modified_by\": null,\n            \"deleted_on\": null,\n            \"deleted_by\": null,\n            \"id\": \"2\",\n            \"staff_id\": null,\n            \"first_name\": \"John\",\n            \"last_name\": \"Doe\",\n            \"display_name\": null,\n            \"description\": null,\n            \"photo\": null,\n            \"phone\": null,\n            \"email\": \"2test@test.com\",\n            \"password\": \"$2b$10$5f8Ul96ElXkzZIIHn3Df/OQyTzI9ZWZ92doohw2n/euqP94wr.0TC\",\n            \"authentication_type\": \"password\",\n            \"sso_provider_id\": \"0\",\n            \"sso_user_id\": null,\n            \"status\": null,\n            \"last_login_date\": null,\n            \"last_login_ip\": null,\n            \"meta\": null\n        },\n        \"customer\": {\n            \"CUST_ID\": \"4790\",\n            \"BANK_ID\": \"01\",\n            \"CIF_ID\": \"C00001083\",\n            \"GCIF_ID\": null,\n            \"ENTITY_CRE_FLG\": \"Y\",\n            \"DEL_FLG\": \"N\",\n            \"CUST_SHORT_NAME\": \"SUNRISE PR\",\n            \"ALT1_CUST_SHORT_NAME\": null,\n            \"CUST_TITLE_CODE\": null,\n            \"CUST_NAME\": \"SUNRISE PRODUCTS LIMITED\",\n            \"ALT1_CUST_NAME\": null,\n            \"CUST_SEX\": null,\n            \"CUST_GRP\": null,\n            \"CUST_OCCP_CODE\": null,\n            \"CUST_COMMU_CODE\": null,\n            \"CUST_SECTOR_CODE\": \"40300\",\n            \"CUST_SUB_SECTOR_CODE\": \"40315\",\n            \"CUST_RATING_CODE\": null,\n            \"CUST_RATING_DATE\": null,\n            \"CUST_MGR_OPIN\": null,\n            \"CUST_INTROD_CUST_ID\": null,\n            \"INTROD_TITLE_CODE\": null,\n            \"CUST_INTROD_NAME\": null,\n            \"ALT1_CUST_INTROD_NAME\": null,\n            \"CUST_INTROD_STAT_CODE\": null,\n            \"CUST_TYPE_CODE\": null,\n            \"CUST_EMP_ID\": null,\n            \"CUST_STAT_CODE\": \"ACTVE\",\n            \"CUST_STAT_CHG_DATE\": null,\n            \"CUST_CONST\": \"OTHER\",\n            \"CUST_MINOR_FLG\": null,\n            \"CUST_NRE_FLG\": null,\n            \"CUST_HLTH_CODE\": null,\n            \"CUST_CARD_HOLD_FLG\": null,\n            \"LCHG_USER_ID\": null,\n            \"LCHG_TIME\": null,\n            \"RCRE_USER_ID\": null,\n            \"RCRE_TIME\": null,\n            \"TDS_TBL_CODE\": null,\n            \"TDS_CUST_ID\": null,\n            \"NAT_ID_CARD_NUM\": \"TIN909\",\n            \"DATE_OF_BIRTH\": \"1988-12-28T23:00:00.000Z\",\n            \"PAN_GIR_NUM\": null,\n            \"PSPRT_NUM\": null,\n            \"PSPRT_DET\": null,\n            \"PSPRT_EXP_DATE\": null,\n            \"PURGE_ALLOWED_FLG\": null,\n            \"PURGE_TEXT\": null,\n            \"CUST_PREF_TILL_DATE\": null,\n            \"ACCT_MGR_USER_ID\": \"UBSROOT\",\n            \"CRNCY_CODE\": \"NGN\",\n            \"PARTY_FLG\": null,\n            \"NATIVE_LANG_NAME\": null,\n            \"NAT_LANG_TITLE_CODE\": null,\n            \"LANG_CODE\": null,\n            \"PRIMARY_SOL_ID\": \"001\",\n            \"ADDRESS_TYPE\": \"REGISTERED\",\n            \"DSA_ID\": null,\n            \"CUST_OPN_DATE\": \"2019-11-25T23:00:00.000Z\",\n            \"CUST_EMPLOYEE_NO\": null,\n            \"CUST_CREATION_MODE\": null,\n            \"PREF_CODE\": null,\n            \"SEGMENTATION_CLASS\": \"Affluent\",\n            \"PHONE\": \"2348024707794\",\n            \"EMAIL\": \"NOEMAIL@NOVA.COM\",\n            \"RISK_PROFILE_EXPIRY_DATE\": null,\n            \"CUST_FIRST_NAME\": null,\n            \"CUST_MIDDLE_NAME\": null,\n            \"CUST_LAST_NAME\": null,\n            \"ALT1_CUST_FIRST_NAME\": null,\n            \"ALT1_CUST_MIDDLE_NAME\": null,\n            \"ALT1_CUST_LAST_NAME\": null,\n            \"STRFIELD14\": null,\n            \"STRFIELD15\": null,\n            \"SUBSEGMENT\": \"Mass Affluent\",\n            \"ASSET_CLASSIFICATION\": null,\n            \"CUSTOMER_LEVEL_PROVISIONING\": null,\n            \"ISLAMIC_BANKING_CUSTOMER\": null,\n            \"PREFERENTIAL_CAL_BASE\": null,\n            \"ZAKAT_DEDUCTION\": null,\n            \"STAFF_FLAG\": null,\n            \"IS_DUMMY\": null,\n            \"CHARGE_LEVEL_CODE\": null,\n            \"SECONDARYRM_ID\": null,\n            \"TERTIARYRM_ID\": null,\n            \"SHORT_NAME_NATIVE\": null,\n            \"COUNTRY_OF_BIRTH\": \"NGA\",\n            \"STMT_PREF\": null,\n            \"DGRE_OF_VISUAL_CHLNG\": null,\n            \"CUST_NI_NUM\": null,\n            \"PLACE_OF_BIRTH\": null,\n            \"CUST_DECEASED_DATE\": null,\n            \"DATE_OF_NOTIFICATION\": null,\n            \"ACCESS_OWNER_SEGMENT\": \"Preferential Banking\",\n            \"EARLIEST_RELATIONSHIP_DATE\": null,\n            \"INSIDER_TO_BANK\": null,\n            \"NAME_SUFFIX\": null,\n            \"INSIDER_ROLE\": null,\n            \"NEGATED\": \"N\",\n            \"BLACKLISTED\": \"N\",\n            \"SSN\": null,\n            \"SMS_BANKING_MOB_NUM\": null,\n            \"RISK_CATEGORY\": null,\n            \"PREF_NAME\": null\n        },\n        \"category\": {\n            \"created_on\": \"2025-01-27T08:47:34.000Z\",\n            \"created_by\": null,\n            \"modified_on\": \"2025-01-27T08:47:34.000Z\",\n            \"modified_by\": null,\n            \"deleted_on\": null,\n            \"deleted_by\": null,\n            \"id\": \"1963\",\n            \"slug\": \"Account-Related\",\n            \"name\": \"Account Related\",\n            \"description\": null,\n            \"meta\": null,\n            \"parent\": {\n                \"created_on\": \"2025-01-14T11:35:15.000Z\",\n                \"created_by\": null,\n                \"modified_on\": \"2025-01-16T18:55:39.000Z\",\n                \"modified_by\": null,\n                \"deleted_on\": null,\n                \"deleted_by\": null,\n                \"id\": \"1962\",\n                \"slug\": \"issue-category\",\n                \"name\": \"Issue category\",\n                \"description\": \"\",\n                \"meta\": null\n            }\n        },\n        \"comments_count\": 1,\n        \"last_updated\": \"2025-01-28T10:47:46.000Z\",\n        \"days_open\": 0,\n        \"assignment_status\": \"ASSIGNED\",\n        \"has_attachments\": true\n    }\n}"
 														}
 													]
+												},
+												{
+													"name": "No Auth - Add attachment to issue",
+													"event": [
+														{
+															"listen": "test",
+															"script": {
+																"id": "f780ac7d-49c1-4d70-93f6-483fa6f0b93f",
+																"exec": [
+																	"var jsonData = pm.response.json();",
+																	"",
+																	"pm.test(\"Status code is 401\", function () {",
+																	"    pm.response.to.have.status(401);",
+																	"});",
+																	"",
+																	"pm.test(\"Reponse body contains standard error fields\", function () {",
+																	"    pm.expect(jsonData.statusCode).to.eql(401);",
+																	"    pm.expect(jsonData.status).to.eql(false);",
+																	"   pm.expect(jsonData.message).to.eql('Unauthorized'); ",
+																	"});"
+																],
+																"type": "text/javascript",
+																"packages": {}
+															}
+														}
+													],
+													"id": "dbd2f5a1-1b68-4c0a-bddb-9cc381aea9c8",
+													"protocolProfileBehavior": {
+														"disableBodyPruning": true
+													},
+													"request": {
+														"auth": {
+															"type": "noauth"
+														},
+														"method": "POST",
+														"header": [],
+														"body": {
+															"mode": "formdata",
+															"formdata": [
+																{
+																	"type": "file",
+																	"key": "file",
+																	"src": "BJhjyy4IT/Screen Shot 2025-03-22 at 2.34.52 PM.png"
+																}
+															]
+														},
+														"url": {
+															"raw": "{{baseUrl}}/v1/customers/:customerId/issues/:id/attachments",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"v1",
+																"customers",
+																":customerId",
+																"issues",
+																":id",
+																"attachments"
+															],
+															"variable": [
+																{
+																	"key": "customerId",
+																	"value": ""
+																},
+																{
+																	"key": "id",
+																	"value": "{{issue_id}}"
+																}
+															]
+														}
+													},
+													"response": [
+														{
+															"id": "05e98645-1848-4cf2-8b91-3ab690ca6322",
+															"name": "Add attachment to issue",
+															"originalRequest": {
+																"method": "POST",
+																"header": [],
+																"body": {
+																	"mode": "formdata",
+																	"formdata": [
+																		{
+																			"type": "file",
+																			"key": "file",
+																			"src": "/Users/tomi/Downloads/banani-ui.png"
+																		}
+																	]
+																},
+																"url": {
+																	"raw": "{{baseUrl}}/v1/customers/:customerId/issues/:id/attachments",
+																	"host": [
+																		"{{baseUrl}}"
+																	],
+																	"path": [
+																		"v1",
+																		"customers",
+																		":customerId",
+																		"issues",
+																		":id",
+																		"attachments"
+																	],
+																	"variable": [
+																		{
+																			"key": "customerId",
+																			"value": ""
+																		},
+																		{
+																			"key": "id",
+																			"value": "6"
+																		}
+																	]
+																}
+															},
+															"status": "Created",
+															"code": 201,
+															"_postman_previewlanguage": "json",
+															"header": [
+																{
+																	"key": "X-Powered-By",
+																	"value": "Express"
+																},
+																{
+																	"key": "Access-Control-Allow-Origin",
+																	"value": "*"
+																},
+																{
+																	"key": "X-RateLimit-Limit",
+																	"value": "10"
+																},
+																{
+																	"key": "X-RateLimit-Remaining",
+																	"value": "8"
+																},
+																{
+																	"key": "X-RateLimit-Reset",
+																	"value": "35"
+																},
+																{
+																	"key": "Content-Type",
+																	"value": "application/json; charset=utf-8"
+																},
+																{
+																	"key": "Content-Length",
+																	"value": "5325"
+																},
+																{
+																	"key": "ETag",
+																	"value": "W/\"14cd-gPPMteb+NcSe8emkyD+T3DyjxT4\""
+																},
+																{
+																	"key": "Date",
+																	"value": "Tue, 28 Jan 2025 10:47:46 GMT"
+																},
+																{
+																	"key": "Connection",
+																	"value": "keep-alive"
+																},
+																{
+																	"key": "Keep-Alive",
+																	"value": "timeout=5"
+																}
+															],
+															"cookie": [],
+															"responseTime": null,
+															"body": "{\n    \"status\": true,\n    \"response\": {\n        \"created_on\": \"2025-01-28T07:09:25.000Z\",\n        \"created_by\": null,\n        \"modified_on\": \"2025-01-28T10:47:46.000Z\",\n        \"modified_by\": null,\n        \"deleted_on\": null,\n        \"deleted_by\": null,\n        \"id\": 6,\n        \"issue_category_id\": 1963,\n        \"issue_responsibility\": \"CUSTOMER_SERVICE\",\n        \"source_channel\": \"BRANCH\",\n        \"customer_id\": \"4790\",\n        \"account_number\": \"6001020113\",\n        \"customer_name\": \"SUNRISE PRODUCTS LIMITED\",\n        \"account_name\": \"SUNRISE PRODUCTS LIMITED\",\n        \"issue\": \"Unable to access internet banking\",\n        \"description\": \"This issue occurs when user tries to submit a form with missing fields.\",\n        \"recipient_team\": \"DIGITAL_BANKING_SUPPORT\",\n        \"cc_recipient\": \"branch.manager@bank.com\",\n        \"status\": \"OPEN\",\n        \"priority\": \"HIGH\",\n        \"meta\": \"{\\\"browser\\\":\\\"Chrome 120.0\\\",\\\"device\\\":\\\"Desktop\\\",\\\"lastLoginAttempt\\\":\\\"2024-01-27T12:30:00Z\\\",\\\"failedAttempts\\\":3,\\\"errorCode\\\":\\\"AUTH_003\\\"}\",\n        \"assigned_to\": \"2\",\n        \"resolution_notes\": null,\n        \"resolved_on\": null,\n        \"resolved_by\": null,\n        \"cancellation_reason\": null,\n        \"cancelled_by\": null,\n        \"attachments\": [\n            {\n                \"id\": \"f9df4fd9-db02-42ad-bd97-5bd69f8a1629\",\n                \"url\": \"https://storage.bank.com/issues/error_screenshot.png\",\n                \"name\": \"error_screenshot.png\",\n                \"size\": 245678,\n                \"type\": \"image/png\",\n                \"uploaded_on\": \"2025-01-28T07:09:25.284Z\"\n            },\n            {\n                \"id\": \"b8233d3c-e0c6-43fc-a2ee-0719a205bed9\",\n                \"url\": \"uploads/issues/6_7987ba56-431e-4456-8a3e-146189ea2577.png\",\n                \"name\": \"banani-ui.png\",\n                \"size\": 134709,\n                \"type\": \"image/png\",\n                \"uploaded_on\": \"2025-01-28T10:47:46.559Z\"\n            }\n        ],\n        \"comments\": [\n            {\n                \"created_on\": \"2025-01-28T09:18:58.000Z\",\n                \"created_by\": \"2\",\n                \"modified_on\": \"2025-01-28T09:25:33.000Z\",\n                \"modified_by\": null,\n                \"deleted_on\": null,\n                \"deleted_by\": null,\n                \"id\": \"1\",\n                \"customer_id\": \"4790\",\n                \"issue_id\": 6,\n                \"comment_type\": \"CUSTOMER\",\n                \"comment\": \"hi\",\n                \"edited_on\": \"2025-01-28T09:25:33.000Z\"\n            }\n        ],\n        \"assigned_to_user\": {\n            \"created_on\": \"2025-01-16T19:02:15.000Z\",\n            \"created_by\": \"1\",\n            \"modified_on\": \"2025-01-16T19:02:15.000Z\",\n            \"modified_by\": null,\n            \"deleted_on\": null,\n            \"deleted_by\": null,\n            \"id\": \"2\",\n            \"staff_id\": null,\n            \"first_name\": \"John\",\n            \"last_name\": \"Doe\",\n            \"display_name\": null,\n            \"description\": null,\n            \"photo\": null,\n            \"phone\": null,\n            \"email\": \"2test@test.com\",\n            \"password\": \"$2b$10$5f8Ul96ElXkzZIIHn3Df/OQyTzI9ZWZ92doohw2n/euqP94wr.0TC\",\n            \"authentication_type\": \"password\",\n            \"sso_provider_id\": \"0\",\n            \"sso_user_id\": null,\n            \"status\": null,\n            \"last_login_date\": null,\n            \"last_login_ip\": null,\n            \"meta\": null\n        },\n        \"customer\": {\n            \"CUST_ID\": \"4790\",\n            \"BANK_ID\": \"01\",\n            \"CIF_ID\": \"C00001083\",\n            \"GCIF_ID\": null,\n            \"ENTITY_CRE_FLG\": \"Y\",\n            \"DEL_FLG\": \"N\",\n            \"CUST_SHORT_NAME\": \"SUNRISE PR\",\n            \"ALT1_CUST_SHORT_NAME\": null,\n            \"CUST_TITLE_CODE\": null,\n            \"CUST_NAME\": \"SUNRISE PRODUCTS LIMITED\",\n            \"ALT1_CUST_NAME\": null,\n            \"CUST_SEX\": null,\n            \"CUST_GRP\": null,\n            \"CUST_OCCP_CODE\": null,\n            \"CUST_COMMU_CODE\": null,\n            \"CUST_SECTOR_CODE\": \"40300\",\n            \"CUST_SUB_SECTOR_CODE\": \"40315\",\n            \"CUST_RATING_CODE\": null,\n            \"CUST_RATING_DATE\": null,\n            \"CUST_MGR_OPIN\": null,\n            \"CUST_INTROD_CUST_ID\": null,\n            \"INTROD_TITLE_CODE\": null,\n            \"CUST_INTROD_NAME\": null,\n            \"ALT1_CUST_INTROD_NAME\": null,\n            \"CUST_INTROD_STAT_CODE\": null,\n            \"CUST_TYPE_CODE\": null,\n            \"CUST_EMP_ID\": null,\n            \"CUST_STAT_CODE\": \"ACTVE\",\n            \"CUST_STAT_CHG_DATE\": null,\n            \"CUST_CONST\": \"OTHER\",\n            \"CUST_MINOR_FLG\": null,\n            \"CUST_NRE_FLG\": null,\n            \"CUST_HLTH_CODE\": null,\n            \"CUST_CARD_HOLD_FLG\": null,\n            \"LCHG_USER_ID\": null,\n            \"LCHG_TIME\": null,\n            \"RCRE_USER_ID\": null,\n            \"RCRE_TIME\": null,\n            \"TDS_TBL_CODE\": null,\n            \"TDS_CUST_ID\": null,\n            \"NAT_ID_CARD_NUM\": \"TIN909\",\n            \"DATE_OF_BIRTH\": \"1988-12-28T23:00:00.000Z\",\n            \"PAN_GIR_NUM\": null,\n            \"PSPRT_NUM\": null,\n            \"PSPRT_DET\": null,\n            \"PSPRT_EXP_DATE\": null,\n            \"PURGE_ALLOWED_FLG\": null,\n            \"PURGE_TEXT\": null,\n            \"CUST_PREF_TILL_DATE\": null,\n            \"ACCT_MGR_USER_ID\": \"UBSROOT\",\n            \"CRNCY_CODE\": \"NGN\",\n            \"PARTY_FLG\": null,\n            \"NATIVE_LANG_NAME\": null,\n            \"NAT_LANG_TITLE_CODE\": null,\n            \"LANG_CODE\": null,\n            \"PRIMARY_SOL_ID\": \"001\",\n            \"ADDRESS_TYPE\": \"REGISTERED\",\n            \"DSA_ID\": null,\n            \"CUST_OPN_DATE\": \"2019-11-25T23:00:00.000Z\",\n            \"CUST_EMPLOYEE_NO\": null,\n            \"CUST_CREATION_MODE\": null,\n            \"PREF_CODE\": null,\n            \"SEGMENTATION_CLASS\": \"Affluent\",\n            \"PHONE\": \"2348024707794\",\n            \"EMAIL\": \"NOEMAIL@NOVA.COM\",\n            \"RISK_PROFILE_EXPIRY_DATE\": null,\n            \"CUST_FIRST_NAME\": null,\n            \"CUST_MIDDLE_NAME\": null,\n            \"CUST_LAST_NAME\": null,\n            \"ALT1_CUST_FIRST_NAME\": null,\n            \"ALT1_CUST_MIDDLE_NAME\": null,\n            \"ALT1_CUST_LAST_NAME\": null,\n            \"STRFIELD14\": null,\n            \"STRFIELD15\": null,\n            \"SUBSEGMENT\": \"Mass Affluent\",\n            \"ASSET_CLASSIFICATION\": null,\n            \"CUSTOMER_LEVEL_PROVISIONING\": null,\n            \"ISLAMIC_BANKING_CUSTOMER\": null,\n            \"PREFERENTIAL_CAL_BASE\": null,\n            \"ZAKAT_DEDUCTION\": null,\n            \"STAFF_FLAG\": null,\n            \"IS_DUMMY\": null,\n            \"CHARGE_LEVEL_CODE\": null,\n            \"SECONDARYRM_ID\": null,\n            \"TERTIARYRM_ID\": null,\n            \"SHORT_NAME_NATIVE\": null,\n            \"COUNTRY_OF_BIRTH\": \"NGA\",\n            \"STMT_PREF\": null,\n            \"DGRE_OF_VISUAL_CHLNG\": null,\n            \"CUST_NI_NUM\": null,\n            \"PLACE_OF_BIRTH\": null,\n            \"CUST_DECEASED_DATE\": null,\n            \"DATE_OF_NOTIFICATION\": null,\n            \"ACCESS_OWNER_SEGMENT\": \"Preferential Banking\",\n            \"EARLIEST_RELATIONSHIP_DATE\": null,\n            \"INSIDER_TO_BANK\": null,\n            \"NAME_SUFFIX\": null,\n            \"INSIDER_ROLE\": null,\n            \"NEGATED\": \"N\",\n            \"BLACKLISTED\": \"N\",\n            \"SSN\": null,\n            \"SMS_BANKING_MOB_NUM\": null,\n            \"RISK_CATEGORY\": null,\n            \"PREF_NAME\": null\n        },\n        \"category\": {\n            \"created_on\": \"2025-01-27T08:47:34.000Z\",\n            \"created_by\": null,\n            \"modified_on\": \"2025-01-27T08:47:34.000Z\",\n            \"modified_by\": null,\n            \"deleted_on\": null,\n            \"deleted_by\": null,\n            \"id\": \"1963\",\n            \"slug\": \"Account-Related\",\n            \"name\": \"Account Related\",\n            \"description\": null,\n            \"meta\": null,\n            \"parent\": {\n                \"created_on\": \"2025-01-14T11:35:15.000Z\",\n                \"created_by\": null,\n                \"modified_on\": \"2025-01-16T18:55:39.000Z\",\n                \"modified_by\": null,\n                \"deleted_on\": null,\n                \"deleted_by\": null,\n                \"id\": \"1962\",\n                \"slug\": \"issue-category\",\n                \"name\": \"Issue category\",\n                \"description\": \"\",\n                \"meta\": null\n            }\n        },\n        \"comments_count\": 1,\n        \"last_updated\": \"2025-01-28T10:47:46.000Z\",\n        \"days_open\": 0,\n        \"assignment_status\": \"ASSIGNED\",\n        \"has_attachments\": true\n    }\n}"
+														}
+													]
 												}
 											],
 											"id": "65ed54f6-ba4e-4573-96e3-f0a47f5c1b3a"
