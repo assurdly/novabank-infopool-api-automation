@@ -19204,6 +19204,154 @@
 											]
 										},
 										{
+											"name": "Fetch organizations by ID - No Auth",
+											"event": [
+												{
+													"listen": "test",
+													"script": {
+														"id": "ba0c96c6-aedb-41c9-9472-0d4e84d56997",
+														"exec": [
+															"var jsonData = pm.response.json();",
+															"",
+															"pm.test(\"Status code is 200\", function () {",
+															"    pm.response.to.have.status(200);",
+															"});",
+															"pm.test(\"Reponse body contains standard success fields\", function () {",
+															"    pm.expect(jsonData.status).to.eql(true);",
+															"    pm.expect(jsonData.response).to.not.be.oneOf([null, \"empty\"]);",
+															"    pm.expect(jsonData.response.uuid).is.not.null;",
+															"    pm.expect(jsonData.response.organizationTypeInfo).is.not.null;",
+															"});"
+														],
+														"type": "text/javascript",
+														"packages": {}
+													}
+												}
+											],
+											"id": "e58ecfb2-47b5-4beb-9e8b-a5c1d4cb7c12",
+											"protocolProfileBehavior": {
+												"disableBodyPruning": true
+											},
+											"request": {
+												"auth": {
+													"type": "bearer",
+													"bearer": {
+														"token": "{{Bearer_token}}"
+													}
+												},
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/json"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/v1/organizations/:organizationId",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"v1",
+														"organizations",
+														":organizationId"
+													],
+													"variable": [
+														{
+															"id": "eebc2bcc-317a-4fd1-91ae-8f7ae3e023f3",
+															"key": "organizationId",
+															"value": "17",
+															"description": "(Required) "
+														}
+													]
+												}
+											},
+											"response": [
+												{
+													"id": "f3fa8bb7-e419-41e7-9756-5b178b3fb2a7",
+													"name": "Untitled Response",
+													"originalRequest": {
+														"method": "GET",
+														"header": [
+															{
+																"key": "Accept",
+																"value": "application/json"
+															}
+														],
+														"url": {
+															"raw": "{{baseUrl}}/v1/organizations/:organizationId",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"v1",
+																"organizations",
+																":organizationId"
+															],
+															"variable": [
+																{
+																	"key": "organizationId"
+																}
+															]
+														}
+													},
+													"status": "OK",
+													"code": 200,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "application/json"
+														}
+													],
+													"cookie": [],
+													"responseTime": null,
+													"body": "{\n  \"status\": \"<boolean>\",\n  \"response\": {\n    \"id\": \"<number>\",\n    \"parentOrganization\": {\n      \"value\": \"<Circular reference to #/components/schemas/Organization detected>\"\n    },\n    \"business_manager_id\": \"<number>\",\n    \"businessManager\": {},\n    \"operation_manager_id\": \"<number>\",\n    \"operationsManager\": {},\n    \"hierarchy_id\": \"<number>\",\n    \"mis_code\": \"<string>\",\n    \"name\": \"<string>\",\n    \"description\": \"<string>\",\n    \"street\": \"<string>\",\n    \"city\": \"<string>\",\n    \"state\": \"<number>\",\n    \"stateInfo\": {},\n    \"country\": \"<number>\",\n    \"countryInfo\": {},\n    \"organization_type\": \"<number>\",\n    \"organizationTypeInfo\": {},\n    \"meta\": {}\n  }\n}"
+												},
+												{
+													"id": "4ea97f8d-1ff4-451f-840b-ab0b4f82b528",
+													"name": "Untitled Response",
+													"originalRequest": {
+														"method": "GET",
+														"header": [
+															{
+																"key": "Accept",
+																"value": "application/json"
+															}
+														],
+														"url": {
+															"raw": "{{baseUrl}}/v1/organizations/:organizationId",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"v1",
+																"organizations",
+																":organizationId"
+															],
+															"variable": [
+																{
+																	"key": "organizationId"
+																}
+															]
+														}
+													},
+													"status": "Not Found",
+													"code": 404,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "application/json"
+														}
+													],
+													"cookie": [],
+													"responseTime": null,
+													"body": "{\n  \"statusCode\": \"<number>\",\n  \"timestamp\": \"<date>\",\n  \"path\": \"<string>\",\n  \"method\": \"<string>\",\n  \"error\": \"<string>\",\n  \"message\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}"
+												}
+											]
+										},
+										{
 											"name": "Fetch organizations by ID - non-existing ID",
 											"event": [
 												{
