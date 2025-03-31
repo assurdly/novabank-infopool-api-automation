@@ -14210,13 +14210,14 @@
 														"exec": [
 															"var jsonData = pm.response.json();",
 															"",
-															"pm.test(\"Status code is 200\", function () {",
-															"    pm.response.to.have.status(200);",
+															"pm.test(\"Status code is 401\", function () {",
+															"    pm.response.to.have.status(401);",
 															"});",
 															"",
-															"pm.test(\"Reponse body contains success fields\", function () {",
-															"    pm.expect(jsonData.status).to.eql(true);",
-															"    pm.expect(jsonData.response.updated).to.eql(true);",
+															"pm.test(\"Reponse body contains standard error fields\", function () {",
+															"    pm.expect(jsonData.statusCode).to.eql(401);",
+															"    pm.expect(jsonData.status).to.eql(false);",
+															"   pm.expect(jsonData.message).to.eql('Unauthorized'); ",
 															"});"
 														],
 														"type": "text/javascript",
@@ -14230,10 +14231,7 @@
 											},
 											"request": {
 												"auth": {
-													"type": "bearer",
-													"bearer": {
-														"token": "{{Bearer_token}}"
-													}
+													"type": "noauth"
 												},
 												"method": "PATCH",
 												"header": [
@@ -14264,7 +14262,6 @@
 													],
 													"variable": [
 														{
-															"id": "79d76734-3e1d-4c3b-8b93-1c1185181cd3",
 															"key": "id",
 															"value": "10",
 															"description": "(Required) "
@@ -14322,7 +14319,7 @@
 											]
 										},
 										{
-											"name": "Update definition - empty fields",
+											"name": "Empty fields - Update definition",
 											"event": [
 												{
 													"listen": "test",
