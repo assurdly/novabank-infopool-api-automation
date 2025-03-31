@@ -25893,734 +25893,6 @@
 							"name": "Notifications",
 							"item": [
 								{
-									"name": "Templates",
-									"item": [
-										{
-											"name": "Get all notification templates - successful",
-											"id": "8f662fc1-142c-48b1-b560-154915fea91e",
-											"protocolProfileBehavior": {
-												"disableBodyPruning": true
-											},
-											"request": {
-												"auth": {
-													"type": "bearer",
-													"bearer": {
-														"token": "{{Bearer_token}}"
-													}
-												},
-												"method": "GET",
-												"header": [
-													{
-														"key": "Accept",
-														"value": "application/json"
-													}
-												],
-												"url": {
-													"raw": "{{baseUrl}}/v1/notifications/templates?page=1&limit=10",
-													"host": [
-														"{{baseUrl}}"
-													],
-													"path": [
-														"v1",
-														"notifications",
-														"templates"
-													],
-													"query": [
-														{
-															"key": "page",
-															"value": "1"
-														},
-														{
-															"key": "limit",
-															"value": "10"
-														},
-														{
-															"key": "category",
-															"value": "1",
-															"disabled": true
-														},
-														{
-															"key": "search",
-															"value": "team member",
-															"disabled": true
-														}
-													]
-												}
-											},
-											"response": [
-												{
-													"id": "be4fd8e0-c20f-4793-a6b3-d7281d7957cd",
-													"name": "Untitled Response",
-													"originalRequest": {
-														"method": "GET",
-														"header": [
-															{
-																"key": "Accept",
-																"value": "application/json"
-															}
-														],
-														"url": {
-															"raw": "{{baseUrl}}/v1/notifications/templates?page=1&limit=10&category=<number>",
-															"host": [
-																"{{baseUrl}}"
-															],
-															"path": [
-																"v1",
-																"notifications",
-																"templates"
-															],
-															"query": [
-																{
-																	"key": "page",
-																	"value": "1"
-																},
-																{
-																	"key": "limit",
-																	"value": "10"
-																},
-																{
-																	"key": "category",
-																	"value": "<number>"
-																}
-															]
-														}
-													},
-													"status": "OK",
-													"code": 200,
-													"_postman_previewlanguage": "json",
-													"header": [
-														{
-															"key": "Content-Type",
-															"value": "application/json"
-														}
-													],
-													"cookie": [],
-													"responseTime": null,
-													"body": "{\n  \"status\": \"<boolean>\",\n  \"response\": {\n    \"total\": \"<number>\",\n    \"page\": \"<number>\",\n    \"limit\": \"<number>\",\n    \"totalPages\": \"<number>\"\n  }\n}"
-												}
-											]
-										},
-										{
-											"name": "Get all notification templates - invalid category",
-											"id": "03e4fddb-8554-47f0-869a-6fe78f575baf",
-											"protocolProfileBehavior": {
-												"disableBodyPruning": true
-											},
-											"request": {
-												"auth": {
-													"type": "bearer",
-													"bearer": {
-														"token": "{{Bearer_token}}"
-													}
-												},
-												"method": "GET",
-												"header": [
-													{
-														"key": "Accept",
-														"value": "application/json"
-													}
-												],
-												"url": {
-													"raw": "{{baseUrl}}/v1/notifications/templates?page=1&limit=10&category=1",
-													"host": [
-														"{{baseUrl}}"
-													],
-													"path": [
-														"v1",
-														"notifications",
-														"templates"
-													],
-													"query": [
-														{
-															"key": "page",
-															"value": "1"
-														},
-														{
-															"key": "limit",
-															"value": "10"
-														},
-														{
-															"key": "category",
-															"value": "1"
-														}
-													]
-												}
-											},
-											"response": [
-												{
-													"id": "6e087776-1189-43c3-8593-a133e9a2d9cc",
-													"name": "Untitled Response",
-													"originalRequest": {
-														"method": "GET",
-														"header": [
-															{
-																"key": "Accept",
-																"value": "application/json"
-															}
-														],
-														"url": {
-															"raw": "{{baseUrl}}/v1/notifications/templates?page=1&limit=10&category=<number>",
-															"host": [
-																"{{baseUrl}}"
-															],
-															"path": [
-																"v1",
-																"notifications",
-																"templates"
-															],
-															"query": [
-																{
-																	"key": "page",
-																	"value": "1"
-																},
-																{
-																	"key": "limit",
-																	"value": "10"
-																},
-																{
-																	"key": "category",
-																	"value": "<number>"
-																}
-															]
-														}
-													},
-													"status": "OK",
-													"code": 200,
-													"_postman_previewlanguage": "json",
-													"header": [
-														{
-															"key": "Content-Type",
-															"value": "application/json"
-														}
-													],
-													"cookie": [],
-													"responseTime": null,
-													"body": "{\n  \"status\": \"<boolean>\",\n  \"response\": {\n    \"total\": \"<number>\",\n    \"page\": \"<number>\",\n    \"limit\": \"<number>\",\n    \"totalPages\": \"<number>\"\n  }\n}"
-												}
-											]
-										},
-										{
-											"name": "Create notification template",
-											"id": "e9f86c9e-3e98-43e6-9594-1bab2aab0dc2",
-											"protocolProfileBehavior": {
-												"disableBodyPruning": true
-											},
-											"request": {
-												"auth": {
-													"type": "bearer",
-													"bearer": {
-														"token": "{{Bearer_token}}"
-													}
-												},
-												"method": "POST",
-												"header": [
-													{
-														"key": "Content-Type",
-														"value": "application/json"
-													},
-													{
-														"key": "Accept",
-														"value": "application/json"
-													}
-												],
-												"body": {
-													"mode": "raw",
-													"raw": "{\n  \"slug\": \"<string>\",\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"send_push\": \"<boolean>\",\n  \"send_sms\": \"<boolean>\",\n  \"send_email\": \"<boolean>\",\n  \"email_template\": \"<string>\",\n  \"subject_template\": \"<string>\",\n  \"push_template\": \"<string>\",\n  \"sms_template\": \"<string>\",\n  \"tags\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"category\": \"1\"\n}",
-													"options": {
-														"raw": {
-															"headerFamily": "json",
-															"language": "json"
-														}
-													}
-												},
-												"url": "{{baseUrl}}/v1/notifications/templates"
-											},
-											"response": [
-												{
-													"id": "a736cce1-cbe9-406d-9b3c-8effdf945330",
-													"name": "Untitled Response",
-													"originalRequest": {
-														"method": "POST",
-														"header": [
-															{
-																"key": "Content-Type",
-																"value": "application/json"
-															},
-															{
-																"key": "Accept",
-																"value": "application/json"
-															}
-														],
-														"body": {
-															"mode": "raw",
-															"raw": "{\n  \"slug\": \"<string>\",\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"send_push\": \"<boolean>\",\n  \"send_sms\": \"<boolean>\",\n  \"send_email\": \"<boolean>\",\n  \"email_template\": \"<string>\",\n  \"subject_template\": \"<string>\",\n  \"push_template\": \"<string>\",\n  \"sms_template\": \"<string>\",\n  \"tags\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"category\": \"<number>\"\n}",
-															"options": {
-																"raw": {
-																	"headerFamily": "json",
-																	"language": "json"
-																}
-															}
-														},
-														"url": "{{baseUrl}}/v1/notifications/templates"
-													},
-													"status": "Created",
-													"code": 201,
-													"_postman_previewlanguage": "json",
-													"header": [
-														{
-															"key": "Content-Type",
-															"value": "application/json"
-														}
-													],
-													"cookie": [],
-													"responseTime": null,
-													"body": "{\n  \"status\": \"<boolean>\",\n  \"response\": {}\n}"
-												},
-												{
-													"id": "2526d0a0-dc92-428d-a74f-24a1daf1d996",
-													"name": "Untitled Response",
-													"originalRequest": {
-														"method": "POST",
-														"header": [
-															{
-																"key": "Content-Type",
-																"value": "application/json"
-															},
-															{
-																"key": "Accept",
-																"value": "application/json"
-															}
-														],
-														"body": {
-															"mode": "raw",
-															"raw": "{\n  \"slug\": \"<string>\",\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"send_push\": \"<boolean>\",\n  \"send_sms\": \"<boolean>\",\n  \"send_email\": \"<boolean>\",\n  \"email_template\": \"<string>\",\n  \"subject_template\": \"<string>\",\n  \"push_template\": \"<string>\",\n  \"sms_template\": \"<string>\",\n  \"tags\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"category\": \"<number>\"\n}",
-															"options": {
-																"raw": {
-																	"headerFamily": "json",
-																	"language": "json"
-																}
-															}
-														},
-														"url": "{{baseUrl}}/v1/notifications/templates"
-													},
-													"status": "Bad Request",
-													"code": 400,
-													"_postman_previewlanguage": "json",
-													"header": [
-														{
-															"key": "Content-Type",
-															"value": "application/json"
-														}
-													],
-													"cookie": [],
-													"responseTime": null,
-													"body": "{\n  \"statusCode\": \"<number>\",\n  \"timestamp\": \"<date>\",\n  \"path\": \"<string>\",\n  \"method\": \"<string>\",\n  \"error\": \"<string>\",\n  \"message\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}"
-												},
-												{
-													"id": "03b32f17-85b7-470e-8f6e-d8f8ca02073a",
-													"name": "Untitled Response",
-													"originalRequest": {
-														"method": "POST",
-														"header": [
-															{
-																"key": "Content-Type",
-																"value": "application/json"
-															},
-															{
-																"key": "Accept",
-																"value": "application/json"
-															}
-														],
-														"body": {
-															"mode": "raw",
-															"raw": "{\n  \"slug\": \"<string>\",\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"send_push\": \"<boolean>\",\n  \"send_sms\": \"<boolean>\",\n  \"send_email\": \"<boolean>\",\n  \"email_template\": \"<string>\",\n  \"subject_template\": \"<string>\",\n  \"push_template\": \"<string>\",\n  \"sms_template\": \"<string>\",\n  \"tags\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"category\": \"<number>\"\n}",
-															"options": {
-																"raw": {
-																	"headerFamily": "json",
-																	"language": "json"
-																}
-															}
-														},
-														"url": "{{baseUrl}}/v1/notifications/templates"
-													},
-													"status": "Not Found",
-													"code": 404,
-													"_postman_previewlanguage": "json",
-													"header": [
-														{
-															"key": "Content-Type",
-															"value": "application/json"
-														}
-													],
-													"cookie": [],
-													"responseTime": null,
-													"body": "{\n  \"statusCode\": \"<number>\",\n  \"timestamp\": \"<date>\",\n  \"path\": \"<string>\",\n  \"method\": \"<string>\",\n  \"error\": \"<string>\",\n  \"message\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}"
-												}
-											]
-										},
-										{
-											"name": "update notification template",
-											"id": "d71bcab6-388f-4437-9093-d95d0bc02eb8",
-											"protocolProfileBehavior": {
-												"disableBodyPruning": true
-											},
-											"request": {
-												"auth": {
-													"type": "bearer",
-													"bearer": {
-														"token": "{{Bearer_token}}"
-													}
-												},
-												"method": "PATCH",
-												"header": [
-													{
-														"key": "Content-Type",
-														"value": "application/json"
-													},
-													{
-														"key": "Accept",
-														"value": "application/json"
-													}
-												],
-												"body": {
-													"mode": "raw",
-													"raw": "{\n  \"action\": \"update\",\n  \"data\": {\n    // \"name\": \"New device Template\"\n    // \"description\": \"<string>\",\n    // \"send_push\": \"<boolean>\",\n    // \"send_sms\": \"<boolean>\",\n    // \"send_email\": \"<boolean>\",\n    \"email_template\": \"invitation_link: https://staging.infopool.ng/accept-invite/{{invitation_link}} <br> organisation_name {{organisation_name}} <br> role {{role}} <br> first_name {{first_name}}\"\n    // \"subject_template\": \"<string>\",\n    // \"push_template\": \"<string>\",\n    // \"sms_template\": \"<string>\",\n    // \"tags\": [\n    //   \"<string>\",\n    //   \"<string>\"\n    // ],\n    // \"category\": \"<number>\"\n  }\n}",
-													"options": {
-														"raw": {
-															"headerFamily": "json",
-															"language": "json"
-														}
-													}
-												},
-												"url": {
-													"raw": "{{baseUrl}}/v1/notifications/templates/:templateId",
-													"host": [
-														"{{baseUrl}}"
-													],
-													"path": [
-														"v1",
-														"notifications",
-														"templates",
-														":templateId"
-													],
-													"variable": [
-														{
-															"key": "templateId",
-															"value": "3",
-															"description": "(Required) "
-														}
-													]
-												}
-											},
-											"response": [
-												{
-													"id": "38f8a1c4-6977-4f74-baa3-79c43f3e1828",
-													"name": "Untitled Response",
-													"originalRequest": {
-														"method": "PATCH",
-														"header": [
-															{
-																"key": "Content-Type",
-																"value": "application/json"
-															},
-															{
-																"key": "Accept",
-																"value": "application/json"
-															}
-														],
-														"body": {
-															"mode": "raw",
-															"raw": "{\n  \"action\": \"update\",\n  \"data\": {\n    \"name\": \"<string>\",\n    \"description\": \"<string>\",\n    \"send_push\": \"<boolean>\",\n    \"send_sms\": \"<boolean>\",\n    \"send_email\": \"<boolean>\",\n    \"email_template\": \"<string>\",\n    \"subject_template\": \"<string>\",\n    \"push_template\": \"<string>\",\n    \"sms_template\": \"<string>\",\n    \"tags\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"category\": \"<number>\"\n  }\n}",
-															"options": {
-																"raw": {
-																	"headerFamily": "json",
-																	"language": "json"
-																}
-															}
-														},
-														"url": {
-															"raw": "{{baseUrl}}/v1/notifications/templates/:templateId",
-															"host": [
-																"{{baseUrl}}"
-															],
-															"path": [
-																"v1",
-																"notifications",
-																"templates",
-																":templateId"
-															],
-															"variable": [
-																{
-																	"key": "templateId"
-																}
-															]
-														}
-													},
-													"status": "OK",
-													"code": 200,
-													"_postman_previewlanguage": "json",
-													"header": [
-														{
-															"key": "Content-Type",
-															"value": "application/json"
-														}
-													],
-													"cookie": [],
-													"responseTime": null,
-													"body": "{\n  \"status\": \"<boolean>\",\n  \"response\": {\n    \"updated\": \"<boolean>\"\n  }\n}"
-												},
-												{
-													"id": "1cda696f-71ab-4c60-9b91-1da68d748216",
-													"name": "Untitled Response",
-													"originalRequest": {
-														"method": "PATCH",
-														"header": [
-															{
-																"key": "Content-Type",
-																"value": "application/json"
-															},
-															{
-																"key": "Accept",
-																"value": "application/json"
-															}
-														],
-														"body": {
-															"mode": "raw",
-															"raw": "{\n  \"action\": \"update\",\n  \"data\": {\n    \"name\": \"<string>\",\n    \"description\": \"<string>\",\n    \"send_push\": \"<boolean>\",\n    \"send_sms\": \"<boolean>\",\n    \"send_email\": \"<boolean>\",\n    \"email_template\": \"<string>\",\n    \"subject_template\": \"<string>\",\n    \"push_template\": \"<string>\",\n    \"sms_template\": \"<string>\",\n    \"tags\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"category\": \"<number>\"\n  }\n}",
-															"options": {
-																"raw": {
-																	"headerFamily": "json",
-																	"language": "json"
-																}
-															}
-														},
-														"url": {
-															"raw": "{{baseUrl}}/v1/notifications/templates/:templateId",
-															"host": [
-																"{{baseUrl}}"
-															],
-															"path": [
-																"v1",
-																"notifications",
-																"templates",
-																":templateId"
-															],
-															"variable": [
-																{
-																	"key": "templateId"
-																}
-															]
-														}
-													},
-													"status": "Bad Request",
-													"code": 400,
-													"_postman_previewlanguage": "json",
-													"header": [
-														{
-															"key": "Content-Type",
-															"value": "application/json"
-														}
-													],
-													"cookie": [],
-													"responseTime": null,
-													"body": "{\n  \"statusCode\": \"<number>\",\n  \"timestamp\": \"<date>\",\n  \"path\": \"<string>\",\n  \"method\": \"<string>\",\n  \"error\": \"<string>\",\n  \"message\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}"
-												},
-												{
-													"id": "9bf74387-ab5b-4119-9970-9afe252552b5",
-													"name": "Untitled Response",
-													"originalRequest": {
-														"method": "PATCH",
-														"header": [
-															{
-																"key": "Content-Type",
-																"value": "application/json"
-															},
-															{
-																"key": "Accept",
-																"value": "application/json"
-															}
-														],
-														"body": {
-															"mode": "raw",
-															"raw": "{\n  \"action\": \"update\",\n  \"data\": {\n    \"name\": \"<string>\",\n    \"description\": \"<string>\",\n    \"send_push\": \"<boolean>\",\n    \"send_sms\": \"<boolean>\",\n    \"send_email\": \"<boolean>\",\n    \"email_template\": \"<string>\",\n    \"subject_template\": \"<string>\",\n    \"push_template\": \"<string>\",\n    \"sms_template\": \"<string>\",\n    \"tags\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"category\": \"<number>\"\n  }\n}",
-															"options": {
-																"raw": {
-																	"headerFamily": "json",
-																	"language": "json"
-																}
-															}
-														},
-														"url": {
-															"raw": "{{baseUrl}}/v1/notifications/templates/:templateId",
-															"host": [
-																"{{baseUrl}}"
-															],
-															"path": [
-																"v1",
-																"notifications",
-																"templates",
-																":templateId"
-															],
-															"variable": [
-																{
-																	"key": "templateId"
-																}
-															]
-														}
-													},
-													"status": "Not Found",
-													"code": 404,
-													"_postman_previewlanguage": "json",
-													"header": [
-														{
-															"key": "Content-Type",
-															"value": "application/json"
-														}
-													],
-													"cookie": [],
-													"responseTime": null,
-													"body": "{\n  \"statusCode\": \"<number>\",\n  \"timestamp\": \"<date>\",\n  \"path\": \"<string>\",\n  \"method\": \"<string>\",\n  \"error\": \"<string>\",\n  \"message\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}"
-												}
-											]
-										}
-									],
-									"id": "aaac14c1-6af3-433d-b568-255efad86ad7"
-								},
-								{
-									"name": "Template",
-									"item": [
-										{
-											"name": "Get notification template by ID",
-											"id": "19ce9215-437b-4bf7-9986-e95ff5289723",
-											"protocolProfileBehavior": {
-												"disableBodyPruning": true
-											},
-											"request": {
-												"auth": {
-													"type": "bearer",
-													"bearer": {
-														"token": "{{Bearer_token}}"
-													}
-												},
-												"method": "GET",
-												"header": [
-													{
-														"key": "Accept",
-														"value": "application/json"
-													}
-												],
-												"url": {
-													"raw": "{{baseUrl}}/v1/notifications/template/:templateId",
-													"host": [
-														"{{baseUrl}}"
-													],
-													"path": [
-														"v1",
-														"notifications",
-														"template",
-														":templateId"
-													],
-													"variable": [
-														{
-															"id": "0b1a39b2-66b2-4740-8321-782b27186052",
-															"key": "templateId",
-															"value": "1",
-															"description": "(Required) "
-														}
-													]
-												}
-											},
-											"response": [
-												{
-													"id": "603373cd-0fb3-47a8-8980-5f50976d0424",
-													"name": "Untitled Response",
-													"originalRequest": {
-														"method": "GET",
-														"header": [
-															{
-																"key": "Accept",
-																"value": "application/json"
-															}
-														],
-														"url": {
-															"raw": "{{baseUrl}}/v1/notifications/template/:templateId",
-															"host": [
-																"{{baseUrl}}"
-															],
-															"path": [
-																"v1",
-																"notifications",
-																"template",
-																":templateId"
-															],
-															"variable": [
-																{
-																	"key": "templateId"
-																}
-															]
-														}
-													},
-													"status": "OK",
-													"code": 200,
-													"_postman_previewlanguage": "json",
-													"header": [
-														{
-															"key": "Content-Type",
-															"value": "application/json"
-														}
-													],
-													"cookie": [],
-													"responseTime": null,
-													"body": "{\n  \"status\": \"<boolean>\",\n  \"response\": {}\n}"
-												},
-												{
-													"id": "5fe299c3-e5bd-44a2-8c7f-fa7344452866",
-													"name": "Untitled Response",
-													"originalRequest": {
-														"method": "GET",
-														"header": [
-															{
-																"key": "Accept",
-																"value": "application/json"
-															}
-														],
-														"url": {
-															"raw": "{{baseUrl}}/v1/notifications/template/:templateId",
-															"host": [
-																"{{baseUrl}}"
-															],
-															"path": [
-																"v1",
-																"notifications",
-																"template",
-																":templateId"
-															],
-															"variable": [
-																{
-																	"key": "templateId"
-																}
-															]
-														}
-													},
-													"status": "Not Found",
-													"code": 404,
-													"_postman_previewlanguage": "json",
-													"header": [
-														{
-															"key": "Content-Type",
-															"value": "application/json"
-														}
-													],
-													"cookie": [],
-													"responseTime": null,
-													"body": "{\n  \"statusCode\": \"<number>\",\n  \"timestamp\": \"<date>\",\n  \"path\": \"<string>\",\n  \"method\": \"<string>\",\n  \"error\": \"<string>\",\n  \"message\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}"
-												}
-											]
-										}
-									],
-									"id": "27de1958-5183-4aa6-a90e-6eafd70b0160"
-								},
-								{
 									"name": "Category",
 									"item": [
 										{
@@ -26628,6 +25900,28 @@
 											"item": [
 												{
 													"name": "get all category",
+													"event": [
+														{
+															"listen": "test",
+															"script": {
+																"id": "89c1f4e1-638b-48a3-a02c-3840b18c47f6",
+																"exec": [
+																	"var jsonData = pm.response.json();",
+																	"",
+																	"pm.test(\"Status code is 200\", function () {",
+																	"    pm.response.to.have.status(200);",
+																	"});",
+																	"",
+																	"pm.test(\"Reponse body contains success fields\", function () {",
+																	"    pm.expect(jsonData.status).to.eql(true);",
+																	"  pm.expect(jsonData.response.data).to.not.be.null;",
+																	"})"
+																],
+																"type": "text/javascript",
+																"packages": {}
+															}
+														}
+													],
 													"id": "3dce576d-86ce-46f0-8538-07f5e8b1275e",
 													"protocolProfileBehavior": {
 														"disableBodyPruning": true
@@ -26669,6 +25963,70 @@
 														}
 													},
 													"response": []
+												},
+												{
+													"name": "No auth - get all category",
+													"event": [
+														{
+															"listen": "test",
+															"script": {
+																"id": "89c1f4e1-638b-48a3-a02c-3840b18c47f6",
+																"exec": [
+																	"var jsonData = pm.response.json();",
+																	"",
+																	"pm.test(\"Status code is 401\", function () {",
+																	"    pm.response.to.have.status(401);",
+																	"});",
+																	"",
+																	"pm.test(\"Reponse body contains standard error fields\", function () {",
+																	"    pm.expect(jsonData.statusCode).to.eql(401);",
+																	"    pm.expect(jsonData.status).to.eql(false);",
+																	"   pm.expect(jsonData.message).to.eql('Unauthorized'); ",
+																	"});"
+																],
+																"type": "text/javascript",
+																"packages": {}
+															}
+														}
+													],
+													"id": "41810482-a641-45f3-ab32-900d3a9daf03",
+													"protocolProfileBehavior": {
+														"disableBodyPruning": true
+													},
+													"request": {
+														"auth": {
+															"type": "noauth"
+														},
+														"method": "GET",
+														"header": [
+															{
+																"key": "accept",
+																"value": "application/json"
+															}
+														],
+														"url": {
+															"raw": "{{baseUrl}}/v1/notifications/categories?page=1&limit=10",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"v1",
+																"notifications",
+																"categories"
+															],
+															"query": [
+																{
+																	"key": "page",
+																	"value": "1"
+																},
+																{
+																	"key": "limit",
+																	"value": "10"
+																}
+															]
+														}
+													},
+													"response": []
 												}
 											],
 											"id": "3d245aca-e8e8-41b4-851f-fbc599d448a6"
@@ -26678,6 +26036,28 @@
 											"item": [
 												{
 													"name": "category by id",
+													"event": [
+														{
+															"listen": "test",
+															"script": {
+																"id": "9474722c-24af-45de-b8a7-145c1040bab2",
+																"exec": [
+																	"var jsonData = pm.response.json();",
+																	"",
+																	"pm.test(\"Status code is 200\", function () {",
+																	"    pm.response.to.have.status(200);",
+																	"});",
+																	"",
+																	"pm.test(\"Reponse body contains success fields\", function () {",
+																	"    pm.expect(jsonData.status).to.eql(true);",
+																	"  pm.expect(jsonData.response.data).to.not.be.null;",
+																	"})"
+																],
+																"type": "text/javascript",
+																"packages": {}
+															}
+														}
+													],
 													"id": "675d8b71-0016-49cd-9417-92001d33cdc1",
 													"protocolProfileBehavior": {
 														"disableBodyPruning": true
@@ -26688,6 +26068,72 @@
 															"bearer": {
 																"token": "{{Bearer_token}}"
 															}
+														},
+														"method": "GET",
+														"header": [
+															{
+																"key": "accept",
+																"value": "application/json"
+															}
+														],
+														"url": {
+															"raw": "{{baseUrl}}/v1/notifications/categories/3164/templates?page=1&limit=10",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"v1",
+																"notifications",
+																"categories",
+																"3164",
+																"templates"
+															],
+															"query": [
+																{
+																	"key": "page",
+																	"value": "1"
+																},
+																{
+																	"key": "limit",
+																	"value": "10"
+																}
+															]
+														}
+													},
+													"response": []
+												},
+												{
+													"name": "No auth - category by id",
+													"event": [
+														{
+															"listen": "test",
+															"script": {
+																"id": "9474722c-24af-45de-b8a7-145c1040bab2",
+																"exec": [
+																	"var jsonData = pm.response.json();",
+																	"",
+																	"pm.test(\"Status code is 401\", function () {",
+																	"    pm.response.to.have.status(401);",
+																	"});",
+																	"",
+																	"pm.test(\"Reponse body contains standard error fields\", function () {",
+																	"    pm.expect(jsonData.statusCode).to.eql(401);",
+																	"    pm.expect(jsonData.status).to.eql(false);",
+																	"   pm.expect(jsonData.message).to.eql('Unauthorized'); ",
+																	"});"
+																],
+																"type": "text/javascript",
+																"packages": {}
+															}
+														}
+													],
+													"id": "2575d0c2-b1f0-445e-b7eb-62a5cb4e4851",
+													"protocolProfileBehavior": {
+														"disableBodyPruning": true
+													},
+													"request": {
+														"auth": {
+															"type": "noauth"
 														},
 														"method": "GET",
 														"header": [
