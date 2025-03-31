@@ -15815,6 +15815,125 @@
 														"url": "https://staging-api.infopool.ng/v1/users/196/roles"
 													},
 													"response": []
+												},
+												{
+													"name": "Invalid role - update role",
+													"event": [
+														{
+															"listen": "test",
+															"script": {
+																"id": "915fe537-992f-4cde-ba41-013a6894be89",
+																"exec": [
+																	"var jsonData = pm.response.json();",
+																	"",
+																	"pm.test(\"Status code is 200\", function () {",
+																	"    pm.response.to.have.status(200);",
+																	"});",
+																	"",
+																	"pm.test(\"Status is true\", function () {",
+																	"    pm.expect(jsonData.status).to.eql(true);",
+																	"});",
+																	"pm.test(\"Status is true\", function () {",
+																	"    pm.expect(jsonData.response.message).to.eql(\"User roles successfully updated\");",
+																	"});",
+																	""
+																],
+																"type": "text/javascript",
+																"packages": {}
+															}
+														}
+													],
+													"id": "c33b3047-b764-4f7e-be6d-21109dd8f117",
+													"protocolProfileBehavior": {
+														"disableBodyPruning": true
+													},
+													"request": {
+														"auth": {
+															"type": "bearer",
+															"bearer": {
+																"token": "{{Bearer_token}}"
+															}
+														},
+														"method": "PATCH",
+														"header": [
+															{
+																"key": "accept",
+																"value": "*/*"
+															},
+															{
+																"key": "Content-Type",
+																"value": "application/json"
+															}
+														],
+														"body": {
+															"mode": "raw",
+															"raw": "{\n  \"add\": [\n    {\n      \"role_id\": 17,\n      \"is_role_manager\": false,\n      \"meta\": {}\n    },\n    {\n      \"role_id\": 2,\n      \"is_role_manager\": false,\n      \"meta\": {}\n    }\n  ],\n  \"remove\": [\n    2\n  ]\n}",
+															"options": {
+																"raw": {
+																	"language": "json"
+																}
+															}
+														},
+														"url": "https://staging-api.infopool.ng/v1/users/196/roles"
+													},
+													"response": []
+												},
+												{
+													"name": "No auth - update role",
+													"event": [
+														{
+															"listen": "test",
+															"script": {
+																"id": "915fe537-992f-4cde-ba41-013a6894be89",
+																"exec": [
+																	"var jsonData = pm.response.json();",
+																	"",
+																	"pm.test(\"Status code is 401\", function () {",
+																	"    pm.response.to.have.status(401);",
+																	"});",
+																	"",
+																	"pm.test(\"Reponse body contains standard error fields\", function () {",
+																	"    pm.expect(jsonData.statusCode).to.eql(401);",
+																	"    pm.expect(jsonData.status).to.eql(false);",
+																	"   pm.expect(jsonData.message).to.eql('Unauthorized'); ",
+																	"});"
+																],
+																"type": "text/javascript",
+																"packages": {}
+															}
+														}
+													],
+													"id": "9180978b-78bd-49b0-8404-a47375b5c548",
+													"protocolProfileBehavior": {
+														"disableBodyPruning": true
+													},
+													"request": {
+														"auth": {
+															"type": "noauth"
+														},
+														"method": "PATCH",
+														"header": [
+															{
+																"key": "accept",
+																"value": "*/*"
+															},
+															{
+																"key": "Content-Type",
+																"value": "application/json"
+															}
+														],
+														"body": {
+															"mode": "raw",
+															"raw": "{\n  \"add\": [\n    {\n      \"role_id\": 17,\n      \"is_role_manager\": false,\n      \"meta\": {}\n    },\n    {\n      \"role_id\": 2,\n      \"is_role_manager\": false,\n      \"meta\": {}\n    }\n  ],\n  \"remove\": [\n    2\n  ]\n}",
+															"options": {
+																"raw": {
+																	"language": "json"
+																}
+															}
+														},
+														"url": "https://staging-api.infopool.ng/v1/users/196/roles"
+													},
+													"response": []
 												}
 											],
 											"id": "9402513d-7605-4dab-a6c3-ffd47f285049"
