@@ -14554,6 +14554,94 @@
 											]
 										},
 										{
+											"name": "Fetch user by ID - no auth",
+											"event": [
+												{
+													"listen": "test",
+													"script": {
+														"id": "ee997f5e-7f19-4742-96d6-5a79710e7db6",
+														"exec": [
+															"var jsonData = pm.response.json();",
+															"",
+															"pm.test(\"Status code is 401\", function () {",
+															"    pm.response.to.have.status(401);",
+															"});",
+															"",
+															"pm.test(\"Reponse body contains standard error fields\", function () {",
+															"    pm.expect(jsonData.statusCode).to.eql(401);",
+															"    pm.expect(jsonData.status).to.eql(false);",
+															"   pm.expect(jsonData.message).to.eql('Unauthorized'); ",
+															"});"
+														],
+														"type": "text/javascript",
+														"packages": {}
+													}
+												}
+											],
+											"id": "391044f2-b8b8-4e01-94d1-a0df2a55dc80",
+											"protocolProfileBehavior": {
+												"disableBodyPruning": true
+											},
+											"request": {
+												"auth": {
+													"type": "noauth"
+												},
+												"method": "GET",
+												"header": [],
+												"url": {
+													"raw": "{{baseUrl}}/v1/users/:id",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"v1",
+														"users",
+														":id"
+													],
+													"variable": [
+														{
+															"key": "id",
+															"value": "1",
+															"description": "(Required) "
+														}
+													]
+												}
+											},
+											"response": [
+												{
+													"id": "dee3a007-fd48-4565-9b8b-c6f6c5e9f6b7",
+													"name": "Untitled Response",
+													"originalRequest": {
+														"method": "GET",
+														"header": [],
+														"url": {
+															"raw": "{{baseUrl}}/v1/users/:id",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"v1",
+																"users",
+																":id"
+															],
+															"variable": [
+																{
+																	"key": "id"
+																}
+															]
+														}
+													},
+													"status": "OK",
+													"code": 200,
+													"_postman_previewlanguage": "text",
+													"header": [],
+													"cookie": [],
+													"responseTime": null,
+													"body": ""
+												}
+											]
+										},
+										{
 											"name": "Fetch user by ID - ID does not exist",
 											"event": [
 												{
