@@ -25068,7 +25068,7 @@
 												],
 												"body": {
 													"mode": "raw",
-													"raw": "{\n  \"action\": \"update\",\n  \"data\": {\n    \"name\": \"Test User\",\n    \"description\": \"Testing\",\n    \"type\": \"user\",\n    \"meta\": {},\n    \"permissions\": [\n      {\n        \"permission_id\": 1,\n        \"abilities\": {\n          \"can_create\": true,\n          \"can_read\": true,\n          \"can_update\": false,\n          \"can_delete\": false\n        }\n      }\n    ]\n  }\n}",
+													"raw": "{\n  \"action\": \"update\",\n  \"data\": {\n    \"name\": \"Test User\",\n    \"description\": \"Testing\",\n    \"type\": \"user\",\n    \"meta\": {},\n    \"permissions\": [\n      {\n        \"permission_id\": 17,\n        \"abilities\": {\n          \"can_create\": true,\n          \"can_read\": true,\n          \"can_update\": false,\n          \"can_delete\": false\n        }\n      }\n    ]\n  }\n}",
 													"options": {
 														"raw": {
 															"headerFamily": "json",
@@ -25098,6 +25098,128 @@
 											"response": [
 												{
 													"id": "ee3ae4a4-fcf9-4aa3-9c2e-7fe210af0463",
+													"name": "Untitled Response",
+													"originalRequest": {
+														"method": "PATCH",
+														"header": [
+															{
+																"key": "Content-Type",
+																"value": "application/json"
+															}
+														],
+														"body": {
+															"mode": "raw",
+															"raw": "{\n  \"action\": \"update\",\n  \"data\": {}\n}",
+															"options": {
+																"raw": {
+																	"headerFamily": "json",
+																	"language": "json"
+																}
+															}
+														},
+														"url": {
+															"raw": "{{baseUrl}}/v1/roles/:id",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"v1",
+																"roles",
+																":id"
+															],
+															"variable": [
+																{
+																	"key": "id"
+																}
+															]
+														}
+													},
+													"status": "OK",
+													"code": 200,
+													"_postman_previewlanguage": "text",
+													"header": [],
+													"cookie": [],
+													"responseTime": null,
+													"body": ""
+												}
+											]
+										},
+										{
+											"name": "Update role status - role does not exist",
+											"event": [
+												{
+													"listen": "test",
+													"script": {
+														"id": "29d29522-644a-4b8b-88d3-b5abaf6a6b2d",
+														"exec": [
+															"var jsonData = pm.response.json();",
+															"",
+															"pm.test(\"Status code is 200\", function () {",
+															"    pm.response.to.have.status(200);",
+															"});",
+															"",
+															"pm.test(\"Reponse body contains success fields\", function () {",
+															"    pm.expect(jsonData.status).to.eql(true);",
+															"    pm.expect(jsonData.response).to.not.be.null;",
+															"})",
+															""
+														],
+														"type": "text/javascript",
+														"packages": {}
+													}
+												}
+											],
+											"id": "db9c220f-e068-46a8-9411-a5dd6d8302df",
+											"protocolProfileBehavior": {
+												"disableBodyPruning": true
+											},
+											"request": {
+												"auth": {
+													"type": "bearer",
+													"bearer": {
+														"token": "{{Bearer_token}}"
+													}
+												},
+												"method": "PATCH",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"action\": \"update\",\n  \"data\": {\n    \"name\": \"Test User\",\n    \"description\": \"Testing\",\n    \"type\": \"user\",\n    \"meta\": {},\n    \"permissions\": [\n      {\n        \"permission_id\": 17,\n        \"abilities\": {\n          \"can_create\": true,\n          \"can_read\": true,\n          \"can_update\": false,\n          \"can_delete\": false\n        }\n      }\n    ]\n  }\n}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/v1/roles/:id",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"v1",
+														"roles",
+														":id"
+													],
+													"variable": [
+														{
+															"id": "a4eaa349-0a3a-4fa8-ad9c-442b371c162f",
+															"key": "id",
+															"value": "25",
+															"description": "(Required) "
+														}
+													]
+												}
+											},
+											"response": [
+												{
+													"id": "56d2c0d9-a420-443f-b768-11a983b55db2",
 													"name": "Untitled Response",
 													"originalRequest": {
 														"method": "PATCH",
@@ -25328,6 +25450,185 @@
 											"response": [
 												{
 													"id": "e59ceb60-1500-4612-b88a-5cb12b1880eb",
+													"name": "Untitled Response",
+													"originalRequest": {
+														"method": "GET",
+														"header": [],
+														"url": {
+															"raw": "{{baseUrl}}/v1/roles/:id",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"v1",
+																"roles",
+																":id"
+															],
+															"variable": [
+																{
+																	"key": "id"
+																}
+															]
+														}
+													},
+													"status": "OK",
+													"code": 200,
+													"_postman_previewlanguage": "text",
+													"header": [],
+													"cookie": [],
+													"responseTime": null,
+													"body": ""
+												}
+											]
+										},
+										{
+											"name": "Get role by ID - invalid ID",
+											"event": [
+												{
+													"listen": "test",
+													"script": {
+														"id": "caadbebc-4540-4c5c-8c03-a766d614a404",
+														"exec": [
+															"var jsonData = pm.response.json();",
+															"",
+															"pm.test(\"Status code is 404\", function () {",
+															"    pm.response.to.have.status(404);",
+															"});",
+															"pm.test(\"Reponse body contains standard error fields\", function () {",
+															"    pm.expect(jsonData.statusCode).to.eql(404);",
+															"    pm.expect(jsonData.path).is.not.null;",
+															"    pm.expect(jsonData.status).to.eql(false);",
+															"   pm.expect(jsonData.message).to.eql('Role with ID 0 not found'); ",
+															"});"
+														],
+														"type": "text/javascript",
+														"packages": {}
+													}
+												}
+											],
+											"id": "fb501410-f4ed-4859-a902-89e05a450462",
+											"protocolProfileBehavior": {
+												"disableBodyPruning": true
+											},
+											"request": {
+												"auth": {
+													"type": "bearer",
+													"bearer": {
+														"token": "{{Bearer_token}}"
+													}
+												},
+												"method": "GET",
+												"header": [],
+												"url": {
+													"raw": "{{baseUrl}}/v1/roles/:id",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"v1",
+														"roles",
+														":id"
+													],
+													"variable": [
+														{
+															"key": "id",
+															"value": "0",
+															"description": "(Required) "
+														}
+													]
+												}
+											},
+											"response": [
+												{
+													"id": "dc19c2fd-d604-419d-b63c-5fbadbc45e08",
+													"name": "Untitled Response",
+													"originalRequest": {
+														"method": "GET",
+														"header": [],
+														"url": {
+															"raw": "{{baseUrl}}/v1/roles/:id",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"v1",
+																"roles",
+																":id"
+															],
+															"variable": [
+																{
+																	"key": "id"
+																}
+															]
+														}
+													},
+													"status": "OK",
+													"code": 200,
+													"_postman_previewlanguage": "text",
+													"header": [],
+													"cookie": [],
+													"responseTime": null,
+													"body": ""
+												}
+											]
+										},
+										{
+											"name": "Get role by ID - no auth",
+											"event": [
+												{
+													"listen": "test",
+													"script": {
+														"id": "caadbebc-4540-4c5c-8c03-a766d614a404",
+														"exec": [
+															"var jsonData = pm.response.json();",
+															"",
+															"pm.test(\"Status code is 401\", function () {",
+															"    pm.response.to.have.status(401);",
+															"});",
+															"",
+															"pm.test(\"Reponse body contains standard error fields\", function () {",
+															"    pm.expect(jsonData.statusCode).to.eql(401);",
+															"    pm.expect(jsonData.status).to.eql(false);",
+															"   pm.expect(jsonData.message).to.eql('Unauthorized'); ",
+															"});"
+														],
+														"type": "text/javascript",
+														"packages": {}
+													}
+												}
+											],
+											"id": "e4dd5804-f81d-4aa2-b450-b519115f4dd2",
+											"protocolProfileBehavior": {
+												"disableBodyPruning": true
+											},
+											"request": {
+												"auth": {
+													"type": "noauth"
+												},
+												"method": "GET",
+												"header": [],
+												"url": {
+													"raw": "{{baseUrl}}/v1/roles/:id",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"v1",
+														"roles",
+														":id"
+													],
+													"variable": [
+														{
+															"key": "id",
+															"value": "25",
+															"description": "(Required) "
+														}
+													]
+												}
+											},
+											"response": [
+												{
+													"id": "27edbd3e-2f1d-47e2-8e8b-dd6c8cfe6b6e",
 													"name": "Untitled Response",
 													"originalRequest": {
 														"method": "GET",
