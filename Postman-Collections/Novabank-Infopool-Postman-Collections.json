@@ -15817,7 +15817,7 @@
 													"response": []
 												},
 												{
-													"name": "Invalid role - update role",
+													"name": "Role does not exist - update role",
 													"event": [
 														{
 															"listen": "test",
@@ -15826,15 +15826,13 @@
 																"exec": [
 																	"var jsonData = pm.response.json();",
 																	"",
-																	"pm.test(\"Status code is 200\", function () {",
-																	"    pm.response.to.have.status(200);",
+																	"pm.test(\"Status code is 400\", function () {",
+																	"    pm.response.to.have.status(400);",
 																	"});",
-																	"",
-																	"pm.test(\"Status is true\", function () {",
-																	"    pm.expect(jsonData.status).to.eql(true);",
-																	"});",
-																	"pm.test(\"Status is true\", function () {",
-																	"    pm.expect(jsonData.response.message).to.eql(\"User roles successfully updated\");",
+																	"pm.test(\"Reponse body contains standard error fields\", function () {",
+																	"    pm.expect(jsonData.status).to.eql(false);",
+																	"    pm.expect(jsonData.statusCode).to.eql(400);",
+																	"    pm.expect(jsonData.message).to.eql(\"The following role IDs do not exist: 10007\");",
 																	"});",
 																	""
 																],
@@ -15867,7 +15865,7 @@
 														],
 														"body": {
 															"mode": "raw",
-															"raw": "{\n  \"add\": [\n    {\n      \"role_id\": 17,\n      \"is_role_manager\": false,\n      \"meta\": {}\n    },\n    {\n      \"role_id\": 2,\n      \"is_role_manager\": false,\n      \"meta\": {}\n    }\n  ],\n  \"remove\": [\n    2\n  ]\n}",
+															"raw": "{\n  \"add\": [\n    {\n      \"role_id\": 10007,\n      \"is_role_manager\": false,\n      \"meta\": {}\n    },\n    {\n      \"role_id\": 2,\n      \"is_role_manager\": false,\n      \"meta\": {}\n    }\n  ],\n  \"remove\": [\n    2\n  ]\n}",
 															"options": {
 																"raw": {
 																	"language": "json"
