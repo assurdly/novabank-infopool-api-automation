@@ -15660,6 +15660,28 @@
 											"item": [
 												{
 													"name": "get user role",
+													"event": [
+														{
+															"listen": "test",
+															"script": {
+																"id": "0fa3fb70-6be3-4810-8782-c96632fa61d6",
+																"exec": [
+																	"var jsonData = pm.response.json();",
+																	"",
+																	"pm.test(\"Status code is 200\", function () {",
+																	"    pm.response.to.have.status(200);",
+																	"});",
+																	"",
+																	"pm.test(\"Status is true\", function () {",
+																	"    pm.expect(jsonData.status).to.eql(true);",
+																	"});",
+																	""
+																],
+																"type": "text/javascript",
+																"packages": {}
+															}
+														}
+													],
 													"id": "1590543b-ae8b-47fc-8812-80a8affc2147",
 													"protocolProfileBehavior": {
 														"disableBodyPruning": true
