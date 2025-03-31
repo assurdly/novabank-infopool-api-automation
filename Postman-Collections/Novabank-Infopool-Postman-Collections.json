@@ -25684,6 +25684,94 @@
 											]
 										},
 										{
+											"name": "Get permission by ID - No auth",
+											"event": [
+												{
+													"listen": "test",
+													"script": {
+														"id": "403cf9f4-0f76-4567-bf9d-b755800a4fc4",
+														"exec": [
+															"var jsonData = pm.response.json();",
+															"",
+															"pm.test(\"Status code is 401\", function () {",
+															"    pm.response.to.have.status(401);",
+															"});",
+															"",
+															"pm.test(\"Reponse body contains standard error fields\", function () {",
+															"    pm.expect(jsonData.statusCode).to.eql(401);",
+															"    pm.expect(jsonData.status).to.eql(false);",
+															"   pm.expect(jsonData.message).to.eql('Unauthorized'); ",
+															"});"
+														],
+														"type": "text/javascript",
+														"packages": {}
+													}
+												}
+											],
+											"id": "d5032ff2-afed-48ab-9707-50dbd6d7b14d",
+											"protocolProfileBehavior": {
+												"disableBodyPruning": true
+											},
+											"request": {
+												"auth": {
+													"type": "noauth"
+												},
+												"method": "GET",
+												"header": [],
+												"url": {
+													"raw": "{{baseUrl}}/v1/permissions/:id",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"v1",
+														"permissions",
+														":id"
+													],
+													"variable": [
+														{
+															"key": "id",
+															"value": "{{permission_id}}",
+															"description": "(Required) "
+														}
+													]
+												}
+											},
+											"response": [
+												{
+													"id": "1d854448-8ce5-4be4-9074-b1957c75e9be",
+													"name": "Untitled Response",
+													"originalRequest": {
+														"method": "GET",
+														"header": [],
+														"url": {
+															"raw": "{{baseUrl}}/v1/permissions/:id",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"v1",
+																"permissions",
+																":id"
+															],
+															"variable": [
+																{
+																	"key": "id"
+																}
+															]
+														}
+													},
+													"status": "OK",
+													"code": 200,
+													"_postman_previewlanguage": "text",
+													"header": [],
+													"cookie": [],
+													"responseTime": null,
+													"body": ""
+												}
+											]
+										},
+										{
 											"name": "Get permission by ID - ID does not exist",
 											"event": [
 												{
@@ -25848,6 +25936,100 @@
 											"response": [
 												{
 													"id": "3d3b0e36-88ca-4ae3-a5b6-8418f2fdae28",
+													"name": "Untitled Response",
+													"originalRequest": {
+														"method": "GET",
+														"header": [],
+														"url": {
+															"raw": "{{baseUrl}}/v1/permissions?page=1&limit=10",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"v1",
+																"permissions"
+															],
+															"query": [
+																{
+																	"key": "page",
+																	"value": "1"
+																},
+																{
+																	"key": "limit",
+																	"value": "10"
+																}
+															]
+														}
+													},
+													"status": "OK",
+													"code": 200,
+													"_postman_previewlanguage": "text",
+													"header": [],
+													"cookie": [],
+													"responseTime": null,
+													"body": ""
+												}
+											]
+										},
+										{
+											"name": "No Auth - Get all permissions",
+											"event": [
+												{
+													"listen": "test",
+													"script": {
+														"id": "cd421159-0689-4a12-aa6b-84192adb8ea3",
+														"exec": [
+															"var jsonData = pm.response.json();",
+															"",
+															"pm.test(\"Status code is 401\", function () {",
+															"    pm.response.to.have.status(401);",
+															"});",
+															"",
+															"pm.test(\"Reponse body contains standard error fields\", function () {",
+															"    pm.expect(jsonData.statusCode).to.eql(401);",
+															"    pm.expect(jsonData.status).to.eql(false);",
+															"   pm.expect(jsonData.message).to.eql('Unauthorized'); ",
+															"});"
+														],
+														"type": "text/javascript",
+														"packages": {}
+													}
+												}
+											],
+											"id": "0d5a3ff9-79bd-429b-9d66-54747f62a655",
+											"protocolProfileBehavior": {
+												"disableBodyPruning": true
+											},
+											"request": {
+												"auth": {
+													"type": "noauth"
+												},
+												"method": "GET",
+												"header": [],
+												"url": {
+													"raw": "{{baseUrl}}/v1/permissions?page=1&limit=10",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"v1",
+														"permissions"
+													],
+													"query": [
+														{
+															"key": "page",
+															"value": "1"
+														},
+														{
+															"key": "limit",
+															"value": "10"
+														}
+													]
+												}
+											},
+											"response": [
+												{
+													"id": "cae7da28-bcef-44d5-8516-ffeb2f1f4a40",
 													"name": "Untitled Response",
 													"originalRequest": {
 														"method": "GET",
