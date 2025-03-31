@@ -24128,6 +24128,139 @@
 													]
 												},
 												{
+													"name": "Remove user from an organization - no auth",
+													"event": [
+														{
+															"listen": "test",
+															"script": {
+																"id": "9d5cb4c4-2114-4511-8f82-7714df5e2fb0",
+																"exec": [
+																	"var jsonData = pm.response.json();",
+																	"",
+																	"pm.test(\"Status code is 401\", function () {",
+																	"    pm.response.to.have.status(401);",
+																	"});",
+																	"",
+																	"pm.test(\"Reponse body contains standard error fields\", function () {",
+																	"    pm.expect(jsonData.statusCode).to.eql(401);",
+																	"    pm.expect(jsonData.status).to.eql(false);",
+																	"   pm.expect(jsonData.message).to.eql('Unauthorized'); ",
+																	"});"
+																],
+																"type": "text/javascript",
+																"packages": {}
+															}
+														}
+													],
+													"id": "a7818e2e-990c-44cf-8e12-914ef379ae76",
+													"protocolProfileBehavior": {
+														"disableBodyPruning": true
+													},
+													"request": {
+														"auth": {
+															"type": "noauth"
+														},
+														"method": "PATCH",
+														"header": [
+															{
+																"key": "Content-Type",
+																"value": "application/json"
+															},
+															{
+																"key": "Accept",
+																"value": "application/json"
+															}
+														],
+														"body": {
+															"mode": "raw",
+															"raw": "{\n  \"user_id\": 1\n}",
+															"options": {
+																"raw": {
+																	"headerFamily": "json",
+																	"language": "json"
+																}
+															}
+														},
+														"url": {
+															"raw": "{{baseUrl}}/v1/organizations/:organizationId/users",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"v1",
+																"organizations",
+																":organizationId",
+																"users"
+															],
+															"variable": [
+																{
+																	"key": "organizationId",
+																	"value": "17",
+																	"description": "(Required) "
+																}
+															]
+														}
+													},
+													"response": [
+														{
+															"id": "97101202-33a2-4db2-83a2-5a35fb359cb7",
+															"name": "Untitled Response",
+															"originalRequest": {
+																"method": "PATCH",
+																"header": [
+																	{
+																		"key": "Content-Type",
+																		"value": "application/json"
+																	},
+																	{
+																		"key": "Accept",
+																		"value": "application/json"
+																	}
+																],
+																"body": {
+																	"mode": "raw",
+																	"raw": "{\n  \"user_id\": \"<number>\"\n}",
+																	"options": {
+																		"raw": {
+																			"headerFamily": "json",
+																			"language": "json"
+																		}
+																	}
+																},
+																"url": {
+																	"raw": "{{baseUrl}}/v1/organizations/:organizationId/users",
+																	"host": [
+																		"{{baseUrl}}"
+																	],
+																	"path": [
+																		"v1",
+																		"organizations",
+																		":organizationId",
+																		"users"
+																	],
+																	"variable": [
+																		{
+																			"key": "organizationId"
+																		}
+																	]
+																}
+															},
+															"status": "OK",
+															"code": 200,
+															"_postman_previewlanguage": "json",
+															"header": [
+																{
+																	"key": "Content-Type",
+																	"value": "application/json"
+																}
+															],
+															"cookie": [],
+															"responseTime": null,
+															"body": "{\n  \"status\": \"<boolean>\",\n  \"response\": {\n    \"unassigned\": \"<boolean>\"\n  }\n}"
+														}
+													]
+												},
+												{
 													"name": "Remove user from an organization - user ID does not exist",
 													"event": [
 														{
@@ -24276,6 +24409,36 @@
 											"item": [
 												{
 													"name": "managers",
+													"event": [
+														{
+															"listen": "test",
+															"script": {
+																"id": "12a3e720-5c92-4503-ba4e-571a68b4053e",
+																"exec": [
+																	"var jsonData = pm.response.json();",
+																	"",
+																	"pm.test(\"Status code is 200\", function () {",
+																	"    pm.response.to.have.status(200);",
+																	"});",
+																	"",
+																	"pm.test(\"Reponse body contains success fields\", function () {",
+																	"    pm.expect(jsonData.status).to.eql(true);",
+																	"    pm.expect(jsonData.response.message).to.eql('Password reset instructions sent to favourdesent@yopmail.com if it exists on our system.');",
+																	"});var jsonData = pm.response.json();",
+																	"",
+																	"pm.test(\"Status code is 200\", function () {",
+																	"    pm.response.to.have.status(200);",
+																	"});",
+																	"",
+																	"pm.test(\"Reponse body contains success fields\", function () {",
+																	"    pm.expect(jsonData.status).to.eql(true);",
+																	"});"
+																],
+																"type": "text/javascript",
+																"packages": {}
+															}
+														}
+													],
 													"id": "37cf3051-2a23-4cae-a50a-31ab7ec0d14c",
 													"protocolProfileBehavior": {
 														"disableBodyPruning": true
@@ -24286,6 +24449,74 @@
 															"bearer": {
 																"token": "{{Bearer_token}}"
 															}
+														},
+														"method": "GET",
+														"header": [
+															{
+																"key": "accept",
+																"value": "*/*"
+															}
+														],
+														"url": {
+															"raw": "https://staging-api.infopool.ng/v1/organizations/17/managers?page=1&limit=10",
+															"protocol": "https",
+															"host": [
+																"staging-api",
+																"infopool",
+																"ng"
+															],
+															"path": [
+																"v1",
+																"organizations",
+																"17",
+																"managers"
+															],
+															"query": [
+																{
+																	"key": "page",
+																	"value": "1"
+																},
+																{
+																	"key": "limit",
+																	"value": "10"
+																}
+															]
+														}
+													},
+													"response": []
+												},
+												{
+													"name": "No auth - managers",
+													"event": [
+														{
+															"listen": "test",
+															"script": {
+																"id": "4a1e2c20-2ebd-4b9d-9f70-db010afd4ba6",
+																"exec": [
+																	"var jsonData = pm.response.json();",
+																	"",
+																	"pm.test(\"Status code is 401\", function () {",
+																	"    pm.response.to.have.status(401);",
+																	"});",
+																	"",
+																	"pm.test(\"Reponse body contains standard error fields\", function () {",
+																	"    pm.expect(jsonData.statusCode).to.eql(401);",
+																	"    pm.expect(jsonData.status).to.eql(false);",
+																	"   pm.expect(jsonData.message).to.eql('Unauthorized'); ",
+																	"});"
+																],
+																"type": "text/javascript",
+																"packages": {}
+															}
+														}
+													],
+													"id": "7b2f7b40-b711-4733-b531-c60b48ee0c6f",
+													"protocolProfileBehavior": {
+														"disableBodyPruning": true
+													},
+													"request": {
+														"auth": {
+															"type": "noauth"
 														},
 														"method": "GET",
 														"header": [
