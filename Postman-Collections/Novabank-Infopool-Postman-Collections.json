@@ -25025,6 +25025,29 @@
 									"item": [
 										{
 											"name": "Update role status",
+											"event": [
+												{
+													"listen": "test",
+													"script": {
+														"id": "29d29522-644a-4b8b-88d3-b5abaf6a6b2d",
+														"exec": [
+															"var jsonData = pm.response.json();",
+															"",
+															"pm.test(\"Status code is 200\", function () {",
+															"    pm.response.to.have.status(200);",
+															"});",
+															"",
+															"pm.test(\"Reponse body contains success fields\", function () {",
+															"    pm.expect(jsonData.status).to.eql(true);",
+															"    pm.expect(jsonData.response).to.not.be.null;",
+															"})",
+															""
+														],
+														"type": "text/javascript",
+														"packages": {}
+													}
+												}
+											],
 											"id": "ee9a0c65-8343-4bfa-ad8d-7367c902afd8",
 											"protocolProfileBehavior": {
 												"disableBodyPruning": true
@@ -25045,7 +25068,7 @@
 												],
 												"body": {
 													"mode": "raw",
-													"raw": "{\n  \"action\": \"update\",\n  \"data\": {\n    \"status\": \"inactive\"\n  }\n}",
+													"raw": "{\n  \"action\": \"update\",\n  \"data\": {\n    \"name\": \"Test User\",\n    \"description\": \"Testing\",\n    \"type\": \"user\",\n    \"meta\": {},\n    \"permissions\": [\n      {\n        \"permission_id\": 1,\n        \"abilities\": {\n          \"can_create\": true,\n          \"can_read\": true,\n          \"can_update\": false,\n          \"can_delete\": false\n        }\n      }\n    ]\n  }\n}",
 													"options": {
 														"raw": {
 															"headerFamily": "json",
@@ -25065,7 +25088,124 @@
 													],
 													"variable": [
 														{
-															"id": "d81c49c3-d61e-49f3-b99a-d4bdecc30952",
+															"key": "id",
+															"value": "25",
+															"description": "(Required) "
+														}
+													]
+												}
+											},
+											"response": [
+												{
+													"id": "ee3ae4a4-fcf9-4aa3-9c2e-7fe210af0463",
+													"name": "Untitled Response",
+													"originalRequest": {
+														"method": "PATCH",
+														"header": [
+															{
+																"key": "Content-Type",
+																"value": "application/json"
+															}
+														],
+														"body": {
+															"mode": "raw",
+															"raw": "{\n  \"action\": \"update\",\n  \"data\": {}\n}",
+															"options": {
+																"raw": {
+																	"headerFamily": "json",
+																	"language": "json"
+																}
+															}
+														},
+														"url": {
+															"raw": "{{baseUrl}}/v1/roles/:id",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"v1",
+																"roles",
+																":id"
+															],
+															"variable": [
+																{
+																	"key": "id"
+																}
+															]
+														}
+													},
+													"status": "OK",
+													"code": 200,
+													"_postman_previewlanguage": "text",
+													"header": [],
+													"cookie": [],
+													"responseTime": null,
+													"body": ""
+												}
+											]
+										},
+										{
+											"name": "No auth - Update role status",
+											"event": [
+												{
+													"listen": "test",
+													"script": {
+														"id": "29d29522-644a-4b8b-88d3-b5abaf6a6b2d",
+														"exec": [
+															"var jsonData = pm.response.json();",
+															"",
+															"pm.test(\"Status code is 401\", function () {",
+															"    pm.response.to.have.status(401);",
+															"});",
+															"",
+															"pm.test(\"Reponse body contains standard error fields\", function () {",
+															"    pm.expect(jsonData.statusCode).to.eql(401);",
+															"    pm.expect(jsonData.status).to.eql(false);",
+															"   pm.expect(jsonData.message).to.eql('Unauthorized'); ",
+															"});"
+														],
+														"type": "text/javascript",
+														"packages": {}
+													}
+												}
+											],
+											"id": "4533e786-8599-4db1-958a-060eb900fc12",
+											"protocolProfileBehavior": {
+												"disableBodyPruning": true
+											},
+											"request": {
+												"auth": {
+													"type": "noauth"
+												},
+												"method": "PATCH",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"action\": \"update\",\n  \"data\": {\n    \"name\": \"Test User\",\n    \"description\": \"Testing\",\n    \"type\": \"user\",\n    \"meta\": {},\n    \"permissions\": [\n      {\n        \"permission_id\": 1,\n        \"abilities\": {\n          \"can_create\": true,\n          \"can_read\": true,\n          \"can_update\": false,\n          \"can_delete\": false\n        }\n      }\n    ]\n  }\n}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/v1/roles/:id",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"v1",
+														"roles",
+														":id"
+													],
+													"variable": [
+														{
 															"key": "id",
 															"value": "1",
 															"description": "(Required) "
@@ -25075,7 +25215,7 @@
 											},
 											"response": [
 												{
-													"id": "ee3ae4a4-fcf9-4aa3-9c2e-7fe210af0463",
+													"id": "87dea971-40be-4fff-a6e5-00b37d9ae09e",
 													"name": "Untitled Response",
 													"originalRequest": {
 														"method": "PATCH",
