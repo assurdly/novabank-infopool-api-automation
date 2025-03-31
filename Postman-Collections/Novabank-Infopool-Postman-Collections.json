@@ -24755,6 +24755,29 @@
 									"item": [
 										{
 											"name": "Create roles - Existing role",
+											"event": [
+												{
+													"listen": "test",
+													"script": {
+														"id": "246fccb2-5aef-4c79-9d46-e26b2e6da683",
+														"exec": [
+															"var jsonData = pm.response.json();",
+															"",
+															"pm.test(\"Status code is 400\", function () {",
+															"    pm.response.to.have.status(400);",
+															"});",
+															"pm.test(\"Reponse body contains standard error fields\", function () {",
+															"    pm.expect(jsonData.statusCode).to.eql(400);",
+															"    pm.expect(jsonData.path).is.not.null;",
+															"    pm.expect(jsonData.status).to.eql(false);",
+															"   pm.expect(jsonData.message).to.eql('Role with name TestRole already exists'); ",
+															"});"
+														],
+														"type": "text/javascript",
+														"packages": {}
+													}
+												}
+											],
 											"id": "7be2bff9-e069-4e06-937a-604b3542fbf2",
 											"protocolProfileBehavior": {
 												"disableBodyPruning": true
@@ -24821,6 +24844,29 @@
 										},
 										{
 											"name": "Create roles - empty name field",
+											"event": [
+												{
+													"listen": "test",
+													"script": {
+														"id": "21e1ae35-be63-4938-8f9c-b685dd544b2e",
+														"exec": [
+															"var jsonData = pm.response.json();",
+															"",
+															"pm.test(\"Status code is 400\", function () {",
+															"    pm.response.to.have.status(400);",
+															"});",
+															"pm.test(\"Reponse body contains standard error fields\", function () {",
+															"    pm.expect(jsonData.statusCode).to.eql(400);",
+															"    pm.expect(jsonData.path).is.not.null;",
+															"    pm.expect(jsonData.status).to.eql(false);",
+															"   pm.expect(jsonData.message[1]).to.eql('name should not be empty'); ",
+															"});"
+														],
+														"type": "text/javascript",
+														"packages": {}
+													}
+												}
+											],
 											"id": "77ca9c4d-bde2-4464-bb11-ce31b741a74d",
 											"protocolProfileBehavior": {
 												"disableBodyPruning": true
@@ -24841,7 +24887,7 @@
 												],
 												"body": {
 													"mode": "raw",
-													"raw": "{\n  \"name\": \"Account Officer\",\n  \"description\": \"Posting Access\",\n  \"type\": \"system\",\n  \"meta\": {}\n}",
+													"raw": "{\n  \"name\": \"\",\n  \"description\": \"Posting Access\",\n  \"permissions\": [\n    {\n      \"permission_id\": 1,\n      \"abilities\": {\n        \"can_create\": true,\n        \"can_read\": true,\n        \"can_update\": false,\n        \"can_delete\": false\n      }\n    }\n  ],\n  \"meta\": {}\n}",
 													"options": {
 														"raw": {
 															"headerFamily": "json",
