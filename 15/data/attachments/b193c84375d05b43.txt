@@ -1,6 +1,0 @@
-{
-  "action": "update",
-  "data": {
-    "operation_manager_id": 4
-  }
-}

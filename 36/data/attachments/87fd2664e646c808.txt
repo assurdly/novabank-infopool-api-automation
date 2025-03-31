@@ -1,0 +1,1 @@
+{"status":false,"statusCode":404,"timestamp":"2025-03-31T12:28:18.750Z","path":"/v1/customers/220390000","message":"Customer does not exist"}
