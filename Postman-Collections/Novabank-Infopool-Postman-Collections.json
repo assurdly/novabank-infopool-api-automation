@@ -22763,6 +22763,28 @@
 											"item": [
 												{
 													"name": "Fetch sub-organizations of a parent organization",
+													"event": [
+														{
+															"listen": "test",
+															"script": {
+																"id": "08cad0b8-1df2-4864-b3ff-f4b5a770d92f",
+																"exec": [
+																	"var jsonData = pm.response.json();",
+																	"",
+																	"pm.test(\"Status code is 200\", function () {",
+																	"    pm.response.to.have.status(200);",
+																	"});",
+																	"",
+																	"pm.test(\"Reponse body contains success fields\", function () {",
+																	"    pm.expect(jsonData.status).to.eql(true);",
+																	"   pm.expect(jsonData.response.data).to.not.be.oneOf(null, []);",
+																	"});"
+																],
+																"type": "text/javascript",
+																"packages": {}
+															}
+														}
+													],
 													"id": "ac0f6d91-5d8a-4286-a235-5ec8954f6cc9",
 													"protocolProfileBehavior": {
 														"disableBodyPruning": true
