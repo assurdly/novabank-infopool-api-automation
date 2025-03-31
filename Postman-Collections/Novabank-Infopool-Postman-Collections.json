@@ -14073,6 +14073,18 @@
 													"body": ""
 												}
 											]
+										},
+										{
+											"name": "New Request",
+											"id": "950b312d-85ae-4895-a1cd-e88e9045041d",
+											"protocolProfileBehavior": {
+												"disableBodyPruning": true
+											},
+											"request": {
+												"method": "GET",
+												"header": []
+											},
+											"response": []
 										}
 									],
 									"id": "948dba72-5b24-4064-8e4f-12c68326771c"
