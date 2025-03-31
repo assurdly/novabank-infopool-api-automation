@@ -22777,7 +22777,7 @@
 																	"",
 																	"pm.test(\"Reponse body contains success fields\", function () {",
 																	"    pm.expect(jsonData.status).to.eql(true);",
-																	"   pm.expect(jsonData.response.data).to.not.be.oneOf(null, []);",
+																	"   pm.expect(jsonData.response.data).to.not.be.null;",
 																	"});"
 																],
 																"type": "text/javascript",
@@ -23153,6 +23153,120 @@
 															"body": ""
 														}
 													]
+												},
+												{
+													"name": "No auth - Fetch all users in an organization",
+													"event": [
+														{
+															"listen": "test",
+															"script": {
+																"id": "d670c379-183f-46f4-ae53-851f2f5570d9",
+																"exec": [
+																	"var jsonData = pm.response.json();",
+																	"",
+																	"pm.test(\"Status code is 401\", function () {",
+																	"    pm.response.to.have.status(401);",
+																	"});",
+																	"",
+																	"pm.test(\"Reponse body contains standard error fields\", function () {",
+																	"    pm.expect(jsonData.statusCode).to.eql(401);",
+																	"    pm.expect(jsonData.status).to.eql(false);",
+																	"   pm.expect(jsonData.message).to.eql('Unauthorized'); ",
+																	"});"
+																],
+																"type": "text/javascript",
+																"packages": {}
+															}
+														}
+													],
+													"id": "12d7f322-939b-4925-bed5-ead854f55f95",
+													"protocolProfileBehavior": {
+														"disableBodyPruning": true
+													},
+													"request": {
+														"auth": {
+															"type": "noauth"
+														},
+														"method": "GET",
+														"header": [],
+														"url": {
+															"raw": "{{baseUrl}}/v1/organizations/:organizationId/users?page=2&limit=10&search=favour",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"v1",
+																"organizations",
+																":organizationId",
+																"users"
+															],
+															"query": [
+																{
+																	"key": "page",
+																	"value": "2"
+																},
+																{
+																	"key": "limit",
+																	"value": "10"
+																},
+																{
+																	"key": "search",
+																	"value": "favour"
+																}
+															],
+															"variable": [
+																{
+																	"key": "organizationId",
+																	"value": "17",
+																	"description": "(Required) "
+																}
+															]
+														}
+													},
+													"response": [
+														{
+															"id": "474fb3fc-387f-4f29-a48b-e74c0c798f35",
+															"name": "Untitled Response",
+															"originalRequest": {
+																"method": "GET",
+																"header": [],
+																"url": {
+																	"raw": "{{baseUrl}}/v1/organizations/:organizationId/users?page=1&limit=10",
+																	"host": [
+																		"{{baseUrl}}"
+																	],
+																	"path": [
+																		"v1",
+																		"organizations",
+																		":organizationId",
+																		"users"
+																	],
+																	"query": [
+																		{
+																			"key": "page",
+																			"value": "1"
+																		},
+																		{
+																			"key": "limit",
+																			"value": "10"
+																		}
+																	],
+																	"variable": [
+																		{
+																			"key": "organizationId"
+																		}
+																	]
+																}
+															},
+															"status": "OK",
+															"code": 200,
+															"_postman_previewlanguage": "text",
+															"header": [],
+															"cookie": [],
+															"responseTime": null,
+															"body": ""
+														}
+													]
 												}
 											],
 											"id": "c2d2faeb-16d2-42e6-b057-cedbb397e759"
@@ -23351,6 +23465,251 @@
 														},
 														{
 															"id": "813773a7-5733-4ca9-a33d-8d9d299e4526",
+															"name": "Untitled Response",
+															"originalRequest": {
+																"method": "POST",
+																"header": [
+																	{
+																		"key": "Content-Type",
+																		"value": "application/json"
+																	},
+																	{
+																		"key": "Accept",
+																		"value": "application/json"
+																	}
+																],
+																"body": {
+																	"mode": "raw",
+																	"raw": "{\n  \"user_id\": \"<number>\"\n}",
+																	"options": {
+																		"raw": {
+																			"headerFamily": "json",
+																			"language": "json"
+																		}
+																	}
+																},
+																"url": {
+																	"raw": "{{baseUrl}}/v1/organizations/:organizationId/users",
+																	"host": [
+																		"{{baseUrl}}"
+																	],
+																	"path": [
+																		"v1",
+																		"organizations",
+																		":organizationId",
+																		"users"
+																	],
+																	"variable": [
+																		{
+																			"key": "organizationId"
+																		}
+																	]
+																}
+															},
+															"status": "Not Acceptable",
+															"code": 406,
+															"_postman_previewlanguage": "json",
+															"header": [
+																{
+																	"key": "Content-Type",
+																	"value": "application/json"
+																}
+															],
+															"cookie": [],
+															"responseTime": null,
+															"body": "{\n  \"statusCode\": \"<number>\",\n  \"timestamp\": \"<date>\",\n  \"path\": \"<string>\",\n  \"method\": \"<string>\",\n  \"error\": \"<string>\",\n  \"message\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}"
+														}
+													]
+												},
+												{
+													"name": "Add user to an organization - no auth",
+													"event": [
+														{
+															"listen": "test",
+															"script": {
+																"id": "328c8aa3-f589-40f2-8957-c59fc4c04f94",
+																"exec": [
+																	"var jsonData = pm.response.json();",
+																	"",
+																	"pm.test(\"Status code is 401\", function () {",
+																	"    pm.response.to.have.status(401);",
+																	"});",
+																	"",
+																	"pm.test(\"Reponse body contains standard error fields\", function () {",
+																	"    pm.expect(jsonData.statusCode).to.eql(401);",
+																	"    pm.expect(jsonData.status).to.eql(false);",
+																	"   pm.expect(jsonData.message).to.eql('Unauthorized'); ",
+																	"});"
+																],
+																"type": "text/javascript",
+																"packages": {}
+															}
+														}
+													],
+													"id": "eb411698-3368-4676-9eab-3bc7d9b3abd4",
+													"protocolProfileBehavior": {
+														"disableBodyPruning": true
+													},
+													"request": {
+														"auth": {
+															"type": "noauth"
+														},
+														"method": "POST",
+														"header": [
+															{
+																"key": "Content-Type",
+																"value": "application/json"
+															},
+															{
+																"key": "Accept",
+																"value": "application/json"
+															}
+														],
+														"body": {
+															"mode": "raw",
+															"raw": "{\n  \"user_id\": 1\n}",
+															"options": {
+																"raw": {
+																	"headerFamily": "json",
+																	"language": "json"
+																}
+															}
+														},
+														"url": {
+															"raw": "{{baseUrl}}/v1/organizations/:organizationId/users",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"v1",
+																"organizations",
+																":organizationId",
+																"users"
+															],
+															"variable": [
+																{
+																	"key": "organizationId",
+																	"value": "17",
+																	"description": "(Required) "
+																}
+															]
+														}
+													},
+													"response": [
+														{
+															"id": "f92d1359-7aef-406e-b366-72ac14126c3b",
+															"name": "Untitled Response",
+															"originalRequest": {
+																"method": "POST",
+																"header": [
+																	{
+																		"key": "Content-Type",
+																		"value": "application/json"
+																	},
+																	{
+																		"key": "Accept",
+																		"value": "application/json"
+																	}
+																],
+																"body": {
+																	"mode": "raw",
+																	"raw": "{\n  \"user_id\": \"<number>\"\n}",
+																	"options": {
+																		"raw": {
+																			"headerFamily": "json",
+																			"language": "json"
+																		}
+																	}
+																},
+																"url": {
+																	"raw": "{{baseUrl}}/v1/organizations/:organizationId/users",
+																	"host": [
+																		"{{baseUrl}}"
+																	],
+																	"path": [
+																		"v1",
+																		"organizations",
+																		":organizationId",
+																		"users"
+																	],
+																	"variable": [
+																		{
+																			"key": "organizationId"
+																		}
+																	]
+																}
+															},
+															"status": "OK",
+															"code": 200,
+															"_postman_previewlanguage": "json",
+															"header": [
+																{
+																	"key": "Content-Type",
+																	"value": "application/json"
+																}
+															],
+															"cookie": [],
+															"responseTime": null,
+															"body": "{\n  \"status\": \"<boolean>\",\n  \"response\": {\n    \"assigned\": \"<boolean>\"\n  }\n}"
+														},
+														{
+															"id": "751a6b03-bffb-4cf7-b663-782cbc765063",
+															"name": "Untitled Response",
+															"originalRequest": {
+																"method": "POST",
+																"header": [
+																	{
+																		"key": "Content-Type",
+																		"value": "application/json"
+																	},
+																	{
+																		"key": "Accept",
+																		"value": "application/json"
+																	}
+																],
+																"body": {
+																	"mode": "raw",
+																	"raw": "{\n  \"user_id\": \"<number>\"\n}",
+																	"options": {
+																		"raw": {
+																			"headerFamily": "json",
+																			"language": "json"
+																		}
+																	}
+																},
+																"url": {
+																	"raw": "{{baseUrl}}/v1/organizations/:organizationId/users",
+																	"host": [
+																		"{{baseUrl}}"
+																	],
+																	"path": [
+																		"v1",
+																		"organizations",
+																		":organizationId",
+																		"users"
+																	],
+																	"variable": [
+																		{
+																			"key": "organizationId"
+																		}
+																	]
+																}
+															},
+															"status": "Not Found",
+															"code": 404,
+															"_postman_previewlanguage": "json",
+															"header": [
+																{
+																	"key": "Content-Type",
+																	"value": "application/json"
+																}
+															],
+															"cookie": [],
+															"responseTime": null,
+															"body": "{\n  \"statusCode\": \"<number>\",\n  \"timestamp\": \"<date>\",\n  \"path\": \"<string>\",\n  \"method\": \"<string>\",\n  \"error\": \"<string>\",\n  \"message\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}"
+														},
+														{
+															"id": "eaeef595-e4b9-45be-adad-24f93d552dda",
 															"name": "Untitled Response",
 															"originalRequest": {
 																"method": "POST",
