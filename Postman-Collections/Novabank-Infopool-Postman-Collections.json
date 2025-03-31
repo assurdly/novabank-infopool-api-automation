@@ -24642,6 +24642,110 @@
 													"body": ""
 												}
 											]
+										},
+										{
+											"name": "Get roles - No Auth",
+											"event": [
+												{
+													"listen": "test",
+													"script": {
+														"id": "f4cbdef8-df8e-4a9b-b547-edacc16db3ab",
+														"exec": [
+															"var jsonData = pm.response.json();",
+															"",
+															"pm.test(\"Status code is 401\", function () {",
+															"    pm.response.to.have.status(401);",
+															"});",
+															"",
+															"pm.test(\"Reponse body contains standard error fields\", function () {",
+															"    pm.expect(jsonData.statusCode).to.eql(401);",
+															"    pm.expect(jsonData.status).to.eql(false);",
+															"   pm.expect(jsonData.message).to.eql('Unauthorized'); ",
+															"});",
+															""
+														],
+														"type": "text/javascript",
+														"packages": {}
+													}
+												}
+											],
+											"id": "94cc9369-716b-42fa-bc8e-7b1dd0cdc41e",
+											"protocolProfileBehavior": {
+												"disableBodyPruning": true
+											},
+											"request": {
+												"auth": {
+													"type": "noauth"
+												},
+												"method": "GET",
+												"header": [],
+												"url": {
+													"raw": "{{baseUrl}}/v1/roles?page=1&limit=10",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"v1",
+														"roles"
+													],
+													"query": [
+														{
+															"key": "page",
+															"value": "1"
+														},
+														{
+															"key": "limit",
+															"value": "10"
+														},
+														{
+															"key": "status",
+															"value": "active",
+															"disabled": true
+														}
+													]
+												}
+											},
+											"response": [
+												{
+													"id": "0ab47dd1-2ce7-4282-9ff6-d26763fa3b81",
+													"name": "Untitled Response",
+													"originalRequest": {
+														"method": "GET",
+														"header": [],
+														"url": {
+															"raw": "{{baseUrl}}/v1/roles?page=1&limit=10&status=active",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"v1",
+																"roles"
+															],
+															"query": [
+																{
+																	"key": "page",
+																	"value": "1"
+																},
+																{
+																	"key": "limit",
+																	"value": "10"
+																},
+																{
+																	"key": "status",
+																	"value": "active"
+																}
+															]
+														}
+													},
+													"status": "OK",
+													"code": 200,
+													"_postman_previewlanguage": "text",
+													"header": [],
+													"cookie": [],
+													"responseTime": null,
+													"body": ""
+												}
+											]
 										}
 									],
 									"id": "4960944a-b555-44ee-b4ad-8fd6b06bb649"
@@ -24650,7 +24754,7 @@
 									"name": "Create role",
 									"item": [
 										{
-											"name": "Create roles - successful",
+											"name": "Create roles - Existing role",
 											"id": "7be2bff9-e069-4e06-937a-604b3542fbf2",
 											"protocolProfileBehavior": {
 												"disableBodyPruning": true
