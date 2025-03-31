@@ -25154,15 +25154,15 @@
 														"exec": [
 															"var jsonData = pm.response.json();",
 															"",
-															"pm.test(\"Status code is 200\", function () {",
-															"    pm.response.to.have.status(200);",
+															"pm.test(\"Status code is 404\", function () {",
+															"    pm.response.to.have.status(404);",
 															"});",
-															"",
-															"pm.test(\"Reponse body contains success fields\", function () {",
-															"    pm.expect(jsonData.status).to.eql(true);",
-															"    pm.expect(jsonData.response).to.not.be.null;",
-															"})",
-															""
+															"pm.test(\"Reponse body contains standard error fields\", function () {",
+															"    pm.expect(jsonData.statusCode).to.eql(404);",
+															"    pm.expect(jsonData.path).is.not.null;",
+															"    pm.expect(jsonData.status).to.eql(false);",
+															"   pm.expect(jsonData.message).to.eql('Role with ID 0 not found'); ",
+															"});"
 														],
 														"type": "text/javascript",
 														"packages": {}
@@ -25209,9 +25209,8 @@
 													],
 													"variable": [
 														{
-															"id": "a4eaa349-0a3a-4fa8-ad9c-442b371c162f",
 															"key": "id",
-															"value": "25",
+															"value": "0",
 															"description": "(Required) "
 														}
 													]
