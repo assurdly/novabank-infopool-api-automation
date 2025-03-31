@@ -19802,6 +19802,303 @@
 											]
 										},
 										{
+											"name": "Update organization details by ID - No auth",
+											"event": [
+												{
+													"listen": "test",
+													"script": {
+														"id": "7516cd2a-d69d-41da-979f-3fc2996fdb13",
+														"exec": [
+															"var jsonData = pm.response.json();",
+															"",
+															"pm.test(\"Status code is 401\", function () {",
+															"    pm.response.to.have.status(401);",
+															"});",
+															"",
+															"pm.test(\"Reponse body contains standard error fields\", function () {",
+															"    pm.expect(jsonData.statusCode).to.eql(401);",
+															"    pm.expect(jsonData.status).to.eql(false);",
+															"   pm.expect(jsonData.message).to.eql('Unauthorized'); ",
+															"});",
+															""
+														],
+														"type": "text/javascript",
+														"packages": {}
+													}
+												}
+											],
+											"id": "961cffa6-1eff-444f-a571-d8606ca292bf",
+											"protocolProfileBehavior": {
+												"disableBodyPruning": true
+											},
+											"request": {
+												"auth": {
+													"type": "noauth"
+												},
+												"method": "PATCH",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"key": "Accept",
+														"value": "application/json"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"action\": \"update\",\n  \"data\": {\n    \"name\": \"Regional Business Units\",\n    \"description\": \"Regional Business Units\"\n    // \"operation_manager_id\": \"<number>\",\n    // \"business_manager_id\": 4\n    // \"hierarchy_id\": \"<number>\",\n    // \"street\": \"<string>\",\n    // \"city\": \"<string>\",\n    // \"state\": \"<number>\",\n    // \"country\": \"<number>\",\n    // \"organization_type\": \"<number>\",\n    // \"mis_code\": \"<string>\",\n    // \"parent_id\": \"<number>\"\n  }\n}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/v1/organizations/:organizationId",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"v1",
+														"organizations",
+														":organizationId"
+													],
+													"variable": [
+														{
+															"key": "organizationId",
+															"value": "21",
+															"description": "(Required) "
+														}
+													]
+												}
+											},
+											"response": [
+												{
+													"id": "114d06f8-4ed1-4eea-8b18-dbac983e752d",
+													"name": "Untitled Response",
+													"originalRequest": {
+														"method": "PATCH",
+														"header": [
+															{
+																"key": "Content-Type",
+																"value": "application/json"
+															},
+															{
+																"key": "Accept",
+																"value": "application/json"
+															}
+														],
+														"body": {
+															"mode": "raw",
+															"raw": "{\n  \"action\": \"update\",\n  \"data\": {\n    \"name\": \"<string>\",\n    \"description\": \"<string>\",\n    \"operation_manager_id\": \"<number>\",\n    \"business_manager_id\": \"<number>\",\n    \"hierarchy_id\": \"<number>\",\n    \"street\": \"<string>\",\n    \"city\": \"<string>\",\n    \"state\": \"<number>\",\n    \"country\": \"<number>\",\n    \"organization_type\": \"<number>\",\n    \"mis_code\": \"<string>\",\n    \"parent_id\": \"<number>\"\n  }\n}",
+															"options": {
+																"raw": {
+																	"headerFamily": "json",
+																	"language": "json"
+																}
+															}
+														},
+														"url": {
+															"raw": "{{baseUrl}}/v1/organizations/:organizationId",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"v1",
+																"organizations",
+																":organizationId"
+															],
+															"variable": [
+																{
+																	"key": "organizationId"
+																}
+															]
+														}
+													},
+													"status": "OK",
+													"code": 200,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "application/json"
+														}
+													],
+													"cookie": [],
+													"responseTime": null,
+													"body": "{\n  \"status\": \"<boolean>\",\n  \"response\": {\n    \"updated\": \"<boolean>\"\n  }\n}"
+												},
+												{
+													"id": "0dd62530-cf97-4e37-ba22-151cac104651",
+													"name": "Untitled Response",
+													"originalRequest": {
+														"method": "PATCH",
+														"header": [
+															{
+																"key": "Content-Type",
+																"value": "application/json"
+															},
+															{
+																"key": "Accept",
+																"value": "application/json"
+															}
+														],
+														"body": {
+															"mode": "raw",
+															"raw": "{\n  \"action\": \"update\",\n  \"data\": {\n    \"name\": \"<string>\",\n    \"description\": \"<string>\",\n    \"operation_manager_id\": \"<number>\",\n    \"business_manager_id\": \"<number>\",\n    \"hierarchy_id\": \"<number>\",\n    \"street\": \"<string>\",\n    \"city\": \"<string>\",\n    \"state\": \"<number>\",\n    \"country\": \"<number>\",\n    \"organization_type\": \"<number>\",\n    \"mis_code\": \"<string>\",\n    \"parent_id\": \"<number>\"\n  }\n}",
+															"options": {
+																"raw": {
+																	"headerFamily": "json",
+																	"language": "json"
+																}
+															}
+														},
+														"url": {
+															"raw": "{{baseUrl}}/v1/organizations/:organizationId",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"v1",
+																"organizations",
+																":organizationId"
+															],
+															"variable": [
+																{
+																	"key": "organizationId"
+																}
+															]
+														}
+													},
+													"status": "Bad Request",
+													"code": 400,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "application/json"
+														}
+													],
+													"cookie": [],
+													"responseTime": null,
+													"body": "{\n  \"statusCode\": \"<number>\",\n  \"timestamp\": \"<date>\",\n  \"path\": \"<string>\",\n  \"method\": \"<string>\",\n  \"error\": \"<string>\",\n  \"message\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}"
+												},
+												{
+													"id": "dc801c8a-e512-4ed4-9b69-349fd1ab53dc",
+													"name": "Untitled Response",
+													"originalRequest": {
+														"method": "PATCH",
+														"header": [
+															{
+																"key": "Content-Type",
+																"value": "application/json"
+															},
+															{
+																"key": "Accept",
+																"value": "application/json"
+															}
+														],
+														"body": {
+															"mode": "raw",
+															"raw": "{\n  \"action\": \"update\",\n  \"data\": {\n    \"name\": \"<string>\",\n    \"description\": \"<string>\",\n    \"operation_manager_id\": \"<number>\",\n    \"business_manager_id\": \"<number>\",\n    \"hierarchy_id\": \"<number>\",\n    \"street\": \"<string>\",\n    \"city\": \"<string>\",\n    \"state\": \"<number>\",\n    \"country\": \"<number>\",\n    \"organization_type\": \"<number>\",\n    \"mis_code\": \"<string>\",\n    \"parent_id\": \"<number>\"\n  }\n}",
+															"options": {
+																"raw": {
+																	"headerFamily": "json",
+																	"language": "json"
+																}
+															}
+														},
+														"url": {
+															"raw": "{{baseUrl}}/v1/organizations/:organizationId",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"v1",
+																"organizations",
+																":organizationId"
+															],
+															"variable": [
+																{
+																	"key": "organizationId"
+																}
+															]
+														}
+													},
+													"status": "Not Found",
+													"code": 404,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "application/json"
+														}
+													],
+													"cookie": [],
+													"responseTime": null,
+													"body": "{\n  \"statusCode\": \"<number>\",\n  \"timestamp\": \"<date>\",\n  \"path\": \"<string>\",\n  \"method\": \"<string>\",\n  \"error\": \"<string>\",\n  \"message\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}"
+												},
+												{
+													"id": "faad2748-543e-4514-a336-0439f961285e",
+													"name": "Untitled Response",
+													"originalRequest": {
+														"method": "PATCH",
+														"header": [
+															{
+																"key": "Content-Type",
+																"value": "application/json"
+															},
+															{
+																"key": "Accept",
+																"value": "application/json"
+															}
+														],
+														"body": {
+															"mode": "raw",
+															"raw": "{\n  \"action\": \"update\",\n  \"data\": {\n    \"name\": \"<string>\",\n    \"description\": \"<string>\",\n    \"operation_manager_id\": \"<number>\",\n    \"business_manager_id\": \"<number>\",\n    \"hierarchy_id\": \"<number>\",\n    \"street\": \"<string>\",\n    \"city\": \"<string>\",\n    \"state\": \"<number>\",\n    \"country\": \"<number>\",\n    \"organization_type\": \"<number>\",\n    \"mis_code\": \"<string>\",\n    \"parent_id\": \"<number>\"\n  }\n}",
+															"options": {
+																"raw": {
+																	"headerFamily": "json",
+																	"language": "json"
+																}
+															}
+														},
+														"url": {
+															"raw": "{{baseUrl}}/v1/organizations/:organizationId",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"v1",
+																"organizations",
+																":organizationId"
+															],
+															"variable": [
+																{
+																	"key": "organizationId"
+																}
+															]
+														}
+													},
+													"status": "Not Acceptable",
+													"code": 406,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "application/json"
+														}
+													],
+													"cookie": [],
+													"responseTime": null,
+													"body": "{\n  \"statusCode\": \"<number>\",\n  \"timestamp\": \"<date>\",\n  \"path\": \"<string>\",\n  \"method\": \"<string>\",\n  \"error\": \"<string>\",\n  \"message\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}"
+												}
+											]
+										},
+										{
 											"name": "Update organization details by ID - name already exists",
 											"event": [
 												{
@@ -21878,6 +22175,286 @@
 											]
 										},
 										{
+											"name": "Delete organization details by ID - No auth",
+											"event": [
+												{
+													"listen": "test",
+													"script": {
+														"id": "7516cd2a-d69d-41da-979f-3fc2996fdb13",
+														"exec": [
+															"var jsonData = pm.response.json();",
+															"",
+															"pm.test(\"Status code is 401\", function () {",
+															"    pm.response.to.have.status(401);",
+															"});",
+															"",
+															"pm.test(\"Reponse body contains standard error fields\", function () {",
+															"    pm.expect(jsonData.statusCode).to.eql(401);",
+															"    pm.expect(jsonData.status).to.eql(false);",
+															"   pm.expect(jsonData.message).to.eql('Unauthorized'); ",
+															"});",
+															""
+														],
+														"type": "text/javascript",
+														"packages": {}
+													}
+												}
+											],
+											"id": "39ddf5eb-9c15-4a90-8c0a-05877a5700bf",
+											"protocolProfileBehavior": {
+												"disableBodyPruning": true
+											},
+											"request": {
+												"auth": {
+													"type": "noauth"
+												},
+												"method": "PATCH",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"key": "Accept",
+														"value": "application/json"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"action\": \"delete\"\n}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": "{{baseUrl}}/v1/organizations/{{test_organization_id}}"
+											},
+											"response": [
+												{
+													"id": "b3a2a9ff-d405-4d39-a756-da5e8bf752ad",
+													"name": "Untitled Response",
+													"originalRequest": {
+														"method": "PATCH",
+														"header": [
+															{
+																"key": "Content-Type",
+																"value": "application/json"
+															},
+															{
+																"key": "Accept",
+																"value": "application/json"
+															}
+														],
+														"body": {
+															"mode": "raw",
+															"raw": "{\n  \"action\": \"update\",\n  \"data\": {\n    \"name\": \"<string>\",\n    \"description\": \"<string>\",\n    \"operation_manager_id\": \"<number>\",\n    \"business_manager_id\": \"<number>\",\n    \"hierarchy_id\": \"<number>\",\n    \"street\": \"<string>\",\n    \"city\": \"<string>\",\n    \"state\": \"<number>\",\n    \"country\": \"<number>\",\n    \"organization_type\": \"<number>\",\n    \"mis_code\": \"<string>\",\n    \"parent_id\": \"<number>\"\n  }\n}",
+															"options": {
+																"raw": {
+																	"headerFamily": "json",
+																	"language": "json"
+																}
+															}
+														},
+														"url": {
+															"raw": "{{baseUrl}}/v1/organizations/:organizationId",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"v1",
+																"organizations",
+																":organizationId"
+															],
+															"variable": [
+																{
+																	"key": "organizationId"
+																}
+															]
+														}
+													},
+													"status": "OK",
+													"code": 200,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "application/json"
+														}
+													],
+													"cookie": [],
+													"responseTime": null,
+													"body": "{\n  \"status\": \"<boolean>\",\n  \"response\": {\n    \"updated\": \"<boolean>\"\n  }\n}"
+												},
+												{
+													"id": "1b5a826b-aa8d-40f7-b5da-536a80b38067",
+													"name": "Untitled Response",
+													"originalRequest": {
+														"method": "PATCH",
+														"header": [
+															{
+																"key": "Content-Type",
+																"value": "application/json"
+															},
+															{
+																"key": "Accept",
+																"value": "application/json"
+															}
+														],
+														"body": {
+															"mode": "raw",
+															"raw": "{\n  \"action\": \"update\",\n  \"data\": {\n    \"name\": \"<string>\",\n    \"description\": \"<string>\",\n    \"operation_manager_id\": \"<number>\",\n    \"business_manager_id\": \"<number>\",\n    \"hierarchy_id\": \"<number>\",\n    \"street\": \"<string>\",\n    \"city\": \"<string>\",\n    \"state\": \"<number>\",\n    \"country\": \"<number>\",\n    \"organization_type\": \"<number>\",\n    \"mis_code\": \"<string>\",\n    \"parent_id\": \"<number>\"\n  }\n}",
+															"options": {
+																"raw": {
+																	"headerFamily": "json",
+																	"language": "json"
+																}
+															}
+														},
+														"url": {
+															"raw": "{{baseUrl}}/v1/organizations/:organizationId",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"v1",
+																"organizations",
+																":organizationId"
+															],
+															"variable": [
+																{
+																	"key": "organizationId"
+																}
+															]
+														}
+													},
+													"status": "Bad Request",
+													"code": 400,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "application/json"
+														}
+													],
+													"cookie": [],
+													"responseTime": null,
+													"body": "{\n  \"statusCode\": \"<number>\",\n  \"timestamp\": \"<date>\",\n  \"path\": \"<string>\",\n  \"method\": \"<string>\",\n  \"error\": \"<string>\",\n  \"message\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}"
+												},
+												{
+													"id": "8db82a4b-4ede-415b-8f25-0bdd87007355",
+													"name": "Untitled Response",
+													"originalRequest": {
+														"method": "PATCH",
+														"header": [
+															{
+																"key": "Content-Type",
+																"value": "application/json"
+															},
+															{
+																"key": "Accept",
+																"value": "application/json"
+															}
+														],
+														"body": {
+															"mode": "raw",
+															"raw": "{\n  \"action\": \"update\",\n  \"data\": {\n    \"name\": \"<string>\",\n    \"description\": \"<string>\",\n    \"operation_manager_id\": \"<number>\",\n    \"business_manager_id\": \"<number>\",\n    \"hierarchy_id\": \"<number>\",\n    \"street\": \"<string>\",\n    \"city\": \"<string>\",\n    \"state\": \"<number>\",\n    \"country\": \"<number>\",\n    \"organization_type\": \"<number>\",\n    \"mis_code\": \"<string>\",\n    \"parent_id\": \"<number>\"\n  }\n}",
+															"options": {
+																"raw": {
+																	"headerFamily": "json",
+																	"language": "json"
+																}
+															}
+														},
+														"url": {
+															"raw": "{{baseUrl}}/v1/organizations/:organizationId",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"v1",
+																"organizations",
+																":organizationId"
+															],
+															"variable": [
+																{
+																	"key": "organizationId"
+																}
+															]
+														}
+													},
+													"status": "Not Found",
+													"code": 404,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "application/json"
+														}
+													],
+													"cookie": [],
+													"responseTime": null,
+													"body": "{\n  \"statusCode\": \"<number>\",\n  \"timestamp\": \"<date>\",\n  \"path\": \"<string>\",\n  \"method\": \"<string>\",\n  \"error\": \"<string>\",\n  \"message\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}"
+												},
+												{
+													"id": "dd202fc0-d221-4638-8ec1-706609396d0c",
+													"name": "Untitled Response",
+													"originalRequest": {
+														"method": "PATCH",
+														"header": [
+															{
+																"key": "Content-Type",
+																"value": "application/json"
+															},
+															{
+																"key": "Accept",
+																"value": "application/json"
+															}
+														],
+														"body": {
+															"mode": "raw",
+															"raw": "{\n  \"action\": \"update\",\n  \"data\": {\n    \"name\": \"<string>\",\n    \"description\": \"<string>\",\n    \"operation_manager_id\": \"<number>\",\n    \"business_manager_id\": \"<number>\",\n    \"hierarchy_id\": \"<number>\",\n    \"street\": \"<string>\",\n    \"city\": \"<string>\",\n    \"state\": \"<number>\",\n    \"country\": \"<number>\",\n    \"organization_type\": \"<number>\",\n    \"mis_code\": \"<string>\",\n    \"parent_id\": \"<number>\"\n  }\n}",
+															"options": {
+																"raw": {
+																	"headerFamily": "json",
+																	"language": "json"
+																}
+															}
+														},
+														"url": {
+															"raw": "{{baseUrl}}/v1/organizations/:organizationId",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"v1",
+																"organizations",
+																":organizationId"
+															],
+															"variable": [
+																{
+																	"key": "organizationId"
+																}
+															]
+														}
+													},
+													"status": "Not Acceptable",
+													"code": 406,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "application/json"
+														}
+													],
+													"cookie": [],
+													"responseTime": null,
+													"body": "{\n  \"statusCode\": \"<number>\",\n  \"timestamp\": \"<date>\",\n  \"path\": \"<string>\",\n  \"method\": \"<string>\",\n  \"error\": \"<string>\",\n  \"message\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}"
+												}
+											]
+										},
+										{
 											"name": "Delete organization details by ID -Invalid Id",
 											"event": [
 												{
@@ -22238,6 +22815,138 @@
 													"response": [
 														{
 															"id": "25f5f3c8-1c8e-4dce-8038-6bcee424bedf",
+															"name": "Untitled Response",
+															"originalRequest": {
+																"method": "GET",
+																"header": [
+																	{
+																		"key": "Accept",
+																		"value": "application/json"
+																	}
+																],
+																"url": {
+																	"raw": "{{baseUrl}}/v1/organizations/:organizationId/sub-organizations?page=1&limit=10&organization_type=<number>",
+																	"host": [
+																		"{{baseUrl}}"
+																	],
+																	"path": [
+																		"v1",
+																		"organizations",
+																		":organizationId",
+																		"sub-organizations"
+																	],
+																	"query": [
+																		{
+																			"key": "page",
+																			"value": "1"
+																		},
+																		{
+																			"key": "limit",
+																			"value": "10"
+																		},
+																		{
+																			"description": "type of organization",
+																			"key": "organization_type",
+																			"value": "<number>"
+																		}
+																	],
+																	"variable": [
+																		{
+																			"key": "organizationId"
+																		}
+																	]
+																}
+															},
+															"status": "OK",
+															"code": 200,
+															"_postman_previewlanguage": "json",
+															"header": [
+																{
+																	"key": "Content-Type",
+																	"value": "application/json"
+																}
+															],
+															"cookie": [],
+															"responseTime": null,
+															"body": "{\n  \"status\": \"<boolean>\",\n  \"response\": {\n    \"total\": \"<number>\",\n    \"page\": \"<number>\",\n    \"limit\": \"<number>\",\n    \"totalPages\": \"<number>\",\n    \"data\": [\n      {\n        \"id\": \"<number>\",\n        \"parentOrganization\": {\n          \"value\": \"<Circular reference to #/components/schemas/Organization detected>\"\n        },\n        \"business_manager_id\": \"<number>\",\n        \"businessManager\": {},\n        \"operation_manager_id\": \"<number>\",\n        \"operationsManager\": {},\n        \"hierarchy_id\": \"<number>\",\n        \"mis_code\": \"<string>\",\n        \"name\": \"<string>\",\n        \"description\": \"<string>\",\n        \"street\": \"<string>\",\n        \"city\": \"<string>\",\n        \"state\": \"<number>\",\n        \"stateInfo\": {},\n        \"country\": \"<number>\",\n        \"countryInfo\": {},\n        \"organization_type\": \"<number>\",\n        \"organizationTypeInfo\": {},\n        \"meta\": {}\n      },\n      {\n        \"id\": \"<number>\",\n        \"parentOrganization\": {\n          \"value\": \"<Circular reference to #/components/schemas/Organization detected>\"\n        },\n        \"business_manager_id\": \"<number>\",\n        \"businessManager\": {},\n        \"operation_manager_id\": \"<number>\",\n        \"operationsManager\": {},\n        \"hierarchy_id\": \"<number>\",\n        \"mis_code\": \"<string>\",\n        \"name\": \"<string>\",\n        \"description\": \"<string>\",\n        \"street\": \"<string>\",\n        \"city\": \"<string>\",\n        \"state\": \"<number>\",\n        \"stateInfo\": {},\n        \"country\": \"<number>\",\n        \"countryInfo\": {},\n        \"organization_type\": \"<number>\",\n        \"organizationTypeInfo\": {},\n        \"meta\": {}\n      }\n    ]\n  }\n}"
+														}
+													]
+												},
+												{
+													"name": "No auth - Fetch sub-organizations of a parent organization",
+													"event": [
+														{
+															"listen": "test",
+															"script": {
+																"id": "ff733b38-89cb-4c8f-afa0-90d5973fdea1",
+																"exec": [
+																	"var jsonData = pm.response.json();",
+																	"",
+																	"pm.test(\"Status code is 401\", function () {",
+																	"    pm.response.to.have.status(401);",
+																	"});",
+																	"",
+																	"pm.test(\"Reponse body contains standard error fields\", function () {",
+																	"    pm.expect(jsonData.statusCode).to.eql(401);",
+																	"    pm.expect(jsonData.status).to.eql(false);",
+																	"   pm.expect(jsonData.message).to.eql('Unauthorized'); ",
+																	"});",
+																	""
+																],
+																"type": "text/javascript",
+																"packages": {}
+															}
+														}
+													],
+													"id": "54571441-3d3c-43d6-bbae-3f66eb638d93",
+													"protocolProfileBehavior": {
+														"disableBodyPruning": true
+													},
+													"request": {
+														"auth": {
+															"type": "noauth"
+														},
+														"method": "GET",
+														"header": [
+															{
+																"key": "Accept",
+																"value": "application/json"
+															}
+														],
+														"url": {
+															"raw": "{{baseUrl}}/v1/organizations/17/sub-organizations",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"v1",
+																"organizations",
+																"17",
+																"sub-organizations"
+															],
+															"query": [
+																{
+																	"key": "page",
+																	"value": "1",
+																	"disabled": true
+																},
+																{
+																	"key": "limit",
+																	"value": "10",
+																	"disabled": true
+																},
+																{
+																	"key": "organization_type",
+																	"value": "1757",
+																	"description": "type of organization",
+																	"disabled": true
+																}
+															]
+														}
+													},
+													"response": [
+														{
+															"id": "80670113-04ce-40bd-a053-460492fe29f0",
 															"name": "Untitled Response",
 															"originalRequest": {
 																"method": "GET",
