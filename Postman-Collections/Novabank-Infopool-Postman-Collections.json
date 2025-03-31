@@ -24843,6 +24843,92 @@
 											]
 										},
 										{
+											"name": "Create roles - No auth",
+											"event": [
+												{
+													"listen": "test",
+													"script": {
+														"id": "246fccb2-5aef-4c79-9d46-e26b2e6da683",
+														"exec": [
+															"var jsonData = pm.response.json();",
+															"",
+															"pm.test(\"Status code is 401\", function () {",
+															"    pm.response.to.have.status(401);",
+															"});",
+															"",
+															"pm.test(\"Reponse body contains standard error fields\", function () {",
+															"    pm.expect(jsonData.statusCode).to.eql(401);",
+															"    pm.expect(jsonData.status).to.eql(false);",
+															"   pm.expect(jsonData.message).to.eql('Unauthorized'); ",
+															"});"
+														],
+														"type": "text/javascript",
+														"packages": {}
+													}
+												}
+											],
+											"id": "cd909b3f-cab1-4b77-9832-aa99813cbc6a",
+											"protocolProfileBehavior": {
+												"disableBodyPruning": true
+											},
+											"request": {
+												"auth": {
+													"type": "noauth"
+												},
+												"method": "POST",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"name\": \"TestRole\",\n  \"description\": \"Posting Access\",\n  \"permissions\": [\n    {\n      \"permission_id\": 1,\n      \"abilities\": {\n        \"can_create\": true,\n        \"can_read\": true,\n        \"can_update\": false,\n        \"can_delete\": false\n      }\n    }\n  ],\n  \"meta\": {}\n}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": "{{baseUrl}}/v1/roles"
+											},
+											"response": [
+												{
+													"id": "7883cc81-f509-46de-bd66-cece08c68215",
+													"name": "Untitled Response",
+													"originalRequest": {
+														"method": "POST",
+														"header": [
+															{
+																"key": "Content-Type",
+																"value": "application/json"
+															}
+														],
+														"body": {
+															"mode": "raw",
+															"raw": "{\n  \"name\": \"Admin\",\n  \"description\": \"Administrator with full access\",\n  \"type\": \"system\",\n  \"meta\": {}\n}",
+															"options": {
+																"raw": {
+																	"headerFamily": "json",
+																	"language": "json"
+																}
+															}
+														},
+														"url": "{{baseUrl}}/v1/roles"
+													},
+													"status": "Created",
+													"code": 201,
+													"_postman_previewlanguage": "text",
+													"header": [],
+													"cookie": [],
+													"responseTime": null,
+													"body": ""
+												}
+											]
+										},
+										{
 											"name": "Create roles - empty name field",
 											"event": [
 												{
@@ -24900,270 +24986,6 @@
 											"response": [
 												{
 													"id": "05c73614-53f7-4051-a774-3836e813d86c",
-													"name": "Untitled Response",
-													"originalRequest": {
-														"method": "POST",
-														"header": [
-															{
-																"key": "Content-Type",
-																"value": "application/json"
-															}
-														],
-														"body": {
-															"mode": "raw",
-															"raw": "{\n  \"name\": \"Admin\",\n  \"description\": \"Administrator with full access\",\n  \"type\": \"system\",\n  \"meta\": {}\n}",
-															"options": {
-																"raw": {
-																	"headerFamily": "json",
-																	"language": "json"
-																}
-															}
-														},
-														"url": "{{baseUrl}}/v1/roles"
-													},
-													"status": "Created",
-													"code": 201,
-													"_postman_previewlanguage": "text",
-													"header": [],
-													"cookie": [],
-													"responseTime": null,
-													"body": ""
-												}
-											]
-										},
-										{
-											"name": "Create roles - role name already exists",
-											"id": "7418df54-0ad5-4d19-99f8-f8b5d1ab877e",
-											"protocolProfileBehavior": {
-												"disableBodyPruning": true
-											},
-											"request": {
-												"auth": {
-													"type": "bearer",
-													"bearer": {
-														"token": "{{Bearer_token}}"
-													}
-												},
-												"method": "POST",
-												"header": [
-													{
-														"key": "Content-Type",
-														"value": "application/json"
-													}
-												],
-												"body": {
-													"mode": "raw",
-													"raw": "{\n  \"name\": \"Account Officer\",\n  \"description\": \"Posting Access\",\n  \"type\": \"system\",\n  \"meta\": {}\n}",
-													"options": {
-														"raw": {
-															"headerFamily": "json",
-															"language": "json"
-														}
-													}
-												},
-												"url": "{{baseUrl}}/v1/roles"
-											},
-											"response": [
-												{
-													"id": "46c32ca3-6261-4526-9f6f-6ff01d8f819c",
-													"name": "Untitled Response",
-													"originalRequest": {
-														"method": "POST",
-														"header": [
-															{
-																"key": "Content-Type",
-																"value": "application/json"
-															}
-														],
-														"body": {
-															"mode": "raw",
-															"raw": "{\n  \"name\": \"Admin\",\n  \"description\": \"Administrator with full access\",\n  \"type\": \"system\",\n  \"meta\": {}\n}",
-															"options": {
-																"raw": {
-																	"headerFamily": "json",
-																	"language": "json"
-																}
-															}
-														},
-														"url": "{{baseUrl}}/v1/roles"
-													},
-													"status": "Created",
-													"code": 201,
-													"_postman_previewlanguage": "text",
-													"header": [],
-													"cookie": [],
-													"responseTime": null,
-													"body": ""
-												}
-											]
-										},
-										{
-											"name": "Create roles - no description",
-											"id": "672e8079-87a4-4909-b493-337c7f4e2caa",
-											"protocolProfileBehavior": {
-												"disableBodyPruning": true
-											},
-											"request": {
-												"auth": {
-													"type": "bearer",
-													"bearer": {
-														"token": "{{Bearer_token}}"
-													}
-												},
-												"method": "POST",
-												"header": [
-													{
-														"key": "Content-Type",
-														"value": "application/json"
-													}
-												],
-												"body": {
-													"mode": "raw",
-													"raw": "{\n  \"name\": \"Account Officer\",\n  \"description\": \"Posting Access\",\n  \"type\": \"system\",\n  \"meta\": {}\n}",
-													"options": {
-														"raw": {
-															"headerFamily": "json",
-															"language": "json"
-														}
-													}
-												},
-												"url": "{{baseUrl}}/v1/roles"
-											},
-											"response": [
-												{
-													"id": "bbe49246-3fe5-4049-a0a7-9b7bc5010bfd",
-													"name": "Untitled Response",
-													"originalRequest": {
-														"method": "POST",
-														"header": [
-															{
-																"key": "Content-Type",
-																"value": "application/json"
-															}
-														],
-														"body": {
-															"mode": "raw",
-															"raw": "{\n  \"name\": \"Admin\",\n  \"description\": \"Administrator with full access\",\n  \"type\": \"system\",\n  \"meta\": {}\n}",
-															"options": {
-																"raw": {
-																	"headerFamily": "json",
-																	"language": "json"
-																}
-															}
-														},
-														"url": "{{baseUrl}}/v1/roles"
-													},
-													"status": "Created",
-													"code": 201,
-													"_postman_previewlanguage": "text",
-													"header": [],
-													"cookie": [],
-													"responseTime": null,
-													"body": ""
-												}
-											]
-										},
-										{
-											"name": "Create roles - no type",
-											"id": "77e4c378-c59f-4ba5-a073-92a2a3bd7194",
-											"protocolProfileBehavior": {
-												"disableBodyPruning": true
-											},
-											"request": {
-												"auth": {
-													"type": "bearer",
-													"bearer": {
-														"token": "{{Bearer_token}}"
-													}
-												},
-												"method": "POST",
-												"header": [
-													{
-														"key": "Content-Type",
-														"value": "application/json"
-													}
-												],
-												"body": {
-													"mode": "raw",
-													"raw": "{\n  \"name\": \"Account Officer\",\n  \"description\": \"Posting Access\",\n  \"type\": \"system\",\n  \"meta\": {}\n}",
-													"options": {
-														"raw": {
-															"headerFamily": "json",
-															"language": "json"
-														}
-													}
-												},
-												"url": "{{baseUrl}}/v1/roles"
-											},
-											"response": [
-												{
-													"id": "95cb6093-aee4-4bb0-91ae-ebc82e53d6e5",
-													"name": "Untitled Response",
-													"originalRequest": {
-														"method": "POST",
-														"header": [
-															{
-																"key": "Content-Type",
-																"value": "application/json"
-															}
-														],
-														"body": {
-															"mode": "raw",
-															"raw": "{\n  \"name\": \"Admin\",\n  \"description\": \"Administrator with full access\",\n  \"type\": \"system\",\n  \"meta\": {}\n}",
-															"options": {
-																"raw": {
-																	"headerFamily": "json",
-																	"language": "json"
-																}
-															}
-														},
-														"url": "{{baseUrl}}/v1/roles"
-													},
-													"status": "Created",
-													"code": 201,
-													"_postman_previewlanguage": "text",
-													"header": [],
-													"cookie": [],
-													"responseTime": null,
-													"body": ""
-												}
-											]
-										},
-										{
-											"name": "Create roles - invalid type",
-											"id": "6d11cf3b-7ce5-4a6b-b732-648d268428f9",
-											"protocolProfileBehavior": {
-												"disableBodyPruning": true
-											},
-											"request": {
-												"auth": {
-													"type": "bearer",
-													"bearer": {
-														"token": "{{Bearer_token}}"
-													}
-												},
-												"method": "POST",
-												"header": [
-													{
-														"key": "Content-Type",
-														"value": "application/json"
-													}
-												],
-												"body": {
-													"mode": "raw",
-													"raw": "{\n  \"name\": \"Account Officer\",\n  \"description\": \"Posting Access\",\n  \"type\": \"system\",\n  \"meta\": {}\n}",
-													"options": {
-														"raw": {
-															"headerFamily": "json",
-															"language": "json"
-														}
-													}
-												},
-												"url": "{{baseUrl}}/v1/roles"
-											},
-											"response": [
-												{
-													"id": "45b77bd8-0931-4654-8481-9cef39336bd8",
 													"name": "Untitled Response",
 													"originalRequest": {
 														"method": "POST",
