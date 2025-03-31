@@ -24798,7 +24798,7 @@
 												],
 												"body": {
 													"mode": "raw",
-													"raw": "{\n  \"name\": \"TestRole\",\n  \"description\": \"Posting Access\",\n  \"permissions\": [\n    {\n      \"permission_id\": 1,\n      \"abilities\": {\n        \"can_create\": true,\n        \"can_read\": true,\n        \"can_update\": false,\n        \"can_delete\": false\n      }\n    }\n  ],\n  \"meta\": {}\n}",
+													"raw": "{\n  \"name\": \"Test User\",\n  \"description\": \"Testing\",\n  \"permissions\": [\n    {\n      \"permission_id\": 1,\n      \"abilities\": {\n        \"can_create\": true,\n        \"can_read\": true,\n        \"can_update\": false,\n        \"can_delete\": false\n      }\n    }\n  ],\n  \"meta\": {}\n}",
 													"options": {
 														"raw": {
 															"headerFamily": "json",
@@ -25130,6 +25130,29 @@
 									"item": [
 										{
 											"name": "Get role by ID - successful",
+											"event": [
+												{
+													"listen": "test",
+													"script": {
+														"id": "caadbebc-4540-4c5c-8c03-a766d614a404",
+														"exec": [
+															"var jsonData = pm.response.json();",
+															"",
+															"pm.test(\"Status code is 200\", function () {",
+															"    pm.response.to.have.status(200);",
+															"});",
+															"",
+															"pm.test(\"Reponse body contains success fields\", function () {",
+															"    pm.expect(jsonData.status).to.eql(true);",
+															"    pm.expect(jsonData.response).to.not.be.null;",
+															"})",
+															""
+														],
+														"type": "text/javascript",
+														"packages": {}
+													}
+												}
+											],
 											"id": "c6e3ac5b-ae03-4c9a-83ba-485c4c407f5d",
 											"protocolProfileBehavior": {
 												"disableBodyPruning": true
@@ -25155,9 +25178,8 @@
 													],
 													"variable": [
 														{
-															"id": "bc720166-2ecd-4981-bb77-bc879d4b9b9d",
 															"key": "id",
-															"value": "3",
+															"value": "25",
 															"description": "(Required) "
 														}
 													]
