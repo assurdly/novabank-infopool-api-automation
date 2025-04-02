@@ -1,0 +1,10 @@
+var jsonData = pm.response.json();
+
+pm.test("Status code is 400", function () {
+    pm.response.to.have.status(400);
+});
+
+pm.test("Reponse body contains success fields", function () {
+    pm.expect(jsonData.status).to.eql(false);
+    pm.expect(jsonData.message[1]).to.eql("action should not be empty");
+});

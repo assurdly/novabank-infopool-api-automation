@@ -1,1 +1,0 @@
-{"status":false,"statusCode":400,"timestamp":"2025-02-25T14:54:37.907Z","path":"/v1/roles","message":["type must be one of the following values: organization, user"]}

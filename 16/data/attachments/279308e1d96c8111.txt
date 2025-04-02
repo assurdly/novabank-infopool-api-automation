@@ -1,1 +1,0 @@
-{"status":false,"statusCode":400,"timestamp":"2025-02-25T14:53:11.359Z","path":"/v1/customers/22039/issues","message":["priority must be one of the following values: LOW, MEDIUM, HIGH, CRITICAL"]}
