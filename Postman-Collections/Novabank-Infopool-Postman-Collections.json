@@ -5783,7 +5783,7 @@
 														"header": [],
 														"body": {
 															"mode": "raw",
-															"raw": "{\n  \"issue_category_id\": 1,\n  \"issue_responsibility\": \"CUSTOMER_SERVICE\",\n  \"source_channel\": \"BRANCH\",\n  \"customer_id\": \"4790\",\n  \"account_number\": \"1234567890\",\n  \"customer_name\": \"John Doe\",\n  \"account_name\": \"SAVINGS ACCOUNT\",\n  \"issue\": \"Unable to access internet banking\",\n  \"description\": \"Customer reported inability to log into internet banking after recent password change. Multiple failed attempts recorded.\",\n  \"recipient_team\": \"DIGITAL_BANKING_SUPPORT\",\n  \"cc_recipient\": \"branch.manager@bank.com\",\n  \"status\": \"OPEN\",\n  \"priority\": \"HIGH\",\n  \"meta\": {\n    \"browser\": \"Chrome 120.0\",\n    \"device\": \"Desktop\",\n    \"lastLoginAttempt\": \"2024-01-27T12:30:00Z\",\n    \"failedAttempts\": 3,\n    \"errorCode\": \"AUTH_003\"\n  },\n  \"attachments\": [\n    {\n      \"id\": \"att_01HN4V8K9X\",\n      \"name\": \"error_screenshot.png\",\n      \"url\": \"https://storage.bank.com/issues/error_screenshot.png\",\n      \"type\": \"image/png\",\n      \"size\": 245678,\n      \"uploaded_on\": \"2024-01-27T12:35:00Z\"\n    }\n  ],\n  \"assigned_to\": \"user_01HN4V8K9X\",\n  \"resolution_notes\": null,\n  \"resolved_on\": null\n}",
+															"raw": "",
 															"options": {
 																"raw": {
 																	"language": "json"
@@ -5949,7 +5949,7 @@
 														"header": [],
 														"body": {
 															"mode": "raw",
-															"raw": "{\n  \"issue_category_id\": 1,\n  \"issue_responsibility\": \"CUSTOMER_SERVICE\",\n  \"source_channel\": \"BRANCH\",\n  \"customer_id\": \"4790\",\n  \"account_number\": \"1234567890\",\n  \"customer_name\": \"John Doe\",\n  \"account_name\": \"SAVINGS ACCOUNT\",\n  \"issue\": \"Unable to access internet banking\",\n  \"description\": \"Customer reported inability to log into internet banking after recent password change. Multiple failed attempts recorded.\",\n  \"recipient_team\": \"DIGITAL_BANKING_SUPPORT\",\n  \"cc_recipient\": \"branch.manager@bank.com\",\n  \"status\": \"OPEN\",\n  \"priority\": \"HIGH\",\n  \"meta\": {\n    \"browser\": \"Chrome 120.0\",\n    \"device\": \"Desktop\",\n    \"lastLoginAttempt\": \"2024-01-27T12:30:00Z\",\n    \"failedAttempts\": 3,\n    \"errorCode\": \"AUTH_003\"\n  },\n  \"attachments\": [\n    {\n      \"id\": \"att_01HN4V8K9X\",\n      \"name\": \"error_screenshot.png\",\n      \"url\": \"https://storage.bank.com/issues/error_screenshot.png\",\n      \"type\": \"image/png\",\n      \"size\": 245678,\n      \"uploaded_on\": \"2024-01-27T12:35:00Z\"\n    }\n  ],\n  \"assigned_to\": \"user_01HN4V8K9X\",\n  \"resolution_notes\": null,\n  \"resolved_on\": null\n}",
+															"raw": "",
 															"options": {
 																"raw": {
 																	"language": "json"
@@ -6113,7 +6113,7 @@
 														"header": [],
 														"body": {
 															"mode": "raw",
-															"raw": "{\n  \"issue_category_id\": 1,\n  \"issue_responsibility\": \"CUSTOMER_SERVICE\",\n  \"source_channel\": \"BRANCH\",\n  \"customer_id\": \"4790\",\n  \"account_number\": \"1234567890\",\n  \"customer_name\": \"John Doe\",\n  \"account_name\": \"SAVINGS ACCOUNT\",\n  \"issue\": \"Unable to access internet banking\",\n  \"description\": \"Customer reported inability to log into internet banking after recent password change. Multiple failed attempts recorded.\",\n  \"recipient_team\": \"DIGITAL_BANKING_SUPPORT\",\n  \"cc_recipient\": \"branch.manager@bank.com\",\n  \"status\": \"OPEN\",\n  \"priority\": \"HIGH\",\n  \"meta\": {\n    \"browser\": \"Chrome 120.0\",\n    \"device\": \"Desktop\",\n    \"lastLoginAttempt\": \"2024-01-27T12:30:00Z\",\n    \"failedAttempts\": 3,\n    \"errorCode\": \"AUTH_003\"\n  },\n  \"attachments\": [\n    {\n      \"id\": \"att_01HN4V8K9X\",\n      \"name\": \"error_screenshot.png\",\n      \"url\": \"https://storage.bank.com/issues/error_screenshot.png\",\n      \"type\": \"image/png\",\n      \"size\": 245678,\n      \"uploaded_on\": \"2024-01-27T12:35:00Z\"\n    }\n  ],\n  \"assigned_to\": \"user_01HN4V8K9X\",\n  \"resolution_notes\": null,\n  \"resolved_on\": null\n}",
+															"raw": "",
 															"options": {
 																"raw": {
 																	"language": "json"
