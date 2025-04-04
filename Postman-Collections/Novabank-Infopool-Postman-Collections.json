@@ -592,6 +592,24 @@
 												}
 											],
 											"id": "0f486403-46f6-44ca-9209-24e6e30beaf2"
+										},
+										{
+											"name": "Reset password",
+											"item": [
+												{
+													"name": "New Request",
+													"id": "744abd65-b718-44b0-ba0e-395b99809424",
+													"protocolProfileBehavior": {
+														"disableBodyPruning": true
+													},
+													"request": {
+														"method": "GET",
+														"header": []
+													},
+													"response": []
+												}
+											],
+											"id": "8c189d97-f377-4eb4-af0d-ea750e9fa8cb"
 										}
 									],
 									"id": "be3d663f-7175-4c33-93dc-fcfb1a1dcfc0"
