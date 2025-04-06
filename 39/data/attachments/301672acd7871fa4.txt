@@ -1,0 +1,1 @@
+{"status":false,"statusCode":400,"timestamp":"2025-04-06T20:24:52.367Z","path":"/v1/organizations/17","message":["data.property operation_manager_id should not exist"]}

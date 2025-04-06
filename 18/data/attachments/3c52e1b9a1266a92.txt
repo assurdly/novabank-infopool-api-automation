@@ -1,1 +1,0 @@
-{"status":false,"statusCode":403,"timestamp":"2025-02-26T18:43:40.581Z","path":"/v1/definitions?search=organization_type","message":"Multi-factor authentication required to complete this action"}

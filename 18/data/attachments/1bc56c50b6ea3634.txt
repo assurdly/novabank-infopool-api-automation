@@ -1,7 +1,0 @@
-{ "definitions": [{
-  "slug": "issue-status",
-  "name": "Issue Status",
-  "description": "Issue Status",
-  "parent_id": "root"
-}]
-}
