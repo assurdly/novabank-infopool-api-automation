@@ -1,0 +1,9 @@
+{
+  "authentication_type": "password",
+  "first_name": "Udeme",
+  "last_name": "tester",
+  "password": "",
+  "device_type": "mobile",
+  "device_name": "iPhone 13",
+  "location": "Lagos"
+}

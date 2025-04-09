@@ -1,0 +1,35 @@
+{
+  "issue_category_id": 1,
+  "issue_responsibility": "CUSTOMER_SERVICE",
+  "source_channel": "BRANCH",
+  "customer_id": "4790",
+  "account_number": "1234567890",
+  "customer_name": "John Doe",
+  "account_name": "SAVINGS ACCOUNT",
+  "issue": "Unable to access internet banking",
+  "description": "Customer reported inability to log into internet banking after recent password change. Multiple failed attempts recorded.",
+  "recipient_team": "DIGITAL_BANKING_SUPPORT",
+  "cc_recipient": "branch.manager@bank.com",
+  "status": "OPEN",
+  "priority": "HIGH",
+  "meta": {
+    "browser": "Chrome 120.0",
+    "device": "Desktop",
+    "lastLoginAttempt": "2024-01-27T12:30:00Z",
+    "failedAttempts": 3,
+    "errorCode": "AUTH_003"
+  },
+  "attachments": [
+    {
+      "id": "att_01HN4V8K9X",
+      "name": "error_screenshot.png",
+      "url": "https://storage.bank.com/issues/error_screenshot.png",
+      "type": "image/png",
+      "size": 245678,
+      "uploaded_on": "2024-01-27T12:35:00Z"
+    }
+  ],
+  "assigned_to": "user_01HN4V8K9X",
+  "resolution_notes": null,
+  "resolved_on": null
+}
