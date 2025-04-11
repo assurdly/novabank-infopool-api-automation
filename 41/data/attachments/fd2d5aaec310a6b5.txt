@@ -1,0 +1,1 @@
+{"status":false,"statusCode":404,"timestamp":"2025-04-11T18:54:00.737Z","path":"/v1/roles/0","message":"Role with ID 0 not found"}
