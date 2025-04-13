@@ -1,0 +1,8 @@
+{
+  "email": "test_superadmin_staging_01@yopmail.com",
+  "password": "Password12$",
+  
+  "device_type": "mobile",
+  "device_name": "iPhone 11",
+  "location": "Lagos"
+}

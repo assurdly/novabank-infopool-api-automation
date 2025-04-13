@@ -1,1 +1,0 @@
-{"status":false,"statusCode":404,"timestamp":"2025-03-05T18:44:27.454Z","path":"/v1/settings/%3Cnumber%3E","message":"Cannot PATCH /v1/settings/%3Cnumber%3E"}
