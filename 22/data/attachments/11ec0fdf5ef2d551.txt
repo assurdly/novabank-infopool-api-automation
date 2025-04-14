@@ -1,1 +1,0 @@
-{"status":false,"statusCode":403,"timestamp":"2025-03-07T18:52:10.084Z","path":"/v1/settings/master?page=1&limit=10","message":"Multi-factor authentication required to complete this action"}

@@ -1,1 +1,0 @@
-{"status":false,"statusCode":403,"timestamp":"2025-03-07T18:52:12.147Z","path":"/v1/organizations/17/users?page=2&limit=10&search=favour","message":"Multi-factor authentication required to complete this action"}

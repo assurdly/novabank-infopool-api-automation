@@ -1,0 +1,13 @@
+{
+    "Server": "nginx",
+    "Date": "Mon, 14 Apr 2025 07:33:41 GMT",
+    "Content-Type": "application/json; charset=utf-8",
+    "Content-Length": "145",
+    "Connection": "keep-alive",
+    "X-Powered-By": "Express",
+    "Access-Control-Allow-Origin": "*",
+    "X-RateLimit-Limit": "6",
+    "X-RateLimit-Remaining": "3",
+    "X-RateLimit-Reset": "2",
+    "ETag": "W/\"91-hw4m0/dkIExe6tnLf5pCk+k3CHQ\""
+}
