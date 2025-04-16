@@ -1,3 +1,0 @@
-{
-  "value": "{\"minLength\":9,\"minLowercase\":1,\"minUppercase\":1,\"minNumbers\":1,\"minSymbols\":2}"
-}

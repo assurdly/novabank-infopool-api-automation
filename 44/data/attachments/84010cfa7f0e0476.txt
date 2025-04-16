@@ -1,0 +1,17 @@
+{
+  "add": [
+    {
+      "role_id": 10007,
+      "is_role_manager": false,
+      "meta": {}
+    },
+    {
+      "role_id": 2,
+      "is_role_manager": false,
+      "meta": {}
+    }
+  ],
+  "remove": [
+    2
+  ]
+}

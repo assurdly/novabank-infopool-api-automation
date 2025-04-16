@@ -1,1 +1,0 @@
-{"status":false,"statusCode":400,"timestamp":"2025-03-09T15:10:45.349Z","path":"/v1/onboarding/9eabc9358b32c5a86ba1bdc7e762e24ff2c43f9ad420f0967439b4c5c8201b90","message":["authentication_type must be one of the following values: \"password\", \"sso\"","authentication_type should not be empty"]}
