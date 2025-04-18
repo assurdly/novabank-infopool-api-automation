@@ -1,0 +1,6 @@
+{
+    "name": "test",
+    "description": "A sample report for demonstration",
+    "category_id": "",
+    "status": "draft"
+}

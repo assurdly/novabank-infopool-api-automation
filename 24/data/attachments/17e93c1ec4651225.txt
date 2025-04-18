@@ -1,1 +1,0 @@
-{"status":false,"statusCode":400,"timestamp":"2025-03-09T20:22:04.990Z","path":"/v1/customers/search?q=MUSA%20UMAR","message":"Typesense is not available"}

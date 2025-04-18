@@ -1,0 +1,6 @@
+{
+  "operation": "FORGOT_PASSWORD",
+  "delivery_channel": "",
+  "email": "qa@yopmail.com"
+
+}

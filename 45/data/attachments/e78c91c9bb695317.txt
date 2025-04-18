@@ -1,0 +1,1 @@
+{"status":false,"statusCode":400,"timestamp":"2025-04-18T18:53:30.566Z","path":"/v1/auth/mfa/request","message":["delivery_channel must be one of the following values: SMS, EMAIL, PUSH"]}
