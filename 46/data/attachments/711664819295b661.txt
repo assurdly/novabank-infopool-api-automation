@@ -1,0 +1,11 @@
+var jsonData = pm.response.json();
+
+pm.test("Status code is 400", function () {
+    pm.response.to.have.status(400);
+});
+
+pm.test("Reponse body contains standard error fields", function () {
+    pm.expect(jsonData.statusCode).to.eql(400);
+    pm.expect(jsonData.status).to.eql(false);
+   pm.expect(jsonData.message[0]).to.eql('operation should not be empty'); 
+});

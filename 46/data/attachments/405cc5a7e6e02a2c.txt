@@ -1,0 +1,1 @@
+{"status":false,"statusCode":400,"timestamp":"2025-04-20T20:26:40.693Z","path":"/v1/reports/export/49?metabase_report_type=question&metabase_report_id=39&format=o","message":["format must be one of the following values: csv, excel, pdf"]}
