@@ -1,1 +1,0 @@
-{"status":false,"statusCode":400,"timestamp":"2025-03-16T20:24:41.284Z","path":"/v1/organizations","message":["city should not be empty","city must be a string"]}
