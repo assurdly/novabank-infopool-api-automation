@@ -1,0 +1,14 @@
+var jsonData = pm.response.json();
+
+pm.test("Status code is 201", function () {
+    pm.response.to.have.status(201);
+});
+
+pm.test("Response body contains success fields", function () {
+    pm.expect(jsonData.status).to.eql(true);
+    pm.expect(jsonData.response.issue_category_id).to.not.be.null;
+    pm.expect(jsonData.response.issue_responsibility).to.not.be.null;
+    pm.expect(jsonData.response.source_channel).to.not.be.null;
+    pm.expect(jsonData.response.issue).to.not.be.null;
+    pm.expect(jsonData.response.has_attachments).to.eql(true);
+});
