@@ -1,1 +1,0 @@
-{"status":false,"statusCode":400,"timestamp":"2025-03-26T18:45:10.412Z","path":"/v1/onboarding/9eabc9358b32c5a86ba1bdc7e762e24ff2c43f9ad420f0967439b4c5c8201b90","message":["password should not be empty"]}
