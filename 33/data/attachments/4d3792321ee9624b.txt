@@ -1,6 +1,0 @@
-{
-  "name": "Account Officer",
-  "description": "Posting Access",
-  "type": "system",
-  "meta": {}
-}

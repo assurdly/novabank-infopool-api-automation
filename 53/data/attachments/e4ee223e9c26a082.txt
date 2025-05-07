@@ -1,0 +1,1 @@
+{"status":false,"statusCode":429,"timestamp":"2025-05-07T18:46:19.892Z","path":"/v1/organizations","message":"An unexpected error occurred."}
