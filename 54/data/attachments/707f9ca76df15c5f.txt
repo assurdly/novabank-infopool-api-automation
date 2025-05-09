@@ -1,0 +1,6 @@
+{
+  "description": "This issue occurs when user tries to submit a form with missing fields.",
+  "status": "REPORTED",
+  "priority": "HIGH",
+  "assigned_to": 2
+}

@@ -1,1 +1,0 @@
-{"status":true,"response":{"created_on":"2025-01-27T13:58:02.000Z","created_by":"1","modified_on":"2025-01-27T13:58:02.000Z","modified_by":null,"deleted_on":null,"deleted_by":null,"id":"3","uuid":"","name":"Account Officer","description":"Posting Access","type":"system","meta":{},"permissions":[],"user_count":"1","organization_count":"0"}}

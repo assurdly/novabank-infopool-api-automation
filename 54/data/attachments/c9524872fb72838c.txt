@@ -1,0 +1,1 @@
+{"status":false,"statusCode":403,"timestamp":"2025-05-09T18:55:05.532Z","path":"/v1/reports/uuid/abcdef","message":"Multi-factor authentication required to complete this action"}
