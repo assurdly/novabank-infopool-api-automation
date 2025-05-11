@@ -1,0 +1,1 @@
+{"status":false,"statusCode":403,"timestamp":"2025-05-11T20:25:51.472Z","path":"/v1/definitions/abc","message":"Multi-factor authentication required to complete this action"}
