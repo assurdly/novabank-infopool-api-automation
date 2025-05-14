@@ -122,7 +122,7 @@ jobs:
           SLACK_CHANNEL: 'C070KUKPDLZ'
           SLACK_MESSAGE: |
             *Nova bank Infopool - API Quality Readiness*
-            *Contributors - Favour Elijah Udeme Ben*
+            *Contributors - Abimbola Opakunle, Udeme Ben*
             Status: ${{ job.status }}
             Passing Tests: ${{ steps.parse_json.outputs.passing_percentage }}%
             Failing Tests: ${{ steps.parse_json.outputs.failing_percentage }}%
