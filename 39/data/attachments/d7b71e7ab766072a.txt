@@ -1,1 +1,0 @@
-{"status":false,"statusCode":400,"timestamp":"2025-04-06T20:24:53.269Z","path":"/v1/roles","message":"Role with name Test User already exists"}
