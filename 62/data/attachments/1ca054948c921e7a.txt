@@ -1,0 +1,1 @@
+{"status":false,"statusCode":403,"timestamp":"2025-05-16T18:54:49.309Z","path":"/v1/customers/search?q=MUSA%20UMAR","message":"Multi-factor authentication required to complete this action"}
