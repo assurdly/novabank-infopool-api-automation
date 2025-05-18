@@ -1,1 +1,0 @@
-{"status":false,"statusCode":400,"timestamp":"2025-04-16T18:46:39.131Z","path":"/v1/reports/data/1?metabase_report_type=question&metabase_report_id=39","message":"Failed to fetch data: Parameter mis_code is required"}

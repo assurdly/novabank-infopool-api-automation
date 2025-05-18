@@ -1,0 +1,1 @@
+{"status":false,"statusCode":403,"timestamp":"2025-05-18T20:26:24.422Z","path":"/v1/events?page=1&limit=10&date_start=2025-01-26&date_end=2025-02-07","message":"Multi-factor authentication required to complete this action"}
