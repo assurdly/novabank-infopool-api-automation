@@ -1,0 +1,1 @@
+{"status":false,"statusCode":403,"timestamp":"2025-05-18T13:19:50.982Z","path":"/v1/customers/:customerId/issues/%7B%7Bissue_id%7D%7D/attachments/%7B%7Battachment_id%7D%7D","message":"Multi-factor authentication required to complete this action"}
