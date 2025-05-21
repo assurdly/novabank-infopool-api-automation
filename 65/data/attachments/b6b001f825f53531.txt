@@ -1,0 +1,14 @@
+{
+  "name": "Nova bank Warri",
+  "description": "This is a Test organization",
+  "operations_manager_id": 1,
+  "business_manager_id": 1,
+
+  "street": "IKEJA",
+
+  "state": 1,
+  "country": 1,
+  "organization_type": 1,
+  "mis_code": "test",
+  "parent_id": 1
+}

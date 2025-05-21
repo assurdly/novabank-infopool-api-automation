@@ -1,0 +1,8 @@
+{
+    "issue_category_id": "",
+    "issue_responsibility": "CUSTOMER_SERVICE",
+    "source_channel": "BRANCH",
+    "issue": "server error",
+    "status": "REPORTED",
+    "priority": "LOW"
+}
