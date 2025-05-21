@@ -1,6 +1,0 @@
-{
-  "action": "",
-  "data": {
-    "description": "List of marital status"
-  }
-}

@@ -1,6 +1,0 @@
-{
-  "action": "update",
-  "data": {
-    "business_manager_id": 100000000000
-  }
-}
