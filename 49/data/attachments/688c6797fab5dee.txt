@@ -1,1 +1,0 @@
-{"status":false,"statusCode":404,"timestamp":"2025-04-27T20:26:18.027Z","path":"/v1/organizations","message":["Organization type provided does not exist","Country provided does not exist","State provided does not exist","State provided does not exist","Operations manager provided does not exist","Business manager provided does not exist"]}
