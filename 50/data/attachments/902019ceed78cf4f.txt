@@ -1,1 +1,0 @@
-{"status":false,"statusCode":401,"timestamp":"2025-04-30T18:46:27.549Z","path":"/v1/organizations","message":"Unauthorized"}
