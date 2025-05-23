@@ -1,1 +1,0 @@
-{"status":false,"statusCode":403,"timestamp":"2025-05-02T18:53:49.919Z","path":"/v1/customers/4790/financial-summary","message":"Multi-factor authentication required to complete this action"}

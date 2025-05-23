@@ -1,9 +1,0 @@
-var jsonData = pm.response.json();
-
-pm.test("Status code is 201", function () {
-    pm.response.to.have.status(201);
-});
-pm.test("Reponse body contains standard success fields", function () {
-    pm.expect(jsonData.status).to.eql(true);
-    pm.expect(jsonData.response.assigned).to.eq(true)
-});
