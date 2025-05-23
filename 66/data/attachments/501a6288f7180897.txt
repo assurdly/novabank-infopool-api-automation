@@ -1,0 +1,1 @@
+{"status":false,"statusCode":403,"timestamp":"2025-05-23T16:32:59.555Z","path":"/v1/customers/search?q=09055785081","message":"Multi-factor authentication required to complete this action"}
