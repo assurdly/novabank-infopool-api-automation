@@ -1,1 +1,0 @@
-{"status":false,"statusCode":403,"timestamp":"2025-05-14T16:13:57.277Z","path":"/v1/profile/photo","message":"Multi-factor authentication required to complete this action"}
