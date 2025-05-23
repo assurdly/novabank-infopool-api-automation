@@ -1,0 +1,1 @@
+{"status":false,"statusCode":401,"timestamp":"2025-05-23T21:38:17.020Z","path":"/v1/customers/search?q=MUSA%20UMAR","message":"Unauthorized"}
