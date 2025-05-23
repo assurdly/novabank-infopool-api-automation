@@ -1,1 +1,0 @@
-{"status":false,"statusCode":400,"timestamp":"2025-04-23T18:47:58.791Z","path":"/v1/organizations","message":"Cannot create organization without parent organization"}
