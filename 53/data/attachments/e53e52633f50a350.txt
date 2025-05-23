@@ -1,1 +1,0 @@
-{"status":false,"statusCode":403,"timestamp":"2025-05-07T18:46:11.219Z","path":"/v1/customers/search?q=favourdesent","message":"Multi-factor authentication required to complete this action"}
