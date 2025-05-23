@@ -1,1 +1,0 @@
-{"status":false,"statusCode":403,"timestamp":"2025-05-04T20:26:00.338Z","path":"/v1/users/1","message":"Multi-factor authentication required to complete this action"}
