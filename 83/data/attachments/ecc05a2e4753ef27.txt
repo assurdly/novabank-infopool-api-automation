@@ -1,0 +1,1 @@
+{"status":false,"statusCode":400,"timestamp":"2025-05-24T00:56:13.069Z","path":"/v1/auth/mfa/request","message":["property verification_code should not exist","property otp_type should not exist","property recipient should not exist"]}
