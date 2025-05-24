@@ -1,1 +1,0 @@
-{"status":false,"statusCode":400,"timestamp":"2025-05-14T18:45:59.403Z","path":"/v1/auth/mfa/verify","message":"Invalid authentication code"}
