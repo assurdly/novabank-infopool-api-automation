@@ -1,1 +1,0 @@
-{"status":false,"statusCode":403,"timestamp":"2025-05-23T16:33:18.228Z","path":"/v1/reports/data/1?metabase_report_type=question&metabase_report_id=39","message":"Multi-factor authentication required to complete this action"}
