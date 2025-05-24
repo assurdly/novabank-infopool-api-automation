@@ -1,0 +1,12 @@
+{
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+    "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZW1haWwiOiJ0ZXN0X3N1cGVyYWRtaW5fc3RhZ2luZ18wMUB5b3BtYWlsLmNvbSIsInN1YiI6IjI3MiIsImRldmljZV9pZCI6ImNmMTBjZjFlLWEwNDgtNGQ4Ny04OTcwLTYxOGMxN2ZhZjZkMSIsInNlc3Npb24iOiIyODQyZjYxMzg5ZDQ3YjE4MjQ1ZmVhMTQ2MmY5ZTczOSIsInNjb3BlIjpbIkxPR0lOIl0sImlhdCI6MTc0ODExOTQzMiwiZXhwIjoxNzQ4MTIyNDMyLCJhdWQiOiJpbmZvcG9vbC5ub3ZhYmFuay5uZyIsImlzcyI6ImluZm9wb29sLm5vdmFiYW5rLm5nIn0.vVcGAv-WfFMHpgWrKeKoCHezY5QLdKv33FR7u-BGw28",
+    "User-Agent": "PostmanRuntime/7.39.1",
+    "Cache-Control": "no-cache",
+    "Postman-Token": "216326a7-1e57-4292-a303-0e6b61f87604",
+    "Host": "staging-api.infopool.ng",
+    "Accept-Encoding": "gzip, deflate, br",
+    "Connection": "keep-alive",
+    "Content-Length": "87"
+}
