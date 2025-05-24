@@ -1,0 +1,7 @@
+
+{
+  "operation": "LOGIN",
+  "email": "test_superadmin_staging_01@yopmail.com"
+  
+  
+}
