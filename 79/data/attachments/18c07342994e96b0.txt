@@ -1,8 +1,0 @@
-
-{
-  "verification_code": "123456",
-  "otp_type": "TOTP",
-  "operation": "LOGIN",
-  "delivery_channel": "EMAIL",
-  "recipient": "test_superadmin_staging_01@yopmail.com"
-}
