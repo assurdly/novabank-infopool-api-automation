@@ -1,1 +1,0 @@
-{"status":false,"statusCode":401,"timestamp":"2025-05-27T14:52:36.679Z","path":"/v1/notifications/categories?page=1&limit=10","message":"Unauthorized"}
