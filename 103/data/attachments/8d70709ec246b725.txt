@@ -1,0 +1,1 @@
+{"status":true,"response":{"created_on":"2025-01-16T20:02:15.000Z","created_by":"1","modified_on":"2025-03-04T04:54:11.000Z","id":"2","staff_id":null,"manager_id":null,"first_name":"John","last_name":"Doe","display_name":null,"description":null,"photo":null,"phone":null,"email":"2test@test.com","status":"active","last_login_date":null,"roles":[],"organizations":[]}}
