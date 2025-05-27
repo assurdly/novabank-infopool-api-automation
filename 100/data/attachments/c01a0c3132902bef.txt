@@ -1,0 +1,7 @@
+{
+  "verification_code": "123456",
+  "otp_type": "OTP",
+  "operation": "FORGOT_PASSWORD",
+  "delivery_channel": "EMAIL",
+  "recipient": "test_superadmin_staging_01@yopmail.com"
+}
