@@ -1,0 +1,1 @@
+{"status":false,"statusCode":400,"timestamp":"2025-05-27T15:50:58.926Z","path":"/v1/invitations/notify","message":["invitations contains duplicate entries for keys: email.","invitations should not be empty","invitations must be an array"]}
