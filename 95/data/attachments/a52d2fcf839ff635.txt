@@ -1,7 +1,0 @@
-{
-  "verification_code": "421968",
-  "otp_type": "OTP",
-  "operation": "FORGOT_PASSWORD",
-  "delivery_channel": "EMAIL",
-  "recipient": "favourdesent@yopmail.com"
-}
