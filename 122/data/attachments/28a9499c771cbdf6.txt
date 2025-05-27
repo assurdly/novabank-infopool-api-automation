@@ -1,0 +1,1 @@
+{"status":true,"response":{"message":"Logged out successfully"}}
