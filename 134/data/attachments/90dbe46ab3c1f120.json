@@ -1,0 +1,15 @@
+{
+    "Server": "nginx",
+    "Date": "Wed, 28 May 2025 00:23:36 GMT",
+    "Content-Type": "text/csv; charset=utf-8",
+    "Content-Length": "1663",
+    "Connection": "keep-alive",
+    "X-Powered-By": "Express",
+    "Access-Control-Allow-Origin": "*",
+    "X-RateLimit-Limit": "6",
+    "X-RateLimit-Remaining": "3",
+    "X-RateLimit-Reset": "2",
+    "Content-Disposition": "attachment; filename=statement-4790-NB5005760-2025-05-28.csv",
+    "ETag": "W/\"67f-0RkQ/1mTNSQgYl3GUst9vsDFpPI\"",
+    "Strict-Transport-Security": "max-age=31536000; includeSubDomains; preload"
+}
