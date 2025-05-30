@@ -1,5 +1,0 @@
-{
-    "email": "test_superadmin_staging_01@yopmail.com",
-  "password": "Password12$",
-  "confirm_password": "Password12$"
-}
