@@ -4,10 +4,10 @@ on:
   push:
     branches:
       - main
-  #schedule:
-    #- cron: '30 18 * * 3' # Runs every Wednesday at 7:30pm
-    #- cron: '50 18 * * 5' # Runs every Friday at 7:30pm
-    #- cron: '0 20 * * 0' # Runs every Sunday at 8:00pm
+  schedule:
+    - cron: '30 18 * * 3' # Runs every Wednesday at 7:30pm
+    - cron: '50 18 * * 5' # Runs every Friday at 7:30pm
+    - cron: '0 20 * * 0' # Runs every Sunday at 8:00pm
 
 jobs:
   run_tests:
