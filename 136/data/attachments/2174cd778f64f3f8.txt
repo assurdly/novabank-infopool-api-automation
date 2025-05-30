@@ -1,1 +1,0 @@
-{"status":false,"statusCode":401,"timestamp":"2025-05-30T11:29:12.323Z","path":"/v1/reports/uuid/abcdef","message":"Unauthorized"}
