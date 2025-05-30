@@ -1,1 +1,0 @@
-{"status":false,"statusCode":400,"timestamp":"2025-05-29T11:08:04.743Z","path":"/v1/organizations","message":["description should not be empty"]}
