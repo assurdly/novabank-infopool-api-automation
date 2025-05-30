@@ -1,1 +1,0 @@
-{"status":false,"statusCode":400,"timestamp":"2025-05-30T16:53:30.801Z","path":"/v1/profile/password","message":"incorrect current password"}
