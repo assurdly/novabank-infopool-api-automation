@@ -1,1 +1,0 @@
-{"status":false,"statusCode":400,"timestamp":"2025-05-28T00:23:48.029Z","path":"/v1/organizations/17","message":["data.property parent_id should not exist"]}
