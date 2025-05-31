@@ -1,1 +1,0 @@
-{"status":false,"statusCode":400,"timestamp":"2025-05-30T17:40:20.696Z","path":"/v1/profile/password","message":["current_password should not be empty"]}
