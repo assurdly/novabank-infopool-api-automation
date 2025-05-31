@@ -1,1 +1,0 @@
-{"status":false,"statusCode":401,"timestamp":"2025-05-30T17:28:01.410Z","path":"/v1/definitions/abc","message":"Unauthorized"}

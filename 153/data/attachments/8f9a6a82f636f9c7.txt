@@ -1,1 +1,0 @@
-{"status":false,"statusCode":400,"timestamp":"2025-05-30T17:27:50.989Z","path":"/v1/customers/4519/issues?page=1&limit=10&issues=172","message":["property issues should not exist"]}
