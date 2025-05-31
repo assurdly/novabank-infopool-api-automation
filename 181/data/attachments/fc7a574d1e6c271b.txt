@@ -1,0 +1,6 @@
+{
+    "name": "Nova2",
+    "description": "A sample report for demonstration",
+    "category_id": 3204,
+    "roleIds": "[14]"
+}
