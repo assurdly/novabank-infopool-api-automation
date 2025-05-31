@@ -1,0 +1,16 @@
+{
+  "name": "",
+  
+  
+   "business_manager_id": 317,
+
+  "city": "LAGOS",
+  "country": 2993,
+  "description": "This is a Glober organization",
+  "mis_code": "",
+  "operations_manager_id": 317,
+  "organization_type": 1757,
+  "state": 289,
+  "street": "IKEJA"
+  
+}
