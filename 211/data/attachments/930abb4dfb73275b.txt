@@ -1,1 +1,0 @@
-{"status":false,"statusCode":400,"timestamp":"2025-06-05T13:20:03.076Z","path":"/v1/reports/uuid/","message":"Validation failed (numeric string is expected)"}
