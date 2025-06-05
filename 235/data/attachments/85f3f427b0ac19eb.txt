@@ -1,0 +1,1 @@
+{"status":false,"statusCode":400,"timestamp":"2025-06-05T19:07:14.432Z","path":"/v1/customers/22039/issues","message":["issue_category_id should not be empty","issue_category_id must be a number conforming to the specified constraints"]}
