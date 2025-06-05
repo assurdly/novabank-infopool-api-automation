@@ -1,0 +1,7 @@
+{
+
+    "acct_name": "{{acct_name",
+    "adjustment_type": "other",
+    "trans_date": "{{trans_date",
+    "value_date": "{{value_date"
+}
