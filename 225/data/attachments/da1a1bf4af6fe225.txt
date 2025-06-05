@@ -1,0 +1,1 @@
+{"status":false,"statusCode":404,"timestamp":"2025-06-05T16:04:29.103Z","path":"/v1/reports/uuid/abcdef","message":"Report with UUID abcdef not found"}
