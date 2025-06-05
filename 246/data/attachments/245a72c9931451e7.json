@@ -1,0 +1,8 @@
+{
+    "Server": "nginx",
+    "Date": "Thu, 05 Jun 2025 23:11:00 GMT",
+    "Content-Type": "text/html",
+    "Content-Length": "150",
+    "Connection": "keep-alive",
+    "Strict-Transport-Security": "max-age=31536000; includeSubDomains; preload"
+}
