@@ -1,1 +1,0 @@
-{"status":false,"statusCode":400,"timestamp":"2025-06-01T15:56:06.770Z","path":"/v1/definitions/10","message":["action can either be \"update\" or \"delete\" or supported actions","action should not be empty"]}
