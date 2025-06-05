@@ -1,1 +1,0 @@
-{"status":false,"statusCode":400,"timestamp":"2025-06-03T13:46:51.909Z","path":"/v1/organizations","message":["street should not be empty","street must be a string"]}
