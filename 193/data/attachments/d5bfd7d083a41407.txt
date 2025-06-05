@@ -1,1 +1,0 @@
-{"status":false,"statusCode":400,"timestamp":"2025-06-03T14:08:51.321Z","path":"/v1/auth/forgot-password","message":["Email must be a valid email address"]}
