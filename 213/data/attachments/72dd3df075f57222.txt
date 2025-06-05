@@ -1,6 +1,0 @@
-{
-  "name": "Nova1",
-  "description": "testing report",
-  "category_id": 3204,
-  "roleIds": [14]
-}
