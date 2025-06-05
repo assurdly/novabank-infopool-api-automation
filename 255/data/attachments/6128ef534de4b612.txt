@@ -1,0 +1,1 @@
+{"status":false,"statusCode":400,"timestamp":"2025-06-05T23:47:52.057Z","path":"/v1/customers/5178/issues/364/attachments","message":"File is required"}

@@ -1,0 +1,1 @@
+{"status":false,"statusCode":429,"timestamp":"2025-06-05T23:47:42.150Z","path":"/v1/events?page=1&limit=10&date_start=2025-01-26&date_end=2025-01-26","message":"An unexpected error occurred."}
