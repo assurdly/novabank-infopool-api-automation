@@ -1,0 +1,1 @@
+{"status":false,"statusCode":401,"timestamp":"2025-06-05T22:05:15.479Z","path":"/v1/auth/session","message":"Invalid credentials"}
