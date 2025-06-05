@@ -1,1 +1,0 @@
-{"status":false,"statusCode":400,"timestamp":"2025-06-05T13:56:13.758Z","path":"/v1/organizations/1","message":["data.name should not be empty"]}
