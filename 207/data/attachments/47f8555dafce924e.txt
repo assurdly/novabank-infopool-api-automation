@@ -1,0 +1,1 @@
+{"status":false,"statusCode":400,"timestamp":"2025-06-05T12:57:02.259Z","path":"/v1/reports","message":"Report with name Sample Report already exists"}
