@@ -1,0 +1,1 @@
+{"status":false,"statusCode":401,"timestamp":"2025-06-05T21:16:12.368Z","path":"/v1/customers/21374/transactions?account_id=025012477&date_start=2023-01-01&date_end=2025-01-01&part_transaction_type=D&reference_number=060003241223232605527778715976&q=060003241223232605527778715976&limit=100&page=1","message":"Unauthorized"}
