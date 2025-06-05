@@ -1,1 +1,0 @@
-{"status":false,"statusCode":401,"timestamp":"2025-06-03T10:59:42.368Z","path":"/v1/roles/25","message":"Unauthorized"}
