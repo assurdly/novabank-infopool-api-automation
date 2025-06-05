@@ -1,0 +1,1 @@
+{"status":false,"statusCode":400,"timestamp":"2025-06-05T22:55:34.457Z","path":"/v1/reports","message":"Report with name Nova1 already exists"}
