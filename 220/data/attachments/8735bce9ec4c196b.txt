@@ -1,0 +1,1 @@
+{"status":false,"statusCode":400,"timestamp":"2025-06-05T15:47:33.350Z","path":"/v1/organizations","message":["country should not be empty","country must be an integer number","country must be a positive number"]}
