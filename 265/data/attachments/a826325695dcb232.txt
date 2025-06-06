@@ -1,0 +1,1 @@
+{"status":false,"statusCode":404,"timestamp":"2025-06-06T14:51:55.490Z","path":"//v1/customers/1/issues=172&page=1&limit=10&customer_id=10","message":"Cannot GET //v1/customers/1/issues=172&page=1&limit=10&customer_id=10"}
