@@ -1,0 +1,1 @@
+{"status":false,"statusCode":401,"timestamp":"2025-06-06T14:47:32.030Z","path":"/v1/profile/photo","message":"Unauthorized"}
