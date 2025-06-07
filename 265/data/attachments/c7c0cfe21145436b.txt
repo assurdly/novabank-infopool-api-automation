@@ -1,1 +1,0 @@
-{"status":false,"statusCode":400,"timestamp":"2025-06-06T14:53:16.879Z","path":"/v1/organizations/22","message":"Cannot delete organization with members. Remove the members first."}
