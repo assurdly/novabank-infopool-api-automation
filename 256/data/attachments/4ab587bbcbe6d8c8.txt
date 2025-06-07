@@ -1,1 +1,0 @@
-{"status":false,"statusCode":404,"timestamp":"2025-06-05T23:52:45.252Z","path":"/v1/reports/data/1?metabase_report_type=dashboard&metabase_report_id=0","message":"Metabase dashboard with ID 0 not found"}
