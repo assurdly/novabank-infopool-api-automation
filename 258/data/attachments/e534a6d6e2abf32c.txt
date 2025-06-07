@@ -1,1 +1,0 @@
-{"status":false,"statusCode":404,"timestamp":"2025-06-06T14:22:33.926Z","path":"/v1/customers/22039/issues/0","message":"Issue not found"}

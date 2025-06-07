@@ -1,0 +1,1 @@
+{"status":false,"statusCode":404,"timestamp":"2025-06-07T11:57:36.279Z","path":"/v1/customers/:customerId/issues//attachments/dfgtyhujiko","message":"Cannot DELETE /v1/customers/:customerId/issues//attachments/dfgtyhujiko"}
