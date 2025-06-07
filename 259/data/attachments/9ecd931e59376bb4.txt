@@ -1,1 +1,0 @@
-{"status":false,"statusCode":400,"timestamp":"2025-06-06T14:25:47.163Z","path":"/v1/users/11","message":["action must be one of the followings: update,delete,deactivate,activate","action should not be empty"]}
