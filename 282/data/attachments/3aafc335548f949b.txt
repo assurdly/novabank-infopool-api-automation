@@ -1,1 +1,0 @@
-{"status":false,"statusCode":401,"timestamp":"2025-06-07T22:47:25.278Z","path":"/v1/customers/search?q=favourdesent","message":"Unauthorized"}
