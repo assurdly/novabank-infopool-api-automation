@@ -1,1 +1,0 @@
-{"status":false,"statusCode":400,"timestamp":"2025-06-08T20:33:10.284Z","path":"/v1/customers/22039/issues","message":["issue should not be empty"]}
