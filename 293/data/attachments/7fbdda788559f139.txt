@@ -1,0 +1,7 @@
+{
+
+    "acct_name": "test2283",
+    "adjustment_type": "other",
+    "trans_date": "2025-06-08",
+    "value_date": "2025-06-14"
+}

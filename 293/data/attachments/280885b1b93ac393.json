@@ -1,0 +1,10 @@
+{
+    "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZW1haWwiOiJ0ZXN0X3N1cGVyYWRtaW5fc3RhZ2luZ18wMUB5b3BtYWlsLmNvbSIsInN1YiI6IjI3MiIsImRldmljZV9pZCI6IjQ0ZDhmZWY2LTM1YzctNGFlZS1hMjllLTM4YWMxOGM4ZjNhOSIsInNlc3Npb24iOiJkOGNmZTZkODYyYmYxZGI4MGQ4OTc1Y2EzZWMwZGQ4ZSIsInNjb3BlIjpbIkZVTExfQUNDRVNTIl0sImlhdCI6MTc0OTQxNjA2MiwiZXhwIjoxNzQ5NDE5NjYyLCJhdWQiOiJpbmZvcG9vbC5ub3ZhYmFuay5uZyIsImlzcyI6ImluZm9wb29sLm5vdmFiYW5rLm5nIn0.yLySToJiXKqC3yZj-4k1ubAYOH0JDAOm0A1C9dJ2MT0",
+    "User-Agent": "PostmanRuntime/7.39.1",
+    "Accept": "*/*",
+    "Cache-Control": "no-cache",
+    "Postman-Token": "2453b65c-2580-4107-828a-04fd935b7325",
+    "Host": "staging-api.infopool.ng",
+    "Accept-Encoding": "gzip, deflate, br",
+    "Connection": "keep-alive"
+}
