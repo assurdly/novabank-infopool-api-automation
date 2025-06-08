@@ -1,0 +1,12 @@
+{
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+    "Authorization": "Bearer swerdtyuikolpsssssswwswdwdd",
+    "User-Agent": "PostmanRuntime/7.39.1",
+    "Cache-Control": "no-cache",
+    "Postman-Token": "5e63a414-0345-4581-a17e-eaa41f5ad9b1",
+    "Host": "staging-api.infopool.ng",
+    "Accept-Encoding": "gzip, deflate, br",
+    "Connection": "keep-alive",
+    "Content-Length": "97"
+}

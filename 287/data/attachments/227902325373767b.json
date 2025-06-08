@@ -1,9 +1,0 @@
-{
-    "accept": "application/json",
-    "User-Agent": "PostmanRuntime/7.39.1",
-    "Cache-Control": "no-cache",
-    "Postman-Token": "0d743839-ebd5-41e9-abc0-f258e2382fe3",
-    "Host": "staging-api.infopool.ng",
-    "Accept-Encoding": "gzip, deflate, br",
-    "Connection": "keep-alive"
-}
