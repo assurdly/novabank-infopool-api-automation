@@ -5,10 +5,10 @@ on:
     branches:
       - main
 
-  #schedule:
-    #- cron: '30 18 * * 3' # Runs every Wednesday at 7:30pm
-    #- cron: '50 18 * * 5' # Runs every Friday at 7:30pm
-    #- cron: '0 20 * * 0' # Runs every Sunday at 8:00pm main
+  schedule:
+    - cron: '30 18 * * 3' # Runs every Wednesday at 7:30pm
+    - cron: '50 18 * * 5' # Runs every Friday at 7:30pm
+    - cron: '0 20 * * 0' # Runs every Sunday at 8:00pm main
 
 jobs:
   run_tests:
