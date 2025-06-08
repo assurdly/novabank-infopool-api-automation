@@ -1,0 +1,1 @@
+{"status":false,"statusCode":400,"timestamp":"2025-06-08T22:01:19.774Z","path":"/v1/profile/password","message":["Password should be at least 8 characters long","Password should have 1 lowercase letter or more","Password should have 1 numbers minimum","Password should have 1 special characters or more","Password should have 1 uppercase letter or more"]}
