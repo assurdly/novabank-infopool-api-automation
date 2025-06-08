@@ -1,1 +1,0 @@
-{"status":false,"statusCode":404,"timestamp":"2025-06-07T12:00:36.879Z","path":"/v1/customers/:customerId/issues//attachments","message":"Cannot POST /v1/customers/:customerId/issues//attachments"}

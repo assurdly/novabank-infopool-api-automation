@@ -1,1 +1,0 @@
-{"status":false,"statusCode":400,"timestamp":"2025-06-07T12:00:23.924Z","path":"/v1/auth/mfa/request","message":["operation must be one of the following values: LOGIN, FORGOT_PASSWORD, CREATE_ROLE, UPDATE_ROLE, DELETE_ROLE"]}
