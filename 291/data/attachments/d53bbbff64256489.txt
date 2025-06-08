@@ -1,0 +1,12 @@
+{
+   "issue_category_id": 3157,
+    "issue_responsibility": "CUSTOMER_SERVICE",
+    "source_channel": "BRANCH",
+    "issue": "update information",
+    "status": "REPORTED",
+    "priority": "LOW",
+    "meta": {
+        "browser": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/133.0.0.0 Safari/537.36",
+        "device": "Desktop"
+    }
+}
