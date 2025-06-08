@@ -1,0 +1,11 @@
+{
+    "Server": "nginx",
+    "Date": "Sun, 08 Jun 2025 22:16:52 GMT",
+    "Content-Type": "application/json; charset=utf-8",
+    "Content-Length": "137",
+    "Connection": "keep-alive",
+    "X-Powered-By": "Express",
+    "Access-Control-Allow-Origin": "*",
+    "ETag": "W/\"89-WWshdHTxydvrxsOYhaPOH0CQCLo\"",
+    "Strict-Transport-Security": "max-age=31536000; includeSubDomains; preload"
+}
