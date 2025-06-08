@@ -1,1 +1,0 @@
-{"status":false,"statusCode":500,"timestamp":"2025-06-07T11:05:48.585Z","path":"/v1/customers/22039/issues","message":"An unexpected error occurred."}
