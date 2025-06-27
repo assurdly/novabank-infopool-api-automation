@@ -1,0 +1,1 @@
+{"status":false,"statusCode":400,"timestamp":"2025-06-27T18:58:37.725Z","path":"/v1/users/196/roles","message":"The following role IDs do not exist: 10007"}

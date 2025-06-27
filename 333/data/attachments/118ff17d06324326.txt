@@ -1,0 +1,1 @@
+{"status":false,"statusCode":400,"timestamp":"2025-06-27T18:58:39.970Z","path":"/v1/organizations/17","message":["data.property organization_type should not exist"]}
