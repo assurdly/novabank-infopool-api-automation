@@ -1,0 +1,12 @@
+{
+  "name": "Automated API Test Organization 1751832721926",
+  "description": "This is for testing only",
+
+  "street": "IKEJA",
+  "city": "LAGOS",
+  "state": 284,
+  "country": 1964,
+  "organization_type": 1758,
+  "mis_code": "QA",
+  "parent_id": 17
+}
