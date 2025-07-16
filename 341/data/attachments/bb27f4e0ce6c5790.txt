@@ -1,0 +1,1 @@
+{"status":false,"statusCode":400,"timestamp":"2025-07-16T18:53:28.638Z","path":"/v1/organizations","message":["City is required","City is required"]}

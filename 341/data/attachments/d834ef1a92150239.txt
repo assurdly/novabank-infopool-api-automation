@@ -1,0 +1,1 @@
+{"status":false,"statusCode":400,"timestamp":"2025-07-16T18:53:28.122Z","path":"/v1/organizations","message":"Organization type should be lower than parent organization type. Select an organization type that is higher than Branch"}
