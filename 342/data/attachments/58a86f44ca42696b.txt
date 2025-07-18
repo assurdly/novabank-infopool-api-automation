@@ -1,0 +1,1 @@
+{"status":false,"statusCode":400,"timestamp":"2025-07-18T19:00:30.832Z","path":"/v1/organizations/17/users","message":["user_id should not be empty","user_id must be an integer number","user_id must be a positive number"]}
