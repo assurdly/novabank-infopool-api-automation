@@ -1,1 +1,0 @@
-{"status":true,"response":{"created_on":"2025-01-16T20:41:45.832Z","created_by":"1","modified_on":"2025-01-19T22:37:34.000Z","modified_by":"1","deleted_on":null,"deleted_by":null,"id":1,"name":"Admin","description":"Permission for Account Summary","meta":null,"permission_group":null}}
