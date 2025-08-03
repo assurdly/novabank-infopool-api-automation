@@ -1,0 +1,1 @@
+{"status":false,"statusCode":401,"timestamp":"2025-08-03T20:12:25.877Z","path":"/v1/auth/mfa/request","message":"Unauthorized"}
