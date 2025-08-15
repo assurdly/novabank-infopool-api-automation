@@ -1,0 +1,1 @@
+{"status":false,"statusCode":400,"timestamp":"2025-08-15T18:59:20.889Z","path":"/v1/profile/photo","message":"Uploaded file must be an image of 2MB or less"}
