@@ -1,0 +1,218 @@
+"DESCRIPTION","DURATION IN MS","NAME","PARENT SUITE","START TIME","STATUS","STOP TIME","SUB SUITE","SUITE","TEST CLASS","TEST METHOD"
+"","866","Successful login","QA|Nova Bank - Infopool","Fri Aug 22 18:56:55 UTC 2025","passed","Fri Aug 22 18:56:56 UTC 2025","v1 > Auth > Session > Login","Bank User","",""
+"","84","Update organization details by ID - incorrect operation manager ID","QA|Nova Bank - Infopool","Fri Aug 22 18:57:38 UTC 2025","failed","Fri Aug 22 18:57:39 UTC 2025","v1 > Organizations > Update organization","Bank Admin","",""
+"","85","Get profile - No Auth","QA|Nova Bank - Infopool","Fri Aug 22 18:57:07 UTC 2025","passed","Fri Aug 22 18:57:07 UTC 2025","v1 > Profile > Get profile","Bank User","",""
+"","94","No user credentials","QA|Nova Bank - Infopool","Fri Aug 22 18:57:03 UTC 2025","passed","Fri Aug 22 18:57:03 UTC 2025","v1 > Auth > Session > Login","Bank User","",""
+"","121","Invalid attachment id - Delete Attachment from Issue","QA|Nova Bank - Infopool","Fri Aug 22 18:57:20 UTC 2025","failed","Fri Aug 22 18:57:20 UTC 2025","v1 > Customer 360 > Issues > delete attachment to an issue","Bank User","",""
+"","82","No Auth - Fetch Customers Accounts","QA|Nova Bank - Infopool","Fri Aug 22 18:57:33 UTC 2025","passed","Fri Aug 22 18:57:33 UTC 2025","v1 > Customer 360 > Fetch customer accounts","Bank User","",""
+"","3166","Empty issue category - Create a New Issue","QA|Nova Bank - Infopool","Fri Aug 22 18:57:14 UTC 2025","passed","Fri Aug 22 18:57:18 UTC 2025","v1 > Customer 360 > Issues > create a new issue","Bank User","",""
+"","94","Get single definition","QA|Nova Bank - Infopool","Fri Aug 22 18:57:33 UTC 2025","passed","Fri Aug 22 18:57:33 UTC 2025","v1 > Static Definitions > Retrieve definition by ID","Bank Admin","",""
+"","94","Update profile - no phone number","QA|Nova Bank - Infopool","Fri Aug 22 18:57:07 UTC 2025","passed","Fri Aug 22 18:57:07 UTC 2025","v1 > Profile > Update profile","Bank User","",""
+"","84","No Auth - Get profile roles - successful","QA|Nova Bank - Infopool","Fri Aug 22 18:57:05 UTC 2025","passed","Fri Aug 22 18:57:05 UTC 2025","v1 > Profile > Roles","Bank User","",""
+"","88","Empty first name - Send user invitation token","QA|Nova Bank - Infopool","Fri Aug 22 18:57:10 UTC 2025","passed","Fri Aug 22 18:57:10 UTC 2025","v1 > Onboarding > Complete profile","Bank User","",""
+"","82","Fetch user by ID - no auth","QA|Nova Bank - Infopool","Fri Aug 22 18:57:34 UTC 2025","passed","Fri Aug 22 18:57:34 UTC 2025","v1 > Users > Fetch user by ID","Bank Admin","",""
+"","88","Send user invitation token - successful","QA|Nova Bank - Infopool","Fri Aug 22 18:57:09 UTC 2025","passed","Fri Aug 22 18:57:09 UTC 2025","v1 > Onboarding > Complete profile","Bank User","",""
+"","83","No_auth_add_comments","QA|Nova Bank - Infopool","Fri Aug 22 18:57:20 UTC 2025","passed","Fri Aug 22 18:57:20 UTC 2025","v1 > Customer 360 > Comments > add comment to customer","Bank User","",""
+"Get Email or SMS OTP. For OTP, you need to provide either `email` or `phone` if you are not logged in.
+    `operation` can be one of: 
+- LOGIN
+- FORGOT_PASSWORD
+- CREATE_ROLE
+- UPDATE_ROLE
+- DELETE_ROLE","88","Invalid Auth - Empty Channel - Get Email or SMS OTP","QA|Nova Bank - Infopool","Fri Aug 22 18:57:05 UTC 2025","passed","Fri Aug 22 18:57:05 UTC 2025","v1 > Auth > MFA > Request","Bank User","",""
+"Verify TOTP or OTP. For OTP, you need to provide either `email` or `phone` as the recipient if you are not logged in.
+    Make sure the operation matches the one used to generate the OTP.
+
+    `operation` can be one of: 
+- LOGIN
+- FORGOT_PASSWORD
+- CREATE_ROLE
+- UPDATE_ROLE
+- DELETE_ROLE
+    ","130","Invalid OTP - Verify MFA code, MFA backup code, Email or SMS OTP","QA|Nova Bank - Infopool","Fri Aug 22 18:57:05 UTC 2025","failed","Fri Aug 22 18:57:05 UTC 2025","v1 > Auth > MFA > Verify","Bank User","",""
+"","138","Get all Issues","QA|Nova Bank - Infopool","Fri Aug 22 18:57:18 UTC 2025","failed","Fri Aug 22 18:57:18 UTC 2025","v1 > Customer 360 > Issues > get all issues","Bank User","",""
+"","93","Update organization details by ID - empty name","QA|Nova Bank - Infopool","Fri Aug 22 18:57:38 UTC 2025","passed","Fri Aug 22 18:57:38 UTC 2025","v1 > Organizations > Update organization","Bank Admin","",""
+"","3184","Empty last name - Send user invitation token","QA|Nova Bank - Infopool","Fri Aug 22 18:57:10 UTC 2025","passed","Fri Aug 22 18:57:13 UTC 2025","v1 > Onboarding > Complete profile","Bank User","",""
+"","82","No auth - get user role","QA|Nova Bank - Infopool","Fri Aug 22 18:57:36 UTC 2025","passed","Fri Aug 22 18:57:36 UTC 2025","v1 > Users > Role > Get role","Bank Admin","",""
+"","84","No Auth - Fetch Customers Transactions","QA|Nova Bank - Infopool","Fri Aug 22 18:57:26 UTC 2025","passed","Fri Aug 22 18:57:26 UTC 2025","v1 > Customer 360 > Fetch customers transaction","Bank User","",""
+"","85","No Auth - Fetch all users","QA|Nova Bank - Infopool","Fri Aug 22 18:57:35 UTC 2025","passed","Fri Aug 22 18:57:35 UTC 2025","v1 > Users > Fetch users","Bank Admin","",""
+"","102","Invalid name - Search Customers","QA|Nova Bank - Infopool","Fri Aug 22 18:57:21 UTC 2025","passed","Fri Aug 22 18:57:21 UTC 2025","v1 > Customer 360 > Search for a customer > search by name","Bank User","",""
+"","179","Get roles - successful","QA|Nova Bank - Infopool","Fri Aug 22 18:57:43 UTC 2025","passed","Fri Aug 22 18:57:43 UTC 2025","v1 > Roles > Get roles","Bank Admin","",""
+"","83","No Auth - Fetch all organizations","QA|Nova Bank - Infopool","Fri Aug 22 18:57:37 UTC 2025","passed","Fri Aug 22 18:57:37 UTC 2025","v1 > Organizations > Fetch organization","Bank Admin","",""
+"","124","Update organization details by ID - organisation type id","QA|Nova Bank - Infopool","Fri Aug 22 18:57:38 UTC 2025","failed","Fri Aug 22 18:57:38 UTC 2025","v1 > Organizations > Update organization","Bank Admin","",""
+"","173","Invalid current password - Change password","QA|Nova Bank - Infopool","Fri Aug 22 18:57:06 UTC 2025","passed","Fri Aug 22 18:57:06 UTC 2025","v1 > Profile > Password","Bank User","",""
+"","101","Fetch organizations by ID - No Auth","QA|Nova Bank - Infopool","Fri Aug 22 18:57:38 UTC 2025","passed","Fri Aug 22 18:57:38 UTC 2025","v1 > Organizations > Fetch organiation by ID","Bank Admin","",""
+"","94","Create organization - no name","QA|Nova Bank - Infopool","Fri Aug 22 18:57:36 UTC 2025","passed","Fri Aug 22 18:57:36 UTC 2025","v1 > Organizations > Create organization","Bank Admin","",""
+"","95","No email - Forgot Password","QA|Nova Bank - Infopool","Fri Aug 22 18:57:04 UTC 2025","passed","Fri Aug 22 18:57:04 UTC 2025","v1 > Auth > Forgot password > Initiate forget password","Bank User","",""
+"","97","Add user to an organization -user ID does not exist","QA|Nova Bank - Infopool","Fri Aug 22 18:57:39 UTC 2025","passed","Fri Aug 22 18:57:40 UTC 2025","v1 > Organizations > Users > Add users to an organization","Bank Admin","",""
+"","94","Empty fields - Update definition","QA|Nova Bank - Infopool","Fri Aug 22 18:57:34 UTC 2025","passed","Fri Aug 22 18:57:34 UTC 2025","v1 > Static Definitions > Update definition","Bank Admin","",""
+"","88","Get profile roles - No Auth","QA|Nova Bank - Infopool","Fri Aug 22 18:57:05 UTC 2025","passed","Fri Aug 22 18:57:05 UTC 2025","v1 > Profile > Roles","Bank User","",""
+"","310","audit-search","QA|Nova Bank - Infopool","Fri Aug 22 18:57:09 UTC 2025","passed","Fri Aug 22 18:57:09 UTC 2025","v1 > Audit trail > Audit trail","Bank User","",""
+"","112","Create organization - empty street value","QA|Nova Bank - Infopool","Fri Aug 22 18:57:37 UTC 2025","failed","Fri Aug 22 18:57:37 UTC 2025","v1 > Organizations > Create organization","Bank Admin","",""
+"","196","Add Comment to Issue","QA|Nova Bank - Infopool","Fri Aug 22 18:57:19 UTC 2025","passed","Fri Aug 22 18:57:19 UTC 2025","v1 > Customer 360 > Issues > add comment to an issue","Bank User","",""
+"","98","get user role","QA|Nova Bank - Infopool","Fri Aug 22 18:57:35 UTC 2025","passed","Fri Aug 22 18:57:36 UTC 2025","v1 > Users > Role > Get role","Bank Admin","",""
+"","3180","Fetch Customers Accounts","QA|Nova Bank - Infopool","Fri Aug 22 18:57:30 UTC 2025","failed","Fri Aug 22 18:57:33 UTC 2025","v1 > Customer 360 > Fetch customer accounts","Bank User","",""
+"Get Email or SMS OTP. For OTP, you need to provide either `email` or `phone` if you are not logged in.
+    `operation` can be one of: 
+- LOGIN
+- FORGOT_PASSWORD
+- CREATE_ROLE
+- UPDATE_ROLE
+- DELETE_ROLE","95","Invalid Operation - Get Email or SMS OTP","QA|Nova Bank - Infopool","Fri Aug 22 18:57:04 UTC 2025","passed","Fri Aug 22 18:57:05 UTC 2025","v1 > Auth > MFA > Request","Bank User","",""
+"","87","Get profile - user not logged in","QA|Nova Bank - Infopool","Fri Aug 22 18:57:07 UTC 2025","passed","Fri Aug 22 18:57:07 UTC 2025","v1 > Profile > Get profile","Bank User","",""
+"","83","No auth - Create  organization","QA|Nova Bank - Infopool","Fri Aug 22 18:57:36 UTC 2025","passed","Fri Aug 22 18:57:36 UTC 2025","v1 > Organizations > Create organization","Bank Admin","",""
+"","104","Search Customers","QA|Nova Bank - Infopool","Fri Aug 22 18:57:21 UTC 2025","passed","Fri Aug 22 18:57:21 UTC 2025","v1 > Customer 360 > Search for a customer > search by name","Bank User","",""
+"","102","Get roles - successful","QA|Nova Bank - Infopool","Fri Aug 22 18:57:43 UTC 2025","passed","Fri Aug 22 18:57:43 UTC 2025","v1 > Roles > Get roles","Bank Admin","",""
+"","134","Get events - invalid start date","QA|Nova Bank - Infopool","Fri Aug 22 18:57:08 UTC 2025","passed","Fri Aug 22 18:57:08 UTC 2025","v1 > Audit trail > Event","Bank User","",""
+"","86","Invalid authentication - Send user invitation token","QA|Nova Bank - Infopool","Fri Aug 22 18:57:09 UTC 2025","passed","Fri Aug 22 18:57:09 UTC 2025","v1 > Onboarding > Complete profile","Bank User","",""
+"","89","No Auth - Add Comment to Issue","QA|Nova Bank - Infopool","Fri Aug 22 18:57:19 UTC 2025","passed","Fri Aug 22 18:57:19 UTC 2025","v1 > Customer 360 > Issues > add comment to an issue","Bank User","",""
+"","124","Create  organization","QA|Nova Bank - Infopool","Fri Aug 22 18:57:36 UTC 2025","failed","Fri Aug 22 18:57:36 UTC 2025","v1 > Organizations > Create organization","Bank Admin","",""
+"","100","Fetch sub-organizations of a parent organization","QA|Nova Bank - Infopool","Fri Aug 22 18:57:39 UTC 2025","passed","Fri Aug 22 18:57:39 UTC 2025","v1 > Organizations > Sub-organizations > Fetch sub-organizations","Bank Admin","",""
+"","88","Invalid token - Validate user invitation token","QA|Nova Bank - Infopool","Fri Aug 22 18:57:09 UTC 2025","passed","Fri Aug 22 18:57:09 UTC 2025","v1 > Onboarding > Validate invitation","Bank User","",""
+"","1019","Create a New Issue","QA|Nova Bank - Infopool","Fri Aug 22 18:57:13 UTC 2025","passed","Fri Aug 22 18:57:14 UTC 2025","v1 > Customer 360 > Issues > create a new issue","Bank User","",""
+"","93","Update user - ID does not exist","QA|Nova Bank - Infopool","Fri Aug 22 18:57:35 UTC 2025","passed","Fri Aug 22 18:57:35 UTC 2025","v1 > Users > Update user","Bank Admin","",""
+"","130","Update organization details by ID - successful","QA|Nova Bank - Infopool","Fri Aug 22 18:57:38 UTC 2025","passed","Fri Aug 22 18:57:38 UTC 2025","v1 > Organizations > Update organization","Bank Admin","",""
+"","99","Update organization details by ID - name already exists","QA|Nova Bank - Infopool","Fri Aug 22 18:57:38 UTC 2025","passed","Fri Aug 22 18:57:38 UTC 2025","v1 > Organizations > Update organization","Bank Admin","",""
+"","85","Update user - no auth","QA|Nova Bank - Infopool","Fri Aug 22 18:57:35 UTC 2025","passed","Fri Aug 22 18:57:35 UTC 2025","v1 > Users > Update user","Bank Admin","",""
+"","95","Invalid ID - Delete Customer Comment","QA|Nova Bank - Infopool","Fri Aug 22 18:57:21 UTC 2025","passed","Fri Aug 22 18:57:21 UTC 2025","v1 > Customer 360 > Comments > delete customer comment","Bank User","",""
+"","159","Update definition","QA|Nova Bank - Infopool","Fri Aug 22 18:57:34 UTC 2025","passed","Fri Aug 22 18:57:34 UTC 2025","v1 > Static Definitions > Update definition","Bank Admin","",""
+"","177","add_comment_successfully","QA|Nova Bank - Infopool","Fri Aug 22 18:57:20 UTC 2025","passed","Fri Aug 22 18:57:20 UTC 2025","v1 > Customer 360 > Comments > add comment to customer","Bank User","",""
+"","97","Create organization - empty description","QA|Nova Bank - Infopool","Fri Aug 22 18:57:36 UTC 2025","passed","Fri Aug 22 18:57:37 UTC 2025","v1 > Organizations > Create organization","Bank Admin","",""
+"","115","Invalid ID - Update Customer Comment","QA|Nova Bank - Infopool","Fri Aug 22 18:57:21 UTC 2025","failed","Fri Aug 22 18:57:21 UTC 2025","v1 > Customer 360 > Comments > update comment to customer","Bank User","",""
+"","84","Update organization details by ID - incorrect business manager ID","QA|Nova Bank - Infopool","Fri Aug 22 18:57:39 UTC 2025","failed","Fri Aug 22 18:57:39 UTC 2025","v1 > Organizations > Update organization","Bank Admin","",""
+"","88","Delete organization details by ID - No auth","QA|Nova Bank - Infopool","Fri Aug 22 18:57:39 UTC 2025","passed","Fri Aug 22 18:57:39 UTC 2025","v1 > Organizations > Delete organization","Bank Admin","",""
+"","96","Update organization details by ID - parent_id","QA|Nova Bank - Infopool","Fri Aug 22 18:57:38 UTC 2025","passed","Fri Aug 22 18:57:38 UTC 2025","v1 > Organizations > Update organization","Bank Admin","",""
+"","83","Update profile - no auth","QA|Nova Bank - Infopool","Fri Aug 22 18:57:07 UTC 2025","passed","Fri Aug 22 18:57:07 UTC 2025","v1 > Profile > Update profile","Bank User","",""
+"","81","No Auth - Search Customers","QA|Nova Bank - Infopool","Fri Aug 22 18:57:21 UTC 2025","passed","Fri Aug 22 18:57:22 UTC 2025","v1 > Customer 360 > Search for a customer > search by phone number","Bank User","",""
+"","103","Delete organization details by ID - successful","QA|Nova Bank - Infopool","Fri Aug 22 18:57:39 UTC 2025","passed","Fri Aug 22 18:57:39 UTC 2025","v1 > Organizations > Delete organization","Bank Admin","",""
+"","95","Fetch organizations by ID - successful","QA|Nova Bank - Infopool","Fri Aug 22 18:57:37 UTC 2025","passed","Fri Aug 22 18:57:38 UTC 2025","v1 > Organizations > Fetch organiation by ID","Bank Admin","",""
+"","479","Fetch all users","QA|Nova Bank - Infopool","Fri Aug 22 18:57:34 UTC 2025","passed","Fri Aug 22 18:57:35 UTC 2025","v1 > Users > Fetch users","Bank Admin","",""
+"","85","No Auth - Delete Customer Comment","QA|Nova Bank - Infopool","Fri Aug 22 18:57:21 UTC 2025","passed","Fri Aug 22 18:57:21 UTC 2025","v1 > Customer 360 > Comments > delete customer comment","Bank User","",""
+"","131","Get events - end date earlier than start date","QA|Nova Bank - Infopool","Fri Aug 22 18:57:08 UTC 2025","passed","Fri Aug 22 18:57:09 UTC 2025","v1 > Audit trail > Event","Bank User","",""
+"","87","Update organization details by ID - No auth","QA|Nova Bank - Infopool","Fri Aug 22 18:57:38 UTC 2025","passed","Fri Aug 22 18:57:38 UTC 2025","v1 > Organizations > Update organization","Bank Admin","",""
+"","104","Invalid ID - Add Comment to Customer","QA|Nova Bank - Infopool","Fri Aug 22 18:57:20 UTC 2025","passed","Fri Aug 22 18:57:20 UTC 2025","v1 > Customer 360 > Comments > add comment to customer","Bank User","",""
+"","86","No Auth - Fetch Customers Channels","QA|Nova Bank - Infopool","Fri Aug 22 18:57:33 UTC 2025","passed","Fri Aug 22 18:57:33 UTC 2025","v1 > Customer 360 > Fetch customer channel","Bank User","",""
+"","84","No auth - Generator Customers Transactions Statement - PDF","QA|Nova Bank - Infopool","Fri Aug 22 18:57:29 UTC 2025","passed","Fri Aug 22 18:57:30 UTC 2025","v1 > Customer 360 > Generate customers transaction statement","Bank User","",""
+"","6256","Invalid email format","QA|Nova Bank - Infopool","Fri Aug 22 18:56:56 UTC 2025","passed","Fri Aug 22 18:57:03 UTC 2025","v1 > Auth > Session > Login","Bank User","",""
+"","86","Empty authentication type - Send user invitation token","QA|Nova Bank - Infopool","Fri Aug 22 18:57:09 UTC 2025","passed","Fri Aug 22 18:57:10 UTC 2025","v1 > Onboarding > Complete profile","Bank User","",""
+"","91","successful dashboard embed","QA|Nova Bank - Infopool","Fri Aug 22 18:57:33 UTC 2025","passed","Fri Aug 22 18:57:33 UTC 2025","embed dashboard","Bank User","",""
+"","508","Get Issue by ID","QA|Nova Bank - Infopool","Fri Aug 22 18:57:18 UTC 2025","passed","Fri Aug 22 18:57:18 UTC 2025","v1 > Customer 360 > Issues > get issue by Id","Bank User","",""
+"","84","No auth - update role","QA|Nova Bank - Infopool","Fri Aug 22 18:57:36 UTC 2025","passed","Fri Aug 22 18:57:36 UTC 2025","v1 > Users > Role > Update role","Bank Admin","",""
+"","214","Get events - successful","QA|Nova Bank - Infopool","Fri Aug 22 18:57:08 UTC 2025","passed","Fri Aug 22 18:57:08 UTC 2025","v1 > Audit trail > Event","Bank User","",""
+"","94","Create organization - empty city value","QA|Nova Bank - Infopool","Fri Aug 22 18:57:37 UTC 2025","failed","Fri Aug 22 18:57:37 UTC 2025","v1 > Organizations > Create organization","Bank Admin","",""
+"","714","verifyOTP","QA|Nova Bank - Infopool","Fri Aug 22 18:57:03 UTC 2025","passed","Fri Aug 22 18:57:03 UTC 2025","v1 > Auth > Session > verify OTP","Bank User","",""
+"","106","Get all definitions","QA|Nova Bank - Infopool","Fri Aug 22 18:57:33 UTC 2025","passed","Fri Aug 22 18:57:33 UTC 2025","v1 > Static Definitions > Retrieve definition by ID","Bank Admin","",""
+"","83","Invalid ID - Get single definition","QA|Nova Bank - Infopool","Fri Aug 22 18:57:33 UTC 2025","failed","Fri Aug 22 18:57:34 UTC 2025","v1 > Static Definitions > Retrieve definition by ID","Bank Admin","",""
+"","122","Generator Customers Transactions Statement - CSV","QA|Nova Bank - Infopool","Fri Aug 22 18:57:26 UTC 2025","failed","Fri Aug 22 18:57:26 UTC 2025","v1 > Customer 360 > Generate customers transaction statement","Bank User","",""
+"","83","Add user to an organization - no auth","QA|Nova Bank - Infopool","Fri Aug 22 18:57:39 UTC 2025","passed","Fri Aug 22 18:57:39 UTC 2025","v1 > Organizations > Users > Add users to an organization","Bank Admin","",""
+"","83","Get events - no auth","QA|Nova Bank - Infopool","Fri Aug 22 18:57:08 UTC 2025","passed","Fri Aug 22 18:57:08 UTC 2025","v1 > Audit trail > Event","Bank User","",""
+"","82","Fetch user by ID - invalid ID","QA|Nova Bank - Infopool","Fri Aug 22 18:57:34 UTC 2025","passed","Fri Aug 22 18:57:34 UTC 2025","v1 > Users > Fetch user by ID","Bank Admin","",""
+"","93","Empty current password - Change password","QA|Nova Bank - Infopool","Fri Aug 22 18:57:06 UTC 2025","passed","Fri Aug 22 18:57:06 UTC 2025","v1 > Profile > Password","Bank User","",""
+"Get Email or SMS OTP. For OTP, you need to provide either `email` or `phone` if you are not logged in.
+    `operation` can be one of: 
+- LOGIN
+- FORGOT_PASSWORD
+- CREATE_ROLE
+- UPDATE_ROLE
+- DELETE_ROLE","86","Empty Channel - Get Email or SMS OTP","QA|Nova Bank - Infopool","Fri Aug 22 18:57:05 UTC 2025","passed","Fri Aug 22 18:57:05 UTC 2025","v1 > Auth > MFA > Request","Bank User","",""
+"","83","No Auth - Add attachment to issue","QA|Nova Bank - Infopool","Fri Aug 22 18:57:19 UTC 2025","passed","Fri Aug 22 18:57:19 UTC 2025","v1 > Customer 360 > Issues > add attachment to issue","Bank User","",""
+"","97","Fetch user by ID - ID does not exist","QA|Nova Bank - Infopool","Fri Aug 22 18:57:34 UTC 2025","passed","Fri Aug 22 18:57:34 UTC 2025","v1 > Users > Fetch user by ID","Bank Admin","",""
+"","122","verify OTP","QA|Nova Bank - Infopool","Fri Aug 22 18:57:05 UTC 2025","passed","Fri Aug 22 18:57:05 UTC 2025","v1 > Auth > MFA > Verify","Bank User","",""
+"","85","No Auth - Update definition","QA|Nova Bank - Infopool","Fri Aug 22 18:57:34 UTC 2025","passed","Fri Aug 22 18:57:34 UTC 2025","v1 > Static Definitions > Update definition","Bank Admin","",""
+"","87","Update profile - No Auth","QA|Nova Bank - Infopool","Fri Aug 22 18:57:08 UTC 2025","passed","Fri Aug 22 18:57:08 UTC 2025","v1 > Profile > update profile image","Bank User","",""
+"","248","Forgot password - successful","QA|Nova Bank - Infopool","Fri Aug 22 18:57:03 UTC 2025","failed","Fri Aug 22 18:57:04 UTC 2025","v1 > Auth > Forgot password > Initiate forget password","Bank User","",""
+"","85","Health","QA|Nova Bank - Infopool","Fri Aug 22 18:57:33 UTC 2025","failed","Fri Aug 22 18:57:33 UTC 2025","v1 > Health","Bank Admin","",""
+"","185","Delete Attachment from Issue","QA|Nova Bank - Infopool","Fri Aug 22 18:57:19 UTC 2025","passed","Fri Aug 22 18:57:20 UTC 2025","v1 > Customer 360 > Issues > delete attachment to an issue","Bank User","",""
+"","81","No Auth - Get all definitions","QA|Nova Bank - Infopool","Fri Aug 22 18:57:33 UTC 2025","passed","Fri Aug 22 18:57:33 UTC 2025","v1 > Static Definitions > Retrieve definition by ID","Bank Admin","",""
+"","92","Update user - invalid action","QA|Nova Bank - Infopool","Fri Aug 22 18:57:35 UTC 2025","passed","Fri Aug 22 18:57:35 UTC 2025","v1 > Users > Update user","Bank Admin","",""
+"","93","User does not exist - Forgot Password","QA|Nova Bank - Infopool","Fri Aug 22 18:57:04 UTC 2025","passed","Fri Aug 22 18:57:04 UTC 2025","v1 > Auth > Forgot password > Initiate forget password","Bank User","",""
+"","96","Create organization - organization type ID does not exist","QA|Nova Bank - Infopool","Fri Aug 22 18:57:37 UTC 2025","passed","Fri Aug 22 18:57:37 UTC 2025","v1 > Organizations > Create organization","Bank Admin","",""
+"","84","No Auth - Update Issue","QA|Nova Bank - Infopool","Fri Aug 22 18:57:19 UTC 2025","passed","Fri Aug 22 18:57:19 UTC 2025","v1 > Customer 360 > Issues > update issue","Bank User","",""
+"","84","Empty password - Send user invitation token","QA|Nova Bank - Infopool","Fri Aug 22 18:57:13 UTC 2025","passed","Fri Aug 22 18:57:13 UTC 2025","v1 > Onboarding > Complete profile","Bank User","",""
+"","129","Add attachment to issue","QA|Nova Bank - Infopool","Fri Aug 22 18:57:19 UTC 2025","failed","Fri Aug 22 18:57:19 UTC 2025","v1 > Customer 360 > Issues > add attachment to issue","Bank User","",""
+"","95","Create organization - operations manager ID does not exist","QA|Nova Bank - Infopool","Fri Aug 22 18:57:37 UTC 2025","passed","Fri Aug 22 18:57:37 UTC 2025","v1 > Organizations > Create organization","Bank Admin","",""
+"","146","Update Customer Comment","QA|Nova Bank - Infopool","Fri Aug 22 18:57:20 UTC 2025","passed","Fri Aug 22 18:57:21 UTC 2025","v1 > Customer 360 > Comments > update comment to customer","Bank User","",""
+"","183","Update Issue","QA|Nova Bank - Infopool","Fri Aug 22 18:57:19 UTC 2025","passed","Fri Aug 22 18:57:19 UTC 2025","v1 > Customer 360 > Issues > update issue","Bank User","",""
+"Get Email or SMS OTP. For OTP, you need to provide either `email` or `phone` if you are not logged in.
+    `operation` can be one of: 
+- LOGIN
+- FORGOT_PASSWORD
+- CREATE_ROLE
+- UPDATE_ROLE
+- DELETE_ROLE","125","Get Email or SMS OTP","QA|Nova Bank - Infopool","Fri Aug 22 18:57:04 UTC 2025","passed","Fri Aug 22 18:57:04 UTC 2025","v1 > Auth > MFA > Request","Bank User","",""
+"","85","No auth - Fetch all users in an organization","QA|Nova Bank - Infopool","Fri Aug 22 18:57:39 UTC 2025","passed","Fri Aug 22 18:57:39 UTC 2025","v1 > Organizations > Users > Fetch users in an organization","Bank Admin","",""
+"","249","No auth - Create a New Issue","QA|Nova Bank - Infopool","Fri Aug 22 18:57:14 UTC 2025","passed","Fri Aug 22 18:57:14 UTC 2025","v1 > Customer 360 > Issues > create a new issue","Bank User","",""
+"","88","Invalid email format - Forgot password","QA|Nova Bank - Infopool","Fri Aug 22 18:57:04 UTC 2025","passed","Fri Aug 22 18:57:04 UTC 2025","v1 > Auth > Forgot password > Initiate forget password","Bank User","",""
+"","97","Create organization - no country ID","QA|Nova Bank - Infopool","Fri Aug 22 18:57:37 UTC 2025","failed","Fri Aug 22 18:57:37 UTC 2025","v1 > Organizations > Create organization","Bank Admin","",""
+"","190","Invalid credentials","QA|Nova Bank - Infopool","Fri Aug 22 18:56:56 UTC 2025","passed","Fri Aug 22 18:56:56 UTC 2025","v1 > Auth > Session > Login","Bank User","",""
+"","123","Fetch Customer By ID - invalid id","QA|Nova Bank - Infopool","Fri Aug 22 18:57:22 UTC 2025","failed","Fri Aug 22 18:57:22 UTC 2025","v1 > Customer 360 > Fetch customer by ID","Bank User","",""
+"","85","Invalid Id - Update Issue","QA|Nova Bank - Infopool","Fri Aug 22 18:57:19 UTC 2025","failed","Fri Aug 22 18:57:19 UTC 2025","v1 > Customer 360 > Issues > update issue","Bank User","",""
+"","82","No Auth - Get all Issues","QA|Nova Bank - Infopool","Fri Aug 22 18:57:18 UTC 2025","passed","Fri Aug 22 18:57:18 UTC 2025","v1 > Customer 360 > Issues > get all issues","Bank User","",""
+"","147","Fetch Customers Channels","QA|Nova Bank - Infopool","Fri Aug 22 18:57:33 UTC 2025","passed","Fri Aug 22 18:57:33 UTC 2025","v1 > Customer 360 > Fetch customer channel","Bank User","",""
+"","187","Weak password - Change password","QA|Nova Bank - Infopool","Fri Aug 22 18:57:06 UTC 2025","passed","Fri Aug 22 18:57:06 UTC 2025","v1 > Profile > Password","Bank User","",""
+"","102","Fetch all organizations","QA|Nova Bank - Infopool","Fri Aug 22 18:57:37 UTC 2025","passed","Fri Aug 22 18:57:37 UTC 2025","v1 > Organizations > Fetch organization","Bank Admin","",""
+"","119","Remove user from an organization - successful","QA|Nova Bank - Infopool","Fri Aug 22 18:57:40 UTC 2025","passed","Fri Aug 22 18:57:40 UTC 2025","v1 > Organizations > Users > Remove users from an organization","Bank Admin","",""
+"","83","No Auth - Fetch Customer Comments","QA|Nova Bank - Infopool","Fri Aug 22 18:57:20 UTC 2025","passed","Fri Aug 22 18:57:20 UTC 2025","v1 > Customer 360 > Comments > fetch customer comment","Bank User","",""
+"","97","Create organization - name already exists","QA|Nova Bank - Infopool","Fri Aug 22 18:57:36 UTC 2025","passed","Fri Aug 22 18:57:36 UTC 2025","v1 > Organizations > Create organization","Bank Admin","",""
+"","2960","Fetch Customers Transactions","QA|Nova Bank - Infopool","Fri Aug 22 18:57:23 UTC 2025","passed","Fri Aug 22 18:57:26 UTC 2025","v1 > Customer 360 > Fetch customers transaction","Bank User","",""
+"","82","audit trail - No Auth","QA|Nova Bank - Infopool","Fri Aug 22 18:57:09 UTC 2025","passed","Fri Aug 22 18:57:09 UTC 2025","v1 > Audit trail > Audit trail","Bank User","",""
+"","99","Delete organization details by ID -Invalid Id","QA|Nova Bank - Infopool","Fri Aug 22 18:57:39 UTC 2025","passed","Fri Aug 22 18:57:39 UTC 2025","v1 > Organizations > Delete organization","Bank Admin","",""
+"","108","Search Customers","QA|Nova Bank - Infopool","Fri Aug 22 18:57:21 UTC 2025","passed","Fri Aug 22 18:57:21 UTC 2025","v1 > Customer 360 > Search for a customer > search by phone number","Bank User","",""
+"","81","Fetch Customer By ID no Auth","QA|Nova Bank - Infopool","Fri Aug 22 18:57:22 UTC 2025","passed","Fri Aug 22 18:57:22 UTC 2025","v1 > Customer 360 > Fetch customer by ID","Bank User","",""
+"","102","Update profile","QA|Nova Bank - Infopool","Fri Aug 22 18:57:08 UTC 2025","failed","Fri Aug 22 18:57:08 UTC 2025","v1 > Profile > update profile image","Bank User","",""
+"","242","Update profile - successful","QA|Nova Bank - Infopool","Fri Aug 22 18:57:07 UTC 2025","passed","Fri Aug 22 18:57:07 UTC 2025","v1 > Profile > Update profile","Bank User","",""
+"","519","Get profile - successfully","QA|Nova Bank - Infopool","Fri Aug 22 18:57:06 UTC 2025","passed","Fri Aug 22 18:57:07 UTC 2025","v1 > Profile > Get profile","Bank User","",""
+"","95","ID does not exist - Get single definition","QA|Nova Bank - Infopool","Fri Aug 22 18:57:34 UTC 2025","passed","Fri Aug 22 18:57:34 UTC 2025","v1 > Static Definitions > Retrieve definition by ID","Bank Admin","",""
+"","86","No auth - Fetch sub-organizations of a parent organization","QA|Nova Bank - Infopool","Fri Aug 22 18:57:39 UTC 2025","passed","Fri Aug 22 18:57:39 UTC 2025","v1 > Organizations > Sub-organizations > Fetch sub-organizations","Bank Admin","",""
+"","97","Get profile roles - successful","QA|Nova Bank - Infopool","Fri Aug 22 18:57:05 UTC 2025","passed","Fri Aug 22 18:57:05 UTC 2025","v1 > Profile > Roles","Bank User","",""
+"","99","Invalid user phone number - Search Customers","QA|Nova Bank - Infopool","Fri Aug 22 18:57:22 UTC 2025","passed","Fri Aug 22 18:57:22 UTC 2025","v1 > Customer 360 > Search for a customer > search by phone number","Bank User","",""
+"","95","Create  organization - without parent id","QA|Nova Bank - Infopool","Fri Aug 22 18:57:36 UTC 2025","passed","Fri Aug 22 18:57:36 UTC 2025","v1 > Organizations > Create organization","Bank Admin","",""
+"","116","Add user to an organization - successful","QA|Nova Bank - Infopool","Fri Aug 22 18:57:39 UTC 2025","passed","Fri Aug 22 18:57:39 UTC 2025","v1 > Organizations > Users > Add users to an organization","Bank Admin","",""
+"","3152","Remove user from an organization - no auth","QA|Nova Bank - Infopool","Fri Aug 22 18:57:40 UTC 2025","passed","Fri Aug 22 18:57:43 UTC 2025","v1 > Organizations > Users > Remove users from an organization","Bank Admin","",""
+"","96","Empty new password - Change password","QA|Nova Bank - Infopool","Fri Aug 22 18:57:06 UTC 2025","passed","Fri Aug 22 18:57:06 UTC 2025","v1 > Profile > Password","Bank User","",""
+"","94","Fetch organizations by ID - non-existing ID","QA|Nova Bank - Infopool","Fri Aug 22 18:57:38 UTC 2025","passed","Fri Aug 22 18:57:38 UTC 2025","v1 > Organizations > Fetch organiation by ID","Bank Admin","",""
+"","81","No Auth - Fetch Customer's Financial Summary","QA|Nova Bank - Infopool","Fri Aug 22 18:57:23 UTC 2025","passed","Fri Aug 22 18:57:23 UTC 2025","v1 > Customer 360 > Fetch customer's financial summary","Bank User","",""
+"","94","Update profile - invalid phone number","QA|Nova Bank - Infopool","Fri Aug 22 18:57:07 UTC 2025","passed","Fri Aug 22 18:57:08 UTC 2025","v1 > Profile > Update profile","Bank User","",""
+"","112","Update user - successful","QA|Nova Bank - Infopool","Fri Aug 22 18:57:35 UTC 2025","passed","Fri Aug 22 18:57:35 UTC 2025","v1 > Users > Update user","Bank Admin","",""
+"","83","No Auth - Search Customers","QA|Nova Bank - Infopool","Fri Aug 22 18:57:21 UTC 2025","passed","Fri Aug 22 18:57:21 UTC 2025","v1 > Customer 360 > Search for a customer > search by name","Bank User","",""
+"","85","No Auth - Change password","QA|Nova Bank - Infopool","Fri Aug 22 18:57:06 UTC 2025","passed","Fri Aug 22 18:57:06 UTC 2025","v1 > Profile > Password","Bank User","",""
+"","152","Create_issue_without_attachment","QA|Nova Bank - Infopool","Fri Aug 22 18:57:18 UTC 2025","passed","Fri Aug 22 18:57:18 UTC 2025","v1 > Customer 360 > Issues > create a new issue","Bank User","",""
+"","980","Fetch Customer's Financial Summary","QA|Nova Bank - Infopool","Fri Aug 22 18:57:22 UTC 2025","passed","Fri Aug 22 18:57:23 UTC 2025","v1 > Customer 360 > Fetch customer's financial summary","Bank User","",""
+"","134","audit trail","QA|Nova Bank - Infopool","Fri Aug 22 18:57:09 UTC 2025","passed","Fri Aug 22 18:57:09 UTC 2025","v1 > Audit trail > Audit trail","Bank User","",""
+"","128","Delete Customer Comment","QA|Nova Bank - Infopool","Fri Aug 22 18:57:21 UTC 2025","passed","Fri Aug 22 18:57:21 UTC 2025","v1 > Customer 360 > Comments > delete customer comment","Bank User","",""
+"","97","Create organization - business manager ID does not exist","QA|Nova Bank - Infopool","Fri Aug 22 18:57:37 UTC 2025","passed","Fri Aug 22 18:57:37 UTC 2025","v1 > Organizations > Create organization","Bank Admin","",""
+"","91","Update user - empty action field","QA|Nova Bank - Infopool","Fri Aug 22 18:57:35 UTC 2025","passed","Fri Aug 22 18:57:35 UTC 2025","v1 > Users > Update user","Bank Admin","",""
+"","100","Update profile - Invalid file size","QA|Nova Bank - Infopool","Fri Aug 22 18:57:08 UTC 2025","passed","Fri Aug 22 18:57:08 UTC 2025","v1 > Profile > update profile image","Bank User","",""
+"","82","No Auth - Get Issue by ID","QA|Nova Bank - Infopool","Fri Aug 22 18:57:19 UTC 2025","passed","Fri Aug 22 18:57:19 UTC 2025","v1 > Customer 360 > Issues > get issue by Id","Bank User","",""
+"","104","Fetch all users in an organization","QA|Nova Bank - Infopool","Fri Aug 22 18:57:39 UTC 2025","passed","Fri Aug 22 18:57:39 UTC 2025","v1 > Organizations > Users > Fetch users in an organization","Bank Admin","",""
+"","99","managers","QA|Nova Bank - Infopool","Fri Aug 22 18:57:43 UTC 2025","passed","Fri Aug 22 18:57:43 UTC 2025","v1 > Organizations > Managers > Fetch managers of an organization","Bank Admin","",""
+"","94","Role does not exist - update role","QA|Nova Bank - Infopool","Fri Aug 22 18:57:36 UTC 2025","passed","Fri Aug 22 18:57:36 UTC 2025","v1 > Users > Role > Update role","Bank Admin","",""
+"","97","Fetch user by ID - successful","QA|Nova Bank - Infopool","Fri Aug 22 18:57:34 UTC 2025","passed","Fri Aug 22 18:57:34 UTC 2025","v1 > Users > Fetch user by ID","Bank Admin","",""
+"","135","resend_invitation_toUser","QA|Nova Bank - Infopool","Fri Aug 22 18:57:09 UTC 2025","passed","Fri Aug 22 18:57:09 UTC 2025","v1 > Onboarding > Validate invitation","Bank User","",""
+"","103","Invalid ID -Get Issue by ID","QA|Nova Bank - Infopool","Fri Aug 22 18:57:18 UTC 2025","passed","Fri Aug 22 18:57:19 UTC 2025","v1 > Customer 360 > Issues > get issue by Id","Bank User","",""
+"","150","Empty priority - Create a New Issue","QA|Nova Bank - Infopool","Fri Aug 22 18:57:14 UTC 2025","failed","Fri Aug 22 18:57:14 UTC 2025","v1 > Customer 360 > Issues > create a new issue","Bank User","",""
+"","162","update role","QA|Nova Bank - Infopool","Fri Aug 22 18:57:36 UTC 2025","passed","Fri Aug 22 18:57:36 UTC 2025","v1 > Users > Role > Update role","Bank Admin","",""
+"","261","Change password - successful","QA|Nova Bank - Infopool","Fri Aug 22 18:57:05 UTC 2025","passed","Fri Aug 22 18:57:06 UTC 2025","v1 > Profile > Password","Bank User","",""
+"","150","Fetch Customer Comments","QA|Nova Bank - Infopool","Fri Aug 22 18:57:20 UTC 2025","passed","Fri Aug 22 18:57:20 UTC 2025","v1 > Customer 360 > Comments > fetch customer comment","Bank User","",""
+"","287","reset password","QA|Nova Bank - Infopool","Fri Aug 22 18:57:04 UTC 2025","passed","Fri Aug 22 18:57:04 UTC 2025","v1 > Auth > Forgot password > Reset password","Bank User","",""
+"Get Email or SMS OTP. For OTP, you need to provide either `email` or `phone` if you are not logged in.
+    `operation` can be one of: 
+- LOGIN
+- FORGOT_PASSWORD
+- CREATE_ROLE
+- UPDATE_ROLE
+- DELETE_ROLE","88","Invalid Channel - Get Email or SMS OTP","QA|Nova Bank - Infopool","Fri Aug 22 18:57:05 UTC 2025","passed","Fri Aug 22 18:57:05 UTC 2025","v1 > Auth > MFA > Request","Bank User","",""
+"","3156","Generator Customers Transactions Statement - PDF","QA|Nova Bank - Infopool","Fri Aug 22 18:57:26 UTC 2025","failed","Fri Aug 22 18:57:29 UTC 2025","v1 > Customer 360 > Generate customers transaction statement","Bank User","",""
+"Get Email or SMS OTP. For OTP, you need to provide either `email` or `phone` if you are not logged in.
+    `operation` can be one of: 
+- LOGIN
+- FORGOT_PASSWORD
+- CREATE_ROLE
+- UPDATE_ROLE
+- DELETE_ROLE","90","Empty Operation - Get Email or SMS OTP","QA|Nova Bank - Infopool","Fri Aug 22 18:57:04 UTC 2025","passed","Fri Aug 22 18:57:04 UTC 2025","v1 > Auth > MFA > Request","Bank User","",""
+"","135","Get events - invalid end date","QA|Nova Bank - Infopool","Fri Aug 22 18:57:08 UTC 2025","passed","Fri Aug 22 18:57:08 UTC 2025","v1 > Audit trail > Event","Bank User","",""
+"","85","No auth - Delete Attachment from Issue","QA|Nova Bank - Infopool","Fri Aug 22 18:57:20 UTC 2025","passed","Fri Aug 22 18:57:20 UTC 2025","v1 > Customer 360 > Issues > delete attachment to an issue","Bank User","",""
+"","146","Fetch Customer By ID","QA|Nova Bank - Infopool","Fri Aug 22 18:57:22 UTC 2025","passed","Fri Aug 22 18:57:22 UTC 2025","v1 > Customer 360 > Fetch customer by ID","Bank User","",""
+"","84","Create organization - empty mis code","QA|Nova Bank - Infopool","Fri Aug 22 18:57:37 UTC 2025","failed","Fri Aug 22 18:57:37 UTC 2025","v1 > Organizations > Create organization","Bank Admin","",""
+"","81","No auth - managers","QA|Nova Bank - Infopool","Fri Aug 22 18:57:43 UTC 2025","passed","Fri Aug 22 18:57:43 UTC 2025","v1 > Organizations > Managers > Fetch managers of an organization","Bank Admin","",""
+"","94","Remove user from an organization - user ID does not exist","QA|Nova Bank - Infopool","Fri Aug 22 18:57:43 UTC 2025","passed","Fri Aug 22 18:57:43 UTC 2025","v1 > Organizations > Users > Remove users from an organization","Bank Admin","",""
