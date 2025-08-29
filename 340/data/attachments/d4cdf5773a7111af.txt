@@ -1,1 +1,0 @@
-{"status":false,"statusCode":401,"timestamp":"2025-07-13T20:11:52.256Z","path":"/v1/customers/search?q=sunrise","message":"Unauthorized"}
