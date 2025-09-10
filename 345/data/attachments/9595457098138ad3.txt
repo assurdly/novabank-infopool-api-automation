@@ -1,1 +1,0 @@
-{"status":false,"statusCode":400,"timestamp":"2025-07-25T19:00:57.779Z","path":"/v1/organizations","message":"Name should be unique for each organization type"}
