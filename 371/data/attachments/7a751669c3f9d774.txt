@@ -1,0 +1,6 @@
+{
+    "name": "Sample Report",
+    "description": "A sample report for demonstration",
+    "category_id": 1994,
+    "status": "published"
+}
