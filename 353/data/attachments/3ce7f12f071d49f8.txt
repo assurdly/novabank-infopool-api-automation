@@ -1,1 +1,0 @@
-{"status":true,"response":"https://metabase.infopool.ng/embed/dashboard/eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyZXNvdXJjZSI6eyJkYXNoYm9hcmQiOjN9LCJwYXJhbXMiOnsic3RhZmZfaWQiOlsiMDMyMyJdLCJlbWFpbCI6W251bGxdfSwiaWF0IjoxNzU1MTExMTAwfQ.nWHMPywMyAz5b5e-BLhH5vpwVbKW15FNRf0Zk7AcfLw#background=false&bordered=false&titled=false"}
