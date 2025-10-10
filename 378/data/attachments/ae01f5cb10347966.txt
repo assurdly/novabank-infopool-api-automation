@@ -1,0 +1,1 @@
+{"status":false,"statusCode":401,"timestamp":"2025-10-10T18:55:03.502Z","path":"/v1/auth/session","message":"Invalid security headers"}
