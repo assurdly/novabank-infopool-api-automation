@@ -1,1 +1,0 @@
-{"status":false,"statusCode":401,"timestamp":"2025-08-27T18:45:40.038Z","path":"/v1/customers/5178/issues","message":"Invalid security headers"}
