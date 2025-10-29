@@ -1,1 +1,0 @@
-{"status":false,"statusCode":401,"timestamp":"2025-09-07T20:10:27.794Z","path":"/v1/customers/search?q=Yemi&type=customers&page=1&limit=10","message":"Unauthorized"}
