@@ -1,0 +1,1 @@
+{"status":false,"statusCode":429,"timestamp":"2025-10-31T18:57:15.036Z","path":"/v1/customers/4790/financial-summary","message":"An unexpected error occurred."}
