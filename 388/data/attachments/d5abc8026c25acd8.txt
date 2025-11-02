@@ -1,0 +1,1 @@
+{"status":false,"statusCode":401,"timestamp":"2025-11-02T20:11:16.189Z","path":"/v1/roles","message":"Invalid security headers"}

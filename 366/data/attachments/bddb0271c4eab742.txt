@@ -1,1 +1,0 @@
-{"status":false,"statusCode":401,"timestamp":"2025-09-12T18:54:53.444Z","path":"/v1/organizations/21","message":"Invalid security headers"}

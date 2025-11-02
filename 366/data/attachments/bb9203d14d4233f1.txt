@@ -1,1 +1,0 @@
-{"status":false,"statusCode":401,"timestamp":"2025-09-12T18:54:34.847Z","path":"/v1/auth/forgot-password","message":"Invalid security headers"}
