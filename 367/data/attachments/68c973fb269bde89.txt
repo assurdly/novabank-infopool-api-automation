@@ -1,1 +1,0 @@
-{"status":false,"statusCode":401,"timestamp":"2025-09-14T20:10:42.768Z","path":"/v1/invitations/notify","message":"Invalid security headers"}
