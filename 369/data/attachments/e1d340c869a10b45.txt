@@ -1,1 +1,0 @@
-{"status":false,"statusCode":401,"timestamp":"2025-09-19T18:54:36.762Z","path":"/v1/profile/password","message":"Invalid security headers"}
