@@ -1,1 +1,0 @@
-{"status":false,"statusCode":404,"timestamp":"2025-10-10T18:54:59.724Z","path":"/v1/customers//issues//attachments/3156","message":"Cannot DELETE /v1/customers//issues//attachments/3156"}
