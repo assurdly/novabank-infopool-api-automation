@@ -1,1 +1,0 @@
-{"status":false,"statusCode":404,"timestamp":"2025-10-15T18:48:49.217Z","path":"/v1/customers/5178/issues/","message":"Cannot PATCH /v1/customers/5178/issues/"}
