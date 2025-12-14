@@ -1,1 +1,0 @@
-{"status":false,"statusCode":401,"timestamp":"2025-10-29T18:49:43.929Z","path":"/v1/audit-trails?page=1&limit=10&search=0","message":"Unauthorized"}

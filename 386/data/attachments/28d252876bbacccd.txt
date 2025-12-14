@@ -1,1 +1,0 @@
-{"status":false,"statusCode":401,"timestamp":"2025-10-29T18:49:50.051Z","path":"/v1/mpr/42/corporate-adjustments/expenses?page=1&limit=10&q=test","message":"Unauthorized"}

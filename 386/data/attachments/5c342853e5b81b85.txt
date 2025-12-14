@@ -1,1 +1,0 @@
-{"status":false,"statusCode":401,"timestamp":"2025-10-29T18:49:42.692Z","path":"/v1/auth/mfa/request","message":"Invalid security headers"}
