@@ -1,0 +1,10 @@
+{
+    "Authorization": "Bearer YOUR_AUTH_TOKEN",
+    "User-Agent": "PostmanRuntime/7.39.1",
+    "Accept": "*/*",
+    "Cache-Control": "no-cache",
+    "Postman-Token": "afc10ba1-8ba4-4988-bdf6-05a9012cd28b",
+    "Host": "staging-api.infopool.ng",
+    "Accept-Encoding": "gzip, deflate, br",
+    "Connection": "keep-alive"
+}
